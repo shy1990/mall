@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanji.mall.whiteList.dao.WhiteListMapper">
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.WhiteList">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+  </resultMap>
+  <select id="gainWhiteListByIp" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from SJ_TB_WHITE_LIST  where IP = #{ip,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.sanji.mall.model.WhiteList">
+    insert into SJ_TB_WHITE_LIST (ID, IP, USERID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sanji.mall.model.WhiteList">
+    insert into SJ_TB_WHITE_LIST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="ip != null">
+        IP,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

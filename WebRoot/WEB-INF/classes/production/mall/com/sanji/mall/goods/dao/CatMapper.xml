@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanji.mall.goods.dao.CatMapper">
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.Cat">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PIC" jdbcType="VARCHAR" property="pic" />
+    <result column="DISABLED" jdbcType="VARCHAR" property="disabled" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, PIC, DISABLED, REMARK
+  </sql>
+  
+  <!-- 获取所有分类信息 -->
+  <select id="gainAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SJ_TB_CAT where DISABLED='false'
+  </select>
+  
+  <!-- 根据类型名称获得类型id -->
+  <select id="gainIds" resultType="java.lang.String">
+    select id from SJ_TB_CAT where name in
+    <foreach collection="list"  item="names" open="(" separator="," close=")"> 
+        #{names} 
+    </foreach>
+  </select>
+  
+
+  
+</mapper>

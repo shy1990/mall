@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.members.dao.MembersMapper" >
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.Members" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="TRUENAME" property="truename" jdbcType="VARCHAR" />
+    <result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="TELPHONE" property="telphone" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="GENDER" property="gender" jdbcType="DECIMAL" />
+    <result column="EDUCATION" property="education" jdbcType="VARCHAR" />
+    <result column="ADVANCE" property="advance" jdbcType="DECIMAL" />
+    <result column="POINT" property="point" jdbcType="DECIMAL" />
+    <result column="REG_IP" property="regIp" jdbcType="VARCHAR" />
+    <result column="REG_TIME" property="regTime" jdbcType="TIMESTAMP" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" />
+    <result column="DISABLED" property="disabled" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="REMARK_TYPE" property="remarkType" jdbcType="VARCHAR" />
+    <result column="CARD" property="card" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="PAY_PASSWORD" property="payPassword" jdbcType="VARCHAR" />
+    <result column="ENGAGEINDUSTRY" property="engageindustry" jdbcType="VARCHAR" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="RECOMMEND_USERID" property="recommendUserid" jdbcType="VARCHAR" />
+    <result column="EMAIL_STATUS" property="emailStatus" jdbcType="DECIMAL" />
+    <result column="MOBILE_STATUS" property="mobileStatus" jdbcType="DECIMAL" />
+    <result column="QUESTION_ID" property="questionId" jdbcType="VARCHAR" />
+    <result column="QUESTION_ANSWER" property="questionAnswer" jdbcType="VARCHAR" />
+    <result column="LAST_LOGIN_IP" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+    <result column="ADMIN_ID" property="adminId" jdbcType="VARCHAR" /> 
+    <result column="DITCH_ENCODE" property="ditchEncode" jdbcType="VARCHAR" />
+    <result column="BANK_CARD_NO" jdbcType="VARCHAR" property="bankCardNo" />
+    <result column="BANK_DEPOSIT" property="bankDeposit" jdbcType="VARCHAR" />
+    <result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="COM_PHONE" property="comPhone" jdbcType="VARCHAR" />
+    <!-- 关联字段 -->
+    <result column="PNAME" property="pname" jdbcType="VARCHAR" />
+	<result column="CNAME" property="cname" jdbcType="VARCHAR" />
+	<result column="ANAME" property="aname" jdbcType="VARCHAR" />
+	<result column="memberId" property="memberId" jdbcType="VARCHAR"/>
+	<result column="RID" property="rid" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USERNAME, PASSWORD, TRUENAME, NICKNAME, AREA, CITY, MOBILE, TELPHONE, EMAIL, 
+    ZIP, ADDRESS, GENDER, EDUCATION, ADVANCE, POINT, REG_IP, REG_TIME, STATE, DISABLED, 
+    REMARK, REMARK_TYPE, CARD, TYPE, PROVINCE, PAY_PASSWORD, ENGAGEINDUSTRY, LAST_LOGIN_TIME, 
+    RECOMMEND_USERID, EMAIL_STATUS, MOBILE_STATUS, QUESTION_ID, QUESTION_ANSWER, LAST_LOGIN_IP, 
+    BIRTHDAY,ADMIN_ID,DITCH_ENCODE,BANK_CARD_NO,BANK_DEPOSIT,BANK_ACCOUNT,COM_PHONE
+  </sql>
+  <select id="gianMemberForOrder" resultType="java.lang.Long" parameterType="com.sanji.mall.model.Members">
+    select count(o.ID) from SJ_TB_MEMBERS  m left join sj_tb_order o on m.id = o.member_id where m.mobile  = #{mobile,jdbcType=VARCHAR}
+  </select>
+  <!--  -->
+  <delete id = "deleteByList" parameterType = "java.util.List">  
+    <![CDATA[  
+       delete from SJ_TB_MEMBERS where PASSWORD = 'e10adc3949ba59abbe56e057f20f883e' and MOBILE in  
+    ]]>  
+    <foreach collection="list" item = "item" open="(" separator="," close=")">#{ item.mobile }  
+  
+    </foreach>  
+  </delete>  
+  <select id="gainMebByMobile" resultType="java.lang.Long" parameterType="com.sanji.mall.model.Members">
+    select count(ID) from SJ_TB_MEMBERS where MOBILE = #{mobile,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByUsername" parameterType="java.lang.String">
+    delete from SJ_TB_MEMBERS where USERNAME = #{userName,jdbcType=VARCHAR}
+  </delete>
+  <select id="gainMemberMobile" resultType="java.lang.Long" parameterType="java.lang.String">
+    select count(ID) from SJ_TB_MEMBERS where DISABLED = 'false' and mobile = #{mobile,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据id查询用户手机号码 -->
+  <select id="gainMobileById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	 select  m.username,m.mobile,m.address,m.truename,m.province,m.city,m.area,
+  	 m.town,ditch_encode as ditchEncode,BANK_DEPOSIT as bankDeposit,BANK_ACCOUNT as bankAccount,
+  	 BANK_CARD_NO as bankCardNo,BANK_DEPOSIT as bankDeposit,BANK_ACCOUNT as bankAccount,COM_PHONE as comPhone,
+  	(select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.PROVINCE) as PNAME,
+	(select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.CITY) as CNAME,
+	(select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.area) as ANAME,
+  	(select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.town)  TNAME
+  	  
+  	   from  SJ_TB_MEMBERS m where  m.ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据手机号更新密码 -->
+  <update id="modifyPasswordByMobile" parameterType="com.sanji.mall.model.Members">
+  		update SJ_TB_MEMBERS
+    set PASSWORD = #{password,jdbcType=VARCHAR} where 1 = 1
+    
+     <if test="mobile != null and mobile != ''" >
+        and  MOBILE = #{mobile,jdbcType=VARCHAR}
+      </if>
+  
+  </update>
+  <update id="updateMemberByList" parameterType="java.util.List">
+     <![CDATA[  
+       update SJ_TB_MEMBERS
+    set DISABLED = 'true' where 1 = 1  and MOBILE in 
+    ]]> 
+    <foreach collection="list" item = "mobile" open="(" separator="," close=")">#{mobile}</foreach>
+  </update>
+  <!-- 根据用户id获得用户详情 -->
+  <select id="gainMembersDetailById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	 select <include refid="Base_Column_List" /> ,
+  	 (select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.PROVINCE) as PNAME,
+	 (select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.CITY) as CNAME,
+	 (select R1."NAME" from SJ_TB_REGIONS R1 where R1."ID" = m.area) ANAME
+  	 from  SJ_TB_MEMBERS m
+  	 where  m.ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <!-- 添加用户手机号 -->
+  <update id="updateMember" parameterType="com.sanji.mall.model.Members" >
+      update SJ_TB_MEMBERS
+    set MOBILE = #{mobile,jdbcType=VARCHAR} where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据密码和手机号验证用户是否存在 -->
+  <select id="gainMemberByMap" resultType="java.lang.Long" parameterType="java.util.Map">
+  	select count(ID) from SJ_TB_MEMBERS where  DISABLED = 'false' and PASSWORD = #{password} and MOBILE = #{mobile} 
+  </select>
+  <!-- 根据手机号查询用户是否存在 -->
+  <select id="gainByMobile" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select MOBILE from SJ_TB_MEMBERS where  DISABLED = 'false' and MOBILE = #{moblie}
+  </select>
+  <!-- 根据会员名查询用户是否存在 -->
+  <select id="existMemberByUsername" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    count(USERNAME)
+    from SJ_TB_MEMBERS
+    where DISABLED = 'false' and USERNAME = #{username,jdbcType=VARCHAR} 
+  </select>
+   <!-- 根据手机号查询用户是否存在 -->
+  <select id="existMemberByMobile" resultType="java.lang.Long" parameterType="java.lang.String" >
+    select 
+    count(MOBILE)
+    from SJ_TB_MEMBERS
+    where DISABLED = 'false' and MOBILE = #{mobile,jdbcType=VARCHAR} 
+  </select>
+  <!-- 登陆查询 -->
+  <select id="gainMembersByMap" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    ID, USERNAME, PASSWORD, NICKNAME,MOBILE,ADDRESS,area
+    from SJ_TB_MEMBERS
+    where DISABLED = 'false' and (USERNAME = #{username} or MOBILE = #{username}) and PASSWORD = #{password} 
+  </select>
+  
+  <select id="selectPointByPrimaryKey" resultType="int" parameterType="java.lang.String" >
+    select 
+    point
+    from SJ_TB_MEMBERS
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SJ_TB_MEMBERS
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="gainBlackMemberById" resultType="java.lang.String" parameterType="java.lang.String">
+    select MEMBER_ID from SJ_TB_PAY_BLACKLIST where MEMBER_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 获取members表的id和username -->
+  <select id = "gainMembers" resultType = "com.sanji.mall.model.Members"   parameterType="com.sanji.mall.model.Members">
+  	select * from (select * from (  
+  		select ROWNUM AS RN,t.* from (  
+   			select id as memberId,username from SJ_TB_MEMBERS 
+   		)t	
+  	 )  where <![CDATA[RN <= #{page}*#{rows}]]>) where  RN>(#{page}-1)*#{rows}
+  </select>
+  <select id = "gainMembersByUsername" resultType = "com.sanji.mall.model.Members"   parameterType = "com.sanji.mall.model.Members">
+  	 select id as memberId,username from SJ_TB_MEMBERS where USERNAME like '%${username}%'
+  </select>
+  <!-- 获取members表的id和usename行数 -->
+  <select id = "" resultType = "Long"   parameterType="com.sanji.mall.model.Members">
+  	select count(ID) from SJ_TB_MEMBERS
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SJ_TB_MEMBERS
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sanji.mall.model.Members" >
+    insert into SJ_TB_MEMBERS (ID, USERNAME, PASSWORD, 
+      TRUENAME, NICKNAME, AREA, 
+      CITY, MOBILE, TELPHONE, 
+      EMAIL, ZIP, ADDRESS, 
+      GENDER, EDUCATION, ADVANCE, 
+      POINT, REG_IP, REG_TIME, 
+      STATE, DISABLED, REMARK, 
+      REMARK_TYPE, CARD, TYPE, 
+      PROVINCE, PAY_PASSWORD, ENGAGEINDUSTRY, 
+      LAST_LOGIN_TIME, RECOMMEND_USERID, EMAIL_STATUS, 
+      MOBILE_STATUS, QUESTION_ID, QUESTION_ANSWER, 
+      LAST_LOGIN_IP, BIRTHDAY,ADMIN_ID)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{truename,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=DECIMAL}, #{education,jdbcType=VARCHAR}, #{advance,jdbcType=DECIMAL}, 
+      #{point,jdbcType=DECIMAL}, #{regIp,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=DECIMAL}, #{disabled,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{remarkType,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, #{type,jdbcType=DECIMAL}, 
+      #{province,jdbcType=VARCHAR}, #{payPassword,jdbcType=VARCHAR}, #{engageindustry,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{recommendUserid,jdbcType=VARCHAR}, #{emailStatus,jdbcType=DECIMAL}, 
+      #{mobileStatus,jdbcType=DECIMAL}, #{questionId,jdbcType=VARCHAR}, #{questionAnswer,jdbcType=VARCHAR}, 
+      #{lastLoginIp,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR},#{adminId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sanji.mall.model.Members" >
+    insert into SJ_TB_MEMBERS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="truename != null" >
+        TRUENAME,
+      </if>
+      <if test="nickname != null" >
+        NICKNAME,
+      </if>
+      <if test="town != null" >
+        TOWN,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="telphone != null" >
+        TELPHONE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="zip != null" >
+        ZIP,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="education != null" >
+        EDUCATION,
+      </if>
+      <if test="advance != null" >
+        ADVANCE,
+      </if>
+      <if test="point != null" >
+        POINT,
+      </if>
+      <if test="regIp != null" >
+        REG_IP,
+      </if>
+      <if test="regTime != null" >
+        REG_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="disabled != null" >
+        DISABLED,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="remarkType != null" >
+        REMARK_TYPE,
+      </if>
+      <if test="card != null" >
+        CARD,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="payPassword != null" >
+        PAY_PASSWORD,
+      </if>
+      <if test="engageindustry != null" >
+        ENGAGEINDUSTRY,
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="recommendUserid != null" >
+        RECOMMEND_USERID,
+      </if>
+      <if test="emailStatus != null" >
+        EMAIL_STATUS,
+      </if>
+      <if test="mobileStatus != null" >
+        MOBILE_STATUS,
+      </if>
+      <if test="questionId != null" >
+        QUESTION_ID,
+      </if>
+      <if test="questionAnswer != null" >
+        QUESTION_ANSWER,
+      </if>
+      <if test="lastLoginIp != null" >
+        LAST_LOGIN_IP,
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY,
+      </if>
+      <if test="adminId != null" >
+        ADMIN_ID,
+      </if>
+      <if test="ditchEncode != null" >
+        DITCH_ENCODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=DECIMAL},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="advance != null" >
+        #{advance,jdbcType=DECIMAL},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="regIp != null" >
+        #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="disabled != null" >
+        #{disabled,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkType != null" >
+        #{remarkType,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null" >
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null" >
+        #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="engageindustry != null" >
+        #{engageindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommendUserid != null" >
+        #{recommendUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null" >
+        #{emailStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="mobileStatus != null" >
+        #{mobileStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswer != null" >
+        #{questionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="ditchEncode != null" >
+        #{ditchEncode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sanji.mall.model.Members" >
+    update SJ_TB_MEMBERS
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        TRUENAME = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        NICKNAME = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        TOWN = #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        TELPHONE = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=DECIMAL},
+      </if>
+      <if test="education != null" >
+        EDUCATION = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="advance != null" >
+        ADVANCE = #{advance,jdbcType=DECIMAL},
+      </if>
+      <if test="point != null" >
+        POINT = #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="regIp != null" >
+        REG_IP = #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        REG_TIME = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="disabled != null" >
+        DISABLED = #{disabled,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkType != null" >
+        REMARK_TYPE = #{remarkType,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null" >
+        CARD = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null" >
+        PAY_PASSWORD = #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="engageindustry != null" >
+        ENGAGEINDUSTRY = #{engageindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommendUserid != null" >
+        RECOMMEND_USERID = #{recommendUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null" >
+        EMAIL_STATUS = #{emailStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="mobileStatus != null" >
+        MOBILE_STATUS = #{mobileStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="questionId != null" >
+        QUESTION_ID = #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswer != null" >
+        QUESTION_ANSWER = #{questionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="adminId != null" >
+        ADMIN_ID = #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="ditchEncode != null" >
+        DITCH_ENCODE = #{ditchEncode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null" >
+        BANK_CARD_NO = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankDeposit != null" >
+        BANK_DEPOSIT = #{bankDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="comPhone != null" >
+        COM_PHONE = #{comPhone,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sanji.mall.model.Members" >
+    update SJ_TB_MEMBERS
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      TRUENAME = #{truename,jdbcType=VARCHAR},
+      NICKNAME = #{nickname,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      TELPHONE = #{telphone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ZIP = #{zip,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=DECIMAL},
+      EDUCATION = #{education,jdbcType=VARCHAR},
+      ADVANCE = #{advance,jdbcType=DECIMAL},
+      POINT = #{point,jdbcType=DECIMAL},
+      REG_IP = #{regIp,jdbcType=VARCHAR},
+      REG_TIME = #{regTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=DECIMAL},
+      DISABLED = #{disabled,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      REMARK_TYPE = #{remarkType,jdbcType=VARCHAR},
+      CARD = #{card,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=DECIMAL},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      PAY_PASSWORD = #{payPassword,jdbcType=VARCHAR},
+      ENGAGEINDUSTRY = #{engageindustry,jdbcType=VARCHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      RECOMMEND_USERID = #{recommendUserid,jdbcType=VARCHAR},
+      EMAIL_STATUS = #{emailStatus,jdbcType=DECIMAL},
+      MOBILE_STATUS = #{mobileStatus,jdbcType=DECIMAL},
+      QUESTION_ID = #{questionId,jdbcType=VARCHAR},
+      QUESTION_ANSWER = #{questionAnswer,jdbcType=VARCHAR},
+      LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      ADMIN_ID = #{adminId,jdbcType=VARCHAR},
+      BANK_CARD_NO = #{bankCardNo,jdbcType=VARCHAR},
+      BANK_DEPOSIT = #{bankDeposit,jdbcType=VARCHAR},
+      BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <!-- 获取会员总数 -->
+  <select id="gainMemberNum" resultType="java.lang.Long">
+  	select count(ID) from sj_tb_members 
+  </select>
+  
+   <!-- 获取所有手机号 -->
+  <select id="getAllMobiles" resultType="java.lang.String">
+  	select MOBILE from SJ_TB_BACK
+  </select>
+  
+   <!-- 活动时给用户加积分 -->
+  <select id="addPoint" resultType="com.sanji.mall.model.Members">
+  	select m.id,m.username,m.point from SJ_TB_LOGIN_LOG t left join sj_tb_members m on m.id=t.user_id where t.login_time 
+between to_date('2015/10/10 00:00:00','yyyy/mm/dd hh24:mi:ss')
+and to_date('2015/10/11 23:59:59','yyyy/mm/dd hh24:mi:ss') group by m.id,m.username,m.point
+  </select>
+  
+  <!-- 根据Id查询用户所在城市 -->
+  <select id="gainCityById" resultType="java.lang.String" parameterType="java.lang.String">
+  	select r.name from SJ_TB_MEMBERS m left join sj_tb_regions r on r.id=m.city where m.id=#{id,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

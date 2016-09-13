@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.mobileCode.dao.MobileCodeMapper" >
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.MobileCode" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="MAG_RECORD_ID" property="magRecordId" jdbcType="VARCHAR" />
+    <result column="TO_MOBILE" property="toMobile" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="VERIFICATION_CODE" property="verificationCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MAG_RECORD_ID, TO_MOBILE, CREATETIME, VERIFICATION_CODE
+  </sql>
+  <!-- 判断验证码是否存在 -->
+  <select id="gainVerificationCode" resultType="java.lang.Long" parameterType="java.lang.String">
+     select count(VERIFICATION_CODE)from SJ_TB_MOBILE_CODE where VERIFICATION_CODE = #{code}
+  </select>
+  <select id="gainCodeByMap" resultMap="BaseResultMap" parameterType="map">
+  	select * from SJ_TB_MOBILE_CODE where TO_MOBILE = #{mobile} and VERIFICATION_CODE = #{code}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SJ_TB_MOBILE_CODE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SJ_TB_MOBILE_CODE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sanji.mall.model.MobileCode" >
+    insert into SJ_TB_MOBILE_CODE (ID, MAG_RECORD_ID, TO_MOBILE, 
+      CREATETIME, VERIFICATION_CODE)
+    values (#{id,jdbcType=VARCHAR}, #{magRecordId,jdbcType=VARCHAR}, #{toMobile,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{verificationCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sanji.mall.model.MobileCode" >
+    insert into SJ_TB_MOBILE_CODE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="magRecordId != null" >
+        MAG_RECORD_ID,
+      </if>
+      <if test="toMobile != null" >
+        TO_MOBILE,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="verificationCode != null" >
+        VERIFICATION_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="magRecordId != null" >
+        #{magRecordId,jdbcType=VARCHAR},
+      </if>
+      <if test="toMobile != null" >
+        #{toMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verificationCode != null" >
+        #{verificationCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sanji.mall.model.MobileCode" >
+    update SJ_TB_MOBILE_CODE
+    <set >
+      <if test="magRecordId != null" >
+        MAG_RECORD_ID = #{magRecordId,jdbcType=VARCHAR},
+      </if>
+      <if test="toMobile != null" >
+        TO_MOBILE = #{toMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verificationCode != null" >
+        VERIFICATION_CODE = #{verificationCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sanji.mall.model.MobileCode" >
+    update SJ_TB_MOBILE_CODE
+    set MAG_RECORD_ID = #{magRecordId,jdbcType=VARCHAR},
+      TO_MOBILE = #{toMobile,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      VERIFICATION_CODE = #{verificationCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

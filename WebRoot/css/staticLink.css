@@ -1,0 +1,110 @@
+/*div#container{width:500px}
+div#header {background-color:#99bbbb;}
+div#menu {background-color:#ffff99;height:200px;width:150px;float:left;}
+div#content {background-color:#EEEEEE;height:200px;width:350px;float:left;}
+div#footer {background-color:#99bbbb;clear:both;text-align:center;}
+h1 {margin-bottom:0;}
+h2 {margin-bottom:0;font-size:18px;}
+ul {margin:0;}
+li {list-style:none;}*/
+@charset "utf-8";
+/*---------------------Ò³Ãæ»ù´¡¶¨Òå----------------------------------*/
+body {margin:0px;font-family:Microsoft YaHei; padding:0px; font-size:12px;}
+img{ border:0px;}
+a:active img{ border:0px;}
+a { /*Ä¬ÈÏÁ´½Ó*/
+	text-decoration: none;	font-size: 12px}
+a:link {color:#9C9C9C;text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:active {text-decoration: none;}
+form {/*±íµ¥ÄÚÍâ²¹¶¡ÎªÁã*/
+margin:0;padding:0;}
+ul {margin:0;padding:0;}
+li {margin:0;padding:0;}
+p h1 {padding:0px;margin:0px;}
+h4 {font-size:14px;padding:0;margin:0;font-family:Microsoft YaHei;display:inline;font-weight:lighter; color:#F00;}
+h5 {font-size:12px;padding:0;margin:0; color:#F00;font-family:Microsoft YaHei;display:inline;font-weight:lighter;}
+* {margin:0;padding:0;list-style:none;}
+h3{color:#F30; font-size:18px;display:inline;font-family:Microsoft YaHei; font-weight:lighter;}h2{color:#F30; font-size:24px;font-family:"Î¢ÈíÑÅºÚ";font-weight:lighter;padding:0;margin:0; }
+.clear{ clear:both;}
+#content{font-family:Microsoft YaHei}
+/*----------- Ê×Ò³top start------------- */
+.index_top{ background-color:#f8f8f8; border-bottom:#e4e4e4 solid 1px; height:30px;}
+.index_top_box{ width:1190px; height:30px; margin:0 auto;}
+.index_top_let{float:left; line-height:30px; color:#666;}
+.index_top_let span{ color:#F00; font-weight:bold;}
+.index_top_let a{ color:#333; padding-left:30px;}
+.index_top_ret{ float:right; }
+.index_top_ret_let{float:left; width:380px; color:#F00;line-height:20px; margin-top:5px; border-right:#e4e4e4 solid 1px;}
+.index_top_ret_let img{ padding:3px 2px 2px 10px;}
+.index_top_ret_ret{ float:right; width:200px; line-height:30px; color:#666;}
+.index_top_ret_ret span{ color:#F00; font-size:16px;}
+.index_top_ret_ret img{padding:10px 2px 2px 10px;}
+
+/*----------- Ê×Ò³logo start------------- */
+.index_logo{ width:1190px; height:108px; margin:0 auto;}
+.index_logo_let{ width:600px; float:left;height:107px;}
+.index_logo_ret{ float:right; width:494px;height:85px; padding-top:20px;}
+.index_logo_ret_sou{ float:left; background:url(../images/shurubg.jpg) no-repeat; height:38px; padding:7px 0 0 40px; width:370px;}
+.index_logo_ret_sou input{ width:360px; height:31px; line-height:29px; border:#FFF solid 1px; color:#999; font-family:"Î¢ÈíÑÅºÚ";}
+.index_logo_ret_sou_ret{ float:left;}
+.index_logo_ret_hot{ line-height:35px;height:35px;}
+.index_logo_ret_hot_let{float:left; color:#666;}
+.index_logo_ret_hot_let a{ color:#F00; font-weight:bold;}
+.index_logo_ret_hot_ret{float:left; color:#666; padding-left:5px;}
+.index_logo_ret_hot_ret a{ color:#333; padding-left:5px;}
+
+/*----------- Ê×Ò³daohang start------------- */
+.index_daohang{ background-color:#f02424; height:47px;}
+.index_daohang_box{width:1190px; margin:0 auto;height:47px;  line-height:47px;}
+.index_daohang_let{float:left; height:47px; color:#FFF; font-size:16px;}
+.index_daohang_let li{ float:left; width:120px; text-align:center;}
+.index_daohang_let a{ color:#FFF; display:block;font-size:16px;}
+.index_daohang_let a:hover{ background-color:#C00;}
+.index_daohang_ret{float:right; color:#FFF; font-size:16px;}
+.index_daohang_ret a{ color:#FFF;font-size:16px;}
+
+/* =========================================µÇÂ½ start=================================================  */
+/*-----------µÇÂ½ top start------------- */
+.dl_top{ border-bottom:#ff2323 solid 2px; height:100px;}
+.dl_top_box{ width:1190px; margin:0 auto;height:100px;}
+.dl_top_box_let{ float:left; width:300px; height:100px;}
+.dl_top_box_mid{ float:right; width:270px; height:100px;line-height:100px; font-size:18px; color:#999; background:url(../images/phone.jpg) no-repeat left center; padding-left:30px;}
+.dl_top_box_mid span{ color:#F00; font-size:28px;}
+.dl_top_box_ret{ float:left; width:440px; height:100px; padding-left:120px; line-height:100px;}
+.dl_top_box_ret li{ float:left; font-size:18px; color:#595959; width:120px; text-align:center;}
+.dl_top_box_ret a{ color:#666; display:block;font-size:18px; }
+.dl_top_box_ret a:hover{ background-color:#ff2323; color:#FFF;}
+
+
+.about_mian{ width:1190px; margin:15px auto;border:#e4e4e4 solid 1px;background:url(../images/line-bazx.jpg) repeat-y;}
+.about_mian_let{ float:left; width:225px;padding:10px;}
+.about_mian_let dl{ text-align:center; line-height:45px;}
+.about_mian_let dd{ font-size:16px; border-bottom:#E5E5E5 solid 1px;margin-left: 60px; text-align: left;}
+.about_mian_let dt{border-bottom:#E5E5E5 dashed 1px;}
+.about_mian_let a:hover {color:#FFFFFF; background-color:#FF0E12;}
+.about_mian_let a{color:#9C9C9C;display:block;font-size:14px;}
+.about_mian_ret{ float:right; width:890px; padding:20px;}
+.about_mian_ret_01{ text-align:center; font-size:18px; line-height:30px; padding:0 0 20px 0; border-bottom:#C7C7C7 dashed 1px;}
+.about_mian_ret_01 span{ color:#989898;font-size:14px;}
+.about_mian_ret_02{ padding:15px 0; font-size:14px; line-height:30px;}
+.about_mian_ret_02 p{ padding-bottom:15px;}
+
+/*----------- bottom start------------- */
+.bottom{ background-color:#f6f6f6; border-top:#e4e4e4 solid 1px;}
+.bottom_box{ border-top:#ffffff solid 1px;}
+.bottom_box_01{width:1190px; margin:0 auto;}
+.bottom_box_02{ height:120px; padding-top:50px; border-bottom:#e4e4e4 solid 1px;}
+.bottom_box_02 li{ float:left; width:143px; text-align:center; line-height:60px; font-size:20px; color:#999;margin-right: -25px}
+.bottom_box_02 a{ color:#666;font-size:18px;}
+.bottom_box_03{ text-align:center; line-height:30px; padding:30px 0; color:#999;}
+.bottom_box_03 a{color:#666;}
+.bottom_box_03 a:hover{ color:#F30;}
+.bottom_box_04{ height:120px; padding-top:30px; border-bottom:#e4e4e4 solid 1px;height: 210px;}
+.bottom_box_04 li{ float:left; width:170px; line-height:30px; font-size:12px; color:#999;}
+.bottom_box_04 a{ color:#999;font-size:14px;}
+.bottom_box_04 a:hover{ color:#000;}
+.bottom_box_05{ color:#333; font-size:18px;}
+
+

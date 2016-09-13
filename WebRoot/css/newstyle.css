@@ -1,0 +1,79 @@
+.zhifus_01 {
+	padding: 15px;
+}
+.boreder-red {
+	border: 2px solid #FF4447;
+}
+.zhifus_02 {
+	font-size: 16px;
+	font-weight: 500;
+	padding: 10px 0px 10px 20px;
+}
+.zhifus_02 p {
+	font-size: 14px;
+	font-weight: 300;
+	margin-left: 25px;
+	padding-top: 20px;
+}
+.hidden {
+	display: none;
+}
+.show {
+	display: block;
+}
+.btn-sub {
+	margin-top: 20px;
+	margin-left: 98px;
+	width: 150px;
+	background-color: #FD4548;
+	color: #FFF;
+	line-height: 30px;
+	text-align: center;
+}
+.btn-sub a {
+	font-size: 16px;
+	color: #FFF;
+	display: block;
+	line-height: 30px;
+}
+.btn-sub a:hover {
+	background-color: #F30004;
+}
+.blk {
+	margin-left: 25px;
+	display: block;
+}
+.text-green {
+	color: green;
+}
+.margin-left-10 {
+	margin-left: 10px;
+}
+.margin-left-20 {
+	margin-left: 20px;
+}
+.tx-2 span {
+	font-size: 14px;
+	font-weight: 300;
+	color: #9494A1;
+}
+.tx-2 .text-red {
+	color: red;
+}
+.text-red {
+	color: red;
+}
+.tx-2 .text-green {
+	color: green;
+}
+.float-right {
+	font-size: 14px;
+	font-weight: 300;
+	float: right;
+}
+.input-border {
+	height: 25px;
+	width: 200px;
+	border: 1px solid #E4E4E4;
+	display: inline;
+}

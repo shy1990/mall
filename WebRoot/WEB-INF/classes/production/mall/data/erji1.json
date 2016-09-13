@@ -1,0 +1,56 @@
+{
+    "success": true, 
+    "data": [{
+					"id": "1",
+					"type": "电池",
+					"goodsName": "飞毛腿",
+					"specification": "2001MAh-2500MAh",
+					"name": "小米2A电池",
+					"imgSrc": "http://img03.taobaocdn.com/bao/uploaded/i3/14013027507202271/T1SBiKFl4dXXXXXXXX_!!0-item_pic.jpg_220x220.jpg",
+					"value1": 1234.40,
+					"value2": 2222.40,
+					"value3": 455.03,
+					"tmallUrl": "http://www.baidu.com",
+					"description": "小米官方红米1s手机原装原装原装后盖",
+					"number": 0
+				},{
+					"id": "2",
+					"type": "电池",
+					"goodsName": "飞毛腿",
+					"specification": "2001MAh-2500MAh",
+					"name": "小米2A电池",
+					"imgSrc": "http://img03.taobaocdn.com/bao/uploaded/i3/14013027507202271/T1SBiKFl4dXXXXXXXX_!!0-item_pic.jpg_220x220.jpg",
+					"value1": 1234.40,
+					"value2": 2222.40,
+					"value3": 455.03,
+					"tmallUrl": "http://www.baidu.com",
+					"description": "小米官方红米1s手机原装原装原装后盖",
+					"number": 0
+				},{
+					"id": "3",
+					"type": "电池",
+					"goodsName": "飞毛腿",
+					"specification": "2001MAh-2500MAh",
+					"name": "小米2A电池",
+					"imgSrc": "http://img03.taobaocdn.com/bao/uploaded/i3/14013027507202271/T1SBiKFl4dXXXXXXXX_!!0-item_pic.jpg_220x220.jpg",
+					"value1": 1234.40,
+					"value2": 2222.40,
+					"value3": 455.03,
+					"tmallUrl": "http://www.baidu.com",
+					"description": "小米官方红米1s手机原装原装原装后盖",
+					"number": 0
+				},{
+					"id": "4",
+					"type": "电池",
+					"goodsName": "飞毛腿",
+					"specification": "2001MAh-2500MAh",
+					"name": "小米2A电池",
+					"imgSrc": "http://img03.taobaocdn.com/bao/uploaded/i3/14013027507202271/T1SBiKFl4dXXXXXXXX_!!0-item_pic.jpg_220x220.jpg",
+					"value1": 1234.40,
+					"value2": 2222.40,
+					"value3": 455.03,
+					"tmallUrl": "http://www.baidu.com",
+					"description": "小米官方红米1s手机原装原装原装后盖",
+					"number": 0
+				}]
+}

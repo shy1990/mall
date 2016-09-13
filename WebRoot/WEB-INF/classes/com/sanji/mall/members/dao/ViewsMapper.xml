@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.members.dao.ViewsMapper" >
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.Views" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="VIEW_ID" property="viewId" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, VIEW_ID, TYPE, USER_ID, CREATETIME
+  </sql>
+    <!-- 根据USERID、浏览ID、浏览类型查询<br>主要用于判断是否已经浏览该商品或者店铺或者文章 -->
+  <select id="selectViewsLang" parameterType="com.sanji.mall.model.Views" resultType="java.lang.Integer">
+  	SELECT COUNT(ID) from SJ_TB_VIEWS t where t.VIEW_ID = #{viewId,jdbcType=VARCHAR} and t.USER_ID= #{userId,jdbcType=VARCHAR} and t.TYPE= #{type,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 根据USERID、浏览ID、浏览ID更新浏览的时间<br>主要用于已经浏览过的再次更新则更新一下浏览时间 -->
+  <update id="updateViews" parameterType="com.sanji.mall.model.Views">
+  	update SJ_TB_VIEWS set CREATETIME = #{createtime,jdbcType=TIMESTAMP} where USER_ID = #{userId,jdbcType=VARCHAR} and VIEW_ID = #{viewId,jdbcType=VARCHAR} and TYPE= #{type,jdbcType=VARCHAR}
+  </update>
+  <insert id="insert" parameterType="com.sanji.mall.model.Views" >
+    insert into SJ_TB_VIEWS (ID, VIEW_ID, TYPE, 
+      USER_ID, CREATETIME)
+    values (#{id,jdbcType=VARCHAR}, #{viewId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>
