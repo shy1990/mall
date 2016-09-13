@@ -302,12 +302,28 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
+							
+							<%-- <a href="https://apple.tmall.com/?spm=a220m.1000858.1000725.12.2kvPkd&rn=1c50d51e049b6f798c9ef718e0137950"><img
+								src="images/apple71.png?<%=Math.random()%>" /> </a> --%>
+								
+								<a href="http://www.3j1688.com/special_160910/index.html"><img
+								src="images/zhongqiu2.png?<%=Math.random()%>" /> </a>
+								
+							<a>	<img src="images/quansheng.png?" alt="" width="695" height="336" border="0" usemap="#Map">
+										<map name="Map">
+										  <area shape="rect" coords="22,215,147,303" href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
+										  <area shape="rect" coords="149,214,273,304" href="javascript:goListView('手机','','','红米note3合约')" target="_blank">
+										  <area shape="rect" coords="275,213,399,304" href="javascript:goListView('手机','','','小米5合约')" target="_blank">
+										</map>
+							</a>
+
+                            <a href="http://www.3j1688.com/goods/detail/1411.html?s=banner"><img
+								src="images/mxE1.png?<%=Math.random()%>" /> </a>
 
                             <a href="http://www.3j1688.com/goods/detail/1383.html?s=banner"><img
 								src="images/PRO01.png?<%=Math.random()%>" /> </a>
-							<a href="http://www.3j1688.com/special_160831/index.html?s=banner"><img
-								src="images/kxlb.png?<%=Math.random()%>" /> </a>
-							<a> <img  src="images/hm3Xdzj.png" alt="" width="695" height="336"
+						
+							<!-- <a> <img  src="images/hm3Xdzj.png" alt="" width="695" height="336"
 								border="0" usemap="#Map"> 
 								<map name="Map">
 										<area shape="rect" coords="13,187,204,341"
@@ -316,20 +332,15 @@
 											<area shape="rect" coords="210,189,395,346"
 												href="http://www.3j1688.com/goods/detail/1407.html"
 												target="_blank">
-									</map></a>
-							
-
-							<%-- <a href="http://www.3j1688.com/goods/detail/1402.html?s=banner"><img
-								src="images/kpCOOL1.png?<%=Math.random()%>" /> </a>  --%>
-
-							<a href="http://www.3j1688.com/goods/detail/1410.html?s=banner"><img
-								src="images/mlU20.png?<%=Math.random()%>" /> </a>
+									</map></a> -->
+	                        <a href="http://www.3j1688.com/goods/detail/1410.html?s=bjd"><img
+								src="images/mxu209.png?<%=Math.random()%>" /> </a>
 
 							<%-- <a	href="http://www.3j1688.com/goods/detail/1044.html"><img
 								src="images/chuizi.png?<%=Math.random()%>" /> </a> --%>
 
-							<a href="http://www.3j1688.com/goods/detail/1354.html"><img
-								src="images/redMNote3-.gif?<%=Math.random()%>" /> </a>
+						<%-- 	<a href="http://www.3j1688.com/goods/detail/1354.html"><img
+								src="images/redMNote3-.gif?<%=Math.random()%>" /> </a> --%>
 
 
 							<!-- <a> <img

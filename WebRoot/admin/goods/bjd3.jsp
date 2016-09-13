@@ -476,19 +476,35 @@
      src="images/banner_luyou.jpg"/> </a>
   </c:if>
   <c:if test="${jx=='lj'}">
-    <!-- <div style="position: relative;"> -->
-    <a href="http://www.3j1688.com/goods/detail/1383.html?s=bjd3"><img
-				src="images/hmp44.png?<%=Math.random()%>" /> </a>
-			<a href="http://www.3j1688.com/goods/detail/1388.html?s=bjd3"><img
-				src="images/hwmm10.png?<%=Math.random()%>" /> </a>
+   <img src="images/hyjyp.png" alt="" width="1192" height="197"
+				border="0" usemap="#Map">
+			<map name="Map">
+				<area shape="rect" coords="1,1,277,260"
+					href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
+					<area shape="rect" coords="380,101,484,204"
+						href="http://www.3j1688.com/goods/detail/1415.html"
+						target="_blank">
+						<area shape="rect" coords="485,103,591,207"
+							href="http://www.3j1688.com/goods/detail/1414.html"
+							target="_blank">
+							<area shape="rect" coords="591,0,836,219"
+								href="http://www.3j1688.com/goods/detail/1345.html"
+								target="_blank">
+								<area shape="rect" coords="977,94,1068,202"
+									href="http://www.3j1688.com/goods/detail/1413.html"
+									target="_blank">
+									<area shape="rect" coords="1077,97,1175,197"
+										href="http://www.3j1688.com/goods/detail/1412.html"
+										target="_blank">
+			</map>
 
-      <map name="Map">
+     <!--  <map name="Map">
         <area shape="rect" coords="1,1,600,206"
               href="javascript:goListView('手机','','','激活返利')" target="_blank">
         <area shape="rect" coords="609,4,1195,201"
               href="http://www.3j1688.com/goods/detail/1354.html?s=bjd"
               target="_blank">
-      </map>
+      </map> -->
     </a>
     <!-- <div class="down-time">
     <span id="day_show" class="">0</span>天
