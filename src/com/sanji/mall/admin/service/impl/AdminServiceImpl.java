@@ -1,22 +1,20 @@
 package com.sanji.mall.admin.service.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.junit.Test;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.sanji.mall.admin.dao.AdminMapper;
 import com.sanji.mall.admin.service.AdminService;
 import com.sanji.mall.common.util.MsgUtil;
+import com.sanji.mall.common.util.ResourceUtil;
 import com.sanji.mall.members.dao.MembersMapper;
 import com.sanji.mall.model.Admin;
 import com.sanji.mall.model.Members;
 import com.sanji.mall.model.Order;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  * @ClassName: AdminServiceImpl
  * @Description: TODO(这里用一句话描述这个类的作用)
@@ -78,7 +76,18 @@ public class AdminServiceImpl implements AdminService {
 		map.put("city", city);
 		map.put("area", area);
 		map.put("type", type);
-		String mobiles = adminMapper.gainMsgInfoAdminByRegionsAndType(map);
+		String mobiles = "";
+		String proFile = ResourceUtil.get("proFile");
+		if("test".equals(proFile)){
+			List<String> listMobile = adminMapper.gainMsgInfoAdminByRegionsAndTypeNOCONCAT(map);
+			if (listMobile.size() > 0) {
+				for (String mobile : listMobile) {
+					mobiles += mobile + ",";
+				}
+			}
+		}else{
+			mobiles =	adminMapper.gainMsgInfoAdminByRegionsAndType(map);
+		}
 		if (mobiles != null && !"".equals(mobiles)) {
 			if ("1".equals(type)) {
 				MsgUtil.MsgInfoAdminZC(mobiles, userName);
@@ -87,7 +96,6 @@ public class AdminServiceImpl implements AdminService {
 				MsgUtil.MsgInfoAdminXD(mobiles, order,members);
 			}
 		}
-		
 	}
 
 	public Admin getAdminById(String id) {

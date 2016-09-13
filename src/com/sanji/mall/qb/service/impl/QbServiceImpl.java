@@ -1,11 +1,12 @@
 package com.sanji.mall.qb.service.impl;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.sanji.mall.common.util.Hmac;
+import com.sanji.mall.common.util.MsgUtil;
+import com.sanji.mall.common.util.ResourceUtil;
+import com.sanji.mall.pojo.Json;
+import com.sanji.mall.qb.service.QbService;
 import org.jsoup.Connection;
 import org.jsoup.Connection.Response;
 import org.jsoup.HttpStatusException;
@@ -20,19 +21,15 @@ import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.sanji.mall.common.util.Hmac;
-import com.sanji.mall.common.util.MsgUtil;
-import com.sanji.mall.pojo.Json;
-import com.sanji.mall.qb.service.QbService;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service("qbService")
 public class QbServiceImpl implements QbService {
-  //public static final String BASE_URL = "http://115.28.92.73:58080/v1/";//钱包服务的地址
-  public static final String BASE_URL = "http://115.28.87.182:58081/v1/";//钱包服务的地址
-   //public static final String BASE_URL = "http://localhost:8082/v1/";
-  // public static final String BASE_URL = "http://192.168.2.94:8082/v1/";
+  public static final String BASE_URL = ResourceUtil.get("member_server_url");//钱包服务的地址
   private static final String KEY = "doubi";
 
   public Json addPay(String tradeType, BigDecimal amount, String userName, String payPwd, String url, String orderNum) {

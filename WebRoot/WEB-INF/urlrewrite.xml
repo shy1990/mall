@@ -655,7 +655,11 @@
 		<from>yeePay/toYEEPayRetrun.html</from>
 		<to type="forward">pay/yeePayAction!doNotNeedSession_YEEPayReturn.action</to>
 	</rule>
-
+    <!-- 模拟银行回调 -->
+    <rule>
+        <from>yeePay/toModelBankRetrun.html</from>
+        <to type="forward">pay/yeePayAction!modelBankReturn.action</to>
+    </rule>
 	<!-- 接受退款申请 -->
 	<rule>
 		<from>yeePay/toRefund.html</from>

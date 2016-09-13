@@ -183,8 +183,8 @@
 									
 									
 								    
-								    $("#pay_success").click(function() {location.href="http://www.3j1688.com/order/detail.html?id=${order.id}";});
-								    $("#pay_error").click(function() {location.href="http://www.3j1688.com/myCenter/index.html";});
+								    $("#pay_success").click(function() {window.location.href="order/detail.html?id=${order.id}";});
+								    $("#pay_error").click(function() {window.location.href="myCenter/index.html";});
 								    //点击黑色背景隐藏弹出层，当然可以绑定在任意一个按钮上
 								    //$(window).resize(function() {conPosition();});
 									

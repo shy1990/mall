@@ -494,16 +494,14 @@ public class MsgUtil {
   private static void sendMessageToApp(JSONObject obj) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", obj.toJSONString());
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
+    HttpClientUtils.sendPostRequest(ResourceUtil.get("app_server_url")+"push/pushNewOrder",
      params, null, null);
-//			 HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewPosPayments",
-//			 params, null, null);
   }
 
   private static void sendMessage1(String msg) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", msg);
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
+    HttpClientUtils.sendPostRequest(ResourceUtil.get("app_server_url")+"push/pushNewOrder",
      params, null, null);
     //	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
 //				 params, null, null);
@@ -514,7 +512,7 @@ public class MsgUtil {
     params.put("msg", msg);
 //		String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.146:7777/v1/push/cancelOrder",
 //				 params, null, null);
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/cancelOrder",
+    HttpClientUtils.sendPostRequest(ResourceUtil.get("app_server_url")+"push/cancelOrder",
      params, null, null);
   }
 

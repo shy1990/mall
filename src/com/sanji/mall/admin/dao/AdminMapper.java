@@ -102,4 +102,10 @@ public interface AdminMapper {
 	* @author ZhouZhangbao
 	 */
 	public String gainMsgInfoAdminByRegionsAndType(Map<String, String> map);
+
+	/**
+	 * 根据省市区以及授权类别获取授权的电话号码
+	 * 用于测试115.28.92.73数据库 无法使用WM_CONCAT
+	 */
+	public List<String> gainMsgInfoAdminByRegionsAndTypeNOCONCAT(Map<String, String> map);
 }

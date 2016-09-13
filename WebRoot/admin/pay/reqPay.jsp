@@ -25,7 +25,8 @@
 	}); 
   </script>
   <body>
-    <form id="yeePayFormId" action="https://www.yeepay.com/app-merchant-proxy/node" method="post" >
+    <%--<form id="yeePayFormId" action="https://www.yeepay.com/app-merchant-proxy/node" method="post" >--%>
+    <form id="yeePayFormId" action="http://115.28.92.73:28088/order" method="post" >
 			<input type="hidden" name="p0_Cmd"   value="${yeePayPojo.p0_Cmd}" readonly="readonly" style="border:0px;"><br/>
 			<input type="hidden" name="p1_MerId" value="${yeePayPojo.p1_MerId}" readonly="readonly" style="border:0px;"><br/>
 			<input type="hidden" name="p2_Order" value="${yeePayPojo.p2_Order}" readonly="readonly" style="border:0px;"><br/>

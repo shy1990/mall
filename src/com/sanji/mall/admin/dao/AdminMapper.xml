@@ -20,7 +20,7 @@
     <result column="REMARK" property="remark" jdbcType="VARCHAR" />
     <result column="USER_URL" property="userUrl" jdbcType="VARCHAR" />
     <result column="USER_NUM" property="userNum" jdbcType="VARCHAR" />
-    
+
   </resultMap>
   <sql id="Base_Column_List" >
     ID, USERNAME, PASSWORD, TYPE, CREATETIME, MODIFYTIME, DISABLED, TRUENAME, LAST_LOGIN_TIME, 
@@ -30,7 +30,7 @@
   <select id="gainAdminBylogin" resultMap="BaseResultMap" parameterType="com.sanji.mall.model.Admin">
   select <include refid="Base_Column_List" />
   	 from SJ_TB_ADMIN t where ID in ( select ar.ADMIN_ID from SJ_TB_ADMIN_ROLE ar where ar.ROLE_ID in (
-      select r.id from sj_tb_role r where r.name like '%地推_%')) and 
+      select r.id from sj_tb_role r where r.name like '%地推_%')) and
       (t.username =#{username} or t.mobilephone = #{username} or t.USER_NUM = #{username}) and t.password = #{password}
   </select>
   <!-- 查询授权电话 -->
@@ -40,17 +40,22 @@
 		select  t.user_id from sj_tb_admin_infomsg t where t.regions in(#{province,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{area,jdbcType=VARCHAR}) and t.type =#{type,jdbcType=VARCHAR})
   
   </select>
-  
-  
+  <select id="gainMsgInfoAdminByRegionsAndTypeNOCONCAT" resultType="String" parameterType="Map">
+    select a.mobilephone from sj_tb_admin a
+        where a.id in(
+        select  t.user_id from sj_tb_admin_infomsg t where t.regions in(#{province,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{area,jdbcType=VARCHAR}) and t.type =#{type,jdbcType=VARCHAR})
+
+   </select>
+
   <!-- 根据手机号查询业务主管 -->
   <select id="gainByMoble" resultMap="BaseResultMap" parameterType="java.lang.String" >
-  	 
+
   	 select <include refid="Base_Column_List" />
   	 from SJ_TB_ADMIN where ID in ( select ar.ADMIN_ID from SJ_TB_ADMIN_ROLE ar where ar.ROLE_ID in (
       select r.id from sj_tb_role r where r.name like '%地推_%')) and mobilephone = #{mobile}
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from SJ_TB_ADMIN
     where ID = #{id,jdbcType=VARCHAR}
