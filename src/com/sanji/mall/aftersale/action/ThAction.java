@@ -525,7 +525,7 @@ public class ThAction extends BaseAction implements ModelDriven<ThForm> {
 			logger.info("开始通知管理人员有订单取消.");
 			// 通知管理人员有人取消了订单
 			MsgUtil.MsgConcelOrder(order.getOrderNum());
-			logger.info("结束通知管理人员有订单取消.");
+			logger.info("结束通知管理人员有订单取消.");  
 			request.setAttribute("order", order);
 
 		} catch (Exception e) {

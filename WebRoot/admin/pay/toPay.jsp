@@ -175,7 +175,8 @@
 												 if(d>0){
 													balanceNum = d;
 													$("#balance_span").text(d);
-													//$("#balance_box_div").show();//关闭钱包
+													//暂停钱包
+												$("#balance_box_div").show();
 												} 
 											}
 										});

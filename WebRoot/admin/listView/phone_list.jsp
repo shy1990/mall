@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var defaultPrices = "${paramMap.defaultPrices}";
 		var searchParam =  "${paramMap.searchParam}";
 		
+
 		$(function(){
 			/**松开键盘的时候进行模糊搜索匹配**/
 			$("#phone_list_search_param").keyup(function(){
@@ -301,9 +302,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <!--产品列表-->
     <div class="phone_main_03">
-      <ul>
-       
-       
+      <ul>       
       </ul>
       <div class="clear"></div>
     </div>

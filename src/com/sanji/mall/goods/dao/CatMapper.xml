@@ -16,7 +16,7 @@
   <select id="gainAll" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from SJ_TB_CAT where DISABLED='false'
+    from SJ_TB_CAT
   </select>
   
   <!-- 根据类型名称获得类型id -->

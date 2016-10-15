@@ -476,35 +476,19 @@
      src="images/banner_luyou.jpg"/> </a>
   </c:if>
   <c:if test="${jx=='lj'}">
-   <img src="images/hyjyp.png" alt="" width="1192" height="197"
-				border="0" usemap="#Map">
-			<map name="Map">
-				<area shape="rect" coords="1,1,277,260"
-					href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
-					<area shape="rect" coords="380,101,484,204"
-						href="http://www.3j1688.com/goods/detail/1415.html"
-						target="_blank">
-						<area shape="rect" coords="485,103,591,207"
-							href="http://www.3j1688.com/goods/detail/1414.html"
-							target="_blank">
-							<area shape="rect" coords="591,0,836,219"
-								href="http://www.3j1688.com/goods/detail/1345.html"
-								target="_blank">
-								<area shape="rect" coords="977,94,1068,202"
-									href="http://www.3j1688.com/goods/detail/1413.html"
-									target="_blank">
-									<area shape="rect" coords="1077,97,1175,197"
-										href="http://www.3j1688.com/goods/detail/1412.html"
-										target="_blank">
-			</map>
+    <!-- <div style="position: relative;"> -->
+    <a href="http://www.3j1688.com/goods/toShopRush.html?s=menu"><img
+				src="images/hmp44.png?<%=Math.random()%>" /> </a>
+			<a href="http://www.3j1688.com/goods/detail/1388.html?s=bjd3"><img
+				src="images/hwmm10.png?<%=Math.random()%>" /> </a>
 
-     <!--  <map name="Map">
+      <map name="Map">
         <area shape="rect" coords="1,1,600,206"
               href="javascript:goListView('手机','','','激活返利')" target="_blank">
         <area shape="rect" coords="609,4,1195,201"
               href="http://www.3j1688.com/goods/detail/1354.html?s=bjd"
               target="_blank">
-      </map> -->
+      </map>
     </a>
     <!-- <div class="down-time">
     <span id="day_show" class="">0</span>天
@@ -637,9 +621,9 @@
   <div id="background"></div>
   <div id="content">
     <div class="ultlon_content_body">
-    <!--   <i id="dialog_close"
+      <i id="dialog_close"
        style="position:absolute;width:32px;height:32px;right:150px;background-image:url('/images/shoprush/dialog_close.png')"></i>
-      <a href="/goods/toShopRush.html?s=menu"><img height="360px" width="734px"src="images/shoprush/redmipro.png"/> </a> -->
+      <a href="/goods/toShopRush.html?s=menu"><img height="360px" width="734px"src="images/shoprush/redmipro.png"/> </a>
     </div>
   </div>
 </div>
@@ -652,7 +636,7 @@
     $(".down-time").sanjiTimerCountDown(
      new Date(Date.parse(endTime.replace(/-/g, "/"))).getTime());
 
-   /*  $("#dialog_close").on("click",function () {
+    $("#dialog_close").on("click",function () {
       $("#background, #content").hide();
     });
 
@@ -682,7 +666,7 @@
     //点击黑色背景隐藏弹出层，当然可以绑定在任意一个按钮上
     $(window).resize(function () {
       conPosition();
-    }); */
+    });
   })
 </script>
 </body>

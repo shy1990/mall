@@ -69,53 +69,53 @@
 		</collection>
 	</resultMap>
 	<select id="selectByGoodsIdAndType" resultMap="ResultMapDetail">
-		SELECT *
-		from(SELECT T.*,ROWNUM RN FROM(
-		SELECT A.ID,A.SPEC_CODE, A.NAME,
-		A.PRICE,
-		A.ORIGINAL_PRICE,
-		A.TMALL_URL, A.TMALL_PRICE,
-		A.DEFAULT_IMG,
-		A.BATTERY_CAPACITY,
-		A.MATERIAL,
-		A.STYLES,a.ACCESSORIES_STYLE,
-		A.ISORIGINAL, A.WEAR_TYPE, A.STOCK,
-		CL.COLOR_NAME CL_COLOR_NAME,
-		B.NAME
-		BRAND_NAME, B.PIC BRAND_PIC,
-		B.PTREE BRAND_PTREE,
-		B.P_ORDER
-		BRAND_P_ORDER, B.GRADE BRAND_GRADE,
-		C.NAME CAT_NAME, C.PIC CAT_PIC
-		FROM
-		SJ_TB_ACCESSORIES A
-		JOIN SJ_TB_COLOR CL ON CL.ID IN(A.COLOR_ID)
-		JOIN SJ_TB_CAT C ON A.CAT_ID = C.ID AND C.NAME=#{type}
-		  JOIN
-		SJ_TB_BRAND B ON B.ID=A.BRAND_ID
-		  JOIN SJ_TB_APPLICATION_MODEL AM
-		ON AM.ACCESSORIES_ID = A.ID AND
-		AM.GOODS_ID=#{goodsId}
-		WHERE
-		A.DISABLED='false' AND C.DISABLED='false'
-		) T WHERE ROWNUM &lt; #{end})
-		WHERE RN &gt; #{start}
+		select *
+		from(select t.*,rownum rn from(
+		select a.ID,a.spec_code, a.NAME,
+		a.price,
+		a.ORIGINAL_PRICE,
+		a.TMALL_URL, a.TMALL_PRICE,
+		a.DEFAULT_IMG,
+		a.BATTERY_CAPACITY,
+		a.MATERIAL,
+		a.STYLES,a.ACCESSORIES_STYLE,
+		a.ISORIGINAL, a.WEAR_TYPE, a.STOCK,
+		cl.COLOR_NAME cl_color_name,
+		b.NAME
+		brand_name, b.PIC brand_pic,
+		b.PTREE brand_ptree,
+		b.P_ORDER
+		brand_p_order, b.GRADE brand_grade,
+		c.NAME cat_name, c.PIC cat_pic
+		from
+		SJ_TB_ACCESSORIES a
+		join SJ_TB_COLOR cl on cl.id in(a.color_id)
+		join sj_tb_cat c on a.cat_id = c.id and c.name=#{type}
+		  join
+		sj_tb_brand b on b.id=a.brand_id
+		  join sj_tb_application_model am
+		on am.accessories_id = a.id and
+		am.goods_id=#{goodsId}
+		where
+		a.disabled='false' and c.disabled='false'
+		) t where rownum &lt; #{end})
+		where rn &gt; #{start}
 	</select>
 	<select id="selectComm" resultMap="ResultMapDetail">
-		SELECT *
-		FROM(SELECT T.*,ROWNUM RN FROM(
-		SELECT A.ID,A.SPEC_CODE, A.NAME,
-		A.PRICE,
-		A.ORIGINAL_PRICE,
-		A.TMALL_URL, A.TMALL_PRICE,
-		A.DEFAULT_IMG,
-		A.BATTERY_CAPACITY,
-		A.MATERIAL,
-		A.STYLES,A.ACCESSORIES_STYLE,
-		A.ISORIGINAL, A.WEAR_TYPE, A.STOCK,
-		CL.COLOR_NAME CL_COLOR_NAME,
-		B.NAME
-		BRAND_NAME, B.PIC BRAND_PIC,
+		select *
+		from(select t.*,rownum rn from(
+		select a.ID,a.spec_code, a.NAME,
+		a.price,
+		a.ORIGINAL_PRICE,
+		a.TMALL_URL, a.TMALL_PRICE,
+		a.DEFAULT_IMG,
+		a.BATTERY_CAPACITY,
+		a.MATERIAL,
+		a.STYLES,a.ACCESSORIES_STYLE,
+		a.ISORIGINAL, a.WEAR_TYPE, a.STOCK,
+		cl.COLOR_NAME cl_color_name,
+		b.NAME
+		brand_name, b.PIC brand_pic,
 		b.PTREE brand_ptree,
 		b.P_ORDER
 		brand_p_order, b.GRADE brand_grade,

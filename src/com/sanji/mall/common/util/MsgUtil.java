@@ -22,10 +22,13 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bcloud.msg.http.HttpSender;
+import com.sanji.mall.members.service.MemberService;
 import com.sanji.mall.model.Members;
 import com.sanji.mall.model.MessageRecord;
 import com.sanji.mall.model.Order;
 import com.sanji.mall.model.OrderItems;
+import com.sanji.mall.order.service.OrderService;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -413,6 +416,21 @@ public class MsgUtil {
    * @param @param order 设定文件
    * @return void 返回类型
    */
+  private static MemberService memberService;
+  private static OrderService orderservice;
+  
+  public static void main(String [] args) {
+	  Order order=orderservice.gainOrderByID("d5a352d642e845e7a093ff19e5441335");
+	  
+		Members m = memberService.gainMembersDetailById("4a6451f565e5489391c23f79183b099a");
+		
+		
+	  MsgInfoXDApp("15562282883", order, m);
+	  
+}
+  
+  
+  
   public static void MsgInfoXDApp(String mobiles, Order order, Members members) {
 //		int count=(int)(Math.random()*100+1);
     if (order != null && order.getOrderNum() != null && !"".equals(order.getOrderNum())) {
@@ -614,7 +632,7 @@ public class MsgUtil {
     }
   }
 
-  public static void main(String[] args) {
+  /*public static void main(String[] args) {
     // Map<String, String> params = new HashMap<String, String>();
     // params.put("mobile", "18615696354");
     // params.put("msg",
@@ -624,14 +642,14 @@ public class MsgUtil {
     // String returnString=sendMessage1(msg.getMobiles(), content,
     // "SMS");
     try {
-      /*
+      
 			 * String returnString = HttpSender.send(uri, account, pswd,
 			 * "14753170418", "测试返回值", needstatus, product, extno); //
 			 * System.out.println(returnString); String returnString2 =
 			 * sendMessage1("14753170418", "测试返回值", "SMS"); //
 			 * System.out.println("++++++++++++++++++++++"); //
 			 * System.out.println(returnString2);
-			 */
+			 
       MsgConcelOrder("测试收到请回复一下相关人");
       MessageRecord m = new MessageRecord();
       m.setMobiles("18453170418");
@@ -641,16 +659,16 @@ public class MsgUtil {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-		/*
+		
 		 * try { String mobile = "15165009133"; //HttpSender.send(uri, account,
 		 * pswd, mobile, MSG_Signature + "取消订单测试", needstatus, product, extno);
 		 * // System.out.println("================"+HttpSender.send(uri,
 		 * account, pswd, mobile, MSG_Signature + SJ_DXQF_MEMBER_content,
 		 * needstatus, product, extno)); } catch (Exception e) { //
 		 * System.out.println("信息发送异常：" + e.getMessage()); }
-		 */
+		 
   }
-
+*/
   public static void main2(String[] args) {
 
     // MessageRecord m = new MessageRecord();

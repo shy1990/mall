@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 51
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images
+/svn/sanji/!svn/ver/3624/mall/WebRoot/images/images
 END
 商品详情改2_01.jpg
 K 25
@@ -9,17 +9,17 @@ svn:wc:ra_dav:version-url
 V 105
 /svn/sanji/!svn/ver/1389/mall/WebRoot/images/images/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E6%94%B92_01.jpg
 END
-U8znsb.png
-K 25
-svn:wc:ra_dav:version-url
-V 62
-/svn/sanji/!svn/ver/3570/mall/WebRoot/images/images/U8znsb.png
-END
 levip2.jpg
 K 25
 svn:wc:ra_dav:version-url
 V 62
 /svn/sanji/!svn/ver/3624/mall/WebRoot/images/images/levip2.jpg
+END
+U8znsb.png
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sanji/!svn/ver/3570/mall/WebRoot/images/images/U8znsb.png
 END
 xiaomi4sdowntime.png
 K 25
@@ -39,29 +39,11 @@ svn:wc:ra_dav:version-url
 V 61
 /svn/sanji/!svn/ver/3570/mall/WebRoot/images/images/dccdl.png
 END
-hm1.png
-K 25
-svn:wc:ra_dav:version-url
-V 59
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/hm1.png
-END
-zhongqiu1.png
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svn/sanji/!svn/ver/3657/mall/WebRoot/images/images/zhongqiu1.png
-END
 sxON5.png
 K 25
 svn:wc:ra_dav:version-url
 V 61
 /svn/sanji/!svn/ver/3553/mall/WebRoot/images/images/sxON5.png
-END
-xm53j-.gif
-K 25
-svn:wc:ra_dav:version-url
-V 62
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/xm53j-.gif
 END
 shoucaxc_01.jpg
 K 25
@@ -87,18 +69,6 @@ svn:wc:ra_dav:version-url
 V 68
 /svn/sanji/!svn/ver/1389/mall/WebRoot/images/images/dl_banner_02.jpg
 END
-rysb.png
-K 25
-svn:wc:ra_dav:version-url
-V 60
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/rysb.png
-END
-xiaomi.gif
-K 25
-svn:wc:ra_dav:version-url
-V 62
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/xiaomi.gif
-END
 dl_banner_03.jpg
 K 25
 svn:wc:ra_dav:version-url
@@ -117,35 +87,23 @@ svn:wc:ra_dav:version-url
 V 68
 /svn/sanji/!svn/ver/1389/mall/WebRoot/images/images/dl_banner_05.jpg
 END
-dl_banner.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/dl_banner.jpg
-END
-dl_banner11.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 67
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/dl_banner11.jpg
-END
 hmNOTE3.png
 K 25
 svn:wc:ra_dav:version-url
 V 63
 /svn/sanji/!svn/ver/3570/mall/WebRoot/images/images/hmNOTE3.png
 END
-hm2Agp.png
-K 25
-svn:wc:ra_dav:version-url
-V 62
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images/images/hm2Agp.png
-END
 zhsb.png
 K 25
 svn:wc:ra_dav:version-url
 V 60
 /svn/sanji/!svn/ver/3570/mall/WebRoot/images/images/zhsb.png
+END
+hm2Agp.png
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sanji/!svn/ver/3570/mall/WebRoot/images/images/hm2Agp.png
 END
 xmznsh.png
 K 25

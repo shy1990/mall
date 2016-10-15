@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 44
-/svn/sanji/!svn/ver/3650/mall/WebRoot/images
+/svn/sanji/!svn/ver/3649/mall/WebRoot/images
 END
 maiche_ret.jpg
 K 25
@@ -213,17 +213,17 @@ svn:wc:ra_dav:version-url
 V 58
 /svn/sanji/!svn/ver/1494/mall/WebRoot/images/img_3f_01.jpg
 END
-goods_fuwu_08.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 62
-/svn/sanji/!svn/ver/1508/mall/WebRoot/images/goods_fuwu_08.jpg
-END
 sxS7.png
 K 25
 svn:wc:ra_dav:version-url
 V 53
 /svn/sanji/!svn/ver/3515/mall/WebRoot/images/sxS7.png
+END
+goods_fuwu_08.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sanji/!svn/ver/1508/mall/WebRoot/images/goods_fuwu_08.jpg
 END
 img_2f_03.jpg
 K 25
@@ -1497,17 +1497,17 @@ svn:wc:ra_dav:version-url
 V 54
 /svn/sanji/!svn/ver/1986/mall/WebRoot/images/hoc10.png
 END
-bqian.jpg
-K 25
-svn:wc:ra_dav:version-url
-V 54
-/svn/sanji/!svn/ver/1389/mall/WebRoot/images/bqian.jpg
-END
 xm4jj.png
 K 25
 svn:wc:ra_dav:version-url
 V 54
 /svn/sanji/!svn/ver/3515/mall/WebRoot/images/xm4jj.png
+END
+bqian.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/sanji/!svn/ver/1389/mall/WebRoot/images/bqian.jpg
 END
 shenjingbingdier.jpg
 K 25
@@ -2726,12 +2726,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 56
 /svn/sanji/!svn/ver/1301/mall/WebRoot/images/guzhang.png
-END
-xm4s3.png
-K 25
-svn:wc:ra_dav:version-url
-V 54
-/svn/sanji/!svn/ver/3548/mall/WebRoot/images/xm4s3.png
 END
 lijifk.png
 K 25

@@ -19,7 +19,7 @@ response.flushBuffer();%>  --%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="renderer" content="webkit" />
-<title>三际数码三际手机采购网</title>
+<title>三际手机采购网</title>
 <link href="<%=basePath%>css/index/css.css" rel="stylesheet"
 	type="text/css" />
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>

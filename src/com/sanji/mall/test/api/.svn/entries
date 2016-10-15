@@ -1,7 +1,7 @@
 10
 
 dir
-3656
+3649
 https://192.168.2.141/svn/sanji/mall/src/com/sanji/mall/test/api
 https://192.168.2.141/svn/sanji
 
@@ -28,19 +28,15 @@ svn:special svn:externals svn:needs-lock
 
 kuaidi100.java
 file
-3657
-
-
-
-2016-04-06T01:26:39.994000Z
-fe400feaa77e81cf81a8f906191c3a06
-2016-09-13T03:58:12.758805Z
-3657
-shihongyue
 
 
 
 
+2016-09-02T07:11:22.458000Z
+540aabf8ae70a47f3b1f788481132491
+2014-08-29T02:02:48.603121Z
+23
+zhouzhangbao
 
 
 
@@ -58,5 +54,9 @@ shihongyue
 
 
 
-1612
+
+
+
+
+1758
 

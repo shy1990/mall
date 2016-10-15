@@ -1,15 +1,15 @@
 10
 
 dir
-3656
+3649
 https://192.168.2.141/svn/sanji/mall/src/com/sanji/mall/brand/dao
 https://192.168.2.141/svn/sanji
 
 
 
-2016-09-05T06:54:21.068719Z
-3650
-shihongyue
+2015-01-12T08:33:38.676524Z
+1620
+wujiming
 
 
 svn:special svn:externals svn:needs-lock
@@ -32,7 +32,7 @@ file
 
 
 
-2016-03-17T03:13:02.253000Z
+2016-09-02T07:11:22.655000Z
 7aeeb9192115e6cecdcdad8ac13ef842
 2015-01-12T08:33:38.676524Z
 1620
@@ -66,11 +66,11 @@ file
 
 
 
-2016-09-05T02:11:41.315000Z
-4f57e66644375289dcbef4c0c60112bc
-2016-09-05T06:54:21.068719Z
-3650
-shihongyue
+2016-09-02T07:11:22.650000Z
+046a75bd90db2a207e724123225ee70f
+2015-01-12T08:33:38.676524Z
+1620
+wujiming
 
 
 
@@ -92,5 +92,5 @@ shihongyue
 
 
 
-1661
+1638
 

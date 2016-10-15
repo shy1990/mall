@@ -6,6 +6,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.sanji.mall.common.util.JsonUtil;
+import com.sanji.mall.pojo.Kuaidi;
+import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
+
 public class kuaidi100 {
 
 	public static void main(String[] agrs) {

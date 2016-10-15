@@ -252,16 +252,15 @@
 				});
 
 				var sg = {
-				
+				           魅族 : [],
+				           乐视: [],
 					小米 : [],
-					乐视: [],
 					百立丰 : [],
 					金星 : [],
 					荣耀 : [],
 					华为 : [],
 					苹果 : [],
-					三星 : [],
-					魅族 : [],
+					三星 : [],					
 					大神 : [],
 					多美达 : [],
 					酷派 : [],
@@ -296,6 +295,7 @@
 					海尔 : [],
 					小辣椒 : [],
 					奇酷 : [],
+					
 					"U8（手表）" : [],
 					"掌航（手表）" : [],
 					"小米（血压计）" : [],
@@ -358,25 +358,63 @@
 	<jsp:include page="/admin/common/head.jsp"></jsp:include>
 	<!--======================详情图片开始============================-->
 	<div class="xq_mian" id="xq_mian" ms-controller="bjd">
-	
+		<%-- <c:if test="${jx=='ydhy'}">
+			<img src="images/lj-b_4.jpg" alt="" width="1192" height="197"
+				border="0" usemap="#Map"
+				href="http://www.3j1688.com/goods/detail/901.html"> <map
+					name="Map">
+					<area shape="rect" coords="2,4,436,212"
+						href="http://www.3j1688.com/goods/detail/915.html" target="_blank">
+						<area shape="rect" coords="436,1,818,286"
+							href="http://www.3j1688.com/goods/detail/537.html"
+							target="_blank">
+							<area shape="rect" coords="816,7,1327,266"
+								href="http://www.3j1688.com/goods/detail/901.html"
+								target="_blank">
+				</map>
+		</c:if> --%>
+
+		<%--  <c:if test="${jx=='dxhy'}">
+			<a href="http://www.3j1688.com/goods/detail/989.html"><img src="images/lj-b_2.jpg" /> 
+			</a>
+		</c:if>  --%>
 		<c:if test="${jx=='dxhy'}">
 			<a href="http://www.3j1688.com/goods/detail/1041.html?s=bjd2"><img
 				src="images/ry6plus hf.png?<%=Math.random()%>" /> </a>
 		</c:if>
 
 		<c:if test="${jx=='dz'}">
-			<img src="images/hyj.gif" alt="" width="1192" height="197"
+			<img src="images/hyjyp.png" alt="" width="1192" height="197"
 				border="0" usemap="#Map">
 			<map name="Map">
-  <area shape="rect" coords="9,4,299,194" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
-  <area shape="rect" coords="412,96,512,188" href="http://www.3j1688.com/goods/detail/1433.html" target="_blank">
-  <area shape="rect" coords="513,96,611,187" href="http://www.3j1688.com/goods/detail/1434.html" target="_blank">
-  <area shape="rect" coords="611,4,899,222" href="http://www.3j1688.com/goods/detail/1440.html" target="_blank">
-  <area shape="rect" coords="904,5,1186,194" href="http://www.3j1688.com/goods/detail/1438.html" target="_blank">
+				<area shape="rect" coords="1,1,277,260"
+					href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
+					<area shape="rect" coords="380,101,484,204"
+						href="http://www.3j1688.com/goods/detail/1415.html"
+						target="_blank">
+						<area shape="rect" coords="485,103,591,207"
+							href="http://www.3j1688.com/goods/detail/1414.html"
+							target="_blank">
+							<area shape="rect" coords="591,0,836,219"
+								href="http://www.3j1688.com/goods/detail/1345.html"
+								target="_blank">
+								<area shape="rect" coords="977,94,1068,202"
+									href="http://www.3j1688.com/goods/detail/1413.html"
+									target="_blank">
+									<area shape="rect" coords="1077,97,1175,197"
+										href="http://www.3j1688.com/goods/detail/1412.html"
+										target="_blank">
 			</map>
 
 		</c:if>
-		
+		<%--  <c:if test="${jx=='ydhy'}">
+            <a href="http://www.3j1688.com/goods/ydhy/2/bjd.html"><img src="images/banner1_0002.jpg?<%=Math.random() %>" />
+			</a>
+		</c:if> --%>
+		<%-- 	<c:if test="${jx=='pb'}">
+			<a href="http://www.3j1688.com/goods/detail/1373.html?s=bjd2"><img
+				src="images/tdpb.png?<%=Math.random()%>" /> </a>
+		</c:if> --%>
 
 		<div class="xq_mian_top">
 			<span><a href="javascript:history.go(-1);">返回</a> </span>当前位置&gt;&gt;
@@ -470,8 +508,8 @@
 											ms-href="goods/detail/{{goods.goodsNum}}.html"
 											ms-text="goods.price|currency">￥510</a></td>
 
-										 <td width="54" ms-class="collected:goods.isCollected"><img
-											ms-if="goods.isCollected" src="images/hongxin.gif" />{{goods.isCollected?'收藏':''}}</td> 
+										<!-- <td width="54" ms-class="collected:goods.isCollected"><img
+											ms-if="goods.isCollected" src="images/hongxin.gif" />{{goods.isCollected?'收藏':''}}</td> -->
 									</tr>
 								</tbody>
 							</table>

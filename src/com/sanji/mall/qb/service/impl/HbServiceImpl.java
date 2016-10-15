@@ -29,7 +29,7 @@ public class HbServiceImpl implements HbService {
       /*RestTemplate restTemplate = new RestTemplate();
       ResponseEntity<JSONObject> obj = restTemplate.getForEntity(url, JSONObject.class);
       JSONObject jsonObject = obj.getBody();*/
-      Connection con = Jsoup.connect(url).header("Content-Type", "application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
+      Connection con = Jsoup.connect(url).header("Content-Type", "Mimetype=application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
               .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36").timeout(5000)
               .ignoreContentType(true);
       Response rs = con.execute();// 获取响应
@@ -87,7 +87,7 @@ public class HbServiceImpl implements HbService {
     try {
       String url = QbServiceImpl.BASE_URL + "redenvelops/" + userId + "/useage";
       System.out.println(url);
-      Connection con = Jsoup.connect(url).header("Content-Type", "application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
+      Connection con = Jsoup.connect(url).header("Content-Type", "Mimetype=application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
               .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36").timeout(5000)
               .ignoreContentType(true);
       Response rs = con.execute();// 获取响应

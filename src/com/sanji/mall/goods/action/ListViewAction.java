@@ -39,6 +39,7 @@ import com.sanji.mall.pojo.SessionInfo;
  */
 @Namespace("/goods")
 @Action(value = "listViewAction", results = { @Result(name = "acs", location = "/admin/listView/acs_list.jsp"),
+		
 		@Result(name = "succeed", location = "/admin/listView/phone_list.jsp") })
 public class ListViewAction extends BaseAction implements ModelDriven<Base> {
 	/**
@@ -307,6 +308,7 @@ public class ListViewAction extends BaseAction implements ModelDriven<Base> {
 					m.put("countNum", goodsService.gainAccessoriesCountNum(map));
 					m.put("goodsList", goodsService.gainAccessoriesPage(map));
 					// logger.info("查找配件信息列表：" + JSON.toJSONString(m));
+					
 				} else {// 请求手机goods信息
 					m.put("urlType", "goods");
 					m.put("countNum", goodsService.gainCountNum(map));
@@ -316,6 +318,7 @@ public class ListViewAction extends BaseAction implements ModelDriven<Base> {
 				m.put("urlType", "goods");
 				m.put("countNum", goodsService.gainCountNum(map));
 				List<Goods> goodsList = goodsService.gainByPage(map);
+				System.out.println("!!!="+goodsList);
 				m.put("goodsList", goodsList);
 			}
 

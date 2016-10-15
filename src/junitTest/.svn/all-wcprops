@@ -7,7 +7,7 @@ JunitTest.java
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/sanji/!svn/ver/3657/mall/src/junitTest/JunitTest.java
+/svn/sanji/!svn/ver/3523/mall/src/junitTest/JunitTest.java
 END
 MyTest.java
 K 25
@@ -32,12 +32,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 66
 /svn/sanji/!svn/ver/2539/mall/src/junitTest/ImportMemberExecl.java
-END
-HbServiceImpl.class
-K 25
-svn:wc:ra_dav:version-url
-V 63
-/svn/sanji/!svn/ver/3657/mall/src/junitTest/HbServiceImpl.class
 END
 MyBatisGeneratorTool.java
 K 25

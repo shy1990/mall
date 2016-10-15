@@ -609,13 +609,28 @@
 		ct.TYPE='goods') as ctNums
 
 		from SJ_TB_GOODS g
+		
 		left join SJ_TB_GOODS_SKU s on g.ID=s.GOODS_ID and s.SHELVES = 'true'
+		
 		left join SJ_TB_COLOR cl on s.color_id = cl.id
 		left join SJ_TB_BRAND b on g.BRAND_ID=b.ID
 		left join SJ_TB_CAT c on g.CAT_ID=c.ID
 		<!-- left join sj_tb_sku_regions_price rp on s.id=rp.goods_sku_id and rp.regions_id=#{area,jdbcType=VARCHAR} and rp.disabled='false' -->
 		left join sj_tb_sku_member_price rp on rp.goods_sku_id=s.id and	rp.disabled='false' and rp.MEMBER_ID = #{memberId,jdbcType=VARCHAR}
-		where g.id in (
+		where 
+		
+		 <!-- 限制 -->
+			<if test="area=='2221' or area=='2222' or area=='2223' or
+			
+			 area=='2224' or area=='2225' or area=='2226' or area=='2227'
+			 
+			  or area=='2228' or area=='2229'">
+			
+		     s.MACHINE_TYPE!=',gnj,' and s.MACHINE_TYPE!=',,gnj,' and s.ORIGINAL_PRICE>200 and
+		     
+           </if>
+		
+		 g.id in (
 		<include refid="gainByPageIds2" />
 		) 
 
@@ -781,7 +796,6 @@
 	<sql id="gainByPageWhere">
 		where g.DISABLED ='false' and s.SHELVES = 'true' 
 		and NOT EXISTs (select * from SJ_TB_SHOPPING_RUSH sr where g.id=sr.GOODS_ID )
-		
 		<!-- and
 	   (select count(goodss.id) from sj_tb_goods_sku goodss where g.id = goodss.goods_id) &gt; 
        (select count(mgs.id)  from sj_tb_members_goods_show mgs

@@ -13,7 +13,7 @@
 <head>
 <base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>三际数码三际手机采购网</title>
+<title>三际手机采购网</title>
 <link href="css/css.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 .xgzy_main_01 {

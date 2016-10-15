@@ -252,12 +252,12 @@
 				});
 
 				var sg = {
-					小米 : [],
 					百立丰 : [],
 					金星 : [],
 					荣耀 : [],
 					华为 : [],
 					苹果 : [],
+					小米 : [],
 					三星 : [],
 					魅族 : [],
 					大神 : [],
@@ -380,39 +380,26 @@
 			<a href="http://www.3j1688.com/goods/detail/1041.html?s=bjd2"><img
 				src="images/ry6plus hf.png?<%=Math.random()%>" /> </a>
 		</c:if>
-
+ 
 		<c:if test="${jx=='dz'}">
-			<img src="images/hyjyp.png" alt="" width="1192" height="197"
-				border="0" usemap="#Map">
-			<map name="Map">
-				<area shape="rect" coords="1,1,277,260"
-					href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
-					<area shape="rect" coords="380,101,484,204"
-						href="http://www.3j1688.com/goods/detail/1415.html"
+			<img src="images/hm3X.png" alt="" width="1192"
+				height="197" border="0" usemap="#Map"> <map name="Map">
+					<area shape="rect" coords="89,0,597,242"
+						href="http://www.3j1688.com/goods/detail/1345.html"
 						target="_blank">
-						<area shape="rect" coords="485,103,591,207"
-							href="http://www.3j1688.com/goods/detail/1414.html"
+						<area shape="rect" coords="603,5,1193,197"
+							href="http://www.3j1688.com/goods/detail/1407.html"
 							target="_blank">
-							<area shape="rect" coords="591,0,836,219"
-								href="http://www.3j1688.com/goods/detail/1345.html"
-								target="_blank">
-								<area shape="rect" coords="977,94,1068,202"
-									href="http://www.3j1688.com/goods/detail/1413.html"
-									target="_blank">
-									<area shape="rect" coords="1077,97,1175,197"
-										href="http://www.3j1688.com/goods/detail/1412.html"
-										target="_blank">
-			</map>
-
+				</map>
 		</c:if>
 		<%--  <c:if test="${jx=='ydhy'}">
             <a href="http://www.3j1688.com/goods/ydhy/2/bjd.html"><img src="images/banner1_0002.jpg?<%=Math.random() %>" />
 			</a>
 		</c:if> --%>
-		<%-- 	<c:if test="${jx=='pb'}">
+		<c:if test="${jx=='pb'}">
 			<a href="http://www.3j1688.com/goods/detail/1373.html?s=bjd2"><img
 				src="images/tdpb.png?<%=Math.random()%>" /> </a>
-		</c:if> --%>
+		</c:if>
 
 		<div class="xq_mian_top">
 			<span><a href="javascript:history.go(-1);">返回</a> </span>当前位置&gt;&gt;
@@ -437,29 +424,36 @@
 							<td width="47">价格：</td>
 							<td width="111"><input type="checkbox" name="checkbox3"
 								ms-duplex="priceRange" value="0,300" id="checkbox3" /> <label
-								for="checkbox3"><span>300元以下</span> </label></td>
+								for="checkbox3"><span>300元以下</span> </label>
+							</td>
 							<td width="103"><input type="checkbox" name="checkbox3"
 								ms-duplex="priceRange" value="300,500" id="checkbox3" /> <label
-								for="checkbox3"><span>300~500</span> </label></td>
+								for="checkbox3"><span>300~500</span> </label>
+							</td>
 							<td width="113"><input type="checkbox" name="checkbox3"
 								ms-duplex="priceRange" value="500,1000" id="checkbox3" /> <label
-								for="checkbox3"><span>500~1000</span> </label></td>
+								for="checkbox3"><span>500~1000</span> </label>
+							</td>
 							<td width="115"><input type="checkbox" name="checkbox3"
 								ms-duplex="priceRange" value="1000,1500" id="checkbox3" /> <label
-								for="checkbox3"><span> 1000~1500</span> </label></td>
+								for="checkbox3"><span> 1000~1500</span> </label>
+							</td>
 							<td width="120"><input type="checkbox" name="checkbox3"
 								ms-duplex="priceRange" value="1500,2000" id="checkbox3" /> <label
-								for="checkbox3"><span>1500~2000</span> </label></td>
+								for="checkbox3"><span>1500~2000</span> </label>
+							</td>
 							<td width="122"><input type="checkbox" name="checkbox3"
 								ms-duplex="priceRange" value="2000,99999" id="checkbox3" /> <label
-								for="checkbox3"><span>2000元以上</span> </label></td>
+								for="checkbox3"><span>2000元以上</span> </label>
+							</td>
 							<td class="baojiadan_top_03" width="80"><input type="text"
 								ms-duplex="customMin" name="textfield" id="textfield" /> —</td>
 							<td class="baojiadan_top_03" width="84"><input type="text"
 								ms-duplex="customMax" name="textfield" id="textfield" /> 元</td>
 							<td width="164"><div class="baojiadan_top_04">
 									<a href="javascript:void(0);" ms-click="filteGoods">确定</a>
-								</div></td>
+								</div>
+							</td>
 						</tr>
 
 						<tr>
@@ -468,8 +462,7 @@
 								<ul id="filter_brand">
 									<li ms-repeat="allBrand"><input type="checkbox"
 										ms-attr-value="el" ms-duplex="brandRange" />{{el}}</li>
-								</ul>
-							</td>
+								</ul></td>
 						</tr>
 					</table>
 				</div>
@@ -504,14 +497,14 @@
 										</td>
 										<td width="300" class="price"><a target="_blank"
 											ms-href="goods/detail/{{goods.goodsNum}}.html"
-											ms-text="goods.price|currency">￥510</a></td>
+											ms-text="goods.price|currency">￥510</a>
+										</td>
 
 										<!-- <td width="54" ms-class="collected:goods.isCollected"><img
 											ms-if="goods.isCollected" src="images/hongxin.gif" />{{goods.isCollected?'收藏':''}}</td> -->
 									</tr>
 								</tbody>
-							</table>
-						</li>
+							</table></li>
 					</ul>
 					<div style="clear: both;"></div>
 				</div>

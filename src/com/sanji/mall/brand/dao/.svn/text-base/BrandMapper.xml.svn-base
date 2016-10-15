@@ -18,7 +18,7 @@
 	<select id="gainAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from SJ_TB_BRAND where grade='2' and disabled='false'  
+		from SJ_TB_BRAND where grade='2'
 	</select>
 
 	<!-- 根据类型名称获得类型id -->

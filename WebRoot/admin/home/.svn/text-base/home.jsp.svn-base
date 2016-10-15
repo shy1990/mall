@@ -269,7 +269,8 @@
 										target="_blank"> <c:if test="${fn:length(item.name)>15}"> ${fn:substring(item.name, 0, 11)}...
 					                 </c:if> <c:if test="${fn:length(item.name)<=15}"> ${item.name}
 					                 </c:if> </a>(<s:property value="#item.getStorage()" />) </span> <span>
-										<strong> <s:property value="#item.getNums()" />台 </strong> </span></li>
+										<strong> <s:property value="#item.getNums()" />台 </strong> </span>
+								</li>
 							</s:iterator>
 						</ul>
 					</div>
@@ -303,46 +304,40 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 							
-							<%-- <a href="https://apple.tmall.com/?spm=a220m.1000858.1000725.12.2kvPkd&rn=1c50d51e049b6f798c9ef718e0137950"><img
-								src="images/apple71.png?<%=Math.random()%>" /> </a> --%>
+							
+							
+							 <a href="http://www.3j1688.com/goods/toShopRush.html?s=menu"><img
+								src="images/PRO01.png?<%=Math.random()%>" /> </a> 
 								
-								<a href="http://www.3j1688.com/special_160910/index.html"><img
-								src="images/zhongqiu2.png?<%=Math.random()%>" /> </a>
-								
-							<a>	<img src="images/quansheng.png?" alt="" width="695" height="336" border="0" usemap="#Map">
-										<map name="Map">
-										  <area shape="rect" coords="22,215,147,303" href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
-										  <area shape="rect" coords="149,214,273,304" href="javascript:goListView('手机','','','红米note3合约')" target="_blank">
-										  <area shape="rect" coords="275,213,399,304" href="javascript:goListView('手机','','','小米5合约')" target="_blank">
-										</map>
-							</a>
+							<a href="http://www.3j1688.com/goods/detail/1402.html?s=banner"><img
+								src="images/kpCOOL1.png?<%=Math.random()%>" /> </a> 
 
-                            <a href="http://www.3j1688.com/goods/detail/1411.html?s=banner"><img
-								src="images/mxE1.png?<%=Math.random()%>" /> </a>
-
-                            <a href="http://www.3j1688.com/goods/detail/1383.html?s=banner"><img
-								src="images/PRO01.png?<%=Math.random()%>" /> </a>
-						
-							<!-- <a> <img  src="images/hm3Xdzj.png" alt="" width="695" height="336"
-								border="0" usemap="#Map"> 
-								<map name="Map">
-										<area shape="rect" coords="13,187,204,341"
-											href="http://www.3j1688.com/goods/detail/1409.html"
-											target="_blank">
-											<area shape="rect" coords="210,189,395,346"
-												href="http://www.3j1688.com/goods/detail/1407.html"
-												target="_blank">
-									</map></a> -->
-	                        <a href="http://www.3j1688.com/goods/detail/1410.html?s=bjd"><img
-								src="images/mxu209.png?<%=Math.random()%>" /> </a>
-
+                            <a href="http://www.3j1688.com/goods/detail/1388.html?s=banner"><img
+								src="images/hwmml.png?<%=Math.random()%>" /> </a> 
+									
 							<%-- <a	href="http://www.3j1688.com/goods/detail/1044.html"><img
 								src="images/chuizi.png?<%=Math.random()%>" /> </a> --%>
-
-						<%-- 	<a href="http://www.3j1688.com/goods/detail/1354.html"><img
-								src="images/redMNote3-.gif?<%=Math.random()%>" /> </a> --%>
-
-
+								
+							<a	href="http://www.3j1688.com/goods/detail/1354.html"><img
+								src="images/redMNote3-.gif?<%=Math.random()%>" /> </a>
+								
+							
+							<%-- <a href="http://www.3j1688.com/goods/detail/1381.html?s=banner"><img
+								src="images/TCL121.png?<%=Math.random()%>" /> </a> --%> 
+							<a	href="http://www.3j1688.com/goods/detail/1359.html?s=banner"><img
+								src="images/ry8.png?<%=Math.random()%>" /> </a> 
+								
+							<%-- <a	href="javascript:goListView('手机','','','激活返利')"><img
+								src="images/images/xm53j-.gif?<%=Math.random()%>" /> </a> 
+								
+							<a	href="http://www.3j1688.com/goods/detail/1361.html?s=banner"><img
+								src="images/1plus3.png?<%=Math.random()%>" /> </a> --%>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1309.html?s=banner"><img
+								src="images/jkdA61+.png?<%=Math.random()%>" /> </a> --%>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1348.html?s=banner"><img
+								src="images/dmdM100jg.png?<%=Math.random()%>" /> </a> --%>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1268.html?s=banner"><img
+								src="images/ry5A3.png?<%=Math.random()%>" /> </a> --%>
 							<!-- <a> <img
 								src="images/xm3S.png" alt="" width="695"
 								height="336" border="0" usemap="#Map"> <map name="Map">
@@ -358,8 +353,9 @@
 								src="images/fzflb.png?<%=Math.random()%>" /> </a>
 							<%--     <a href="javascript:goListView('手机','','','乐视')"><img
 								src="images/l2sflb.png?<%=Math.random()%>" /> </a> --%>
-							<%-- <a><img src="images/sydpt.png?<%=Math.random()%>" /> </a>  --%>
-							<a href="http://www.3j1688.com/special_160325/index.html?s=banner"><img
+								<a><img src="images/sydpt.png?<%=Math.random()%>" /> </a> 
+							<a
+								href="http://www.3j1688.com/special_160325/index.html?s=banner"><img
 								src="images/gjstm.png?<%=Math.random()%>" /> </a>
 						</div>
 					</div>
@@ -386,28 +382,32 @@
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">全品类供货</a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao02.png" height="28" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">正品保证</a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao03.png" height="28" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">天天低价</a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao04.png" height="28" alt="" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">30天退货</a>
-									</p></td>
+									</p>
+								</td>
 							</tr>
 							<tr>
 								<td width="74" height="88" align="center" valign="top"><p>
@@ -416,28 +416,32 @@
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">2年保修 </a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao06.png" height="28" alt="" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">限时送达</a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao07.png" height="28" alt="" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">付款方便安全</a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao08.png" height="28" alt="" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">货物在途保障</a>
-									</p></td>
+									</p>
+								</td>
 							</tr>
 							<tr>
 
@@ -448,14 +452,16 @@
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">免收运费</a>
-									</p></td>
+									</p>
+								</td>
 								<td width="74" height="88" align="center" valign="top"><p>
 										<a href="serviceCommitment.html" target="_blank"><img
 											src="images/bbao10.png" height="28" alt="" /> </a>
 									</p>
 									<p>
 										<a href="serviceCommitment.html" target="_blank">360度服务</a>
-									</p></td>
+									</p>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -488,7 +494,8 @@
 						<li><a id="admin_home_home_aHotmonth"
 							href="javascript:selectHot('sku','month','5','admin_home_home_goodsHot');"
 							onmouseover="selectHot('sku','month','5','admin_home_home_goodsHot');">本月热销
-						</a></li>
+						</a>
+						</li>
 						<li id="home_main_04"><a href="goods/paihang.html">查看更多&gt;&gt;</a>
 						</li>
 					</ul>
@@ -547,8 +554,7 @@
 								href="javascript:goListView('手机','苹果');">苹果</a><a
 								href="javascript:goListView('手机','福中福');">福中福</a><a
 								href="javascript:goListView('手机','大Q');">大Q</a><br /> <a
-								href="javascript:goListView('手机','金星');">金星</a><br />
-							</td>
+								href="javascript:goListView('手机','金星');">金星</a><br /></td>
 							<td width="240" height="135" valign="top">价格<br /> <a
 								href="javascript:goListView('手机','','0-500');">0-500</a> <a
 								href="javascript:goListView('手机','','500-1000');">500-1000</a> <a
@@ -558,7 +564,8 @@
 								<a href="javascript:goListView('手机','','2500-3000');">2500-3000</a><br />
 								<a href="javascript:goListView('手机','','3000-3500');">3000-3500</a>
 								<a href="javascript:goListView('手机','','3500-4500');">3500-4500</a>
-								<a href="javascript:goListView('手机','','4500');">4500以上</a></td>
+								<a href="javascript:goListView('手机','','4500');">4500以上</a>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -616,16 +623,15 @@
 							<td width="220" height="135" valign="top">手环<br /> <a
 								href="javascript:goListView('手环','小米');">小米</a> <a
 								href="javascript:goListView('手环','荣耀');"> 荣耀</a> <a
-								href="javascript:goListView('手机','乐心（手环）');"> 乐心</a><br /></td>
+								href="javascript:goListView('手机','乐心（手环）');"> 乐心</a><br />
+							</td>
 							<td width="220" height="135" valign="top">手表<br /> <a
 								href="javascript:goListView('手机','U8（手表）');">U8</a> <a
 								href="javascript:goListView('手机','掌航（手表）');">掌航</a> <a
-								href="javascript:goListView('手机','摩托罗拉（手表）');">摩托罗拉</a>
-							</td>
+								href="javascript:goListView('手机','摩托罗拉（手表）');">摩托罗拉</a></td>
 							<td width="220" height="135" valign="top">路由器<br /> <a
 								href="javascript:goListView('手机','水星（路由器）');">水星</a> <a
-								href="javascript:goListView('手机','TP（路由器）');">TP</a>
-							</td>
+								href="javascript:goListView('手机','TP（路由器）');">TP</a></td>
 						</tr>
 					</table>
 
@@ -685,15 +691,18 @@
 								href="javascript:goListView('手机壳','莫凡');"> 莫凡 </a> <a
 								href="javascript:goListView('手机壳','迪佐');">迪佐</a> <a
 								href="javascript:goListView('手机壳','迪佑');">迪佑</a> <br /> <a
-								href="javascript:goListView('手机壳','伊贝');">伊贝 </a></td>
+								href="javascript:goListView('手机壳','伊贝');">伊贝 </a>
+							</td>
 							<td width="220" height="135" valign="top">手机套<br /> <a
 								href="javascript:goListView('手机套','艾伦顿');">艾伦顿</a> <a
 								href="javascript:goListView('手机套','莫凡');"> 莫凡 </a> <a
 								href="javascript:goListView('手机套','迪佐');"> 迪佐</a> <a
 								href="javascript:goListView('手机套','迪佑');">迪佑</a> <br /> <a
-								href="javascript:goListView('手机套','伊贝');">伊贝 </a></td>
+								href="javascript:goListView('手机套','伊贝');">伊贝 </a>
+							</td>
 							<td width="220" height="135" valign="top">贴膜<br /> <a
-								href="javascript:goListView('贴膜','艾伦顿');">艾伦顿</a></td>
+								href="javascript:goListView('贴膜','艾伦顿');">艾伦顿</a>
+							</td>
 						</tr>
 					</table>
 
@@ -747,13 +756,16 @@
 						<tr>
 							<td width="220" height="135" valign="top">电池<br /> <a
 								href="javascript:goListView('电池','华毅');"> 华毅 </a> <a
-								href="javascript:goListView('电池','至尊');"> 至尊 </a></td>
+								href="javascript:goListView('电池','至尊');"> 至尊 </a>
+							</td>
 							<td width="220" height="135" valign="top">充电器<br /> <a
-								href="javascript:goListView('充电器','风致');">风致</a></td>
+								href="javascript:goListView('充电器','风致');">风致</a>
+							</td>
 							<td width="220" height="135" valign="top">充电宝<br /> <a
 								href="javascript:goListView('充电宝','小米');"> 小米 </a> <a
 								href="javascript:goListView('充电宝','倍斯特');"> 倍斯特 </a> <a
-								href="javascript:goListView('充电宝','果果');"> 果果 </a><br /></td>
+								href="javascript:goListView('充电宝','果果');"> 果果 </a><br />
+							</td>
 						</tr>
 					</table>
 
@@ -803,7 +815,8 @@
 						<tr>
 							<td width="220" height="135" valign="top">耳机<br /> <a
 								href="javascript:goListView('耳机','小米');">小米</a> <a
-								href="javascript:goListView('耳机','华为');"> 华为 </a></td>
+								href="javascript:goListView('耳机','华为');"> 华为 </a>
+							</td>
 						</tr>
 					</table>
 

@@ -1,6 +1,5 @@
 package junitTest;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -74,7 +73,7 @@ public class JunitTest {
 		public void run() {
 			order = orderService.gainOrderALLByID(order.getId());
 
-			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent(), name);
+			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent());
 			System.out.println(Thread.currentThread().getId()+"-- 推送结果：" + map);
 			/*if (map.get("ERROR") != null) {
 				if (map.get("ERROR").toString().contains("订单已存在")
@@ -140,7 +139,7 @@ public class JunitTest {
 			order = orderService.gainOrderALLByID(order.getId());
 
 			String name = getShopName(order.getMemberId());
-			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent(), name);
+			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent());
 			System.out.println("erp：" + map);
 			if (map.get("ERROR") != null) {
 				if (map.get("ERROR").toString().contains("订单已存在")
@@ -197,15 +196,15 @@ public class JunitTest {
 	public void sendOneOrder(){
 		try {
 			/*20151230113404019	1800
-			20151230082535482	2553 
+			20151230082535482	2553
 			20151230193728647*/
 			
-			String[] orders = {"20161014162040839"};
+			String[] orders = {"20160319164145470","20160319153439575","20160319155514036","20160319154605721","20160319144743973","20160319144733066","20160319144119035","20160319112919326","20160319110126595"};
 			for(String s : orders){
 				System.out.println("开始推送订单："+s);
 				Order	order=orderService.gainOrderByOrderNo(s);
 				order = orderService.gainOrderALLByID(order.getId());
-				Map<String, Object> map = EcErpUtil.OrderAddNew2(order, getShopName(order.getMemberId()), "", "", "", "", order.getPayMent(), s);
+				Map<String, Object> map = EcErpUtil.OrderAddNew2(order, getShopName(order.getMemberId()), "", "", "", "", order.getPayMent());
 			}
 			
 			/*Order	order=orderService.gainOrderByOrderNo("20160130172816696");
@@ -215,7 +214,7 @@ public class JunitTest {
 			//System.out.println(Thread.currentThread().getId()+"-- erp：" + map);
 			//System.out.println(map.toString());
 			/*if (map.get("ERROR") != null) {
-				f (map.get("ERROR").toString().contains("订单已存在")
+				if (map.get("ERROR").toString().contains("订单已存在")
 						|| map.get("ERROR").toString().contains("uni_idx_dd_UniqueLYDH")) {
 					return;
 				}
@@ -237,6 +236,7 @@ public class JunitTest {
 		}
 
 	}
+	
 	   @Test
 	    public void getOrderDetail(){
 	        try {
@@ -245,7 +245,7 @@ public class JunitTest {
 	            20151230193728647*/
 	            //"20160220110230892","20160220111533562","20160220105027492","20160220093954029","20160220091302993","20160220113638836","20160220124852218","20160220130130616","20160220141920615","20160220153043097","20160220153117942",
 	            //"20160220016004875",
-	            String[] orders = {"20160519194411653","20160519194409013","20160519194301330","20160519194316499","20160519194327070"};
+	            String[] orders = {"20160220160702353"};
 	            for(String s : orders){
 	               // System.out.println("开始推送订单："+s);
 	                Order   order=orderService.gainOrderByOrderNo(s);

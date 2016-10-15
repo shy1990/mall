@@ -1,17 +1,17 @@
 K 25
 svn:wc:ra_dav:version-url
 V 64
-/svn/sanji/!svn/ver/3656/mall/src/com/sanji/mall/qb/service/impl
+/svn/sanji/!svn/ver/3649/mall/src/com/sanji/mall/qb/service/impl
 END
 HbServiceImpl.java
 K 25
 svn:wc:ra_dav:version-url
 V 83
-/svn/sanji/!svn/ver/3656/mall/src/com/sanji/mall/qb/service/impl/HbServiceImpl.java
+/svn/sanji/!svn/ver/3635/mall/src/com/sanji/mall/qb/service/impl/HbServiceImpl.java
 END
 QbServiceImpl.java
 K 25
 svn:wc:ra_dav:version-url
 V 83
-/svn/sanji/!svn/ver/3657/mall/src/com/sanji/mall/qb/service/impl/QbServiceImpl.java
+/svn/sanji/!svn/ver/3649/mall/src/com/sanji/mall/qb/service/impl/QbServiceImpl.java
 END

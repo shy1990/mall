@@ -79,8 +79,8 @@
 						"</div>" +
 						"<div>" +
 							"<a href=\"goods/detail/"+obj[i].goodsNum+".html\" target=\"_blank\"> 热卖爆款   &nbsp;"+obj[i].goodsName+" &nbsp;"+edition+" &nbsp;"+obj[i].colorName+"</a><br />" +
-							"<h5>￥"+obj[i].price+"</h5>" /*+
-							"&nbsp;&nbsp;&nbsp;&nbsp;<span>关注人数&nbsp;&nbsp;"+11+obj[i].collectNum+1+"</span>"*/ +
+							"<h5>￥"+obj[i].price+"</h5>" +
+							"&nbsp;&nbsp;&nbsp;&nbsp;<span>关注人数&nbsp;&nbsp;"+11+obj[i].collectNum+1+"</span>" +
 						"</div>" +
 					"</li>";
 					////console.info(s);

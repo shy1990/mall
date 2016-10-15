@@ -9,12 +9,6 @@ svn:wc:ra_dav:version-url
 V 101
 /svn/sanji/!svn/ver/2782/mall/src/com/sanji/mall/accessory/special/action/SpecialAccessoryAction.java
 END
-HbServiceImpl.class
-K 25
-svn:wc:ra_dav:version-url
-V 93
-/svn/sanji/!svn/ver/3657/mall/src/com/sanji/mall/accessory/special/action/HbServiceImpl.class
-END
 AccessoryAction.java
 K 25
 svn:wc:ra_dav:version-url

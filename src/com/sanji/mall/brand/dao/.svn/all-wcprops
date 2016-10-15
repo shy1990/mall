@@ -1,13 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/sanji/!svn/ver/3650/mall/src/com/sanji/mall/brand/dao
+/svn/sanji/!svn/ver/1620/mall/src/com/sanji/mall/brand/dao
 END
 BrandMapper.xml
 K 25
 svn:wc:ra_dav:version-url
 V 74
-/svn/sanji/!svn/ver/3650/mall/src/com/sanji/mall/brand/dao/BrandMapper.xml
+/svn/sanji/!svn/ver/1620/mall/src/com/sanji/mall/brand/dao/BrandMapper.xml
 END
 BrandMapper.java
 K 25

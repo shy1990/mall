@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/sanji/!svn/ver/3650/mall/src/com/sanji/mall/goods/dao
+/svn/sanji/!svn/ver/3566/mall/src/com/sanji/mall/goods/dao
 END
 GoodsMapper.xml
 K 25
@@ -12,8 +12,8 @@ END
 CatMapper.xml
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/sanji/!svn/ver/3650/mall/src/com/sanji/mall/goods/dao/CatMapper.xml
+V 71
+/svn/sanji/!svn/ver/523/mall/src/com/sanji/mall/goods/dao/CatMapper.xml
 END
 GoodsHotMapper.xml
 K 25
