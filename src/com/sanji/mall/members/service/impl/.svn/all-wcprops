@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sanji/!svn/ver/3037/mall/src/com/sanji/mall/members/service/impl
+END
+LoginServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/sanji/!svn/ver/175/mall/src/com/sanji/mall/members/service/impl/LoginServiceImpl.java
+END
+MemberServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sanji/!svn/ver/3037/mall/src/com/sanji/mall/members/service/impl/MemberServiceImpl.java
+END
+MyAccountServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sanji/!svn/ver/1520/mall/src/com/sanji/mall/members/service/impl/MyAccountServiceImp.java
+END
+RegisterServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sanji/!svn/ver/2612/mall/src/com/sanji/mall/members/service/impl/RegisterServiceImpl.java
+END

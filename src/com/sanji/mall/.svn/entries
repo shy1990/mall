@@ -1,0 +1,115 @@
+10
+
+dir
+3656
+https://192.168.2.141/svn/sanji/mall/src/com/sanji/mall
+https://192.168.2.141/svn/sanji
+
+
+
+2016-09-12T09:54:48.926632Z
+3656
+wangjingjun
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6206fc38-8dc6-c543-b362-cfeaca166315
+
+accessory
+dir
+
+admin
+dir
+
+aftersale
+dir
+
+api
+dir
+
+brand
+dir
+
+cart
+dir
+
+collect
+dir
+
+common
+dir
+
+goods
+dir
+
+goodsSku
+dir
+
+home
+dir
+
+interceptor
+dir
+
+loginLog
+dir
+
+members
+dir
+
+mobileCode
+dir
+
+model
+dir
+
+msg
+dir
+
+news
+dir
+
+order
+dir
+
+pay
+dir
+
+point
+dir
+
+pojo
+dir
+
+push
+dir
+
+qb
+dir
+
+regions
+dir
+
+role
+dir
+
+test
+dir
+
+ultlon
+dir
+
+whiteList
+dir
+

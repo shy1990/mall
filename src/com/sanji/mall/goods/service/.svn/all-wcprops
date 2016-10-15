@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sanji/!svn/ver/3523/mall/src/com/sanji/mall/goods/service
+END
+CatService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sanji/!svn/ver/523/mall/src/com/sanji/mall/goods/service/CatService.java
+END
+GoodsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/sanji/!svn/ver/3523/mall/src/com/sanji/mall/goods/service/GoodsService.java
+END
+GoodsHotService.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sanji/!svn/ver/674/mall/src/com/sanji/mall/goods/service/GoodsHotService.java
+END
+UserGoodsRecordService.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/sanji/!svn/ver/2807/mall/src/com/sanji/mall/goods/service/UserGoodsRecordService.java
+END

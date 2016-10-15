@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<title>年货盛宴</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base target="_blank">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<!--<link href="img/favicon.ico" rel="icon" type="image/x-icon" />-->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+		<script src="js/ie-emulation-modes-warning.js"></script>
+		<script type="text/javascript" src="js/jsized.colour-bar.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	</head>
+
+	<body>
+		<div class="snow-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;">
+		</div>
+		<div id="top" class="banner">
+			<img src="img/banner.png" alt="coolpad-banner" />
+			<div class="cloud cloud-left">
+				<img src="img/yun.png" />
+			</div>
+			<div class="cloud cloud-right">
+				<img src="img/yun.png" />
+			</div>
+			<div class="yuanbao">
+				<img src="img/diaoyuanbao.gif" />
+			</div>
+
+		</div>
+		<!--start center-->
+		<div class="center">
+			<!--左侧对联-->
+			<div class="couplet couplet-left">
+				<img src="img/chunlianzuo.png" />
+				<img src="img/chunlianzuo-2.png" />
+				<img src="img/chunlianzuo-3.png" />
+			</div>
+			<!--左侧对联-->
+			<!--===============-->
+			<!--右侧对联-->
+			<div class="couplet couplet-right">
+				<img src="img/chunlianyou.png" />
+				<img src="img/chunlianyou-2.png" />
+				<img src="img/chunlianyou-3.png" />
+			</div>
+
+			<!--右侧对联-->
+
+			<!--huawei mate 8-->
+			<div class="phone huawei">
+				<!--华为连接-->
+				<a href="http://www.3j1688.com/goods/detail/980.html">
+					<img src="img/iPhone1-haiwei.png" alt="huawei mate 8" />
+				</a>
+				<!--连接-->
+				<!--华为 mate 8价格-->
+				<div class="price huawei-price"><span>￥</span>2835</div>
+				<!--华为价格-->
+			</div>
+			<!--huawei mate 8-->
+			<!--start fix-box-->
+			<div class="fix-box">
+				<!--小米note-->
+				<a href="http://www.3j1688.com/goods/detail/356.html">
+					<img src="img/iPhone2-xiaomi.png" />
+				</a>
+				<!--小米note-->
+				<!--三星-->
+				<a href="http://www.3j1688.com/goods/detail/810.html">
+					<img src="img/iPhone3-sanxing.png" />
+				</a>
+				<!--三星-->
+				<!--乐视-->
+				<a href="http://www.3j1688.com/goods/detail/775.html">
+					<img src="img/iPhone4-leshi.png" />
+				</a>
+				<!--乐视-->
+				<!--华为mate7-->
+				<a href="http://www.3j1688.com/goods/detail/149.html">
+					<img src="img/iPhone5-huaweimate7.png" />
+				</a>
+				<!--华为mate7-->
+			</div>
+			<!--end fix-box-->
+			<!--金属指纹-->
+			<div class="goldfinger">
+				<img src="img/title1-jszw.png" />
+				<!--华为畅享5s-->
+				<div class="phone hwcx5s">
+					<a href="http://www.3j1688.com/goods/detail/1021.html">
+						<img src="img/iPhone6-hauweichangxiang.png" />
+					</a>
+					<div class="price">￥955</div>
+				</div>
+				<!--华为畅享5s-->
+				<!--金属指纹列表-->
+				<div class="goldfinger-list">
+					<!--荣耀5x-->
+					<div class="goldfinger-phone phone rongy5x">
+						<a href="http://www.3j1688.com/goods/detail/940.html">
+							<img src="img/iPhone7-rongyao5x.png" />
+						</a>
+						<div class="price">￥1042</div>
+					</div>
+					<!--荣耀5x-->
+					<!--魅族 metal-->
+					<div class="goldfinger-phone phone mlan-metal">
+						<a href="http://www.3j1688.com/goods/detail/1039.html">
+							<img src="img/iPhone8-meizumetal.png" />
+						</a>
+						<div class="price">￥950</div>
+					</div>
+					<!--魅族 metal-->
+					<!--乐视1s-->
+					<div class="goldfinger-phone phone mlan-metal">
+						<a href="http://www.3j1688.com/goods/detail/946.html">
+							<img src="img/iPhone9-leshi1s.png" />
+						</a>
+						<div class="price">￥1060</div>
+					</div>
+					<!--乐视1s-->
+					<!--红米note3-->
+					<div class="goldfinger-phone phone hongminote3">
+						<a href="http://www.3j1688.com/goods/detail/949.html">
+							<img src="img/iPhone10-hongminote3.png" />
+						</a>
+						<div class="price">￥965</div>
+					</div>
+					<!--红米note3-->
+				</div>
+				<!--金属指纹列表-->
+			</div>
+			<!--金属指纹-->
+			<!--===========================-->
+			<!--畅享实惠-->
+			<div class="goldfinger">
+				<img src="img/title2-cxsh.png" />
+				<!--魅族mx4pro-->
+				<div class="phone hwcx5s">
+					<a href="http://www.3j1688.com/goods/detail/124011.html">
+						<img src="img/iPhone11-meizu4.png" />
+					</a>
+					<div class="price">￥965</div>
+				</div>
+				<!--魅族mx4pro-->
+				<!--畅享实惠列表-->
+				<div class="goldfinger-list">
+					<!--荣耀7-->
+					<div class="goldfinger-phone phone rongy5x">
+						<a href="http://www.3j1688.com/goods/detail/747.html">
+							<img src="img/iPhone12-rongyao7.png" />
+						</a>
+						<div class="price">￥1620</div>
+					</div>
+					<!--荣耀7-->
+					<!--红米note2-->
+					<div class="goldfinger-phone phone mlan-metal">
+						<a href="http://www.3j1688.com/goods/detail/820.html">
+							<img src="img/iPhone13-hongminote2.png" />
+						</a>
+						<div class="price">￥705</div>
+					</div>
+					<!--红米note2-->
+					<!--魅蓝note2-->
+					<div class="goldfinger-phone phone mlan-metal">
+						<a href="http://www.3j1688.com/goods/detail/711.html">
+							<img src="img/iPhone14-meilannote2.png" />
+						</a>
+						<div class="price">￥670</div>
+					</div>
+					<!--魅蓝note2-->
+					<!--红米2A高配-->
+					<div class="goldfinger-phone phone hongminote3">
+						<a href="http://www.3j1688.com/goods/detail/1035.html">
+							<img src="img/iPhone15-hongmi2a.png" />
+						</a>
+						<div class="price">￥495</div>
+					</div>
+					<!--红米2A高配-->
+				</div>
+				<!--畅享实惠列表-->
+			</div>
+			<!--畅享实惠-->
+			<!--=============================-->
+			<!--这厢有礼-->
+			<div class="gift">
+				<img src="img/title3-zxyl.png" />
+				<!--这厢有礼列表-->
+				<div class="gift-list">
+					<!--福中福d21-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/917.html">
+							<img src="img/iPhone16-fzfd21.png" />
+						</a>
+						<div class="price">￥79</div>
+					</div>
+					<!--福中福d21-->
+					<!--多美达Q5-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/930.html">
+							<img src="img/iPhone17-dmdq5.png" />
+						</a>
+						<div class="price">￥109</div>
+					</div>
+					<!--多美达Q5-->
+					<!--多美达D978-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/1034.html">
+							<img src="img/iPhone18-dmdd978.png" />
+						</a>
+						<div class="price">￥109</div>
+					</div>
+					<!--多美达D978-->
+					<!--福中福F622-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/1009.html">
+							<img src="img/iPhone19-fzff622.png" />
+						</a>
+						<div class="price">￥59</div>
+					</div>
+					<!--福中福F622-->
+					<!--福中福F611b-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/845.html">
+							<img src="img/iPhone20-fzff611b.png" />
+						</a>
+						<div class="price">￥39</div>
+					</div>
+					<!--福中福F611b-->
+
+					<!--福中福F999-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/911.html">
+							<img src="img/iPhone21-fzff999.png" />
+						</a>
+						<div class="price">￥89</div>
+					</div>
+					<!--福中福F999-->
+
+					<!--纽曼v6全网通-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/621.html">
+							<img src="img/iPhone22-niumanv6.png" />
+						</a>
+						<div class="price">￥209</div>
+					</div>
+					<!--纽曼v6全网通-->
+					<!--福中福F688d-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/860.html">
+							<img src="img/iPhone23-fzff688d.png" />
+						</a>
+						<div class="price">￥49</div>
+					</div>
+					<!--福中福F688d-->
+				</div>
+				<!--这厢有礼列表-->
+			</div>
+			<!--这厢有礼-->
+			<!--======================-->
+			<!--平板大赶集-->
+			<div class="gift">
+				<img src="img/title4-pbdj.png" />
+				<!--平板大赶集列表-->
+				<div class="gift-list">
+					<!--苹果 ipad mini2-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/405.html">
+							<img src="img/iPhone24-pgipad.png" />
+						</a>
+						<div class="price">￥1820</div>
+					</div>
+					<!--苹果 ipad mini2-->
+					<!--诺基亚N1-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/973.html">
+							<img src="img/iPhone25-njyn1.png" />
+						</a>
+						<div class="price">￥390</div>
+					</div>
+					<!--诺基亚N1-->
+					<!--三星Galaxy tab Q T2558-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/675.html">
+							<img src="img/iPhone26-sx.png" />
+						</a>
+						<div class="price">￥1420</div>
+					</div>
+					<!--三星Galaxy tab Q T2558-->
+					<!--联想TAB 2-A7-10-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/501.html">
+							<img src="img/iPhone27-lx.png" />
+						</a>
+						<div class="price">￥300</div>
+					</div>
+					<!--联想TAB 2-A7-10-->
+
+					<!--华为M2-803L-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/802.html">
+							<img src="img/iPhone28-hw.png" />
+						</a>
+						<div class="price">￥1620</div>
+					</div>
+					<!--华为M2-803L-->
+
+					<!--台电P80H-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/975.html">
+							<img src="img/iPhone29-td.png" />
+						</a>
+						<div class="price">￥359</div>
+					</div>
+					<!--台电P80H-->
+
+					<!--先科s-85看戏机-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/753.html">
+							<img src="img/iPhone30-xks.png" />
+						</a>
+						<div class="price">￥1680</div>
+					</div>
+					<!--先科s-85看戏机-->
+					<!--夏新X2看戏机-->
+					<div class="gift-phone phone fzf-d21">
+						<a href="http://www.3j1688.com/goods/detail/935.html">
+							<img src="img/iPhone31-xx.png" />
+						</a>
+						<div class="price">￥215</div>
+					</div>
+					<!--夏新X2看戏机-->
+				</div>
+				<!--平板大赶集列表-->
+			</div>
+			<!--平板大赶集-->
+			<!--======================-->
+			<!--特价秒杀-->
+			<div class="seckilling">
+				<img src="img/title5-tjms.png" />
+				<div class="seckilling-box">
+					<p><i class="ico"></i>1月29日开秒</p>
+				</div>
+				<!--秒杀列表-->
+				<div class="seckilling-list">
+					<!--福中福F622G-->
+					<div class="seckilling-phone phone">
+						<a href="http://www.3j1688.com/goods/detail/803.html"><img src="img/iPhone32-fzff611b.png" /></a>
+						<div class="price">595</div>
+					</div>
+					<!--福中福F622G-->
+
+					<!--福中福D21A小电霸-->
+					<div class="seckilling-phone phone">
+						<a href="http://www.3j1688.com/goods/detail/1043.html"><img src="img/iPhone33-fzfd21a.png" /></a>
+						<div class="price">69</div>
+					</div>
+					<!--福中福D21A小电霸-->
+
+					<!--福中福F688手表-->
+					<div class="seckilling-phone phone">
+						<a href="http://www.3j1688.com/goods/detail/1035.html"><img src="img/iPhone34-fzff688.png" /></a>
+						<div class="price">486</div>
+					</div>
+					<!--福中福F688手表-->
+
+					<!--多美达D998F-->
+					<div class="seckilling-phone phone">
+						<a href="http://www.3j1688.com/goods/detail/848.html"><img src="img/iPhone35-dmdd998f.png" /></a>
+						<div class="price">22.9</div>
+					</div>
+					<!--多美达D998F-->
+				</div>
+				<!--秒杀列表-->
+			</div>
+			<!--特价秒杀-->
+			<!--=========================-->
+			<!--返回顶端-->
+			<div class="footer">
+				<a href="#top">
+					<img src="img/title6-fhdd.png" />
+				</a>
+			</div>
+			<!--返回顶端-->
+
+		</div>
+		<!--end center-->
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+		<!--<script src="js/all.js" type="text/javascript" charset="utf-8"></script>-->
+		<script type="text/javascript">
+			$(function(){
+				
+function show(){
+   alert("ready");
+}
+   function leftStart(){
+	   $(".cloud-left").animate({
+	      left:'20%',
+	      top:'30%'      
+	    },1000,leftNext);
+   }
+   function leftNext(){
+	   $(".cloud-left").animate({
+	      left:'16%',
+	      top:'25%'      
+	    },1000,leftStart);
+	 }
+   function rightStart(){
+   	 $(".cloud-right").animate({
+	      top: "45%",
+				right: "25%"      
+	    },1000,rightNext);
+   }
+	 function rightNext(){
+	   $(".cloud-right").animate({
+	      right:'20%',
+	      top:'40%'      
+	    },1000,rightStart);
+   }
+   leftStart();
+   rightStart();
+//setInterval(show,1000);// 注意函数名没有引号和括弧！ 
+});
+		</script>
+	</body>
+
+</html>

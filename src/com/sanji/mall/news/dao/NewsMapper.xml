@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.news.dao.NewsMapper">
+	<resultMap id="BaseResultMap" type="com.sanji.mall.model.News">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="FIRST_TITLE" property="firstTitle" jdbcType="VARCHAR" />
+		<result column="NEWS_CAT_ID" property="newsCatId" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="MODIFYTIME" property="modifytime" jdbcType="TIMESTAMP" />
+		<result column="SECOND_TITLE" property="secondTitle" jdbcType="VARCHAR" />
+		<result column="DISABLED" property="disabled" jdbcType="VARCHAR" />
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="RESOURCES" property="resources" jdbcType="VARCHAR" />
+		<result column="KEYWORDS" property="keywords" jdbcType="VARCHAR" />
+		<result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+		<result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+		<result column="CONTENT" property="content" jdbcType="CLOB" />
+		<result column="NEWSATTR" property="newsattr" jdbcType="VARCHAR" />
+		<result column="NEWSCATNAME" property="newsCatName" jdbcType="VARCHAR" />
+		<result column="NEWSCATPID" property="newsCatPid" jdbcType="VARCHAR" />
+		<result column="NEWS_PIC" property="newsPic" jdbcType="VARCHAR" />
+		<result column="IS_CALLCENTER" property="isCallcenter"
+			jdbcType="DECIMAL" />
+		<result column="VIEWNUM" property="viewnum" jdbcType="DECIMAL" />
+		<result column="KZ1" property="kz1" jdbcType="VARCHAR" />
+		<result column="KZ2" property="kz2" jdbcType="VARCHAR" />
+		<result column="KZ3" property="kz3" jdbcType="VARCHAR" />
+		<result column="KZ4" property="kz4" jdbcType="VARCHAR" />
+		<result column="KZ5" property="kz5" jdbcType="VARCHAR" />
+		<result column="KZ6" property="kz6" jdbcType="VARCHAR" />
+		<result column="KZ7" property="kz7" jdbcType="VARCHAR" />
+		<result column="KZ9" property="kz9" jdbcType="VARCHAR" />
+		<result column="KZ10" property="kz10" jdbcType="VARCHAR" />
+		<result column="KZ11" property="kz11" jdbcType="VARCHAR" />
+		<result column="KZ12" property="kz12" jdbcType="VARCHAR" />
+		<result column="KZ13" property="kz13" jdbcType="VARCHAR" />
+		<result column="KZ14" property="kz14" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, FIRST_TITLE, NEWS_CAT_ID, CREATETIME, MODIFYTIME,
+		SECOND_TITLE,
+		DISABLED, USER_ID,
+		STATUS, RESOURCES, KEYWORDS,
+		DESCRIPTION,
+		AUTHOR,CONTENT,NEWSATTR,NEWS_PIC,IS_CALLCENTER,VIEWNUM
+	</sql>
+	
+	<select id="gainNewsList" resultMap="BaseResultMap" parameterType="com.sanji.mall.model.News" >
+	    
+	   	select * from (select * from (  
+  		select ROWNUM AS RN,t.* from (
+	  		 select ID, FIRST_TITLE from  SJ_TB_NEWS 
+	    ) t
+     ) where <![CDATA[RN <6]]>)
+	</select>
+
+	<select id="gainNewsForMainPage" parameterType="Map" resultMap="BaseResultMap">
+	  	select t.ID, t.FIRST_TITLE as firstTitle, t.CREATETIME,t.NEWS_PIC as newsPic, x.NAME  as NEWSCATNAME,t.newsAttr from SJ_TB_NEWS t left join SJ_TB_NEWS_CAT x
+	    	on t.NEWS_CAT_ID = x.ID LEFT JOIN SJ_TB_NEWS_CAT y ON x.pid=y.id where t.disabled='false' 
+		    	<if test="newsAttr != null and newsAttr!='' ">
+					and t.NEWSATTR=#{newsAttr,jdbcType=VARCHAR}
+				</if>
+				<if test="kz1 != null and kz1!='' ">
+					and t.KZ1=#{kz1,jdbcType=VARCHAR}
+				</if>
+				<if test="newsCatName != null and newsCatName!='' ">
+					and x.name= #{newsCatName,jdbcType=VARCHAR}
+				</if>
+	    			order by  x.name desc, t.createtime desc
+	</select>
+	
+	<select id="gainNewsById" parameterType="String" resultMap="BaseResultMap">
+		select t.ID, t.FIRST_TITLE as firstTitle, t.NEWS_CAT_ID, t.CREATETIME,
+		t.MODIFYTIME,t.CONTENT, t.SECOND_TITLE as secondTitle, t.DISABLED,
+		t.USER_ID, t.NEWS_PIC,t.VIEWNUM as viewnum,
+		t.STATUS, t.RESOURCES,
+		t.KEYWORDS, t.DESCRIPTION, t.AUTHOR,t.NEWSATTR,x.NAME as
+		NEWSCATNAME,x.pid as newsCatPid from SJ_TB_NEWS t left join SJ_TB_NEWS_CAT x
+		on t.NEWS_CAT_ID = x.ID where t.ID = #{id,jdbcType=VARCHAR}
+	</select>
+	
+	<update id="updateNewsViewById" parameterType="com.sanji.mall.model.News">
+		update SJ_TB_NEWS set
+		VIEWNUM = #{viewnum,jdbcType=VARCHAR} where ID =
+		#{id,jdbcType=VARCHAR}
+	</update>
+</mapper>

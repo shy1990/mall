@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.loginLog.dao.LandingExceptionMapper" >
+
+  <insert id="insertLand" parameterType="com.sanji.mall.model.LandingException" >
+     insert into SJ_TB_LANDING_EXCEPTION (ID, LOGIN_IP, LOGIN_TIME, 
+      LOGIN_ADDR, USER_ID, USER_TYPE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, 
+      #{loginAddr,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userType,jdbcType=DECIMAL}
+      )
+  </insert>
+</mapper>

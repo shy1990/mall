@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/sanji/!svn/ver/3563/mall/WebRoot/WEB-INF
+END
+urlrewrite.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sanji/!svn/ver/3563/mall/WebRoot/WEB-INF/urlrewrite.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/sanji/!svn/ver/2450/mall/WebRoot/WEB-INF/web.xml
+END

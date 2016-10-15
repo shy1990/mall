@@ -1,0 +1,26 @@
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+table{width: 100%;}
+tr{border-bottom: 1px solid #ccc;
+}
+
+.ultlon_top {
+    background: #ccc none repeat scroll 0 0;
+    fond-size:18px;
+}
+
+th{
+	width: auto;
+	text-align: center;
+	color: #4f6b72;
+	text-transform: uppercase;
+	padding: 6px 6px 6px 12px;
+}
+td {
+	text-align: center;
+	background: #fff;
+	padding: 8px 6px 8px 12px;
+	color: #4f6b72;
+	border-bottom: 1px solid #ccc;
+}
+.ultlon_td6{color: red;}
+.ultlon_td7{color: blue;}

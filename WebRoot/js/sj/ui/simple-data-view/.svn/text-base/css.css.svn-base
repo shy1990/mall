@@ -1,0 +1,36 @@
+.ui-sj-simple-data-view {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.ui-sj-simple-data-view a{
+	text-decoration:none;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.ui-sj-simple-data-view tr,td {
+	padding: 0;
+	height: 40px;
+	border-bottom: #e4e4e4 dashed 1px;
+}
+.ui-sj-simple-data-view .button {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+.ui-sj-simple-data-view .sub {
+	background: url(img/jian.jpg);
+}
+.ui-sj-simple-data-view .add {
+	background: url(img/jia.jpg);
+}
+.ui-sj-simple-data-view input {
+	width: 30px;
+	height: 18px;
+	padding: 0;
+	border: #e4e4e4 solid 1px;
+	color: #F00;
+}
+.ui-sj-simple-data-view .value1 {color: #F00;}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.collect.dao.CollectMapper" >
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.Collect" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TARGET_ID" property="targetId" jdbcType="VARCHAR" />
+    <result column="COLLECT_TIME" property="collectTime" jdbcType="TIMESTAMP" />
+    <result column="COLLECT_IP" property="collectIp" jdbcType="VARCHAR" />
+    <result column="MEMBER_TYPE" property="memberType" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="MEMBER_ID" jdbcType="VARCHAR" property="memberId" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TARGET_ID, COLLECT_TIME, COLLECT_IP, MEMBER_TYPE, TYPE,MEMBER_ID
+  </sql>
+  
+  <!-- 根据用户id和商品id查询收藏记录 -->
+  <select id="gainByTidMid" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from SJ_TB_COLLECT
+    where MEMBER_ID = #{memberId,jdbcType=VARCHAR} and TARGET_ID = #{targetId,jdbcType=VARCHAR} and 
+    TYPE = #{type,jdbcType=VARCHAR}
+  </select>
+  
+<!-- 
+  select c.id,b.name,g.name,g.goods_num,s.edition,s.standard,cl.color_name,p.pic_src 
+    from sj_tb_collect c 
+	join sj_tb_goods_sku s on c.target_id = s.id
+	join sj_tb_goods g on s.goods_id = g.id
+	join sj_tb_color cl on s.color_id=cl.id
+	join sj_tb_brand b on g.brand_id=b.id
+	join sj_tb_goods_pic p on p.sku_id = s.id
+	where c.member_id='436520cadf43478ca17df5eaca2b15f1' and c.type='sku'
+	
+  select c.id,b.name,a.name,a.accessories_num,a.default_img,cl.color_name 
+	from sj_tb_collect c 
+	join sj_tb_accessories a on c.target_id = a.id
+	join sj_tb_color cl on a.color_id=cl.id
+	join sj_tb_brand b on a.brand_id=b.id
+	where c.member_id='436520cadf43478ca17df5eaca2b15f1' and c.type='accessories' 
+-->
+  <sql id="sku_column_page" >
+    id,brandName,name,goods_num,edition,standard,color_name,pic_src,COLLECT_TIME,target_id
+  </sql>
+  <!-- 获取单品收藏sql通用部分 -->
+  <sql id="sku_share_sql">
+  	from sj_tb_collect c 
+	left join sj_tb_goods_sku s on c.target_id = s.id
+	left join sj_tb_goods g on s.goods_id = g.id
+	left join sj_tb_color cl on s.color_id=cl.id
+	left join sj_tb_brand b on g.brand_id=b.id
+	left join sj_tb_goods_pic p on p.sku_id = s.id
+	where c.member_id=#{memberId,jdbcType=VARCHAR} and c.type='sku'
+  </sql>
+  <!-- 获取单品收藏列表 -->
+  <select id="gainByMidSku" resultType="java.util.Map" parameterType="java.util.Map" >
+  	select <include refid="sku_column_page" /> from (
+  		select RN,<include refid="sku_column_page" /> from (
+  			select ROWNUM AS RN,<include refid="sku_column_page" /> from(
+			    select c.id,c.target_id,b.name as brandName,g.name,g.goods_num,s.edition,s.standard,cl.color_name,p.pic_src,c.COLLECT_TIME 
+			    <include refid="sku_share_sql" />
+				order by c.${sort} ${order} 
+			)
+  		)where <![CDATA[RN <= #{page}*#{rows}]]>
+  	) where  RN>(#{page}-1)*#{rows}
+  </select>
+  <!-- 获取单品收藏总数量 -->
+  <select id="gainByMidSkuTatolNum" resultType="java.lang.String" parameterType="java.util.Map" >
+	select count(*) 
+	<include refid="sku_share_sql" />
+  </select>
+  
+  <sql id="acs_column_page" >
+    id,brandName,name,accessories_num,default_img,color_name,COLLECT_TIME,target_id
+  </sql>
+  <!-- 获取配件收藏sql通用部分 -->
+  <sql id="acs_share_sql">
+  	from sj_tb_collect c 
+	left join sj_tb_accessories a on c.target_id = a.id
+	left join sj_tb_color cl on a.color_id=cl.id
+	left join sj_tb_brand b on a.brand_id=b.id
+	where c.member_id=#{memberId,jdbcType=VARCHAR} and c.type='accessories'
+  </sql>
+  <!-- 获取配件收藏列表 -->
+  <select id="gainByMidAcs" resultType="java.util.Map" parameterType="java.util.Map" >
+  	select <include refid="acs_column_page" /> from (
+  		select RN,<include refid="acs_column_page" /> from (
+  			select ROWNUM AS RN,<include refid="acs_column_page" /> from(
+  				select c.id,c.target_id,b.name as brandName,a.name,a.accessories_num,a.default_img,cl.color_name,c.COLLECT_TIME 
+				<include refid="acs_share_sql" />
+				order by c.${sort} ${order} 
+			) 
+  		)where <![CDATA[RN <= #{page}*#{rows}]]>
+  	) where  RN>(#{page}-1)*#{rows}
+  </select>
+  
+  <!-- 获取配件收藏总数量 -->
+  <select id="gainByMidAcsTatolNum" resultType="java.lang.String" parameterType="java.util.Map" >
+	select count(*) 
+	<include refid="acs_share_sql" />
+  </select>
+  
+  
+  
+  <!-- 根据收藏记录id删除收藏记录 -->
+  <delete id="dropById" parameterType="java.lang.String" >
+    delete from SJ_TB_COLLECT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- 插入一条收藏记录 -->
+  <insert id="add" parameterType="com.sanji.mall.model.Collect" >
+    insert into SJ_TB_COLLECT (ID, TARGET_ID, COLLECT_TIME, 
+      COLLECT_IP, MEMBER_TYPE, TYPE,MEMBER_ID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{targetId,jdbcType=VARCHAR}, #{collectTime,jdbcType=TIMESTAMP}, 
+      #{collectIp,jdbcType=VARCHAR}, #{memberType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{memberId,jdbcType=VARCHAR}
+      )
+  </insert>
+	
+	<select id="gainCollectByTargetId" parameterType="java.lang.String" resultType="java.lang.Long">
+		select count(id) from sj_tb_collect t where MEMBER_TYPE = 'B2B' and t.target_id = #{targetId,jdbcType=VARCHAR}
+	</select>
+</mapper>

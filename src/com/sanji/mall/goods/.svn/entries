@@ -1,0 +1,40 @@
+10
+
+dir
+3656
+https://192.168.2.141/svn/sanji/mall/src/com/sanji/mall/goods
+https://192.168.2.141/svn/sanji
+
+
+
+2016-09-05T06:54:21.068719Z
+3650
+shihongyue
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6206fc38-8dc6-c543-b362-cfeaca166315
+
+action
+dir
+
+dao
+dir
+
+service
+dir
+
+thread
+dir
+

@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sanji.mall.test.dao.CompanysMapper" >
+  <resultMap id="BaseResultMap" type="com.sanji.mall.model.Companys" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="TELPHONE" property="telphone" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ADVANCE" property="advance" jdbcType="DECIMAL" />
+    <result column="POINT" property="point" jdbcType="DECIMAL" />
+    <result column="REG_IP" property="regIp" jdbcType="VARCHAR" />
+    <result column="REG_TIME" property="regTime" jdbcType="DATE" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" />
+    <result column="PWD_ANSWER" property="pwdAnswer" jdbcType="VARCHAR" />
+    <result column="PWD_QUESTION" property="pwdQuestion" jdbcType="VARCHAR" />
+    <result column="DISABLED" property="disabled" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="REMARK_TYPE" property="remarkType" jdbcType="VARCHAR" />
+    <result column="CARD" property="card" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="LICENCE_SRC" property="licenceSrc" jdbcType="VARCHAR" />
+    <result column="CORPORATION_NAME" property="corporationName" jdbcType="VARCHAR" />
+    <result column="LICENCE_NUM" property="licenceNum" jdbcType="VARCHAR" />
+    <result column="LINKMAN_NAME" property="linkmanName" jdbcType="VARCHAR" />
+    <result column="LINKMAN_PHONE" property="linkmanPhone" jdbcType="VARCHAR" />
+    <result column="LINKMAN_MOBILE" property="linkmanMobile" jdbcType="VARCHAR" />
+    <result column="LINKMAN_ADDRESS" property="linkmanAddress" jdbcType="VARCHAR" />
+    <result column="LICENCE_END_DATE" property="licenceEndDate" jdbcType="VARCHAR" />
+    <result column="LICENCE_ADDRESS" property="licenceAddress" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_NUM" property="organizationNum" jdbcType="VARCHAR" />
+    <result column="COMPANY_LOGO" property="companyLogo" jdbcType="VARCHAR" />
+    <result column="COMPANY_BANK_NAME" property="companyBankName" jdbcType="VARCHAR" />
+    <result column="COMPANY_BANK_NUM" property="companyBankNum" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_NAME" property="accountName" jdbcType="VARCHAR" />
+    <result column="BANK_AREA" property="bankArea" jdbcType="VARCHAR" />
+    <result column="BANK_ADDRESS" property="bankAddress" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="STOREFRONT_SRC" property="storefrontSrc" jdbcType="VARCHAR" />
+    <result column="JOB_ROLE" property="jobRole" jdbcType="DECIMAL" />
+    <result column="LINKMAN_SEX" property="linkmanSex" jdbcType="DECIMAL" />
+    <result column="LINKMAN_AGE" property="linkmanAge" jdbcType="DECIMAL" />
+    <result column="SCOPES" property="scopes" jdbcType="VARCHAR" />
+    <result column="VIP_GRADE" property="vipGrade" jdbcType="DECIMAL" />
+    <result column="MODIFYTIME" property="modifytime" jdbcType="DATE" />
+    <result column="COMPANY_PURPOSE" property="companyPurpose" jdbcType="VARCHAR" />
+    <result column="DOMAIN" property="domain" jdbcType="VARCHAR" />
+    <result column="PAY_PASSWORD" property="payPassword" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+    <result column="IMG" property="img" jdbcType="VARCHAR" />
+    <result column="ISONLINE" property="isonline" jdbcType="DECIMAL" />
+    <result column="MYSIGNATURE" property="mysignature" jdbcType="VARCHAR" />
+    <result column="ZITINAME" property="zitiname" jdbcType="VARCHAR" />
+    <result column="FONTSIZE" property="fontsize" jdbcType="DECIMAL" />
+    <result column="FONTSTYLE" property="fontstyle" jdbcType="DECIMAL" />
+    <result column="NAMECOLOR" property="namecolor" jdbcType="VARCHAR" />
+    <result column="CONTENTCOLOR" property="contentcolor" jdbcType="VARCHAR" />
+    <result column="TISHI" property="tishi" jdbcType="CHAR" />
+    <result column="ISTOP" property="istop" jdbcType="CHAR" />
+    <result column="SAVEPATH" property="savepath" jdbcType="VARCHAR" />
+    <result column="LOOKANDFEEL" property="lookandfeel" jdbcType="VARCHAR" />
+    <result column="ISSHOW" property="isshow" jdbcType="CHAR" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="DATE" />
+    <result column="RECOMMEND_USERID" property="recommendUserid" jdbcType="VARCHAR" />
+    <result column="EMAIL_STATUS" property="emailStatus" jdbcType="DECIMAL" />
+    <result column="MOBILE_STATUS" property="mobileStatus" jdbcType="DECIMAL" />
+    <result column="QUESTION_ID" property="questionId" jdbcType="VARCHAR" />
+    <result column="QUESTION_ANSWER" property="questionAnswer" jdbcType="VARCHAR" />
+    <result column="LAST_LOGIN_IP" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="MAIN_CARBRAND" property="mainCarbrand" jdbcType="VARCHAR" />
+    <result column="IS_CHECK" property="isCheck" jdbcType="VARCHAR" />
+    
+    
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sanji.mall.model.Companys" extends="BaseResultMap" >
+    <result column="COMBRIEF" property="combrief" jdbcType="CLOB" />
+    <result column="SELL_RANGE" property="sellRange" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USERNAME, PASSWORD, AREA, CITY, MOBILE, TELPHONE, EMAIL, ZIP, ADDRESS, ADVANCE, 
+    POINT, REG_IP, REG_TIME, STATE, PWD_ANSWER, PWD_QUESTION, DISABLED, REMARK, REMARK_TYPE, 
+    CARD, COMPANY_NAME, LICENCE_SRC, CORPORATION_NAME, LICENCE_NUM, LINKMAN_NAME, LINKMAN_PHONE, 
+    LINKMAN_MOBILE, LINKMAN_ADDRESS, LICENCE_END_DATE, LICENCE_ADDRESS, ORGANIZATION_NUM, 
+    COMPANY_LOGO, COMPANY_BANK_NAME, COMPANY_BANK_NUM, ACCOUNT_NAME, BANK_AREA, BANK_ADDRESS, 
+    PROVINCE, STOREFRONT_SRC, JOB_ROLE, LINKMAN_SEX, LINKMAN_AGE, SCOPES, VIP_GRADE, 
+    MODIFYTIME, COMPANY_PURPOSE, DOMAIN, PAY_PASSWORD, BIRTHDAY, IMG, ISONLINE, MYSIGNATURE, 
+    ZITINAME, FONTSIZE, FONTSTYLE, NAMECOLOR, CONTENTCOLOR, TISHI, ISTOP, SAVEPATH, LOOKANDFEEL, 
+    ISSHOW, LAST_LOGIN_TIME, RECOMMEND_USERID, EMAIL_STATUS, MOBILE_STATUS, QUESTION_ID, 
+    QUESTION_ANSWER, LAST_LOGIN_IP, MAIN_CARBRAND, IS_CHECK
+  </sql>
+  <sql id="Blob_Column_List" >
+    COMBRIEF, SELL_RANGE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from QL_COMPANYS
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from QL_COMPANYS
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sanji.mall.model.Companys" >
+    insert into QL_COMPANYS (ID, USERNAME, PASSWORD, 
+      AREA, CITY, MOBILE, 
+      TELPHONE, EMAIL, ZIP, 
+      ADDRESS, ADVANCE, POINT, 
+      REG_IP, REG_TIME, STATE, 
+      PWD_ANSWER, PWD_QUESTION, DISABLED, 
+      REMARK, REMARK_TYPE, CARD, 
+      COMPANY_NAME, LICENCE_SRC, CORPORATION_NAME, 
+      LICENCE_NUM, LINKMAN_NAME, LINKMAN_PHONE, 
+      LINKMAN_MOBILE, LINKMAN_ADDRESS, LICENCE_END_DATE, 
+      LICENCE_ADDRESS, ORGANIZATION_NUM, COMPANY_LOGO, 
+      COMPANY_BANK_NAME, COMPANY_BANK_NUM, ACCOUNT_NAME, 
+      BANK_AREA, BANK_ADDRESS, PROVINCE, 
+      STOREFRONT_SRC, JOB_ROLE, LINKMAN_SEX, 
+      LINKMAN_AGE, SCOPES, VIP_GRADE, 
+      MODIFYTIME, COMPANY_PURPOSE, DOMAIN, 
+      PAY_PASSWORD, BIRTHDAY, IMG, 
+      ISONLINE, MYSIGNATURE, ZITINAME, 
+      FONTSIZE, FONTSTYLE, NAMECOLOR, 
+      CONTENTCOLOR, TISHI, ISTOP, 
+      SAVEPATH, LOOKANDFEEL, ISSHOW, 
+      LAST_LOGIN_TIME, RECOMMEND_USERID, EMAIL_STATUS, 
+      MOBILE_STATUS, QUESTION_ID, QUESTION_ANSWER, 
+      LAST_LOGIN_IP, MAIN_CARBRAND, IS_CHECK, 
+      COMBRIEF, SELL_RANGE)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{telphone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{advance,jdbcType=DECIMAL}, #{point,jdbcType=DECIMAL}, 
+      #{regIp,jdbcType=VARCHAR}, #{regTime,jdbcType=DATE}, #{state,jdbcType=DECIMAL}, 
+      #{pwdAnswer,jdbcType=VARCHAR}, #{pwdQuestion,jdbcType=VARCHAR}, #{disabled,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{remarkType,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{licenceSrc,jdbcType=VARCHAR}, #{corporationName,jdbcType=VARCHAR}, 
+      #{licenceNum,jdbcType=VARCHAR}, #{linkmanName,jdbcType=VARCHAR}, #{linkmanPhone,jdbcType=VARCHAR}, 
+      #{linkmanMobile,jdbcType=VARCHAR}, #{linkmanAddress,jdbcType=VARCHAR}, #{licenceEndDate,jdbcType=VARCHAR}, 
+      #{licenceAddress,jdbcType=VARCHAR}, #{organizationNum,jdbcType=VARCHAR}, #{companyLogo,jdbcType=VARCHAR}, 
+      #{companyBankName,jdbcType=VARCHAR}, #{companyBankNum,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, 
+      #{bankArea,jdbcType=VARCHAR}, #{bankAddress,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{storefrontSrc,jdbcType=VARCHAR}, #{jobRole,jdbcType=DECIMAL}, #{linkmanSex,jdbcType=DECIMAL}, 
+      #{linkmanAge,jdbcType=DECIMAL}, #{scopes,jdbcType=VARCHAR}, #{vipGrade,jdbcType=DECIMAL}, 
+      #{modifytime,jdbcType=DATE}, #{companyPurpose,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, 
+      #{payPassword,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+      #{isonline,jdbcType=DECIMAL}, #{mysignature,jdbcType=VARCHAR}, #{zitiname,jdbcType=VARCHAR}, 
+      #{fontsize,jdbcType=DECIMAL}, #{fontstyle,jdbcType=DECIMAL}, #{namecolor,jdbcType=VARCHAR}, 
+      #{contentcolor,jdbcType=VARCHAR}, #{tishi,jdbcType=CHAR}, #{istop,jdbcType=CHAR}, 
+      #{savepath,jdbcType=VARCHAR}, #{lookandfeel,jdbcType=VARCHAR}, #{isshow,jdbcType=CHAR}, 
+      #{lastLoginTime,jdbcType=DATE}, #{recommendUserid,jdbcType=VARCHAR}, #{emailStatus,jdbcType=DECIMAL}, 
+      #{mobileStatus,jdbcType=DECIMAL}, #{questionId,jdbcType=VARCHAR}, #{questionAnswer,jdbcType=VARCHAR}, 
+      #{lastLoginIp,jdbcType=VARCHAR}, #{mainCarbrand,jdbcType=VARCHAR}, #{isCheck,jdbcType=VARCHAR}, 
+      #{combrief,jdbcType=CLOB}, #{sellRange,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sanji.mall.model.Companys" >
+    insert into QL_COMPANYS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="telphone != null" >
+        TELPHONE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="zip != null" >
+        ZIP,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="advance != null" >
+        ADVANCE,
+      </if>
+      <if test="point != null" >
+        POINT,
+      </if>
+      <if test="regIp != null" >
+        REG_IP,
+      </if>
+      <if test="regTime != null" >
+        REG_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="pwdAnswer != null" >
+        PWD_ANSWER,
+      </if>
+      <if test="pwdQuestion != null" >
+        PWD_QUESTION,
+      </if>
+      <if test="disabled != null" >
+        DISABLED,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="remarkType != null" >
+        REMARK_TYPE,
+      </if>
+      <if test="card != null" >
+        CARD,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="licenceSrc != null" >
+        LICENCE_SRC,
+      </if>
+      <if test="corporationName != null" >
+        CORPORATION_NAME,
+      </if>
+      <if test="licenceNum != null" >
+        LICENCE_NUM,
+      </if>
+      <if test="linkmanName != null" >
+        LINKMAN_NAME,
+      </if>
+      <if test="linkmanPhone != null" >
+        LINKMAN_PHONE,
+      </if>
+      <if test="linkmanMobile != null" >
+        LINKMAN_MOBILE,
+      </if>
+      <if test="linkmanAddress != null" >
+        LINKMAN_ADDRESS,
+      </if>
+      <if test="licenceEndDate != null" >
+        LICENCE_END_DATE,
+      </if>
+      <if test="licenceAddress != null" >
+        LICENCE_ADDRESS,
+      </if>
+      <if test="organizationNum != null" >
+        ORGANIZATION_NUM,
+      </if>
+      <if test="companyLogo != null" >
+        COMPANY_LOGO,
+      </if>
+      <if test="companyBankName != null" >
+        COMPANY_BANK_NAME,
+      </if>
+      <if test="companyBankNum != null" >
+        COMPANY_BANK_NUM,
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME,
+      </if>
+      <if test="bankArea != null" >
+        BANK_AREA,
+      </if>
+      <if test="bankAddress != null" >
+        BANK_ADDRESS,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="storefrontSrc != null" >
+        STOREFRONT_SRC,
+      </if>
+      <if test="jobRole != null" >
+        JOB_ROLE,
+      </if>
+      <if test="linkmanSex != null" >
+        LINKMAN_SEX,
+      </if>
+      <if test="linkmanAge != null" >
+        LINKMAN_AGE,
+      </if>
+      <if test="scopes != null" >
+        SCOPES,
+      </if>
+      <if test="vipGrade != null" >
+        VIP_GRADE,
+      </if>
+      <if test="modifytime != null" >
+        MODIFYTIME,
+      </if>
+      <if test="companyPurpose != null" >
+        COMPANY_PURPOSE,
+      </if>
+      <if test="domain != null" >
+        DOMAIN,
+      </if>
+      <if test="payPassword != null" >
+        PAY_PASSWORD,
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY,
+      </if>
+      <if test="img != null" >
+        IMG,
+      </if>
+      <if test="isonline != null" >
+        ISONLINE,
+      </if>
+      <if test="mysignature != null" >
+        MYSIGNATURE,
+      </if>
+      <if test="zitiname != null" >
+        ZITINAME,
+      </if>
+      <if test="fontsize != null" >
+        FONTSIZE,
+      </if>
+      <if test="fontstyle != null" >
+        FONTSTYLE,
+      </if>
+      <if test="namecolor != null" >
+        NAMECOLOR,
+      </if>
+      <if test="contentcolor != null" >
+        CONTENTCOLOR,
+      </if>
+      <if test="tishi != null" >
+        TISHI,
+      </if>
+      <if test="istop != null" >
+        ISTOP,
+      </if>
+      <if test="savepath != null" >
+        SAVEPATH,
+      </if>
+      <if test="lookandfeel != null" >
+        LOOKANDFEEL,
+      </if>
+      <if test="isshow != null" >
+        ISSHOW,
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="recommendUserid != null" >
+        RECOMMEND_USERID,
+      </if>
+      <if test="emailStatus != null" >
+        EMAIL_STATUS,
+      </if>
+      <if test="mobileStatus != null" >
+        MOBILE_STATUS,
+      </if>
+      <if test="questionId != null" >
+        QUESTION_ID,
+      </if>
+      <if test="questionAnswer != null" >
+        QUESTION_ANSWER,
+      </if>
+      <if test="lastLoginIp != null" >
+        LAST_LOGIN_IP,
+      </if>
+      <if test="mainCarbrand != null" >
+        MAIN_CARBRAND,
+      </if>
+      <if test="isCheck != null" >
+        IS_CHECK,
+      </if>
+      <if test="combrief != null" >
+        COMBRIEF,
+      </if>
+      <if test="sellRange != null" >
+        SELL_RANGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="advance != null" >
+        #{advance,jdbcType=DECIMAL},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="regIp != null" >
+        #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        #{regTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="pwdAnswer != null" >
+        #{pwdAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdQuestion != null" >
+        #{pwdQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null" >
+        #{disabled,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkType != null" >
+        #{remarkType,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null" >
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceSrc != null" >
+        #{licenceSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="corporationName != null" >
+        #{corporationName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNum != null" >
+        #{licenceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanName != null" >
+        #{linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanPhone != null" >
+        #{linkmanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanMobile != null" >
+        #{linkmanMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanAddress != null" >
+        #{linkmanAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceEndDate != null" >
+        #{licenceEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceAddress != null" >
+        #{licenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationNum != null" >
+        #{organizationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLogo != null" >
+        #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBankName != null" >
+        #{companyBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBankNum != null" >
+        #{companyBankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankArea != null" >
+        #{bankArea,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAddress != null" >
+        #{bankAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="storefrontSrc != null" >
+        #{storefrontSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="jobRole != null" >
+        #{jobRole,jdbcType=DECIMAL},
+      </if>
+      <if test="linkmanSex != null" >
+        #{linkmanSex,jdbcType=DECIMAL},
+      </if>
+      <if test="linkmanAge != null" >
+        #{linkmanAge,jdbcType=DECIMAL},
+      </if>
+      <if test="scopes != null" >
+        #{scopes,jdbcType=VARCHAR},
+      </if>
+      <if test="vipGrade != null" >
+        #{vipGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=DATE},
+      </if>
+      <if test="companyPurpose != null" >
+        #{companyPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null" >
+        #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="isonline != null" >
+        #{isonline,jdbcType=DECIMAL},
+      </if>
+      <if test="mysignature != null" >
+        #{mysignature,jdbcType=VARCHAR},
+      </if>
+      <if test="zitiname != null" >
+        #{zitiname,jdbcType=VARCHAR},
+      </if>
+      <if test="fontsize != null" >
+        #{fontsize,jdbcType=DECIMAL},
+      </if>
+      <if test="fontstyle != null" >
+        #{fontstyle,jdbcType=DECIMAL},
+      </if>
+      <if test="namecolor != null" >
+        #{namecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="contentcolor != null" >
+        #{contentcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="tishi != null" >
+        #{tishi,jdbcType=CHAR},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=CHAR},
+      </if>
+      <if test="savepath != null" >
+        #{savepath,jdbcType=VARCHAR},
+      </if>
+      <if test="lookandfeel != null" >
+        #{lookandfeel,jdbcType=VARCHAR},
+      </if>
+      <if test="isshow != null" >
+        #{isshow,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=DATE},
+      </if>
+      <if test="recommendUserid != null" >
+        #{recommendUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null" >
+        #{emailStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="mobileStatus != null" >
+        #{mobileStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswer != null" >
+        #{questionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="mainCarbrand != null" >
+        #{mainCarbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheck != null" >
+        #{isCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="combrief != null" >
+        #{combrief,jdbcType=CLOB},
+      </if>
+      <if test="sellRange != null" >
+        #{sellRange,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sanji.mall.model.Companys" >
+    update QL_COMPANYS
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        TELPHONE = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="advance != null" >
+        ADVANCE = #{advance,jdbcType=DECIMAL},
+      </if>
+      <if test="point != null" >
+        POINT = #{point,jdbcType=DECIMAL},
+      </if>
+      <if test="regIp != null" >
+        REG_IP = #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        REG_TIME = #{regTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="pwdAnswer != null" >
+        PWD_ANSWER = #{pwdAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdQuestion != null" >
+        PWD_QUESTION = #{pwdQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null" >
+        DISABLED = #{disabled,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkType != null" >
+        REMARK_TYPE = #{remarkType,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null" >
+        CARD = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceSrc != null" >
+        LICENCE_SRC = #{licenceSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="corporationName != null" >
+        CORPORATION_NAME = #{corporationName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNum != null" >
+        LICENCE_NUM = #{licenceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanName != null" >
+        LINKMAN_NAME = #{linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanPhone != null" >
+        LINKMAN_PHONE = #{linkmanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanMobile != null" >
+        LINKMAN_MOBILE = #{linkmanMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanAddress != null" >
+        LINKMAN_ADDRESS = #{linkmanAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceEndDate != null" >
+        LICENCE_END_DATE = #{licenceEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceAddress != null" >
+        LICENCE_ADDRESS = #{licenceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationNum != null" >
+        ORGANIZATION_NUM = #{organizationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLogo != null" >
+        COMPANY_LOGO = #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBankName != null" >
+        COMPANY_BANK_NAME = #{companyBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBankNum != null" >
+        COMPANY_BANK_NUM = #{companyBankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankArea != null" >
+        BANK_AREA = #{bankArea,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAddress != null" >
+        BANK_ADDRESS = #{bankAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="storefrontSrc != null" >
+        STOREFRONT_SRC = #{storefrontSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="jobRole != null" >
+        JOB_ROLE = #{jobRole,jdbcType=DECIMAL},
+      </if>
+      <if test="linkmanSex != null" >
+        LINKMAN_SEX = #{linkmanSex,jdbcType=DECIMAL},
+      </if>
+      <if test="linkmanAge != null" >
+        LINKMAN_AGE = #{linkmanAge,jdbcType=DECIMAL},
+      </if>
+      <if test="scopes != null" >
+        SCOPES = #{scopes,jdbcType=VARCHAR},
+      </if>
+      <if test="vipGrade != null" >
+        VIP_GRADE = #{vipGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="modifytime != null" >
+        MODIFYTIME = #{modifytime,jdbcType=DATE},
+      </if>
+      <if test="companyPurpose != null" >
+        COMPANY_PURPOSE = #{companyPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        DOMAIN = #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null" >
+        PAY_PASSWORD = #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null" >
+        IMG = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="isonline != null" >
+        ISONLINE = #{isonline,jdbcType=DECIMAL},
+      </if>
+      <if test="mysignature != null" >
+        MYSIGNATURE = #{mysignature,jdbcType=VARCHAR},
+      </if>
+      <if test="zitiname != null" >
+        ZITINAME = #{zitiname,jdbcType=VARCHAR},
+      </if>
+      <if test="fontsize != null" >
+        FONTSIZE = #{fontsize,jdbcType=DECIMAL},
+      </if>
+      <if test="fontstyle != null" >
+        FONTSTYLE = #{fontstyle,jdbcType=DECIMAL},
+      </if>
+      <if test="namecolor != null" >
+        NAMECOLOR = #{namecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="contentcolor != null" >
+        CONTENTCOLOR = #{contentcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="tishi != null" >
+        TISHI = #{tishi,jdbcType=CHAR},
+      </if>
+      <if test="istop != null" >
+        ISTOP = #{istop,jdbcType=CHAR},
+      </if>
+      <if test="savepath != null" >
+        SAVEPATH = #{savepath,jdbcType=VARCHAR},
+      </if>
+      <if test="lookandfeel != null" >
+        LOOKANDFEEL = #{lookandfeel,jdbcType=VARCHAR},
+      </if>
+      <if test="isshow != null" >
+        ISSHOW = #{isshow,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=DATE},
+      </if>
+      <if test="recommendUserid != null" >
+        RECOMMEND_USERID = #{recommendUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null" >
+        EMAIL_STATUS = #{emailStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="mobileStatus != null" >
+        MOBILE_STATUS = #{mobileStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="questionId != null" >
+        QUESTION_ID = #{questionId,jdbcType=VARCHAR},
+      </if>
+      <if test="questionAnswer != null" >
+        QUESTION_ANSWER = #{questionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="mainCarbrand != null" >
+        MAIN_CARBRAND = #{mainCarbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheck != null" >
+        IS_CHECK = #{isCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="combrief != null" >
+        COMBRIEF = #{combrief,jdbcType=CLOB},
+      </if>
+      <if test="sellRange != null" >
+        SELL_RANGE = #{sellRange,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sanji.mall.model.Companys" >
+    update QL_COMPANYS
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      TELPHONE = #{telphone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ZIP = #{zip,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ADVANCE = #{advance,jdbcType=DECIMAL},
+      POINT = #{point,jdbcType=DECIMAL},
+      REG_IP = #{regIp,jdbcType=VARCHAR},
+      REG_TIME = #{regTime,jdbcType=DATE},
+      STATE = #{state,jdbcType=DECIMAL},
+      PWD_ANSWER = #{pwdAnswer,jdbcType=VARCHAR},
+      PWD_QUESTION = #{pwdQuestion,jdbcType=VARCHAR},
+      DISABLED = #{disabled,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      REMARK_TYPE = #{remarkType,jdbcType=VARCHAR},
+      CARD = #{card,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      LICENCE_SRC = #{licenceSrc,jdbcType=VARCHAR},
+      CORPORATION_NAME = #{corporationName,jdbcType=VARCHAR},
+      LICENCE_NUM = #{licenceNum,jdbcType=VARCHAR},
+      LINKMAN_NAME = #{linkmanName,jdbcType=VARCHAR},
+      LINKMAN_PHONE = #{linkmanPhone,jdbcType=VARCHAR},
+      LINKMAN_MOBILE = #{linkmanMobile,jdbcType=VARCHAR},
+      LINKMAN_ADDRESS = #{linkmanAddress,jdbcType=VARCHAR},
+      LICENCE_END_DATE = #{licenceEndDate,jdbcType=VARCHAR},
+      LICENCE_ADDRESS = #{licenceAddress,jdbcType=VARCHAR},
+      ORGANIZATION_NUM = #{organizationNum,jdbcType=VARCHAR},
+      COMPANY_LOGO = #{companyLogo,jdbcType=VARCHAR},
+      COMPANY_BANK_NAME = #{companyBankName,jdbcType=VARCHAR},
+      COMPANY_BANK_NUM = #{companyBankNum,jdbcType=VARCHAR},
+      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      BANK_AREA = #{bankArea,jdbcType=VARCHAR},
+      BANK_ADDRESS = #{bankAddress,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      STOREFRONT_SRC = #{storefrontSrc,jdbcType=VARCHAR},
+      JOB_ROLE = #{jobRole,jdbcType=DECIMAL},
+      LINKMAN_SEX = #{linkmanSex,jdbcType=DECIMAL},
+      LINKMAN_AGE = #{linkmanAge,jdbcType=DECIMAL},
+      SCOPES = #{scopes,jdbcType=VARCHAR},
+      VIP_GRADE = #{vipGrade,jdbcType=DECIMAL},
+      MODIFYTIME = #{modifytime,jdbcType=DATE},
+      COMPANY_PURPOSE = #{companyPurpose,jdbcType=VARCHAR},
+      DOMAIN = #{domain,jdbcType=VARCHAR},
+      PAY_PASSWORD = #{payPassword,jdbcType=VARCHAR},
+      BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      IMG = #{img,jdbcType=VARCHAR},
+      ISONLINE = #{isonline,jdbcType=DECIMAL},
+      MYSIGNATURE = #{mysignature,jdbcType=VARCHAR},
+      ZITINAME = #{zitiname,jdbcType=VARCHAR},
+      FONTSIZE = #{fontsize,jdbcType=DECIMAL},
+      FONTSTYLE = #{fontstyle,jdbcType=DECIMAL},
+      NAMECOLOR = #{namecolor,jdbcType=VARCHAR},
+      CONTENTCOLOR = #{contentcolor,jdbcType=VARCHAR},
+      TISHI = #{tishi,jdbcType=CHAR},
+      ISTOP = #{istop,jdbcType=CHAR},
+      SAVEPATH = #{savepath,jdbcType=VARCHAR},
+      LOOKANDFEEL = #{lookandfeel,jdbcType=VARCHAR},
+      ISSHOW = #{isshow,jdbcType=CHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=DATE},
+      RECOMMEND_USERID = #{recommendUserid,jdbcType=VARCHAR},
+      EMAIL_STATUS = #{emailStatus,jdbcType=DECIMAL},
+      MOBILE_STATUS = #{mobileStatus,jdbcType=DECIMAL},
+      QUESTION_ID = #{questionId,jdbcType=VARCHAR},
+      QUESTION_ANSWER = #{questionAnswer,jdbcType=VARCHAR},
+      LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      MAIN_CARBRAND = #{mainCarbrand,jdbcType=VARCHAR},
+      IS_CHECK = #{isCheck,jdbcType=VARCHAR},
+      COMBRIEF = #{combrief,jdbcType=CLOB},
+      SELL_RANGE = #{sellRange,jdbcType=CLOB}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sanji.mall.model.Companys" >
+    update QL_COMPANYS
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      TELPHONE = #{telphone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ZIP = #{zip,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ADVANCE = #{advance,jdbcType=DECIMAL},
+      POINT = #{point,jdbcType=DECIMAL},
+      REG_IP = #{regIp,jdbcType=VARCHAR},
+      REG_TIME = #{regTime,jdbcType=DATE},
+      STATE = #{state,jdbcType=DECIMAL},
+      PWD_ANSWER = #{pwdAnswer,jdbcType=VARCHAR},
+      PWD_QUESTION = #{pwdQuestion,jdbcType=VARCHAR},
+      DISABLED = #{disabled,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      REMARK_TYPE = #{remarkType,jdbcType=VARCHAR},
+      CARD = #{card,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      LICENCE_SRC = #{licenceSrc,jdbcType=VARCHAR},
+      CORPORATION_NAME = #{corporationName,jdbcType=VARCHAR},
+      LICENCE_NUM = #{licenceNum,jdbcType=VARCHAR},
+      LINKMAN_NAME = #{linkmanName,jdbcType=VARCHAR},
+      LINKMAN_PHONE = #{linkmanPhone,jdbcType=VARCHAR},
+      LINKMAN_MOBILE = #{linkmanMobile,jdbcType=VARCHAR},
+      LINKMAN_ADDRESS = #{linkmanAddress,jdbcType=VARCHAR},
+      LICENCE_END_DATE = #{licenceEndDate,jdbcType=VARCHAR},
+      LICENCE_ADDRESS = #{licenceAddress,jdbcType=VARCHAR},
+      ORGANIZATION_NUM = #{organizationNum,jdbcType=VARCHAR},
+      COMPANY_LOGO = #{companyLogo,jdbcType=VARCHAR},
+      COMPANY_BANK_NAME = #{companyBankName,jdbcType=VARCHAR},
+      COMPANY_BANK_NUM = #{companyBankNum,jdbcType=VARCHAR},
+      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      BANK_AREA = #{bankArea,jdbcType=VARCHAR},
+      BANK_ADDRESS = #{bankAddress,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      STOREFRONT_SRC = #{storefrontSrc,jdbcType=VARCHAR},
+      JOB_ROLE = #{jobRole,jdbcType=DECIMAL},
+      LINKMAN_SEX = #{linkmanSex,jdbcType=DECIMAL},
+      LINKMAN_AGE = #{linkmanAge,jdbcType=DECIMAL},
+      SCOPES = #{scopes,jdbcType=VARCHAR},
+      VIP_GRADE = #{vipGrade,jdbcType=DECIMAL},
+      MODIFYTIME = #{modifytime,jdbcType=DATE},
+      COMPANY_PURPOSE = #{companyPurpose,jdbcType=VARCHAR},
+      DOMAIN = #{domain,jdbcType=VARCHAR},
+      PAY_PASSWORD = #{payPassword,jdbcType=VARCHAR},
+      BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      IMG = #{img,jdbcType=VARCHAR},
+      ISONLINE = #{isonline,jdbcType=DECIMAL},
+      MYSIGNATURE = #{mysignature,jdbcType=VARCHAR},
+      ZITINAME = #{zitiname,jdbcType=VARCHAR},
+      FONTSIZE = #{fontsize,jdbcType=DECIMAL},
+      FONTSTYLE = #{fontstyle,jdbcType=DECIMAL},
+      NAMECOLOR = #{namecolor,jdbcType=VARCHAR},
+      CONTENTCOLOR = #{contentcolor,jdbcType=VARCHAR},
+      TISHI = #{tishi,jdbcType=CHAR},
+      ISTOP = #{istop,jdbcType=CHAR},
+      SAVEPATH = #{savepath,jdbcType=VARCHAR},
+      LOOKANDFEEL = #{lookandfeel,jdbcType=VARCHAR},
+      ISSHOW = #{isshow,jdbcType=CHAR},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=DATE},
+      RECOMMEND_USERID = #{recommendUserid,jdbcType=VARCHAR},
+      EMAIL_STATUS = #{emailStatus,jdbcType=DECIMAL},
+      MOBILE_STATUS = #{mobileStatus,jdbcType=DECIMAL},
+      QUESTION_ID = #{questionId,jdbcType=VARCHAR},
+      QUESTION_ANSWER = #{questionAnswer,jdbcType=VARCHAR},
+      LAST_LOGIN_IP = #{lastLoginIp,jdbcType=VARCHAR},
+      MAIN_CARBRAND = #{mainCarbrand,jdbcType=VARCHAR},
+      IS_CHECK = #{isCheck,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="gainCompanysByUserName" parameterType="String" resultType="com.sanji.mall.model.Companys">
+  	select * from QL_COMPANYS where USERNAME = #{userName,jdbcType=VARCHAR}
+  </select>
+</mapper>

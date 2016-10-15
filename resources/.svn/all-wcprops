@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/sanji/!svn/ver/3649/mall/resources
+END
+msgInfo.properties
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/sanji/!svn/ver/23/mall/resources/msgInfo.properties
+END
+shopSet.properties
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/sanji/!svn/ver/23/mall/resources/shopSet.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/sanji/!svn/ver/3649/mall/resources/log4j.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sanji/!svn/ver/3136/mall/resources/applicationContext.xml
+END
+message.properties
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/sanji/!svn/ver/23/mall/resources/message.properties
+END
+merchantInfo.properties
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/sanji/!svn/ver/3649/mall/resources/merchantInfo.properties
+END
+struts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/sanji/!svn/ver/381/mall/resources/struts.xml
+END
+generatorConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/sanji/!svn/ver/23/mall/resources/generatorConfig.xml
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/sanji/!svn/ver/3649/mall/resources/config.properties
+END

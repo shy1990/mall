@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanji.mall.goodsSku.dao.GoodsSkuMapper">
+	<resultMap id="BaseResultMap" type="com.sanji.mall.model.GoodsSku">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="SKU_NUM" jdbcType="VARCHAR" property="skuNum" />
+		<result column="PRICE" jdbcType="DECIMAL" property="price" />
+		<result column="ORIGINAL_PRICE" jdbcType="DECIMAL" property="originalPrice" />
+		<result column="TMALL_PRICE" jdbcType="DECIMAL" property="tmallPrice" />
+		<result column="EDITION" jdbcType="VARCHAR" property="edition" />
+		<result column="STANDARD" jdbcType="VARCHAR" property="standard" />
+		<result column="COLORID" jdbcType="VARCHAR" property="colorId" />
+		<result column="STORAGE" jdbcType="VARCHAR" property="storage" />
+		<result column="GOODS_ID" jdbcType="VARCHAR" property="goodsId" />
+		<result column="STOCK" jdbcType="DECIMAL" property="stock" />
+		<result column="SHELVES" jdbcType="VARCHAR" property="shelves" />
+		<result column="NETWORK_THREE" jdbcType="VARCHAR" property="networkThree" />
+		<result column="NETWORK_FOUR" jdbcType="VARCHAR" property="networkFour" />
+		<result column="SUPPORT_CHANNEL" jdbcType="VARCHAR" property="supportChannel" />
+		<result column="NET_SUIT_TYPE" jdbcType="VARCHAR" property="netSuitType" />
+		<result column="SHELVES_TIME" jdbcType="TIMESTAMP" property="shelvesTime" />
+
+		<!-- 辅助字段 -->
+		<result column="goodsName" jdbcType="VARCHAR" property="goodsName" />
+		<result column="goodsNum" jdbcType="VARCHAR" property="goodsNum" />
+		<result column="picSrc" jdbcType="VARCHAR" property="picSrc" />
+		<result column="colorName" jdbcType="VARCHAR" property="colorName" />
+
+		<result column="change_Num" jdbcType="VARCHAR" property="changeNum" />
+		<result column="change_Price" jdbcType="VARCHAR" property="changePrice" />
+
+		<!-- 单品颜色 -->
+		<collection property="color" javaType="com.sanji.mall.model.Color"
+			ofType="com.sanji.mall.model.Color">
+			<id column="c_id" property="id" jdbcType="DECIMAL" />
+			<result column="c_color_name" property="colorName" jdbcType="VARCHAR" />
+			<result column="c_color_rgb" property="colorRgb" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+
+	<!-- 单品相关信息 -->
+	<resultMap type="com.sanji.mall.model.GoodsSku" id="goodsSkuRelatedInfoMap">
+		<id column="sku_id" property="id" jdbcType="VARCHAR" />
+		<result column="sku_num" property="skuNum" jdbcType="VARCHAR" />
+		<result column="sku_price" property="price" jdbcType="VARCHAR" />
+		<result column="sku_original_price" property="originalPrice"
+			jdbcType="NUMERIC" />
+		<result column="sku_tmall_price" property="tmallPrice"
+			jdbcType="NUMERIC" />
+		<result column="sku_edition" property="edition" jdbcType="NUMERIC" />
+		<result column="sku_standard" property="standard" jdbcType="VARCHAR" />
+		<result column="sku_color_id" property="colorId" jdbcType="VARCHAR" />
+		<result column="sku_storage" property="storage" jdbcType="VARCHAR" />
+		<result column="sku_stock" property="stock" jdbcType="NUMERIC" />
+		<result column="sku_shelves" property="shelves" jdbcType="VARCHAR" />
+		<result column="sku_networkThree" property="networkThree"
+			jdbcType="VARCHAR" />
+		<result column="sku_networkFour" property="networkFour"
+			jdbcType="VARCHAR" />
+		<result column="sku_supportChannel" property="supportChannel"
+			jdbcType="VARCHAR" />
+		<result column="sku_netSuitType" property="netSuitType"
+			jdbcType="VARCHAR" />
+		<result column="sku_countPage" property="countPage" jdbcType="VARCHAR" />
+
+		<collection property="goods" javaType="com.sanji.mall.model.Goods"
+			ofType="com.sanji.mall.model.Goods">
+			<id column="ID" jdbcType="VARCHAR" property="id" />
+			<result column="NAME" jdbcType="VARCHAR" property="name" />
+			<result column="GOODS_NUM" jdbcType="VARCHAR" property="goodsNum" />
+			<result column="TYPE" jdbcType="VARCHAR" property="type" />
+			<result column="DISABLED" jdbcType="VARCHAR" property="disabled" />
+			<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+			<result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+			<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+			<result column="BRAND_ID" jdbcType="VARCHAR" property="brandId" />
+			<result column="CAT_ID" jdbcType="VARCHAR" property="catId" />
+			<result column="SCREEN_SIZE" jdbcType="DECIMAL" property="screenSize" />
+			<result column="RESOLUTION" jdbcType="VARCHAR" property="resolution" />
+			<result column="RAM" jdbcType="VARCHAR" property="ram" />
+			<result column="CPU_NUMBER" jdbcType="VARCHAR" property="cpuNumber" />
+			<result column="CPU_RATE" jdbcType="VARCHAR" property="cpuRate" />
+			<result column="FRONT_CAMERA" jdbcType="VARCHAR" property="frontCamera" />
+			<result column="POST_CAMERA" jdbcType="VARCHAR" property="postCamera" />
+			<result column="TMALL_URL" jdbcType="VARCHAR" property="tmallUrl" />
+			<result column="DEFAULT_IMG" jdbcType="VARCHAR" property="defaultImg" />
+			<result column="EXPOSURE_DATE" jdbcType="DATE" property="exposureDate" />
+			<result column="TOUCHSCREEN_TYPE" jdbcType="VARCHAR" property="touchscreenType" />
+			<result column="SREEN_PIX_DENSITY" jdbcType="VARCHAR"
+				property="sreenPixDensity" />
+			<result column="SCREEN_TECHNOLOGY" jdbcType="VARCHAR"
+				property="screenTechnology" />
+			<result column="NARROW_FRAME" jdbcType="VARCHAR" property="narrowFrame" />
+			<result column="SCREEN_RATIO" jdbcType="VARCHAR" property="screenRatio" />
+			<result column="THEORY_RATE" jdbcType="VARCHAR" property="theoryRate" />
+			<result column="WLAN_FUNCTION" jdbcType="VARCHAR" property="wlanFunction" />
+			<result column="NAVIGATION" jdbcType="VARCHAR" property="navigation" />
+			<result column="CONNECTION_SHARE" jdbcType="VARCHAR" property="connectionShare" />
+			<result column="OPERATION_SYSTEM" jdbcType="VARCHAR" property="operationSystem" />
+			<result column="MEMORY_CARD" jdbcType="VARCHAR" property="memoryCard" />
+			<result column="BATTERY_TYPE" jdbcType="VARCHAR" property="batteryType" />
+			<result column="BATTERY_CAPACITY" jdbcType="VARCHAR" property="batteryCapacity" />
+			<result column="TALK_TIME" jdbcType="VARCHAR" property="talkTime" />
+			<result column="USER_INTERFACE" jdbcType="VARCHAR" property="userInterface" />
+			<result column="EXTENDED_CAPACITY" jdbcType="VARCHAR"
+				property="extendedCapacity" />
+			<result column="CAMERA" jdbcType="VARCHAR" property="camera" />
+			<result column="CAMERA_TYPE" jdbcType="VARCHAR" property="cameraType" />
+			<result column="CAMERA_CERTIFICATION" jdbcType="VARCHAR"
+				property="cameraCertification" />
+			<result column="SENSOR_TYPE" jdbcType="VARCHAR" property="sensorType" />
+			<result column="FLASH_LAMP" jdbcType="VARCHAR" property="flashLamp" />
+			<result column="VIDEO_SHOOT" jdbcType="VARCHAR" property="videoShoot" />
+			<result column="SHOOT_FUNCTION" jdbcType="VARCHAR" property="shootFunction" />
+			<result column="APERTURE" jdbcType="VARCHAR" property="aperture" />
+			<result column="FOCAL_LENGTH" jdbcType="VARCHAR" property="focalLength" />
+			<result column="CAMERA_FEATURES" jdbcType="VARCHAR" property="cameraFeatures" />
+			<result column="CAMERA_OTHERPARAMS" jdbcType="VARCHAR"
+				property="cameraOtherparams" />
+			<result column="MODEL_DESIGN" jdbcType="VARCHAR" property="modelDesign" />
+			<result column="WEIGHT" jdbcType="DECIMAL" property="weight" />
+			<result column="BODY_FEATURES" jdbcType="VARCHAR" property="bodyFeatures" />
+			<result column="OPERATION_TYPE" jdbcType="VARCHAR" property="operationType" />
+			<result column="OUT_SENSOR_TYPE" jdbcType="VARCHAR" property="outSensorType" />
+			<result column="SIM_TYPE" jdbcType="VARCHAR" property="simType" />
+			<result column="BODY_INTERFACE" jdbcType="VARCHAR" property="bodyInterface" />
+			<result column="BODY_MATERIAL" jdbcType="VARCHAR" property="bodyMaterial" />
+			<result column="AUDIO_SUPPORT" jdbcType="VARCHAR" property="audioSupport" />
+			<result column="VIDEO_SUPPORT" jdbcType="VARCHAR" property="videoSupport" />
+			<result column="IMG_SUPPORT" jdbcType="VARCHAR" property="imgSupport" />
+			<result column="COMMON_FUNCTIONS" jdbcType="VARCHAR" property="commonFunctions" />
+			<result column="BUSINESS_FUNCTIONS" jdbcType="VARCHAR"
+				property="businessFunctions" />
+			<result column="OPTIONAL_ACCESSORY" jdbcType="VARCHAR"
+				property="optionalAccessory" />
+			<result column="WARRANTY_POLICY" jdbcType="VARCHAR" property="warrantyPolicy" />
+			<result column="WARRANTY_TIME" jdbcType="DECIMAL" property="warrantyTime" />
+			<result column="WARRANTY_REMARK" jdbcType="VARCHAR" property="warrantyRemark" />
+			<result column="SERVICE_PHONE" jdbcType="VARCHAR" property="servicePhone" />
+			<result column="PHONE_REMARK" jdbcType="VARCHAR" property="phoneRemark" />
+			<result column="DETAIL_CONTENTS" jdbcType="VARCHAR" property="detailContents" />
+			<result column="CELLPHONE_TYPE" jdbcType="VARCHAR" property="cellphoneType" />
+			<result column="CPU_MODEL" jdbcType="VARCHAR" property="cpuModel" />
+			<result column="GPU_MODEL" jdbcType="VARCHAR" property="gpuModel" />
+			<result column="THEORY_STANDBY_TIME" jdbcType="VARCHAR"
+				property="theoryStandbyTime" />
+			<result column="CELLPHONE_SIZE" jdbcType="VARCHAR" property="cellphoneSize" />
+			<result column="CLICK_RATE" jdbcType="VARCHAR" property="clickRate" />
+		</collection>
+
+		<!-- 单品颜色 -->
+		<collection property="color" javaType="com.sanji.mall.model.Color"
+			ofType="com.sanji.mall.model.Color">
+			<id column="c_id" property="id" jdbcType="DECIMAL" />
+			<result column="c_color_name" property="colorName" jdbcType="VARCHAR" />
+			<result column="c_color_rgb" property="colorRgb" jdbcType="VARCHAR" />
+		</collection>
+
+		<!-- 商品图片信息 <collection property="goodsPics" javaType="List" ofType="com.sanji.mall.model.GoodsPic"> 
+			<id column="pic_id" property="id" jdbcType="VARCHAR" /> <result column="pic_src" 
+			property="picSrc" jdbcType="VARCHAR" /> <result column="pic_standard_pic_src" 
+			property="standardPicSrc" jdbcType="VARCHAR" /> <result column="pic_thumb_pic_src" 
+			property="thumbPicSrc" jdbcType="VARCHAR" /> <result column="pic_size" property="picSize" 
+			jdbcType="NUMERIC" /> <result column="pic_width" property="width" jdbcType="NUMERIC" 
+			/> <result column="pic_height" property="height" jdbcType="NUMERIC" /> </collection> -->
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ID, SKU_NUM, PRICE, ORIGINAL_PRICE, TMALL_PRICE, EDITION,
+		STANDARD,
+		COLOR_ID, STORAGE,
+		GOODS_ID, STOCK, SHELVES, NETWORK_THREE,
+		NETWORK_FOUR, SUPPORT_CHANNEL,
+		NET_SUIT_TYPE
+	</sql>
+
+	<!-- 单品相关信息查询字段 -->
+	<sql id="Base_Column_Related_List">
+		s.ID sku_id, s.SKU_NUM sku_num, s.PRICE sku_price, s.ORIGINAL_PRICE
+		sku_original_price,
+		s.TMALL_PRICE sku_tmall_price, s.EDITION
+		sku_edition, s.STANDARD sku_standard,
+		s.COLOR_ID sku_color_id,
+		s.STORAGE sku_storage, s.STOCK sku_stock, s.SHELVES sku_shelves,
+		s.NETWORK_THREE sku_networkThree,
+		s.NETWORK_FOUR sku_networkFour,
+		s.SUPPORT_CHANNEL sku_supportChannel,
+		s.NET_SUIT_TYPE sku_netSuitType,
+		g.ID, g.NAME, g.GOODS_NUM, g.TYPE, g.DISABLED, g.CREATE_TIME,
+		g.MODIFY_TIME, g.USER_ID,
+		g.BRAND_ID, g.CAT_ID, g.SCREEN_SIZE,
+		g.RESOLUTION, g.RAM, g.CPU_NUMBER,
+		g.CPU_RATE, g.FRONT_CAMERA,
+		g.POST_CAMERA, g.TMALL_URL, g.DEFAULT_IMG, g.EXPOSURE_DATE,
+		g.TOUCHSCREEN_TYPE,
+		g.SREEN_PIX_DENSITY,
+		g.SCREEN_TECHNOLOGY,
+		g.NARROW_FRAME, g.SCREEN_RATIO, g.THEORY_RATE, g.WLAN_FUNCTION,
+		g.NAVIGATION,
+		g.CONNECTION_SHARE, g.OPERATION_SYSTEM, g.MEMORY_CARD,
+		g.BATTERY_TYPE,
+		g.BATTERY_CAPACITY, g.TALK_TIME,
+		g.USER_INTERFACE,
+		g.EXTENDED_CAPACITY, g.CAMERA, g.CAMERA_TYPE, g.CAMERA_CERTIFICATION,
+		g.SENSOR_TYPE,
+		g.FLASH_LAMP, g.VIDEO_SHOOT, g.SHOOT_FUNCTION,
+		g.APERTURE, g.FOCAL_LENGTH,
+		g.CAMERA_FEATURES,
+		g.CAMERA_OTHERPARAMS,
+		g.MODEL_DESIGN, g.WEIGHT, g.BODY_FEATURES, g.OPERATION_TYPE,
+		g.OUT_SENSOR_TYPE,
+		g.SIM_TYPE, g.BODY_INTERFACE, g.BODY_MATERIAL,
+		g.AUDIO_SUPPORT, g.VIDEO_SUPPORT,
+		g.IMG_SUPPORT,
+		g.COMMON_FUNCTIONS,
+		g.BUSINESS_FUNCTIONS, g.OPTIONAL_ACCESSORY, g.WARRANTY_POLICY,
+		g.WARRANTY_TIME,
+		g.WARRANTY_REMARK, g.SERVICE_PHONE, g.PHONE_REMARK,
+		g.DETAIL_CONTENTS,g.CELLPHONE_TYPE,
+		g.CPU_MODEL,
+		g.GPU_MODEL,
+		g.THEORY_STANDBY_TIME, g.CELLPHONE_SIZE, g.CLICK_RATE,
+		c.ID c_id,
+		c.COLOR_NAME c_color_name, c.COLOR_RGB c_color_rgb
+		<!-- p.ID pic_id, p.PIC_SRC pic_src, p.STANDARD_PIC_SRC pic_standard_pic_src, 
+			p.THUMB_PIC_SRC pic_thumb_pic_src, p.PIC_SIZE pic_size, p.WIDTH pic_width, 
+			p.HEIGHT pic_height -->
+	</sql>
+
+	<!-- 单品相关信息查询字段 -->
+	<sql id="Base_Column_Related_List_pageRow">
+		sku_countPage,
+		sku_id, sku_num, sku_price, sku_original_price,
+		sku_tmall_price, sku_edition,
+		sku_standard, sku_color_id,
+		sku_storage,
+		sku_stock, sku_shelves, sku_networkThree, sku_networkFour,
+		sku_supportChannel, sku_netSuitType,
+		ID, NAME, GOODS_NUM, TYPE,
+		DISABLED, CREATE_TIME, MODIFY_TIME, USER_ID,
+		BRAND_ID, CAT_ID,
+		SCREEN_SIZE,
+		RESOLUTION, RAM, CPU_NUMBER, CPU_RATE, FRONT_CAMERA,
+		POST_CAMERA, TMALL_URL,
+		DEFAULT_IMG, EXPOSURE_DATE,
+		TOUCHSCREEN_TYPE,
+		SREEN_PIX_DENSITY, SCREEN_TECHNOLOGY, NARROW_FRAME, SCREEN_RATIO,
+		THEORY_RATE, WLAN_FUNCTION,
+		NAVIGATION, CONNECTION_SHARE,
+		OPERATION_SYSTEM, MEMORY_CARD, BATTERY_TYPE,
+		BATTERY_CAPACITY,
+		TALK_TIME,
+		USER_INTERFACE, EXTENDED_CAPACITY, CAMERA, CAMERA_TYPE,
+		CAMERA_CERTIFICATION,
+		SENSOR_TYPE, FLASH_LAMP,
+		VIDEO_SHOOT,
+		SHOOT_FUNCTION, APERTURE, FOCAL_LENGTH, CAMERA_FEATURES,
+		CAMERA_OTHERPARAMS, MODEL_DESIGN, WEIGHT,
+		BODY_FEATURES,
+		OPERATION_TYPE, OUT_SENSOR_TYPE, SIM_TYPE, BODY_INTERFACE,
+		BODY_MATERIAL, AUDIO_SUPPORT,
+		VIDEO_SUPPORT, IMG_SUPPORT,
+		COMMON_FUNCTIONS, BUSINESS_FUNCTIONS,
+		OPTIONAL_ACCESSORY,
+		WARRANTY_POLICY,
+		CELLPHONE_TYPE, CPU_MODEL, GPU_MODEL,
+		THEORY_STANDBY_TIME, CELLPHONE_SIZE,
+		CLICK_RATE,
+		WARRANTY_TIME,
+		WARRANTY_REMARK, SERVICE_PHONE, PHONE_REMARK, DETAIL_CONTENTS, c_id,
+		c_color_name, c_color_rgb
+		<!-- p.ID pic_id, p.PIC_SRC pic_src, p.STANDARD_PIC_SRC pic_standard_pic_src, 
+			p.THUMB_PIC_SRC pic_thumb_pic_src, p.PIC_SIZE pic_size, p.WIDTH pic_width, 
+			p.HEIGHT pic_height -->
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap">
+		select s.ID,
+		SKU_NUM,g.name goodsName,
+		<if test="regionId !=null"> (s.PRICE+nvl(rp.float_price,0)) as PRICE</if>
+		<if test="regionId ==null">PRICE</if>
+		, ORIGINAL_PRICE, TMALL_PRICE,
+		EDITION,
+		STANDARD, COLOR_ID, STORAGE,
+		s.GOODS_ID, STOCK, SHELVES, NETWORK_THREE,
+		NETWORK_FOUR,
+		SUPPORT_CHANNEL,
+		NET_SUIT_TYPE ,pic_src
+		picSrc,change_Num,
+		c.id c_id,
+		c.color_name c_color_name,
+		change_Price from sj_tb_goods_sku s
+		left join
+		sj_tb_goods_pic p on s.id = p.sku_id
+		left join SJ_TB_GOODS g on
+		s.goods_id = g.id
+		join sj_tb_color c on c.id=s.color_id
+		<if test="regionId !=null">
+			left join sj_tb_sku_member_price rp on
+			s.id=rp.goods_sku_id and rp.member_id=#{regionId} and rp.disabled='false'
+		</if>
+		where s.id=#{id}
+	</select>
+
+	<!-- 根据价格获得一个区间的单品列表 -->
+	<select id="gainByPrice" parameterType="java.util.Map"
+		resultMap="goodsSkuRelatedInfoMap">
+
+		select RN,
+		<include refid="Base_Column_Related_List_pageRow" />
+		from (
+		select RN,
+		<include refid="Base_Column_Related_List_pageRow" />
+		from (
+		select ROWNUM AS RN,
+		<include refid="Base_Column_Related_List_pageRow" />
+		from (
+		select (select count(*) from sj_tb_goods_sku s
+		left join
+		SJ_TB_GOODS g on s.goods_id = g.id
+		where g.DISABLED='false' and s.PRICE
+		between #{minPrice,jdbcType=DECIMAL}
+		and #{maxPrice,jdbcType=DECIMAL})
+		as sku_countPage,
+		<include refid="Base_Column_Related_List" />
+		from SJ_TB_GOODS_SKU s
+		left join SJ_TB_GOODS g on s.goods_id = g.id
+		left join SJ_TB_COLOR c on s.color_id = c.id
+		where g.DISABLED='false'
+		and s.PRICE between #{minPrice,jdbcType=DECIMAL}
+		and
+		#{maxPrice,jdbcType=DECIMAL} )
+		)where <![CDATA[RN <= #{page}*#{rows}]]>
+		) where RN>(#{page}-1)*#{rows}
+	</select>
+	<!-- 热销排行榜 -->
+	<select id="gainHotByType" resultMap="BaseResultMap"
+		resultType="com.sanji.mall.model.GoodsHot">
+		select s.id,s.sku_num,s.price,g.name as goodsName,p.pic_src
+		as picSrc
+		,c.color_name as colorName,g.goods_num as goodsNum
+		from
+		sj_tb_goods_sku s
+		left join sj_tb_goods g on s.goods_id = g.id
+		left join
+		sj_tb_color c on s.color_id = c.id
+		left join sj_tb_goods_pic p on s.id
+		=p.sku_id
+		where s.id= #{targetId}
+	</select>
+
+	<update id="updateStockById" parameterType="com.sanji.mall.model.GoodsSku">
+		update SJ_TB_GOODS_SKU
+		<set>
+			<if test="stock != null">
+				STOCK = #{stock,jdbcType=DECIMAL},
+			</if>
+			<if test="shelvesTime != null">
+				SHELVES_TIME = #{shelvesTime,jdbcType=DATE},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from SJ_TB_GOODS_SKU t where t.id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 单品在不同区域的价格浮动 -->
+	<resultMap id="FloatPriceResultMap" type="com.sanji.mall.model.SkuPegionsPrice">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="GOODS_SKU_ID" jdbcType="VARCHAR" property="goodsSkuId" />
+		<result column="FLOAT_PRICE" jdbcType="DECIMAL" property="floatPrice" />
+	</resultMap>
+
+	<!-- 获得不同区域浮动价格 -->
+	<select id="getFloatPrice" resultMap="FloatPriceResultMap"
+		parameterType="java.lang.String">
+		select GOODS_SKU_ID,FLOAT_PRICE from
+		SJ_TB_SKU_REGIONS_PRICE where GOODS_SKU_ID
+		in(#{skuIds,jdbcType=VARCHAR}) and REGIONS_ID =
+		#{regionsId,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

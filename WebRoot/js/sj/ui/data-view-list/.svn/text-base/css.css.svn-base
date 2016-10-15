@@ -1,0 +1,8 @@
+.ui-sj-data-view-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.ui-sj-data-view-list li{
+	display: inline;
+}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/sanji/!svn/ver/3451/mall/src/com/sanji/mall/cart/model
+END
+Cart.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sanji/!svn/ver/865/mall/src/com/sanji/mall/cart/model/Cart.java
+END
+PriceCalculator.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/sanji/!svn/ver/3451/mall/src/com/sanji/mall/cart/model/PriceCalculator.java
+END
+IntegralGoods.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/sanji/!svn/ver/2637/mall/src/com/sanji/mall/cart/model/IntegralGoods.java
+END
+ShoppingCart.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sanji/!svn/ver/1156/mall/src/com/sanji/mall/cart/model/ShoppingCart.java
+END
+CartItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sanji/!svn/ver/1174/mall/src/com/sanji/mall/cart/model/CartItem.java
+END

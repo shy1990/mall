@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/sanji/!svn/ver/1842/mall/WebRoot/admin/forgetPassword
+END
+retrievePsw.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sanji/!svn/ver/1521/mall/WebRoot/admin/forgetPassword/retrievePsw.jsp
+END
+retrievePswSuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sanji/!svn/ver/1522/mall/WebRoot/admin/forgetPassword/retrievePswSuccess.jsp
+END
+toRetrievePsw.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sanji/!svn/ver/1842/mall/WebRoot/admin/forgetPassword/toRetrievePsw.jsp
+END
