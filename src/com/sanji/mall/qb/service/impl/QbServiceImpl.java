@@ -95,8 +95,8 @@ public class QbServiceImpl implements QbService {
 		Json j = new Json();
 		// try {
 		String url = BASE_URL + "/tradings/" + transNo + "/" + state;
-
-		Connection con = Jsoup.connect(url).header("Content-Type", "Mimetype=application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
+   //删除了.header("Content-Type", "Mimetype=application/json")
+		Connection con = Jsoup.connect(url).header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
 				.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36").timeout(5000)
 				.ignoreContentType(true);
 
@@ -121,7 +121,7 @@ public class QbServiceImpl implements QbService {
 
 			String url = BASE_URL + "accounts/";
 			// 获取当前用户钱包信息
-			Connection con = Jsoup.connect(url).header("Content-Type", "Mimetype=application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
+			Connection con = Jsoup.connect(url).header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
 					.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36").timeout(5000)
 					.ignoreContentType(true);
 			Response rs = con.execute();// 获取响应
