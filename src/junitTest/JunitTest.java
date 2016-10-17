@@ -19,11 +19,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
+import com.sanji.mall.admin.service.AdminService;
 import com.sanji.mall.brand.service.BrandService;
 import com.sanji.mall.common.util.DateUtil;
 import com.sanji.mall.common.util.EcErpUtil;
 import com.sanji.mall.common.util.ToolsUtil;
 import com.sanji.mall.members.service.MemberService;
+import com.sanji.mall.model.Admin;
 import com.sanji.mall.model.Brand;
 import com.sanji.mall.model.Members;
 import com.sanji.mall.model.Order;
@@ -43,10 +45,15 @@ public class JunitTest {
 	private OrderMapper orderMapper;
 	@Autowired
 	private PayService payService;
+	
+	@Resource
+	private AdminService adminService;
+	
 	@Autowired
-	BrandService b;
+	private BrandService b;
+	
 	@Autowired
-	MemberService m;
+	private MemberService m;
 
 	@Test
 	public void test() {
@@ -73,7 +80,7 @@ public class JunitTest {
 		public void run() {
 			order = orderService.gainOrderALLByID(order.getId());
 
-			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent());
+			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent(),"");
 			System.out.println(Thread.currentThread().getId()+"-- 推送结果：" + map);
 			/*if (map.get("ERROR") != null) {
 				if (map.get("ERROR").toString().contains("订单已存在")
@@ -139,7 +146,7 @@ public class JunitTest {
 			order = orderService.gainOrderALLByID(order.getId());
 
 			String name = getShopName(order.getMemberId());
-			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent());
+			Map<String, Object> map = EcErpUtil.OrderAddNew(order, name, "", "", "", "", order.getPayMent(),"");
 			System.out.println("erp：" + map);
 			if (map.get("ERROR") != null) {
 				if (map.get("ERROR").toString().contains("订单已存在")
@@ -195,16 +202,18 @@ public class JunitTest {
 	@Test
 	public void sendOneOrder(){
 		try {
-			/*20151230113404019	1800
-			20151230082535482	2553
-			20151230193728647*/
-			
-			String[] orders = {"20160319164145470","20160319153439575","20160319155514036","20160319154605721","20160319144743973","20160319144733066","20160319144119035","20160319112919326","20160319110126595"};
+			/*"20160816092534179",,*/
+//			20160410174953086      20160410173925755 20160519194338877   20160519194412344
+
+			String[] orders = {"20161017114921673"};
 			for(String s : orders){
 				System.out.println("开始推送订单："+s);
 				Order	order=orderService.gainOrderByOrderNo(s);
 				order = orderService.gainOrderALLByID(order.getId());
-				Map<String, Object> map = EcErpUtil.OrderAddNew2(order, getShopName(order.getMemberId()), "", "", "", "", order.getPayMent());
+				Members members = m.gainMembersDetailById(order.getMemberId());
+				Admin admin = adminService.getAdminById(members.getAdminId());
+				
+				Map<String, Object> map = EcErpUtil.OrderAddNew2(order, getShopName(order.getMemberId()), "", "", "", "", order.getPayMent(),admin!=null?admin.getTruename():"没有对应业务名称");
 			}
 			
 			/*Order	order=orderService.gainOrderByOrderNo("20160130172816696");
@@ -245,7 +254,7 @@ public class JunitTest {
 	            20151230193728647*/
 	            //"20160220110230892","20160220111533562","20160220105027492","20160220093954029","20160220091302993","20160220113638836","20160220124852218","20160220130130616","20160220141920615","20160220153043097","20160220153117942",
 	            //"20160220016004875",
-	            String[] orders = {"20160220160702353"};
+	            String[] orders = {"20160510171858487"};
 	            for(String s : orders){
 	               // System.out.println("开始推送订单："+s);
 	                Order   order=orderService.gainOrderByOrderNo(s);
