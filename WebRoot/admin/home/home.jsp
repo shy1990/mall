@@ -494,8 +494,8 @@
 								</map> 
 							</a>  
 								
-							<a href="http://www.3j1688.com/goods/detail/873.html?s=banner"><img
-								src="images/xljJD-T.png?<%=Math.random()%>" /> </a> 
+							<%-- <a href="http://www.3j1688.com/goods/detail/873.html?s=banner"><img
+								src="images/xljJD-T.png?<%=Math.random()%>" /> </a>  --%>
 								
 							<%-- <a href="http://www.3j1688.com/goods/detail/1435.html?s=banner"><img
 								src="images/mlMAX.png?<%=Math.random()%>" /> </a>  --%>
