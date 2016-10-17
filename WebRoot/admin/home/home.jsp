@@ -461,15 +461,14 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 							
-						
+							<a> <img src="images/sxnote7hs.png?<%=Math.random()%>" /> </a>
+							
+							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
+							<img src="images/hmpro.png?<%=Math.random()%>" /> </a> --%>
 							
 							<!-- 配件活动 -->
 							<a href="http://www.3j1688.com/special_161009/index.html?s=banner">
 							<img src="images/jppjdjkh.jpg?<%=Math.random()%>" /> </a>
-							
-							
-								<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
-							<img src="images/hmpro.png?<%=Math.random()%>" /> </a>
 							
 							<!-- 小米5s -->
 							<a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
