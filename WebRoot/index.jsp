@@ -44,18 +44,20 @@ response.flushBuffer();%>  --%>
 				</div>
 				<div class="dl_top_box_ret">
 					<ul>
-					    <!-- <li><a href="groupIntroduction.html">公司介绍 </a></li> -->
+					   <!--  <li><a href="groupIntroduction.html">公司介绍 </a></li>  -->
 						<li><a href="groupIntroduction.html">帮助中心 </a></li>
-						<li><!-- <a href="tencent://message/?uin=480537383&Site=企业网站&Menu=yes">联系客服</a> -->
+						<li>
 						 <a target="_blank" href="http://crm2.qq.com/page/portalpage/wpa.php?uin=4009371688&aty=0&a=0&curl=&ty=1">联系客服</a>
 						</li>
-						<li style="float: right; width: 100px;">
+						<li><a href="member/appliedRegUI.html">申请注册 </a></li>
+						<li style="float: right; width: 80px;">
 						<a><img src="images/index/two-dimension-code.png" alt="" />
 						</a>
 						</li>
 					</ul>
 					<div class="clear"></div>
 				</div>
+
 				<div class="dl_top_box_mid">
 					客服：<span>400-937-1688</span>
 				</div>
