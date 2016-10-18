@@ -461,7 +461,7 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 							
-							<a> <img src="images/sxnote7hs.png?<%=Math.random()%>" /> </a>
+							<%-- <a> <img src="images/sxnote7hs.png?<%=Math.random()%>" /> </a> --%>
 							
 							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
 							<img src="images/hmpro.png?<%=Math.random()%>" /> </a> --%>
