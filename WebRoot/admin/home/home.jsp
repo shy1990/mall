@@ -461,7 +461,7 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 							
-							<%-- <a> <img src="images/sxnote7hs.png?<%=Math.random()%>" /> </a> --%>
+							 <%-- <a> <img src="images/tongzhis1.png?<%=Math.random()%>" /> </a>  --%>
 							
 							 <a href="http://www.3j1688.com/goods/detail/1345.html">
 							<img src="images/3x123.png?<%=Math.random()%>" /> </a> 
@@ -472,7 +472,7 @@
 							
 							<!-- 小米5s -->
 							<a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
-							<img src="images/xm5s.png?<%=Math.random()%>" /> </a>
+							<img src="images/xiaomi5ss.png?<%=Math.random()%>" /> </a>
 							
 							<%-- <a href="http://www.3j1688.com/special_161001/index.html?s=banner">
 							<img src="images/STLB.png?<%=Math.random()%>" /> </a> --%>
