@@ -205,7 +205,7 @@ public class JunitTest {
 			/*"20160816092534179",,*/
 //			20160410174953086      20160410173925755 20160519194338877   20160519194412344
 
-			String[] orders = {"20161017114921673"};
+			String[] orders = {"20161017170453491"};
 			for(String s : orders){
 				System.out.println("开始推送订单："+s);
 				Order	order=orderService.gainOrderByOrderNo(s);
