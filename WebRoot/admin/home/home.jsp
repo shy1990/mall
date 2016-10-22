@@ -463,11 +463,10 @@
 							
 							 <%-- <a> <img src="images/tongzhis1.png?<%=Math.random()%>" /> </a>  --%>
 							
-							 <a href="http://www.3j1688.com/goods/detail/1345.html">
-							<img src="images/3x123.png?<%=Math.random()%>" /> </a> 
-							
-							<a href="http://www.3j1688.com/goods/detail/1345.html?s=banner">
-							<img src="images/hm3xhyj.png?<%=Math.random()%>" /> </a>
+							 <%-- <a href="http://www.3j1688.com/goods/detail/1345.html">
+							<img src="images/3x123.png?<%=Math.random()%>" /> </a>  --%>
+							<a href="http://www.3j1688.com/special_161021/index.html?s=banner">
+							<img src="images/jqjhlb.png?<%=Math.random()%>" /> </a>
 							
 							<!-- 配件活动 -->
 							<a href="http://www.3j1688.com/special_161009/index.html?s=banner">
