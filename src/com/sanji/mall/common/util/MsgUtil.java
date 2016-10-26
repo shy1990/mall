@@ -427,8 +427,10 @@ public class MsgUtil {
       }
       String skuNum = nums + "";
       String accNum = accNums + "";
+     /* String msg = "{\"orderNum\":\"" + order.getOrderNum() + "\",\"mobiles\":\"" + mobiles + "\",\"skuNum\":\"" + skuNum + "\",\"username\":\""
+       + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";*/
       String msg = "{\"orderNum\":\"" + order.getOrderNum() + "\",\"mobiles\":\"" + mobiles + "\",\"skuNum\":\"" + skuNum + "\",\"username\":\""
-       + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";
+    	       + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"acutalPrice\":\"" + order.getActualPayNum() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";
       try {
         sendMessage1(msg);
         System.out.println("msg:" + msg);
