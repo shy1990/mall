@@ -31,11 +31,22 @@
 		<from>member/checkMobile/(.*).html</from>
 		<to type="forward">member/registerAction!doNotNeedSession_checkMobile.action?toMobile=$1</to>
 	</rule>
+	
+	<!-- 申请注册时验证手机号码是否存在、已注册 -->
+	<rule>
+		<from>member/checkAppliedRegMobile/(.*).html</from>
+		<to type="forward">member/appliedRegAction!doNotNeedSession_checkAppliedRegMobile.action?mobilePhone=$1</to>
+	</rule>
 
 	<!-- 注册 -->
 	<rule>
 		<from>member/register.html</from>
 		<to type="forward">member/registerAction!doNotNeedSession_regMember.action</to>
+	</rule>
+	<!-- 添加申请注册 -->
+	<rule>
+		<from>member/addAppliedReg.html</from>
+		<to type="forward">member/appliedRegAction!doNotNeedSession_addAppliedReg.action</to>
 	</rule>
 	<!-- 验证店铺名 -->
 	<rule>
@@ -46,6 +57,11 @@
 	<rule>
 		<from>member/regMemberUI.html</from>
 		<to type="forward">member/registerAction!doNotNeedSession_regMemberUI.action</to>
+	</rule>
+	<!-- 跳转到申请注册页面 -->
+	<rule>
+		<from>member/appliedRegUI.html</from>
+		<to type="forward">/appliedRegister.jsp</to>
 	</rule>
 	<!-- 注册页面查询省级地区 -->
 	<rule>
@@ -655,11 +671,7 @@
 		<from>yeePay/toYEEPayRetrun.html</from>
 		<to type="forward">pay/yeePayAction!doNotNeedSession_YEEPayReturn.action</to>
 	</rule>
-    <!-- 模拟银行回调 -->
-    <rule>
-        <from>yeePay/toModelBankRetrun.html</from>
-        <to type="forward">pay/yeePayAction!modelBankReturn.action</to>
-    </rule>
+
 	<!-- 接受退款申请 -->
 	<rule>
 		<from>yeePay/toRefund.html</from>
