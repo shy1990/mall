@@ -175,30 +175,23 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 		try {
 			if (getOrderHmac(sandPayPojo).equals(sandPayPojo.getHmac())) {// 验证签名数据
 				if (null != sandPayPojo.getEmployeeId() && null != sandPayPojo.getOrderNo()) {// 工号和订单号是否为空
-					//判断是哪里的订单yd开头的订单就调用远程接口查询订单
-					if(sandPayPojo.getOrderNo().toLowerCase().startsWith("yd")){
-						//调用远程方法
-						getYdmallOrder(sandPayPojo.getOrderNo().toLowerCase());
-					}else {
-						//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用pos查询laoshagnch订单:"+sandPayPojo.getEmployeeId()+"   订单号："+sandPayPojo.getOrderNo().toLowerCase());
-						Order order = orderService.gainOrderByID(sandPayPojo.getOrderNo());
-						if (null != order) {
-							resultPojo.setEmployeeId(sandPayPojo.getEmployeeId());
-							resultPojo.setOrderId(order.getId());
-							resultPojo.setOrderNo(order.getOrderNum());
-							resultPojo.setShipName(order.getShipName());
-							resultPojo.setShipAdd(order.getPname() + order.getCname() + order.getAname() + order.getAddress());
-							resultPojo.setShipTel(order.getShipTel());
-							// resultPojo.setOrderAmount(order.getTotalCost() + "");
-							resultPojo.setOrderAmount(order.getActualPayNum() + "");
-							resultPojo.setOrderStatus(order.getPayStatus());
-							resultPojo.setResult_code("1");
-							resultPojo.setResult_type("成功");
-						} else {
-							resultPojo.setResult_code("6");
-							resultPojo.setResult_type("无效的订单号");
-						}
-					}
+					String orderNum = sandPayPojo.getOrderNo();
+					  if(MsgUtil.CheckOrderFromBuzmgt(orderNum)){
+						  if(orderService.checkOrderArea(orderNum)){//判断订单是否为指定的区域，如果是就判断订单是否签收，如果不是直接返回订单信息
+						    	if(orderService.checkerOrderShipStatus(orderNum)){//判断订单是否签收
+						    		resultPojo = messageToPos(resultPojo);//返回订单信息
+								}else{
+									resultPojo.setResult_code("6");
+									resultPojo.setResult_type("未获取到订单信息，请先签收");
+								}
+						    }else{
+						    	 resultPojo = messageToPos(resultPojo);//返回订单信息
+						    }
+					  }else{
+						  resultPojo = messageToPos(resultPojo);//返回订单信息
+						  }
+					 
+						
 				} else {
 					resultPojo.setResult_code("5");
 					resultPojo.setResult_type("工号或订单号不能为空");
@@ -214,46 +207,109 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 		}
 		writeJson(resultPojo);
 	}
-	
-	public SandPayPojo getYdmallOrder(String orderNo){
-		//String url =  "http://ydmall.3j1688.com/order/" + orderNo ;
-		String url =  YD_BASE_URL+"orders/pos/"+orderNo ;
-		System.out.println(url);
-		try {
-			Connection con = Jsoup.connect(url).header("Content-Type", "Mimetype=application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
-					.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36").timeout(5000)
-					.ignoreContentType(true);
-			Response rs = con.execute();// 获取响应
-			System.out.println("::::::::：" + rs.body());
-			JSONObject obj = JSONObject.parseObject(rs.body());
-			
-			//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口查询订单："+obj.getString("id")+"  :"+obj.getJSONObject("createBy").getString("shipName"));
-			
-			if (null != obj && obj.containsKey("id")) {//返回值不为空，并且有id字段
-				//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口成功返回信息");
-				String orderNum = obj.getString("id");
-				if(orderService.checkerOrderShipStatus(orderNum)){
-					String adminMobile = orderService.findAdminMobileByOrderNo(orderNum);
-					MsgUtil.PosPaymentsSuc(obj.getString("id"),adminMobile);
-				}
-				resultPojo.setEmployeeId(sandPayPojo.getEmployeeId());
-				resultPojo.setOrderId(obj.getString("id"));//订单id
-				resultPojo.setOrderNo(obj.getString("id"));//订单编号
-				resultPojo.setShipName(obj.getJSONObject("createBy").getString("shipName"));//收货人名称
-				resultPojo.setShipAdd(obj.getJSONObject("createBy").getString("address"));//收货人地址
-				resultPojo.setShipTel(obj.getJSONObject("createBy").getString("shipTel"));//收货人电话
-				resultPojo.setOrderAmount(obj.getString("amount"));//订单总额
-				if(obj.getString("status").equals("PROC")){
-					resultPojo.setOrderStatus("0");//订单支付状态
-				}else {
-					resultPojo.setOrderStatus("1");//订单支付状态
-				}
+    
+	/**
+	 * 
+	 * 将订单信息返回给pos终端
+	 */
+	private SandPayPojo messageToPos(SandPayPojo resultPojo) {
+		// 判断是哪里的订单yd开头的订单就调用远程接口查询订单
+		if (sandPayPojo.getOrderNo().toLowerCase()
+				.startsWith("yd")) {
+			// 调用远程方法
+			getYdmallOrder(sandPayPojo.getOrderNo()
+					.toLowerCase());
+		} else {
+			// MsgUtil.MsgConcelOrderToUser(null, "18453170418",
+			// "调用pos查询laoshagnch订单:"+sandPayPojo.getEmployeeId()+"   订单号："+sandPayPojo.getOrderNo().toLowerCase());
+			Order order = orderService
+					.gainOrderByID(sandPayPojo.getOrderNo());
+			if (null != order) {
+				resultPojo.setEmployeeId(sandPayPojo
+						.getEmployeeId());
+				resultPojo.setOrderId(order.getId());
+				resultPojo.setOrderNo(order.getOrderNum());
+				resultPojo.setShipName(order.getShipName());
+				resultPojo.setShipAdd(order.getPname()
+						+ order.getCname() + order.getAname()
+						+ order.getAddress());
+				resultPojo.setShipTel(order.getShipTel());
+				// resultPojo.setOrderAmount(order.getTotalCost()
+				// + "");
+				//if(orderService.checkOrderCity(order.getId())){
+					
+				
+				resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
+				/*}else{
+					resultPojo.setOrderAmount(order.getActualPayNum()+"");
+				}*/
+				resultPojo.setOrderStatus(order.getPayStatus());
 				resultPojo.setResult_code("1");
 				resultPojo.setResult_type("成功");
 			} else {
 				resultPojo.setResult_code("6");
 				resultPojo.setResult_type("无效的订单号");
 			}
+		}
+		
+		return resultPojo;
+	}
+	
+	/**  
+	* 提供精确的乘法运算。  
+	* @param ActualPayNum 实付金额
+	* @param rate ：0.55% (费率)
+	* @return 两个参数的积  
+	*/  
+	
+	private static Double mul(BigDecimal ActualPayNum){   
+	BigDecimal rate = new BigDecimal("1.0055"); //费率  
+	
+	
+	return ActualPayNum.multiply(rate).doubleValue();   
+	}   
+	
+	public SandPayPojo getYdmallOrder(String orderNo){
+		//String url =  "http://ydmall.3j1688.com/order/" + orderNo ;
+		String url =  YD_BASE_URL+"orders/pos/"+orderNo ;
+		try {
+				Connection con = Jsoup.connect(url).header("Content-Type", "Mimetype=application/json").header("Accept", "*/*").header("Accept-Encoding", "gzip, deflate, sdch")
+						.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36").timeout(5000)
+						.ignoreContentType(true);
+				Response rs = con.execute();// 获取响应
+				System.out.println("::::::::：" + rs.body());
+				JSONObject obj = JSONObject.parseObject(rs.body());
+				
+				//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口查询订单："+obj.getString("id")+"  :"+obj.getJSONObject("createBy").getString("shipName"));
+				
+				if (null != obj && obj.containsKey("id")) {//返回值不为空，并且有id字段
+					//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口成功返回信息");
+					String orderNum = obj.getString("id");
+					//if(orderService.checkerOrderShipStatus(orderNum)){
+						
+					//	String adminMobile = orderService.findAdminMobileByOrderNo(orderNum);
+					//	MsgUtil.PosPaymentsSuc(obj.getString("id"),adminMobile);//付款成功后向app推送消息
+					
+					resultPojo.setEmployeeId(sandPayPojo.getEmployeeId());
+					resultPojo.setOrderId(obj.getString("id"));//订单id
+					resultPojo.setOrderNo(obj.getString("id"));//订单编号
+					resultPojo.setShipName(obj.getJSONObject("createBy").getString("shipName"));//收货人名称
+					resultPojo.setShipAdd(obj.getJSONObject("createBy").getString("address"));//收货人地址
+					resultPojo.setShipTel(obj.getJSONObject("createBy").getString("shipTel"));//收货人电话
+					resultPojo.setOrderAmount(obj.getString("amount"));//订单总额
+					if(obj.getString("status").equals("PROC")){
+						resultPojo.setOrderStatus("0");//订单支付状态
+					}else {
+						resultPojo.setOrderStatus("1");//订单支付状态
+					}
+					resultPojo.setResult_code("1");
+					resultPojo.setResult_type("成功");
+					//}
+				} else {
+					resultPojo.setResult_code("6");
+					resultPojo.setResult_type("无效的订单号");
+				}
+			
 		} catch (Exception e) {
 			//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口异常："+e.getMessage());
 			e.printStackTrace();
@@ -298,6 +354,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 	 * resultPojo.setResult_type("未知错误，请联系相关技术人员！"); } writeJson(resultPojo); }
 	 */
 	public void doNotNeedSession_payInfo() {
+		
 		resultPojo = new SandPayPojo();
 		try {
 			if (getPayInfoHmac(sandPayPojo).equals(sandPayPojo.getHmac())) {// 验证签名数据
@@ -312,23 +369,27 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 						//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "pos回调成功老商城订单:"+sandPayPojo.getEmployeeId()+"   订单号："+sandPayPojo.getOrderId());
 						order = orderService.gainOrderByID(sandPayPojo.getOrderId());
 						if (null != order) {
-							Double u = Double.valueOf(order.getActualPayNum()+ "") - Double.valueOf(sandPayPojo.getPayAmount() + "");
+							
+							double f1 = Double.parseDouble(String.format("%.2f", mul(order.getActualPayNum())));
+							Double   u =  f1 - Double.valueOf(sandPayPojo.getPayAmount() + "") ;
 							if (u == 0.0) {// 比较订单价格是否相同
 								PayDeal deal = payService.gainDealByDeal(sandPayPojo.getPayNO(), sandPayPojo.getCompanyName());
 								if (null == deal) {
 									deal = new PayDeal();
 									deal.setId(ToolsUtil.getUUID());
 									deal.setCreateTime(new Date());
-									deal.setOrderAmount(order.getActualPayNum());
+									
+									deal.setOrderAmount(new BigDecimal(mul(order.getActualPayNum())));
 									deal.setDealFee(new BigDecimal(sandPayPojo.getPayAmount()));
 									deal.setDealState("SUCCESS");
 									deal.setDealSigunre(sandPayPojo.getHmac());
 									deal.setDealId(sandPayPojo.getPayNO());
-									deal.setDealType(sandPayPojo.getCompanyName());
+									deal.setDealType("pos");
 									deal.setPayType("pos");
 									deal.setPayee(sandPayPojo.getEmployeeName());
 									deal.setPayeeNo(sandPayPojo.getEmployeeId());
 									deal.setOrderId(sandPayPojo.getOrderId());
+									deal.setOrderNo(order.getOrderNum());
 									deal.setBankCardNo(sandPayPojo.getBankCardNo());
 									deal.setBankCardName(sandPayPojo.getBankCardName());
 									payService.insetPayDeal(deal);

@@ -410,7 +410,7 @@ public interface OrderMapper {
      * @param orderNo
      * @return
      */
-	String gainShipStatusBuyOrderNum(String orderNum);
+	public Order gainShipStatusBuyOrderNum(String orderNum);
     /**
      * 根据订单号查询业务员手机号
      * @param orderNum
