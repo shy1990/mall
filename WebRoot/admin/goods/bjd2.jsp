@@ -318,6 +318,7 @@
 									$
 											.ajax({
 												url : "goods/${jx}/bjdjsonByBrand.html",
+												
 												contentType : "application/x-www-form-urlencoded; charset=utf-8",
 												dataType : "json",
 												type : "POST",
