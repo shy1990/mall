@@ -416,7 +416,7 @@
 				<%--  <c:if test="${sessionInfo.LoginNickName != 'zhangsan'}">
                     
 				</c:if>  --%>
-                <!--  <li><a href="goods/gnj/3/bjd.html">功能机</a></li>  --> 
+                  <li><a href="goods/gnj/3/bjd.html">功能机</a></li>   
 				<!-- <li class="dropdown"><a href="goods/gnj/3/bjd.html"
 					class="dropdown-toggle" data-toggle="dropdown">功能机 </a>
 				</li> -->

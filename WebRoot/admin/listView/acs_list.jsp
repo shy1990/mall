@@ -55,7 +55,7 @@
 	<!-- 详情开始 -->
 	<div class="xq_mian">
 
-		<a><img src="images/typj.gif" alt="" width="1191" height="197"
+	<!-- 	<a><img src="images/typj.gif" alt="" width="1191" height="197"
 			border="0" usemap="#Map"> <map name="Map">
 				<area shape="rect" coords="8,0,464,216"
 					href="http://www.3j1688.com/accessory/detail/z000128.html"
@@ -66,7 +66,7 @@
 						<area shape="rect" coords="850,4,1211,211"
 							href="http://www.3j1688.com/accessory/detail/704114.html"
 							target="_blank">
-			</map> </a>
+			</map> </a> -->
 
 		<div class="xq_mian_top">
 			<span><a href="javascript:history.go(-1);">返回</a> </span>当前位置&gt;&gt;
