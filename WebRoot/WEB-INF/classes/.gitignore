@@ -1,12 +1,1 @@
-/.svn/
-/applicationContext.xml
-/com/
-/config.properties
-/generatorConfig.xml
 /junitTest/
-/log4j.properties
-/merchantInfo.properties
-/message.properties
-/msgInfo.properties
-/shopSet.properties
-/struts.xml

@@ -205,7 +205,7 @@ public class JunitTest {
 			/*"20160816092534179",,*/
 //			20160410174953086      20160410173925755 20160519194338877   20160519194412344
 
-			String[] orders = {"20161017170453491"};
+			String[] orders = {"20161023204356203"};
 			for(String s : orders){
 				System.out.println("开始推送订单："+s);
 				Order	order=orderService.gainOrderByOrderNo(s);
@@ -214,7 +214,7 @@ public class JunitTest {
 				Admin admin = adminService.getAdminById(members.getAdminId());
 				
 				Map<String, Object> map = EcErpUtil.OrderAddNew2(order, getShopName(order.getMemberId()), "", "", "", "", order.getPayMent(),admin!=null?admin.getTruename():"没有对应业务名称");
-			}
+			} 
 			
 			/*Order	order=orderService.gainOrderByOrderNo("20160130172816696");
 				order = orderService.gainOrderALLByID(order.getId());
