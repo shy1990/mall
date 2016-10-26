@@ -304,8 +304,8 @@
    select a.mobilephone from sj_tb_admin a left join sj_tb_members m on m.admin_id = a.id left join sj_tb_order o on o.member_id = m.id where o.order_num = #{orderNum,jdbcType=VARCHAR}
   </select>
   <!-- 根据订单号查询订单物流状态 -->
-  <select id="gainShipStatusBuyOrderNum" resultType="java.lang.String" parameterType="java.lang.String">
-    select o.ship_status from sj_tb_order o where o.order_num = #{orderNum,jdbcType=VARCHAR}
+  <select id="gainShipStatusBuyOrderNum" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT O.SHIP_STATUS,O.PAY_STATUS FROM  SJ_TB_ORDER O WHERE O.ORDER_NUM = #{orderNum,jdbcType=VARCHAR}
   </select>
   <!-- 根据订单号查询订单信息 -->
   <select id="gainOrderInfoByOrderCode" resultMap="BaseResultMap" parameterType="java.lang.String">

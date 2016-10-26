@@ -1,6 +1,7 @@
 package com.sanji.mall.order.service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -209,7 +210,8 @@ public interface OrderService {
 	 * @since JDK 1.6
 	 */
 
-	public void updatePrice(String id, BigDecimal totalCost, String string, BigDecimal walletNum, BigDecimal actualPayNum, String walletPayNo);
+	public void updatePrice(String id, BigDecimal totalCost, String string,
+			BigDecimal walletNum, BigDecimal actualPayNum, String walletPayNo);
 
 	public int updatePriceByMid(String MemberId);
 
@@ -226,7 +228,8 @@ public interface OrderService {
 	 * @author 田超强
 	 * @throws
 	 */
-	public Map<String, Object> selectByUidAndErpAndSkunum(String userId, String ecerpNo, String skuNum);
+	public Map<String, Object> selectByUidAndErpAndSkunum(String userId,
+			String ecerpNo, String skuNum);
 
 	/**
 	 * 根据订单编号查询dd号
@@ -247,33 +250,53 @@ public interface OrderService {
 	 * @return
 	 */
 	public BigDecimal getNoCommentById(String memberId, String orderId);
-	
+
 	/**
-     * 统计已经购买的活动商品数量
-     * @param goodsId
-     * @param memberId
+	 * 统计已经购买的活动商品数量
+	 * 
+	 * @param goodsId
+	 * @param memberId
+	 * @return
+	 */
+	public int gainYetBuyNum(@Param("goodsId") String goodsId,
+			@Param("memberId") String memberId);
+
+	/**
+	 * 查询订单是否有活动商品
+	 * 
+	 * @param goodsId
+	 * @param memberId
+	 * @return
+	 */
+	public boolean checkerOrderThereHdGoods(@Param("userName") String userName,
+			@Param("orderId") String orderId);
+
+	/**
+	 * 查询订单物流状态是否已签收
+	 * 
+	 * @param orderNum
+	 * @return
+	 */
+	boolean checkerOrderShipStatus(String orderNum);
+
+	/**
+	 * 根据订单号查询业务员手机号
+	 * 
+	 * @param orderNum
+	 * @return
+	 */
+	String findAdminMobileByOrderNo(String orderNum);
+    /**
+     * 检查区域
+     * @param orderNum
      * @return
      */
-    public int gainYetBuyNum(@Param("goodsId")String goodsId,@Param("memberId")String memberId);
-
-    /**
-  * 查询订单是否有活动商品
-  * @param goodsId
-  * @param memberId
-  * @return
-  */
- public boolean checkerOrderThereHdGoods(@Param("userName")String userName,@Param("orderId")String orderId);
- /**
-  * 查询订单物流状态是否已签收
-  * @param orderNum
-  * @return
-  */
-	boolean checkerOrderShipStatus(String orderNum);
-/**
- * 根据订单号查询业务员手机号
- * @param orderNum
- * @return
- */
-String findAdminMobileByOrderNo(String orderNum);
+	boolean checkOrderArea(String orderNum);
+	/**
+     * 检查城市
+     * @param orderNum
+     * @return
+     */
+	boolean checkOrderCity(String id);
 
 }
