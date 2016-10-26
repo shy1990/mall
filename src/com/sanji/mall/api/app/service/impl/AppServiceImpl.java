@@ -14,6 +14,7 @@ import com.sanji.mall.model.App;
 /**
  * 根据登录名、密码获取地推人员信息
  * 
+ * 
  * @ClassName:LoginPosServiceImpl
  * @Description:TODO(这里用一句话描述这个类的作用)
  * @author yangningning

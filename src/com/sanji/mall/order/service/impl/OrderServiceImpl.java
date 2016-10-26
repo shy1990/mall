@@ -280,17 +280,42 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public boolean checkerOrderShipStatus(String orderNum) {
-		String shipStatus = orderMapper.gainShipStatusBuyOrderNum(orderNum);
-		if( "3".equals(shipStatus)){
-			return true;
-		}
+		Order order = orderMapper.gainShipStatusBuyOrderNum(orderNum);
+		
+			if ("3".equals(order.getShipStatus())
+					&& "0".equals(order.getPayStatus())) {
+				return true;
+			}
+		
 		return false;
 	}
 
 	@Override
 	public String findAdminMobileByOrderNo(String orderNum) {
-		// TODO Auto-generated method stub
 		return orderMapper.gainAdminMobileByOrderNum(orderNum);
+	}
+
+	@Override
+	public boolean checkOrderArea(String orderNum) {
+		String area = membersMaper.gainMobileByOrderNum(orderNum);
+		if ("2278".equals(area)
+				|| "2323".equals(area)
+				|| "2296".equals(area)
+				|| "2307".equals(area)
+				|| "2277".equals(area)
+			//	|| "2185".equals(area)
+				) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean checkOrderCity(String id) {
+		String area = membersMaper.gainCityByOrderId(id);
+		if ("2286".equals(area)) {
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -350,5 +350,9 @@ public interface MembersMapper {
 	 * @author peter
 	 */
 	public String gainCityById(String id);
+
+	public String gainMobileByOrderNum(String orderNum);
+
+	public String gainCityByOrderId(String orderId);
 	
 }
