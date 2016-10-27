@@ -591,7 +591,7 @@
 	<!-- 生成订单 -->
 	<rule>
 		<from>order/addNewOrder.html</from>
-		<to type="forward">order/orderAction!doNotNeedSession_addNewOrder.action?orderNo=$1&amp;totalCosts=$2</to>
+		<to type="forward">order/orderAction!doNotNeedSession_addNewOrder.action</to>
 	</rule>
 	<rule>
 		<from>order/success.html</from>

@@ -148,11 +148,6 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 
 	private String searchParam;// 搜索条件搜索订单//模糊匹配名称 准确匹配订单编号
 	
-	private String orderNo;
-	
-	private String totalCosts;
-	
-	
 
 	/**
 	 * 手动推送漏单
@@ -555,15 +550,14 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
 	 */
 	public void doNotNeedSession_addNewOrder() {
-		System.out.println("=========================="+orderNo);
-			Members member = memberService.getMemberById("");
+				Members member = memberService.getMemberById("faca1f199c3f41a3a8d8d90173f8e540");
 				String orderId = ToolsUtil.getUUID();
 				order.setId(orderId);
 				order.setShipName(member.getTruename());
 				order.setArea(member.getArea());
-				order.setShipZip(member.getZip());
+				//order.setShipZip(member.getZip());
 				order.setShipTel(member.getMobile());
-				order.setShipEmail(member.getEmail());
+				//order.setShipEmail(member.getEmail());
 				order.setProvince(member.getProvince());
 				order.setCity(member.getCity());
 				order.setAddress(member.getAddress());
@@ -571,7 +565,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 				order.setMemberId(member.getId());
 	            order.setOrderNum(order.getOrderNum());
 			    order.setCreatetime(new Date());
-			  //  order.setTotalCost(new BigDecimal(totalCost));
+			    order.setTotalCost(order.getTotalCost());
 			    orderService.save(order);
 	}
 	
@@ -1439,20 +1433,4 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 		this.searchParam = searchParam;
 	}
 
-	public String getOrderNo() {
-		return orderNo;
-	}
-
-	public void setOrderNo(String orderNo) {
-		this.orderNo = orderNo;
-	}
-
-	public String getTotalCosts() {
-		return totalCosts;
-	}
-
-	public void setTotalCosts(String totalCosts) {
-		this.totalCosts = totalCosts;
-	}
-	
 }
