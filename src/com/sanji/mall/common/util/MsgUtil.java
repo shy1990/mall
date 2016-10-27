@@ -22,13 +22,11 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bcloud.msg.http.HttpSender;
-import com.sanji.mall.members.service.MemberService;
 import com.sanji.mall.model.Members;
 import com.sanji.mall.model.MessageRecord;
 import com.sanji.mall.model.Order;
 import com.sanji.mall.model.OrderItems;
-import com.sanji.mall.order.service.OrderService;
-
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -79,6 +77,8 @@ public class MsgUtil {
   private static String SJ_DXQF_MEMBER_content = "尊敬的手机零售商店主：您已开通三际手机采购网会员权限，网址为WWW.3J1688.COM，可足不出户尊享全品类一站式手机采购服务，天天低价，限时送达，货到付款，两年延保，30天退换，当地三际服务站为您提供快速响应的无忧售后服务。您的登录名即为您的手机号码，默认密码为123456.请您务必及时登录及时修改密码以确保您的账户安全。如有问题请咨询当地移动公司渠道经理或三际服务站服务人员，也可拨打电话：400-937-1688。三际手机采购网竭诚为您服务。";
 
   private static Logger logger = Logger.getLogger(MsgUtil.class);
+  
+  private static String APPLIED_REGISTER_SUCCESS = "申请注册";// 申请注册成功
 
   public static void MsgSenderMembers(String mobile) {
     try {
@@ -416,21 +416,6 @@ public class MsgUtil {
    * @param @param order 设定文件
    * @return void 返回类型
    */
-  private static MemberService memberService;
-  private static OrderService orderservice;
-  
-  public static void main(String [] args) {
-	  Order order=orderservice.gainOrderByID("d5a352d642e845e7a093ff19e5441335");
-	  
-		Members m = memberService.gainMembersDetailById("4a6451f565e5489391c23f79183b099a");
-		
-		
-	  MsgInfoXDApp("15562282883", order, m);
-	  
-}
-  
-  
-  
   public static void MsgInfoXDApp(String mobiles, Order order, Members members) {
 //		int count=(int)(Math.random()*100+1);
     if (order != null && order.getOrderNum() != null && !"".equals(order.getOrderNum())) {
@@ -446,7 +431,7 @@ public class MsgUtil {
       String skuNum = nums + "";
       String accNum = accNums + "";
       String msg = "{\"orderNum\":\"" + order.getOrderNum() + "\",\"mobiles\":\"" + mobiles + "\",\"skuNum\":\"" + skuNum + "\",\"username\":\""
-       + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";
+       + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"acutalPrice\":\"" + order.getActualPayNum() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";
       try {
         sendMessage1(msg);
         System.out.println("msg:" + msg);
@@ -512,19 +497,19 @@ public class MsgUtil {
   private static void sendMessageToApp(JSONObject obj) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", obj.toJSONString());
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
+    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewPosPayments",
      params, null, null);
-//			 HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewPosPayments",
-//			 params, null, null);
+//	          HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewPosPayments",
+//	          params, null, null);
   }
 
   private static void sendMessage1(String msg) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", msg);
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
-     params, null, null);
-    //	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
-//				 params, null, null);
+   // HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
+   //  params, null, null);
+    	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
+				 params, null, null);
   }
 
   private static void cancelOrder(String msg) {
@@ -612,6 +597,15 @@ public class MsgUtil {
     obj.put("content", content);
     sendMessageToApp(obj);
   }
+  /**
+   * 支付成功后推送到App
+   */
+  public static void updateOrderAfterPosPaymentsSuc(String orderNo,String payStatus) {
+	    JSONObject obj = new JSONObject();
+	    obj.put("orderNo", orderNo);
+	    obj.put("payStatus", payStatus);
+	    sendMessageToApp(obj);
+	  }
 
   /**
    * 删除订单短信通知
@@ -632,7 +626,7 @@ public class MsgUtil {
     }
   }
 
-  /*public static void main(String[] args) {
+  public static void main(String[] args) {
     // Map<String, String> params = new HashMap<String, String>();
     // params.put("mobile", "18615696354");
     // params.put("msg",
@@ -642,14 +636,14 @@ public class MsgUtil {
     // String returnString=sendMessage1(msg.getMobiles(), content,
     // "SMS");
     try {
-      
+      /*
 			 * String returnString = HttpSender.send(uri, account, pswd,
 			 * "14753170418", "测试返回值", needstatus, product, extno); //
 			 * System.out.println(returnString); String returnString2 =
 			 * sendMessage1("14753170418", "测试返回值", "SMS"); //
 			 * System.out.println("++++++++++++++++++++++"); //
 			 * System.out.println(returnString2);
-			 
+			 */
       MsgConcelOrder("测试收到请回复一下相关人");
       MessageRecord m = new MessageRecord();
       m.setMobiles("18453170418");
@@ -659,16 +653,16 @@ public class MsgUtil {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-		
+		/*
 		 * try { String mobile = "15165009133"; //HttpSender.send(uri, account,
 		 * pswd, mobile, MSG_Signature + "取消订单测试", needstatus, product, extno);
 		 * // System.out.println("================"+HttpSender.send(uri,
 		 * account, pswd, mobile, MSG_Signature + SJ_DXQF_MEMBER_content,
 		 * needstatus, product, extno)); } catch (Exception e) { //
 		 * System.out.println("信息发送异常：" + e.getMessage()); }
-		 
+		 */
   }
-*/
+
   public static void main2(String[] args) {
 
     // MessageRecord m = new MessageRecord();
@@ -752,5 +746,34 @@ public class MsgUtil {
     }
     return result;
   }
+/**
+ * 
+ * @param mobiles 后台管理人员手机号
+ * @param shopName 申请注册的手机店店名
+ * @param truename 店主的名字
+ * @param mobile 店主手机号
+ */
+public static void MsgAppliedRegisterSuccess(String mobiles,String shopName, String truename, String mobile,String address) {
+	 try {
+	      String content = MSG_Signature +address+" "+ shopName+" "+truename+" "+APPLIED_REGISTER_SUCCESS+"。  手机号  ："+mobile;
+	      sendMessage(mobiles, content, "SMS");
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+}
+
+public static boolean CheckOrderFromBuzmgt(String orderNum) {
+	System.out.println("=============判断app端订单是否存在");
+	 Map<String, String> params = new HashMap<String, String>();
+	    params.put("orderNum", orderNum);
+			/*String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/remind/checkOrder",
+					 params, null, null);*/
+	   String strResult =  HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/remind/checkOrder",
+	     params, null, null);
+	   if("true".equals(strResult)){
+		   return true;
+	   }
+	return false;
+}
 
 }
