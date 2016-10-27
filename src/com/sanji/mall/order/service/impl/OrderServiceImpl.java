@@ -87,6 +87,10 @@ public class OrderServiceImpl implements OrderService {
 		Members member = membersMaper.selectByPrimaryKey(order.getMemberId());
 		member.setPoint(member.getPoint().add(order.getOrderPoints()));
 	}
+	
+	public void saveOrder(Order order){
+		orderMapper.insertSelective(order);
+	}
 
 	
 	public int updateByPrimaryKeySelective(Order order) {

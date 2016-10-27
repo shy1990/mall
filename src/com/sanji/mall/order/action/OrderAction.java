@@ -550,23 +550,25 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
 	 */
 	public void doNotNeedSession_addNewOrder() {
-				Members member = memberService.getMemberById("faca1f199c3f41a3a8d8d90173f8e540");
-				String orderId = ToolsUtil.getUUID();
-				order.setId(orderId);
-				order.setShipName(member.getTruename());
-				order.setArea(member.getArea());
-				//order.setShipZip(member.getZip());
-				order.setShipTel(member.getMobile());
-				//order.setShipEmail(member.getEmail());
-				order.setProvince(member.getProvince());
-				order.setCity(member.getCity());
-				order.setAddress(member.getAddress());
-				order.setMemberType("1");
-				order.setMemberId(member.getId());
-	            order.setOrderNum(order.getOrderNum());
-			    order.setCreatetime(new Date());
-			    order.setTotalCost(order.getTotalCost());
-			    orderService.save(order);
+				
+					Members member = memberService.getMemberById("faca1f199c3f41a3a8d8d90173f8e540");
+					String orderId = ToolsUtil.getUUID();
+					order.setId(orderId);
+					order.setShipName(member.getTruename());
+					order.setArea(member.getArea());
+					//order.setShipZip(member.getZip());
+					order.setShipTel(member.getMobile());
+					//order.setShipEmail(member.getEmail());
+					order.setProvince(member.getProvince());
+					order.setCity(member.getCity());
+					order.setAddress(member.getAddress());
+					order.setMemberType("1");
+					order.setMemberId(member.getId());
+		            order.setOrderNum(order.getOrderNum());
+				    order.setCreatetime(new Date());
+				    order.setTotalCost(order.getTotalCost());
+				    orderService.saveOrder(order);
+				
 	}
 	
 	

@@ -298,5 +298,7 @@ public interface OrderService {
      * @return
      */
 	boolean checkOrderCity(String id);
+	
+	public void saveOrder(Order order);
 
 }
