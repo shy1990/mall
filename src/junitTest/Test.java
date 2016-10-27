@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Test {
 	public static void main(String[] args) {
-		new Test().go();
+		//new Test().go();
+		new Test().test();
 	}
 
 	public void go() {
@@ -46,5 +47,11 @@ public class Test {
 			}
 		}
 
+	}
+	
+	
+	public void test(){
+		String x = "DL20150126192344143".substring(0, 2);
+		System.out.println("============"+x);
 	}
 }

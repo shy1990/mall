@@ -238,8 +238,12 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				// + "");
 				//if(orderService.checkOrderCity(order.getId())){
 					
+				if("LD".equals(order.getOrderNum().substring(0, 2))){
+					resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
+				}else{
+					resultPojo.setOrderAmount(order.getTotalCost()+"");
+				}
 				
-				resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
 				/*}else{
 					resultPojo.setOrderAmount(order.getActualPayNum()+"");
 				}*/
@@ -266,7 +270,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 	BigDecimal rate = new BigDecimal("1.0055"); //费率  
 	
 	
-	return ActualPayNum.multiply(rate).doubleValue();   
+	return ActualPayNum.add(new BigDecimal("14.5")).multiply(rate).doubleValue();   
 	}   
 	
 	public SandPayPojo getYdmallOrder(String orderNo){
@@ -413,7 +417,8 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									}
 	
 									editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
-	
+	                                //调用业务后台waterOrder
+									MsgUtil.sendToWaterOrder(order.getOrderNum(),order.getActualPayNum(),order.getCreatetime());
 								} else {
 									resultPojo.setResult_code("8");
 									resultPojo.setResult_type("重复提交，不给于处理");

@@ -522,6 +522,17 @@ public class MsgUtil {
 	  String strResult = HttpClientUtils.sendGetRequest(ResourceUtil.get("ecom_url")+"ecoms/api/"+url,null);
 	  System.out.println(ResourceUtil.get("ecom_url")+"ecoms/api/"+url);
   }
+  /**
+   * 调用业务后台WaterOrder接口
+   */
+  public static void sendToWaterOrder(String orderNum, BigDecimal actualPayNum,  Date createTime){
+	  Map<String, String> params = new HashMap<String, String>();
+	  params.put("payDate", DateUtil.getLongByDate(createTime)+"");
+	  params.put("payMoney", actualPayNum+"");
+	  String strResult = HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/waterOrder/pay/"+orderNum,
+				 params, null, null);
+	  
+  }
 
   private static void cancelOrder(String msg) {
     Map<String, String> params = new HashMap<String, String>();
