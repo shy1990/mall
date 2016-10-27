@@ -239,7 +239,11 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				//if(orderService.checkOrderCity(order.getId())){
 					
 				
-				resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
+				if("LD".equals(order.getOrderNum().substring(0, 2))){
+					resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
+				}else{
+					resultPojo.setOrderAmount(order.getTotalCost()+"");
+				}
 				/*}else{
 					resultPojo.setOrderAmount(order.getActualPayNum()+"");
 				}*/
@@ -266,7 +270,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 	BigDecimal rate = new BigDecimal("1.0055"); //费率  
 	
 	
-	return ActualPayNum.multiply(rate).doubleValue();   
+	return ActualPayNum.add(new BigDecimal("14.5")).multiply(rate).doubleValue();   
 	}   
 	
 	public SandPayPojo getYdmallOrder(String orderNo){
