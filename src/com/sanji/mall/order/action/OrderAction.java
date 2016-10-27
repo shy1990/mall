@@ -1393,15 +1393,14 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
 	 */
 	public void doNotNeedSession_addNewOrder() {
-		System.out.println("==========================");
 			Members member = memberService.getMemberById("");
 				String orderId = ToolsUtil.getUUID();
 				order.setId(orderId);
 				order.setShipName(member.getTruename());
 				order.setArea(member.getArea());
-				order.setShipZip(member.getZip());
+				//order.setShipZip(member.getZip());
 				order.setShipTel(member.getMobile());
-				order.setShipEmail(member.getEmail());
+				//order.setShipEmail(member.getEmail());
 				order.setProvince(member.getProvince());
 				order.setCity(member.getCity());
 				order.setAddress(member.getAddress());
@@ -1409,8 +1408,8 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 				order.setMemberId(member.getId());
 	            order.setOrderNum(order.getOrderNum());
 			    order.setCreatetime(new Date());
-			  //  order.setTotalCost(new BigDecimal(totalCost));
-			    orderService.save(order);
+			    order.setTotalCost(order.getTotalCost());
+			    orderService.saveOrder(order);
 	}
 
 	public int getSelected() {
