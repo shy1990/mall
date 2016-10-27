@@ -516,7 +516,7 @@ public class MsgUtil {
   }
 //	出库信息推送
   private static void sendOrderOutData(String orderNum) {
-	    String url = "?method=logistics.offline.send&app_id=222&sign=22222&timestamp="+ new Date().getTime() + "&tid=3333&company_code=4444&out_sid="+orderNum;
+	    String url = "?method=logistics.offline.send&app_id=222&sign=22222&timestamp="+ new Date().getTime() + "&out_sid=3333&company_code=4444&tid="+orderNum;
 	  System.out.println(url);
 //	  String strResult = HttpClientUtils.sendGetRequest("http://192.168.2.151:9090/v1/ecoms/api/"+url,null);
 	  String strResult = HttpClientUtils.sendGetRequest(ResourceUtil.get("ecom_url")+"ecoms/api/"+url,null);
