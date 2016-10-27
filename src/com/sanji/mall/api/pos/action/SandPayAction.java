@@ -417,8 +417,8 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									}
 	
 									editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
-	
-									MsgUtil.
+	                                //调用业务后台waterOrder
+									MsgUtil.sendToWaterOrder(order.getOrderNum(),order.getActualPayNum(),order.getCreatetime());
 								} else {
 									resultPojo.setResult_code("8");
 									resultPojo.setResult_type("重复提交，不给于处理");
