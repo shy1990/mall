@@ -77,7 +77,7 @@ public class MsgUtil {
   private static String SJ_DXQF_MEMBER_content = "尊敬的手机零售商店主：您已开通三际手机采购网会员权限，网址为WWW.3J1688.COM，可足不出户尊享全品类一站式手机采购服务，天天低价，限时送达，货到付款，两年延保，30天退换，当地三际服务站为您提供快速响应的无忧售后服务。您的登录名即为您的手机号码，默认密码为123456.请您务必及时登录及时修改密码以确保您的账户安全。如有问题请咨询当地移动公司渠道经理或三际服务站服务人员，也可拨打电话：400-937-1688。三际手机采购网竭诚为您服务。";
 
   private static Logger logger = Logger.getLogger(MsgUtil.class);
-  
+
   private static String APPLIED_REGISTER_SUCCESS = "申请注册";// 申请注册成功
 
   public static void MsgSenderMembers(String mobile) {
@@ -432,8 +432,11 @@ public class MsgUtil {
       String accNum = accNums + "";
       String msg = "{\"orderNum\":\"" + order.getOrderNum() + "\",\"mobiles\":\"" + mobiles + "\",\"skuNum\":\"" + skuNum + "\",\"username\":\""
        + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"acutalPrice\":\"" + order.getActualPayNum() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";
+//	    String msg_ = "{\"method\":\"logistics.offline.send\",\"app_id\":\"54321\",\"sign\":\"654123\",\"timestamp\":\""+new Date().getTime()+"\",\"tid\":\"123456\",\"companyCode\":\"casd\",\"outSid\":\""+order.getOrderNum()+"\"}";
       try {
         sendMessage1(msg);
+				//出库信息推送
+	      sendOrderOutData(order.getOrderNum());
         System.out.println("msg:" + msg);
       } catch (Exception e) {
         e.printStackTrace();
@@ -497,7 +500,7 @@ public class MsgUtil {
   private static void sendMessageToApp(JSONObject obj) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", obj.toJSONString());
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewPosPayments",
+    HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewPosPayments",
      params, null, null);
 //	          HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewPosPayments",
 //	          params, null, null);
@@ -508,8 +511,16 @@ public class MsgUtil {
     params.put("msg", msg);
    // HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
    //  params, null, null);
-    	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
-				 params, null, null);
+//    	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:9090/v1/push/pushNewOrder",
+	  HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewOrder",params, null, null);
+  }
+//	出库信息推送
+  private static void sendOrderOutData(String orderNum) {
+	    String url = "?method=logistics.offline.send&app_id=222&sign=22222&timestamp="+ new Date().getTime() + "&tid=3333&company_code=4444&out_sid="+orderNum;
+	  System.out.println(url);
+//	  String strResult = HttpClientUtils.sendGetRequest("http://192.168.2.151:9090/v1/ecoms/api/"+url,null);
+	  String strResult = HttpClientUtils.sendGetRequest(ResourceUtil.get("ecom_url")+"ecoms/api/"+url,null);
+	  System.out.println(ResourceUtil.get("ecom_url")+"ecoms/api/"+url);
   }
 
   private static void cancelOrder(String msg) {
@@ -517,7 +528,8 @@ public class MsgUtil {
     params.put("msg", msg);
 //		String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.146:7777/v1/push/cancelOrder",
 //				 params, null, null);
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/cancelOrder",
+//    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/cancelOrder",
+    HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/cancelOrder",
      params, null, null);
   }
 
@@ -747,7 +759,7 @@ public class MsgUtil {
     return result;
   }
 /**
- * 
+ *
  * @param mobiles 后台管理人员手机号
  * @param shopName 申请注册的手机店店名
  * @param truename 店主的名字
@@ -768,7 +780,7 @@ public static boolean CheckOrderFromBuzmgt(String orderNum) {
 	    params.put("orderNum", orderNum);
 			/*String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/remind/checkOrder",
 					 params, null, null);*/
-	   String strResult =  HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/remind/checkOrder",
+	   String strResult =  HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/remind/checkOrder",
 	     params, null, null);
 	   if("true".equals(strResult)){
 		   return true;
