@@ -110,7 +110,7 @@ response.flushBuffer();%>  --%>
 					</div>
 				</div>
 				<div class="clear"></div>
-			</div>
+			</div>k
 		</div>
 		<!--======================bottom开始============================-->
 		<div>
