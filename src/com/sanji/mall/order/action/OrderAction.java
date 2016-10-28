@@ -1394,7 +1394,8 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
 	 */
 	public void doNotNeedSession_addNewOrder() {
-		   if(!StringUtils.isEmpty(order.getOrderNum()) && !StringUtils.isEmpty(order.getTotalCost()+"")){
+		   
+		if(!StringUtils.isEmpty(order.getOrderNum()) && !StringUtils.isEmpty(order.getTotalCost()+"")){
 			   Members member = memberService.getMemberById("faca1f199c3f41a3a8d8d90173f8e540");
 				String orderId = ToolsUtil.getUUID();
 				order.setId(orderId);
