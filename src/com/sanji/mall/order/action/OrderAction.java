@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
@@ -550,7 +551,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
 	 */
 	public void doNotNeedSession_addNewOrder() {
-				
+				if(!StringUtils.isEmpty(order.getOrderNum()) && !StringUtils.isEmpty(order.getTotalCost()+"")){
 					Members member = memberService.getMemberById("faca1f199c3f41a3a8d8d90173f8e540");
 					String orderId = ToolsUtil.getUUID();
 					order.setId(orderId);
@@ -568,6 +569,8 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 				    order.setCreatetime(new Date());
 				    order.setTotalCost(order.getTotalCost());
 				    orderService.saveOrder(order);
+				}
+					
 				
 	}
 	
