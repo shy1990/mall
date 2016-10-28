@@ -506,9 +506,9 @@ public class MsgUtil {
   private static void sendMessage1(String msg) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", msg);
-   // HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
+   // HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
    //  params, null, null);
-    	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
+    	String strResult = HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
 				 params, null, null);
   }
   
@@ -517,12 +517,14 @@ public class MsgUtil {
    */
   public static void sendToWaterOrder(String orderNum, BigDecimal actualPayNum,  Date createTime){
 	  Map<String, String> params = new HashMap<String, String>();
-	  params.put("payDate", DateUtil.getLongByDate(createTime)+"");
+	  params.put("payDate", createTime.getTime()+"");
 	  params.put("payMoney", actualPayNum+"");
 	  String strResult = HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/waterOrder/pay/"+orderNum,
 				 params, null, null);
 	  
   }
+  
+  
 
   private static void cancelOrder(String msg) {
     Map<String, String> params = new HashMap<String, String>();
