@@ -460,18 +460,25 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
-							
+							<!-- 活动 -->
+							<a href="http://www.3j1688.com/special_161027/index.html">
+							<img src="images/yidonghd.png?<%=Math.random()%>" /> </a>
 							 <%-- <a> <img src="images/tongzhis1.png?<%=Math.random()%>" /> </a>  --%>
-							
-							 <%-- <a href="http://www.3j1688.com/goods/detail/1345.html">
-							<img src="images/3x123.png?<%=Math.random()%>" /> </a>  --%>
+							<!--荣耀6x -->
+							 <a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
+							<img src="images/rongyao6X.png?<%=Math.random()%>" /> </a>  
 							<%-- <a href="http://www.3j1688.com/special_161021/index.html?s=banner">
 							<img src="images/jqjhlb.png?<%=Math.random()%>" /> </a> --%>
 							
 							<!-- 配件活动 -->
 							<a href="http://www.3j1688.com/special_161009/index.html?s=banner">
 							<img src="images/jppjdjkh.jpg?<%=Math.random()%>" /> </a>
-							
+							<!--360q5  -->
+							<a href="http://www.3j1688.com/goods/detail/1442.html?s=bjd">
+							<img src="images/360q5.png?<%=Math.random()%>" /> </a>
+							<!--360N4a  -->
+							<a href="http://www.3j1688.com/goods/detail/1465.html">
+							<img src="images/360N4A.png?<%=Math.random()%>" /> </a>
 							<!-- 小米5s -->
 							<a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
 							<img src="images/xiaomi5sk.png?<%=Math.random()%>" /> </a>
@@ -698,18 +705,18 @@
 					<div class="myjQuery">
 						<div class="myjQueryContent" id="HomeFloorContent1">
 							<div>
-								<a href="http://www.3j1688.com/goods/detail/1385.html"
-									target="_blank"><img src="images/rycw5.png"
+								<a href="http://www.3j1688.com/goods/detail/1385.html?s=bjd"
+									target="_blank"><img src="images/images/rongyao55.png"
 									width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="http://www.3j1688.com/goods/detail/1261.html"
-									target="_blank"><img src="images/sxJ3110D4G.png"
+								<a href="http://www.3j1688.com/goods/detail/1261.html?s=bjd"
+									target="_blank"><img src="images/images/sanxingS.png"
 									width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="http://www.3j1688.com/goods/detail/1258.html"
-									target="_blank"><img src="images/hm3s.png"
+								<a href="http://www.3j1688.com/goods/detail/1258.html?s=bjd"
+									target="_blank"><img src="images/images/hongmi3s.png"
 									width="254" height="271" /> </a>
 							</div>
 						</div>
@@ -838,8 +845,9 @@
 									src="images/img_3f_01.jpg" width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="accessory/detail/AM270593.html" target="_blank"><img
-									src="images/app7pm.png" width="254" height="271" /> </a>
+								<a href="http://www.3j1688.com/accessory/detail/AM270591.html"
+									target="_blank"><img src="images/images/apple71.png"
+									width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
 								<a href="accessory/detail/AM030268.html" target="_blank"><img
@@ -893,18 +901,22 @@
 				<div class="home_main_04_ret">
 					<div class="myjQuery">
 						<div class="myjQueryContent" id="HomeFloorContent4">
+						
 							<div>
-								<a href="accessory/detail/8080010401.html" target="_blank"><img
+								<a href="accessory/detail/8080010301.html" target="_blank"><img
 									src="images/img_4f_01.jpg" width="254" height="271" /> </a>
 							</div>
+							
 							<div class="smask">
-								<a href="accessory/detail/809001002.html" target="_blank"><img
+								<a href="accessory/detail/817001001.html" target="_blank"><img
 									src="images/img_4f_02.jpg" width="254" height="271" /> </a>
 							</div>
-							<div class="smask">
-								<a href="accessory/detail/817001002.html" target="_blank"><img
-									src="images/img_4f_03.jpg" width="254" height="271" /> </a>
+							
+							<div>
+								<a href="http://www.3j1688.com/accessory/detail/817001002.html" target="_blank"><img
+									src="images/images/xiaomicdb.png" width="254" height="271" /> </a>
 							</div>
+							
 						</div>
 						<ul class="myjQueryNav" id="HomeFloorNav4">
 							<li class="current"></li>
@@ -956,7 +968,7 @@
 									src="images/img_5f_02.jpg" width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="accessory/detail/500564.html" target="_blank"><img
+								<a href="accessory/detail/500172.html" target="_blank"><img
 									src="images/img_5f_03.jpg" width="254" height="271" /> </a>
 							</div>
 						</div>

@@ -367,7 +367,7 @@
 					华为 : [],
 					荣耀 : [],
 					苹果 : [],
-					百立丰 : [],
+					//百立丰 : [],
 					三星 : [],
 					魅族 : [],
 					大神 : [],
@@ -475,14 +475,14 @@
 				src="images/banner_luyou.jpg" /> </a>
 		</c:if>
 		<c:if test="${jx=='lj'}">
-			<img src="images/hyjpp.png" alt="" width="1192" height="197"
+			<img src="images/heyueji4.png" alt="" width="1192" height="197"
 				border="0" usemap="#Map">
 			<map name="Map">
   <area shape="rect" coords="9,4,299,194" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
   <area shape="rect" coords="412,96,512,188" href="http://www.3j1688.com/goods/detail/1433.html" target="_blank">
   <area shape="rect" coords="513,96,611,187" href="http://www.3j1688.com/goods/detail/1434.html" target="_blank">
   <area shape="rect" coords="611,4,899,222" href="http://www.3j1688.com/goods/detail/1440.html" target="_blank">
-  <area shape="rect" coords="904,5,1186,194" href="http://www.3j1688.com/goods/detail/1438.html" target="_blank">
+  <area shape="rect" coords="904,5,1186,194" href="http://www.3j1688.com/goods/detail/1278.html" target="_blank">
             </map>
 
 			<!--  <map name="Map">
