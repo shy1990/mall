@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</c:if>
 			<!-- 发货状态 1已发货-->
 			<c:if test="${param.shipStatus==1}">
-				<a href="javascript:;" onclick="affirmGoods(this,'${param.id}')"><img src="/images/quersh.png" /><!-- 确认收货 --></a><br />
+			<%-- 	<a href="javascript:;" onclick="affirmGoods(this,'${param.id}')"><img src="/images/quersh.png" /><!-- 确认收货 --></a><br /> --%>
 				<!-- 判断是否超过七天，是否可以申请退款退货 -->
 				<c:if test="${param.showQuit==1}">
 					<%-- <a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">退款退货</a><br/> --%>
