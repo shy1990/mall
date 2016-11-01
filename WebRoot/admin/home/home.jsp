@@ -460,7 +460,7 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
-							<a href="http://www.3j1688.com/goods/dz/2/bjd.html">
+							<a href="http://www.3j1688.com/goods/detail/1416.html">
 							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a>
 							<!-- 活动 -->
 							<a href="http://www.3j1688.com/special_161027/index.html">

@@ -51,13 +51,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:if>
 			</c:if>
 			<!-- 发货状态 2已送达--> 
-			<c:if test="${param.shipStatus==2}">
+			<%-- <c:if test="${param.shipStatus==2}">
 				<a href="javascript:;" onclick="affirmGoods(this,'${param.id}')"><img src="/images/quersh.png" /></a><br />
 				<!-- 判断是否超过七天，是否可以申请退款退货 -->
 				<c:if test="${param.showQuit==1}">
-					<%-- <a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">退款退货</a><br/> --%>
+					<a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">退款退货</a><br/>
 				</c:if>
-			</c:if>
+			</c:if> --%>
 			<!-- 发货状态 3已收货-->
 			<c:if test="${param.shipStatus==3}">
 				<!-- 评论状态 0未评论-->
@@ -121,21 +121,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">取消订单</a><br/>
 		</c:if>
 		<!-- 发货状态 1已发货-->
-		<c:if test="${param.shipStatus==1 and param.payStatus==1}">
+		<%-- <c:if test="${param.shipStatus==1 and param.payStatus==1}">
 			<a href="javascript:;" onclick="affirmGoods(this,'${param.id}')"><img src="/images/quersh.png" /></a><br />
 			<!-- 判断是否超过七天，是否可以申请退款退货 -->
 			<c:if test="${param.showQuit==1}">
-				<%-- <a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">申请退款退货</a><br/> --%>
+				<a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">申请退款退货</a><br/>
 			</c:if>
-		</c:if>
+		</c:if> --%>
 		<!-- 发货状态 2已送达-->
-		<c:if test="${param.shipStatus==2}">
+		<%-- <c:if test="${param.shipStatus==2}">
 			<a href="javascript:;" onclick="affirmGoods(this,'${param.id}')"><img src="/images/quersh.png" /></a><br />
 			<!-- 判断是否超过七天，是否可以申请退款退货 -->
 			<c:if test="${param.showQuit==1}">
-				<%-- <a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">申请退款退货</a><br/> --%>
+				<a href="javascript:concelOrder('${param.id}','${param.orderNum }','');">申请退款退货</a><br/>
 			</c:if>
-		</c:if>
+		</c:if> --%>
 		
 		<!-- 发货状态 3已收货-->
 		<c:if test="${param.shipStatus==3}">
