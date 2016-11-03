@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -32,14 +33,18 @@ import com.sanji.mall.common.util.MsgUtil;
 import com.sanji.mall.common.util.PayUtil;
 import com.sanji.mall.common.util.ResourceUtil;
 import com.sanji.mall.common.util.ToolsUtil;
+import com.sanji.mall.goods.dao.GoodsMapper;
+import com.sanji.mall.goodsSku.dao.GoodsSkuMapper;
 import com.sanji.mall.members.service.MemberService;
 import com.sanji.mall.model.Admin;
+import com.sanji.mall.model.Goods;
 import com.sanji.mall.model.Members;
 import com.sanji.mall.model.Order;
 import com.sanji.mall.model.OrderItems;
 import com.sanji.mall.model.PayDeal;
 import com.sanji.mall.model.PayRefund;
 import com.sanji.mall.model.Regions;
+import com.sanji.mall.order.dao.OrderMapper;
 import com.sanji.mall.order.service.OrderService;
 import com.sanji.mall.pay.service.PayService;
 import com.sanji.mall.pojo.Json;
@@ -57,9 +62,11 @@ import com.yeepay.PaymentForOnlineService;
  * @date 2014-11-24 下午5:09:52
  */
 @Namespace("/pay")
-@Action(value = "yeePayAction", results = { @Result(name = "toPay", location = "/admin/pay/toPay.jsp"), @Result(name = "payState", location = "/admin/pay/payState.jsp"),
-		@Result(name = "reqPay", location = "/admin/pay/reqPay.jsp"), @Result(name = "payAgain", location = "/admin/pay/payAgain.jsp")
-// @Result(name = "reqRefund", location = "/admin/pay/reqRefund.jsp")
+@Action(value = "yeePayAction", results = { @Result(name = "toPay", location = "/admin/pay/toPay.jsp"),
+		@Result(name = "payState", location = "/admin/pay/payState.jsp"),
+		@Result(name = "reqPay", location = "/admin/pay/reqPay.jsp"),
+		@Result(name = "payAgain", location = "/admin/pay/payAgain.jsp")
+		// @Result(name = "reqRefund", location = "/admin/pay/reqRefund.jsp")
 })
 public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> {
 	private static final Logger logger = Logger.getLogger(YEEPayAction.class);
@@ -82,13 +89,18 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	private List<Regions> provinces;
 	private List<Regions> cityList;
 	private List<Regions> areaList;
-
+	@Resource
+	private GoodsSkuMapper goodsSkuMapper;
 	@Resource
 	private MemberService memberService;
 	@Resource
 	private OrderService orderService;
 	@Resource
 	private PayService payService;
+	@Autowired
+	private GoodsMapper goodsMapper;
+	@Autowired
+	private OrderMapper orderMapper;
 	// @Resource
 	// private RegionsService regionsService;
 	@Resource
@@ -104,7 +116,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	 * 
 	 * @Title: toPayByOrderId
 	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param @return 设定文件
+	 * @param @return
+	 *            设定文件
 	 * @return String 返回类型
 	 * @author ZhouZhangbao
 	 */
@@ -115,34 +128,83 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 			Json json = new Json();
 			Map<String, Object> param = new HashMap<String, Object>();
 			param.put("id", orderId);
+			boolean bl = false;
+			boolean ac = false;
+			int sum = 0;
 			boolean isStock = false;
 			String stockMsg = "";
 			// List<OrderItems> items =
 			// orderItemsService.gainSkuByOrderId(orderId);
 			order = orderService.gainDetail(param).get(0);
-			
-			
-			getRequest().setAttribute("hdGoods", orderService.checkerOrderThereHdGoods(sessionInfo.getLoginName(), order.getId()));
-			
-			//判断是否使用了红包
-			if(order.getHbNo()!=null&&null!=order.getHbNum()){
-				//如果使用了红包那么就在此处临时把总价格改为减去红包后的价格方便后边计算实际支付的价格
+
+			getRequest().setAttribute("hdGoods",
+					orderService.checkerOrderThereHdGoods(sessionInfo.getLoginName(), order.getId()));
+			List<OrderItems> items = order.getOrderItemss();
+			// 如果手机为两个以上 并且其中一个是红米pro 则订单减50
+						if (items != null && items.size() > 0) {
+
+							Goods goods;
+							for (OrderItems oi : items) {
+								if (oi.getTargetType().equals("sku")) {
+
+									sum = sum + 1;
+
+									String goodsId = goodsSkuMapper.selectById(oi.getTargetId()).getGoodsId();
+									goods = goodsMapper.selectByPrimaryKey(goodsId);
+
+									if (goods.getId().equals("35add73349d24b3884772982c21d55e3")) {
+										bl = true;
+									}
+									boolean ty = goods.getId().equals("35add73349d24b3884772982c21d55e3");
+									if (goods.getBrandId().equals("8ff601bacfae4e4f991f7029d755e62b")
+											|| goods.getBrandId().equals("88f276969ab845d686fa5aef53c5c833")
+											|| goods.getBrandId().equals("0c06c589041042b1a34a54d2b5bce67d")
+											|| goods.getBrandId().equals("5f005f8e8c034a128f8bb9612f342f54")) {
+										if (ty == false) {
+											ac = true;
+										}
+									}
+								}
+							}
+						}
+						System.out.println(orderId);
+						//Order orderup = new Order();
+						BigDecimal kl = new BigDecimal("50");
+						if(order.getRemark()==null){
+						if (sum >= 2 && bl == true && ac == true) {
+							// 订单实际支付金额减去50
+							Order orderI = orderMapper.selectByPrimaryKey(orderId);
+
+							BigDecimal summ = orderI.getTotalCost().subtract(kl);
+							order.setTotalCost(summ);
+							order.setId(orderId);
+							order.setMemberId(memberId);
+							order.setRemark("此订单符合减五十价格标准 红米pro");
+							orderService.updateByPrimaryKeySelective(order);
+						}
+						}
+			// 判断是否使用了红包
+			if (order.getHbNo() != null && null != order.getHbNum()) {
+				// 如果使用了红包那么就在此处临时把总价格改为减去红包后的价格方便后边计算实际支付的价格
 				order.setTotalCost(order.getTotalCost().subtract(order.getHbNum()));
 			}
+
 			
-			List<OrderItems> items = order.getOrderItemss();
 			for (OrderItems orderItems : items) {
 				if (null != orderItems.getGoodsSku()) {
 					if (orderItems.getNums().intValue() > orderItems.getGoodsSku().getStock().intValue()) {
 						isStock = true;
-						String name = orderItems.getGoodsSku().getEdition() == null ? "" : orderItems.getGoodsSku().getEdition() + orderItems.getGoodsSku().getGoods().getName();
-						stockMsg = stockMsg + "  您购买的手机商品 ‘" + name + "’ 实际库存为：" + orderItems.getGoodsSku().getStock() + "请修改后再支付！";
+						String name = orderItems.getGoodsSku().getEdition() == null ? ""
+								: orderItems.getGoodsSku().getEdition() + orderItems.getGoodsSku().getGoods().getName();
+						stockMsg = stockMsg + "  您购买的手机商品 ‘" + name + "’ 实际库存为：" + orderItems.getGoodsSku().getStock()
+								+ "请修改后再支付！";
 					}
 				} else if (null != orderItems.getAccessory()) {
 					int gmNum = orderItems.getNums().intValue();// 当前配件的数量
 
 					for (OrderItems orderItems2 : items) {
-						if (null != orderItems2.getGift() && orderItems2.getGift().getAccessory().getId().equals(orderItems.getAccessory().getId())) {
+						if (null != orderItems2.getGift() && orderItems2.getGift().getAccessory().getId()
+								.equals(orderItems.getAccessory().getId())) {
 							// 数量相加，
 							gmNum += orderItems2.getNums().intValue();// 累积购买的配件数量
 						}
@@ -150,16 +212,18 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 					// 判断是否超过库存
 					if (gmNum > Integer.parseInt(orderItems.getAccessory().getStock() + "")) {
 						isStock = true;
-						stockMsg = stockMsg + "  您购买的配件商品 ‘" + orderItems.getAccessory().getName() + "’ 实际库存为：" + orderItems.getAccessory().getStock() + "请修改后再支付！";
+						stockMsg = stockMsg + "  您购买的配件商品 ‘" + orderItems.getAccessory().getName() + "’ 实际库存为："
+								+ orderItems.getAccessory().getStock() + "请修改后再支付！";
 					}
 				} else if (null != orderItems.getPointGoods()) {
 					if (orderItems.getNums().intValue() > orderItems.getPointGoods().getStock().intValue()) {
 						isStock = true;
-						stockMsg = stockMsg + "  您购买的积分商品 ‘" + orderItems.getPointGoods().getName() + "’ 实际库存为：" + orderItems.getPointGoods().getStock() + "请修改后再支付！";
+						stockMsg = stockMsg + "  您购买的积分商品 ‘" + orderItems.getPointGoods().getName() + "’ 实际库存为："
+								+ orderItems.getPointGoods().getStock() + "请修改后再支付！";
 					}
 				}
 			}
-
+			
 			if (isStock) {// 库存不足
 				json.setMsg(stockMsg);
 				json.setSuccess(false);
@@ -219,7 +283,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	 * 
 	 * @Title: toYEEPayByOrderId
 	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param @return 设定文件
+	 * @param @return
+	 *            设定文件
 	 * @return String 返回类型
 	 * @author ZhouZhangbao
 	 */
@@ -251,38 +316,42 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 
 			// 判断是不是货到付款
 			if ("SJ-HDFK".equals(frpId)) {// 货到付款//调用钱包余额支付状态为使用中
-				
+
 				// 线上支付后的在货到付款的吧5块加回来。
-				/*if (remark == null ? false : remark.contains("立减5元")) {
-					totalCost = totalCost.add(BigDecimal.valueOf(5));
-					order.setTotalCost(totalCost);
-					// orderService.updatePrice(order.getId(),
-					// order.getTotalCost(), "", BigDecimal.ZERO,
-					// BigDecimal.ZERO);
-
-					order.setRemark("");
-
-				}*/
+				/*
+				 * if (remark == null ? false : remark.contains("立减5元")) {
+				 * totalCost = totalCost.add(BigDecimal.valueOf(5));
+				 * order.setTotalCost(totalCost); //
+				 * orderService.updatePrice(order.getId(), //
+				 * order.getTotalCost(), "", BigDecimal.ZERO, //
+				 * BigDecimal.ZERO);
+				 * 
+				 * order.setRemark("");
+				 * 
+				 * }
+				 */
 				json = balancePay();// 调用钱包支付//pos钱包混合暂时不启用
-				
-				 if (!json.getSuccess()) {// 钱包支付异常 // 
-					 // json.setMsg("支付出现异常！");
-					 // json.setSuccess(false); 
-					  request.setAttribute("json", json); 
-					  return "payState"; 
-				  }
-				
-				 //短信通知相关人员//推送到管易把订单信息
-				adminService.msgInfoAdminByRegionsAndType(order.getProvince(), order.getCity(), order.getArea(), "2", null, order);
+
+				if (!json.getSuccess()) {// 钱包支付异常 //
+					// json.setMsg("支付出现异常！");
+					// json.setSuccess(false);
+					request.setAttribute("json", json);
+					return "payState";
+				}
+
+				// 短信通知相关人员//推送到管易把订单信息
+				adminService.msgInfoAdminByRegionsAndType(order.getProvince(), order.getCity(), order.getArea(), "2",
+						null, order);
 				if (!"4dec69e6af0c4346beac65c6f332aa5d".equals(sessionInfo.getUserId())) {// 过滤掉测试账号，测试账号数据不推送到管易
 					Members m = memberService.gainMembersDetailById(sessionInfo.getUserId());
 					Admin admin = adminService.getAdminById(m.getAdminId());
-					Map<String, Object> map = EcErpUtil.OrderAddNew(order, sessionInfo.getLoginName(), "", "", "", "", "1",admin!=null?admin.getTruename():"没有对应业务名称");
+					Map<String, Object> map = EcErpUtil.OrderAddNew(order, sessionInfo.getLoginName(), "", "", "", "",
+							"1", admin != null ? admin.getTruename() : "没有对应业务名称");
 					if (null != map.get("tid") && !"".equals(map.get("tid"))) {
 						order.setEcerpNo(map.get("tid") + "");
 						order.setEcerpCreated(map.get("created") + "");
-						//服务站经理存在就将此订单向APP推送
-						if(admin != null && !"".equals(admin)){
+						// 服务站经理存在就将此订单向APP推送
+						if (admin != null && !"".equals(admin)) {
 							String mobile2 = admin.getMobilephone();
 							MsgUtil.MsgInfoXDApp(mobile2, order, m);
 						}
@@ -291,8 +360,7 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 					order.setPayMent("1");
 					orderService.updateEcerpById(order);
 				}
-				
-				 
+
 				MsgUtil.MsgHDFKSuccess(order.getShipTel(), order.getOrderNum());
 				json.setMsg("客官您选择的为货到付款！我们会尽快安排发货，请耐心等待");
 				List<OrderItems> orderItemss = order.getOrderItemss();
@@ -337,21 +405,22 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 				// 总金额小于2000不减5元
 				// 如果该用户今天没有线上支付并且订单金额大于2000元的订单那么就执行立减5元的代码
 				String memberId = sessionInfo.getUserId();
-				/*if (totalCost.compareTo(BigDecimal.valueOf(2000)) > 0 && !(remark == null ? false : remark.contains("立减5元")) && orderService.updatePriceByMid(memberId) == 0) {
+				/*
+				 * if (totalCost.compareTo(BigDecimal.valueOf(2000)) > 0 &&
+				 * !(remark == null ? false : remark.contains("立减5元")) &&
+				 * orderService.updatePriceByMid(memberId) == 0) {
+				 * 
+				 * // 下面为立减5元的代码 logger.info("线上支付立减五元。订单号:" +
+				 * order.getOrderNum()); totalCost =
+				 * totalCost.subtract(BigDecimal.valueOf(5)); if
+				 * (totalCost.compareTo(BigDecimal.ZERO) < 0) { totalCost =
+				 * BigDecimal.ZERO; } order.setTotalCost(totalCost);
+				 * order.setRemark("线上支付立减5元");
+				 * 
+				 * }
+				 */
 
-					// 下面为立减5元的代码
-					logger.info("线上支付立减五元。订单号:" + order.getOrderNum());
-					totalCost = totalCost.subtract(BigDecimal.valueOf(5));
-					if (totalCost.compareTo(BigDecimal.ZERO) < 0) {
-						totalCost = BigDecimal.ZERO;
-					}
-					order.setTotalCost(totalCost);
-					order.setRemark("线上支付立减5元");
-
-				}*/
-				
-				//检查订单是否活动商品如果是，那么就添加备注活动商品
-				
+				// 检查订单是否活动商品如果是，那么就添加备注活动商品
 
 				// 如果钱包编号不为空，那么就不再调用钱包这部分功能
 				if (null == order.getWalletPayNo() || "".equals(order.getWalletPayNo().trim())) {
@@ -388,17 +457,14 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	/**
 	 * 修改订单价格
 	 * 
-	 * @Title: updatePrice
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param 设定文件
-	 * @return void 返回类型
-	 * @author 田超强
-	 * @throws
+	 * @Title: updatePrice @Description: TODO(这里用一句话描述这个方法的作用) @param
+	 * 设定文件 @return void 返回类型 @author 田超强 @throws
 	 */
 	private void updatePrice() {
 
 		// 修改订单价格
-		orderService.updatePrice(order.getId(), order.getTotalCost(), order.getRemark(), order.getWalletNum(), order.getActualPayNum(), order.getWalletPayNo());
+		orderService.updatePrice(order.getId(), order.getTotalCost(), order.getRemark(), order.getWalletNum(),
+				order.getActualPayNum(), order.getWalletPayNo());
 	}
 
 	/**
@@ -406,7 +472,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	 * 
 	 * @Title: YEEPayReturnAction
 	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param @return 设定文件
+	 * @param @return
+	 *            设定文件
 	 * @return String 返回类型
 	 * @author ZhouZhangbao
 	 */
@@ -435,10 +502,12 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 			 * 
 			 * );
 			 */
-			
-			isOK = PaymentForOnlineService.verifyCallback(yeePayPojo.getHmac(), Configuration.getInstance().getValue("p1_MerId"), yeePayPojo.getR0_Cmd(), yeePayPojo.getR1_Code(),
-					yeePayPojo.getR2_TrxId(), yeePayPojo.getR3_Amt(), yeePayPojo.getR4_Cur(), "三际手机批发支付", yeePayPojo.getR6_Order(), yeePayPojo.getR7_Uid(), yeePayPojo.getR8_MP(),
-					yeePayPojo.getR9_BType(), Configuration.getInstance().getValue("keyValue"));
+
+			isOK = PaymentForOnlineService.verifyCallback(yeePayPojo.getHmac(),
+					Configuration.getInstance().getValue("p1_MerId"), yeePayPojo.getR0_Cmd(), yeePayPojo.getR1_Code(),
+					yeePayPojo.getR2_TrxId(), yeePayPojo.getR3_Amt(), yeePayPojo.getR4_Cur(), "三际手机批发支付",
+					yeePayPojo.getR6_Order(), yeePayPojo.getR7_Uid(), yeePayPojo.getR8_MP(), yeePayPojo.getR9_BType(),
+					Configuration.getInstance().getValue("keyValue"));
 			if (isOK) {
 				// 在接收到支付结果通知后，判断是否进行过业务逻辑处理，不要重复进行业务逻辑处理
 				if (yeePayPojo.getR1_Code().equals("1")) {
@@ -469,7 +538,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 						payDeal.setDealId(yeePayPojo.getR2_TrxId());
 						payDeal.setDealType("yeePay");
 						payDeal.setPayType("gateway");
-						payDeal.setCreateTime(DateUtil.noformatStringToDate(yeePayPojo.getRp_PayDate(), "yyyy-MM-dd hh:mm:ss"));
+						payDeal.setCreateTime(
+								DateUtil.noformatStringToDate(yeePayPojo.getRp_PayDate(), "yyyy-MM-dd hh:mm:ss"));
 						payService.insetPayDealStock(payDeal);
 						// 如果支付密码不为空//线上支付
 						/*
@@ -488,11 +558,12 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 						 */
 
 						// 易宝支付成功，那么就修改该笔钱包交易的状态为成功
-						if(order.getWalletPayNo()!=null&&!"".equals(order.getWalletPayNo())){
+						if (order.getWalletPayNo() != null && !"".equals(order.getWalletPayNo())) {
 							updateState(order.getWalletPayNo());
 						}
-						
-						sendMsgErpPoint(yeePayPojo.getR2_TrxId() + order.getWalletPayNo(), yeePayPojo.getR3_Amt(), yeePayPojo.getRp_PayDate(), "0");// 发送短信，推动到管易，增减积分
+
+						sendMsgErpPoint(yeePayPojo.getR2_TrxId() + order.getWalletPayNo(), yeePayPojo.getR3_Amt(),
+								yeePayPojo.getRp_PayDate(), "0");// 发送短信，推动到管易，增减积分
 
 					} else {
 						// System.out.println("该交易流水号已经处理!");
@@ -502,12 +573,14 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 				}
 			} else {
 				// System.out.println("交易签名被篡改!");
-				MsgUtil.MsgSenderAdminByError("交易(付款)签名被篡改! 商家订单号:" + yeePayPojo.getR6_Order() + " 易宝支付交易流水号:" + yeePayPojo.getR2_TrxId());
+				MsgUtil.MsgSenderAdminByError(
+						"交易(付款)签名被篡改! 商家订单号:" + yeePayPojo.getR6_Order() + " 易宝支付交易流水号:" + yeePayPojo.getR2_TrxId());
 				json.setMsg("您的订单支付失败！代码：01125");
 				json.setSuccess(false);
 			}
 		} catch (Exception e) {
-			MsgUtil.MsgSenderAdminByError("订单出现异常！订单ID：" + yeePayPojo.getR6_Order() + ";易宝支付交易流水号:" + yeePayPojo.getR2_TrxId());
+			MsgUtil.MsgSenderAdminByError(
+					"订单出现异常！订单ID：" + yeePayPojo.getR6_Order() + ";易宝支付交易流水号:" + yeePayPojo.getR2_TrxId());
 			json.setMsg("非常抱歉，您的订单支出现异常！请联系我们的客服！");
 			json.setSuccess(false);
 		}
@@ -523,7 +596,7 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 			RestTemplate restTemplate = new RestTemplate();
 			Map<String, Object> param = new HashMap<String, Object>();
 			param.put("status", "SUCCESS");
-			// System.out.println(url + "        " + param);
+			// System.out.println(url + " " + param);
 			restTemplate.put(url, param);
 
 		} catch (Exception e) {
@@ -534,29 +607,26 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	/**
 	 * 发送短信，推动到管易，增减积分
 	 * 
-	 * @Title: sendMsgErpPoint
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param @param payId 支付序列号
-	 * @param @param payNum 支付金额
-	 * @param @param payTime 支付时间
-	 * @param @param isCod 是否货到付款，0-非货到付款,1-货到付款
-	 * @return void 返回类型
-	 * @author 田超强
-	 * @throws
+	 * @Title: sendMsgErpPoint @Description: TODO(这里用一句话描述这个方法的作用) @param @param
+	 * payId 支付序列号 @param @param payNum 支付金额 @param @param payTime
+	 * 支付时间 @param @param isCod 是否货到付款，0-非货到付款,1-货到付款 @return void 返回类型 @author
+	 * 田超强 @throws
 	 */
 	private void sendMsgErpPoint(String payId, String payNum, String payTime, String isCod) {
 		Members m = memberService.gainMembersDetailById(order.getMemberId());
-		adminService.msgInfoAdminByRegionsAndType(order.getProvince(), order.getCity(), order.getArea(), "2", null, order);
+		adminService.msgInfoAdminByRegionsAndType(order.getProvince(), order.getCity(), order.getArea(), "2", null,
+				order);
 		if (!"4dec69e6af0c4346beac65c6f332aa5d".equals(m.getId())) {// 过滤掉测试账号，测试账号不推送到管易
 			Admin admin = adminService.getAdminById(m.getAdminId());
 
-			Map<String, Object> map = EcErpUtil.OrderAddNew(order, m.getUsername(), payId, "017", payNum, payTime, isCod,admin!=null?admin.getTruename():"没有对应业务名称");
+			Map<String, Object> map = EcErpUtil.OrderAddNew(order, m.getUsername(), payId, "017", payNum, payTime,
+					isCod, admin != null ? admin.getTruename() : "没有对应业务名称");
 
 			if (null != map.get("tid") && !"".equals(map.get("tid"))) {
 				order.setEcerpNo(map.get("tid") + "");
 				order.setEcerpCreated(map.get("created") + "");
-				//服务站经理存在就将此订单向APP推送
-				if(admin != null && !"".equals(admin)){
+				// 服务站经理存在就将此订单向APP推送
+				if (admin != null && !"".equals(admin)) {
 					String mobile2 = admin.getMobilephone();
 					MsgUtil.MsgInfoXDApp(mobile2, order, m);
 				}
@@ -586,29 +656,25 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	/**
 	 * 钱包支付
 	 * 
-	 * @Title: balancePay
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param @return 设定文件
-	 * @return String 返回类型
-	 * @author 田超强
-	 * @throws
+	 * @Title: balancePay @Description: TODO(这里用一句话描述这个方法的作用) @param @return
+	 * 设定文件 @return String 返回类型 @author 田超强 @throws
 	 */
 	public Json balancePay() {
 		Json j = new Json();
 		try {
 			SessionInfo sessionInfo = (SessionInfo) this.session.get(ResourceUtil.getSessionInfoName());
-			boolean isAllBalance = false;//是否全部钱吧支付
+			boolean isAllBalance = false;// 是否全部钱吧支付
 
-			//判断是否使用了红包
-			if(order.getHbNo()!=null&&null!=order.getHbNum()){
-				//如果使用了红包那么就在此处临时把总价格改为减去红包后的价格方便后边计算实际支付的价格
+			// 判断是否使用了红包
+			if (order.getHbNo() != null && null != order.getHbNum()) {
+				// 如果使用了红包那么就在此处临时把总价格改为减去红包后的价格方便后边计算实际支付的价格
 				order.setTotalCost(order.getTotalCost().subtract(order.getHbNum()));
 			}
-			
-			
-			if (getPayPwd() != null && !"".equals(getPayPwd().trim())&&request.getSession().getAttribute("balance")!=null) {// 如果支付密码不为空那么就是用钱包支付
-				
-				BigDecimal balance = new BigDecimal(request.getSession().getAttribute("balance").toString());//从session里面获取用户余额
+
+			if (getPayPwd() != null && !"".equals(getPayPwd().trim())
+					&& request.getSession().getAttribute("balance") != null) {// 如果支付密码不为空那么就是用钱包支付
+
+				BigDecimal balance = new BigDecimal(request.getSession().getAttribute("balance").toString());// 从session里面获取用户余额
 				if (getPayPwd().trim().length() < 8) {
 					j.setMsg("支付密码不正确");
 					j.setSuccess(false);
@@ -617,7 +683,7 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 
 				if (balance.doubleValue() >= order.getTotalCost().doubleValue()) {// 如果钱包余额大于等于需要支付的价格，那么就是全部钱包支付
 					order.setWalletNum(order.getTotalCost());// 钱包支付价格
-					isAllBalance = true;//全部钱包支付
+					isAllBalance = true;// 全部钱包支付
 				} else {// 否则就是支付钱包所有余额
 					order.setWalletNum(balance);
 				}
@@ -639,33 +705,34 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 					order.setActualPayNum(BigDecimal.ZERO);// 实际支付价格
 				}
 				// 线上支付混合支付等到回调的时候改变支付状态。。。
-				j = qbService.addPay(tradeType, order.getWalletNum(), sessionInfo.getLoginName(), getPayPwd(), "http://" + request.getServerName() + "/order/detail.html?id="
-						+ order.getId(), order.getOrderNum());
-				if (j.getSuccess()) {//成功
+				j = qbService.addPay(tradeType, order.getWalletNum(), sessionInfo.getLoginName(), getPayPwd(),
+						"http://" + request.getServerName() + "/order/detail.html?id=" + order.getId(),
+						order.getOrderNum());
+				if (j.getSuccess()) {// 成功
 					order.setWalletPayNo(j.getMsg());
-				}else {
-					return j;//钱包支付调用异常
+				} else {
+					return j;// 钱包支付调用异常
 				}
 				// }
 			} else {
-				//TODO 判断当前订单里面钱包流水号不为空，并且此次请求是pos支付。那么就不要再改价格相关东西
-				if(order.getWalletPayNo()!=null&&!"".equals(order.getWalletPayNo())&&"SJ-HDFK".equals(frpId)){
-					//修改钱包交易备注为，货到付款和钱包混合
+				// TODO 判断当前订单里面钱包流水号不为空，并且此次请求是pos支付。那么就不要再改价格相关东西
+				if (order.getWalletPayNo() != null && !"".equals(order.getWalletPayNo()) && "SJ-HDFK".equals(frpId)) {
+					// 修改钱包交易备注为，货到付款和钱包混合
 					qbService.editDescription(order.getWalletPayNo(), "钱包和POS混合支付");
-				}else{
+				} else {
 					order.setActualPayNum(order.getTotalCost());// 实际支付价格
 					order.setWalletNum(BigDecimal.ZERO);// 钱包支付价格
 				}
 				j.setSuccess(true);
 			}
 
-			//如果使用了红包那么修改价格之前要把之前临时减去的加回来//保证存储在数据库的总价格不变
-			if(order.getHbNo()!=null&&null!=order.getHbNum()){
+			// 如果使用了红包那么修改价格之前要把之前临时减去的加回来//保证存储在数据库的总价格不变
+			if (order.getHbNo() != null && null != order.getHbNum()) {
 				order.setTotalCost(order.getTotalCost().add(order.getHbNum()));
 			}
-			
+
 			updatePrice();
-			
+
 			// 全部余额支付并且，线上支付//直接付款改订单状态跳转到付款成功页面
 			if (isAllBalance && !"SJ-HDFK".equals(frpId)) {// 是全额钱包支付并且支付价格不为零
 				// 判断支付是否成功
@@ -677,7 +744,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 					o.setPayStatus("1");
 					orderService.updateByPrimaryKeySelective(o);
 					// 推送到管易
-					sendMsgErpPoint(order.getWalletPayNo(), order.getWalletNum().toString(), new Date().toString(), "0");// 发送短信，推动到管易，增减积分
+					sendMsgErpPoint(order.getWalletPayNo(), order.getWalletNum().toString(), new Date().toString(),
+							"0");// 发送短信，推动到管易，增减积分
 					j.setObj("payState");
 				}
 				// return "payState";
@@ -695,13 +763,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	/**
 	 * 增减用户积分
 	 * 
-	 * @Title: reducePoint
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param orderItemss
-	 *            订单详情
-	 * @return void 返回类型
-	 * @author peter
-	 * @throws
+	 * @Title: reducePoint @Description: TODO(这里用一句话描述这个方法的作用) @param
+	 * orderItemss 订单详情 @return void 返回类型 @author peter @throws
 	 */
 	public void reducePoint(List<OrderItems> orderItemss) {
 		int sumJF = 0;
@@ -745,13 +808,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	/**
 	 * 更新用户积分信息
 	 * 
-	 * @Title: editPoint
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param money
-	 *            退款金额数量
-	 * @return void 返回类型
-	 * @author 田超强
-	 * @throws
+	 * @Title: editPoint @Description: TODO(这里用一句话描述这个方法的作用) @param money
+	 * 退款金额数量 @return void 返回类型 @author 田超强 @throws
 	 */
 	public boolean editPoint(BigDecimal money, String userId) {
 		Members member = memberService.getMemberById(userId);
@@ -772,7 +830,7 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 
 	public void doNotNeedSession_toEcp() {
 		Order or = orderService.gainOrderALLByID("4ba95c79f391454294d440109e82a5a7");
-		Map<String, Object> map = EcErpUtil.OrderAddNew(or, "济阳县孙耿镇星期六手机卖场", "", "", "", "20150209153010005", "1","");
+		Map<String, Object> map = EcErpUtil.OrderAddNew(or, "济阳县孙耿镇星期六手机卖场", "", "", "", "20150209153010005", "1", "");
 		if (null != map.get("tid") && !"".equals(map.get("tid"))) {
 			or.setEcerpNo(map.get("tid") + "");
 			or.setEcerpCreated(map.get("created") + "");
@@ -785,7 +843,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	 * 
 	 * @Title: reFundByOrderId
 	 * @Description: TODO(这里用一句话描述这个方法的作用)
-	 * @param @return 设定文件
+	 * @param @return
+	 *            设定文件
 	 * @return String 返回类型
 	 * @author ZhouZhangbao
 	 */
