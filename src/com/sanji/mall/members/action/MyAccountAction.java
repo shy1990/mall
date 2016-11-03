@@ -12,12 +12,14 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.sanji.mall.collect.service.CollectService;
 import com.sanji.mall.common.util.BaseAction;
 import com.sanji.mall.common.util.DateUtil;
 import com.sanji.mall.common.util.MD5;
+import com.sanji.mall.common.util.MsgUtil;
 import com.sanji.mall.common.util.ResourceUtil;
 import com.sanji.mall.common.util.ToolsUtil;
 import com.sanji.mall.members.service.MemberService;
@@ -67,7 +69,6 @@ public class MyAccountAction extends BaseAction implements ModelDriven<Members> 
 	private RegionsService regionsService;
 	@Resource
 	private OrderService orderService;
-
 	@Resource
 	private CollectService collectService;
 	@Resource
@@ -155,7 +156,7 @@ public class MyAccountAction extends BaseAction implements ModelDriven<Members> 
 
 		return "tofixMobileUI";
 	}
-
+    
 	/**
 	 * 跳转到修改手机号页面
 	 * 
@@ -169,7 +170,13 @@ public class MyAccountAction extends BaseAction implements ModelDriven<Members> 
 	public String fixMobile() {
 		sInfo = (SessionInfo) session.get(ResourceUtil.getSessionInfoName());
 		member.setId(sInfo.getUserId());
+		String oldPhone=sInfo.getMoblie();
+		String newPhone=member.getMobile();
 		myAccountService.modifyMember(member);
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("oldPhone", oldPhone);
+		jsonObj.put("newPhone", newPhone);
+		MsgUtil.sendMessageToApps(jsonObj);
 		return "fixMoblieSeccess";
 	}
 

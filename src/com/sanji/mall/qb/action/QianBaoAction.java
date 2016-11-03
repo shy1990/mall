@@ -35,8 +35,8 @@ public class QianBaoAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static final String KEY = "doubi";
 	// private static final String BASE_URL = "http://localhost:8082/";
-	private static final String BASE_URL = "http://115.28.92.73:58081/";//跳转到钱包的地址
-	//private static final String BASE_URL = "http://qb.3j1688.com/";//跳转到钱包的地址
+	//private static final String BASE_URL = "http://115.28.92.73:58081/";//跳转到钱包的地址
+	private static final String BASE_URL = "http://qb.3j1688.com/";//跳转到钱包的地址
 
 	@Autowired
 	private QbService qbService;
