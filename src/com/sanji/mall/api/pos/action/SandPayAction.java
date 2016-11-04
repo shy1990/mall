@@ -426,6 +426,14 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 	
 									try {
 										// 增积分
+										order = orderService.gainOrderALLByID(sandPayPojo.getOrderId());
+										editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
+										if("LD".equals(order.getOrderNum().substring(0, 2))){
+											 MsgUtil.sendToWaterOrder(order.getOrderNum(), new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")), order.getPayTime());	
+										}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+											MsgUtil.sendToWaterOrder(order.getOrderNum(), order.getTotalCost(), order.getPayTime());
+										}
+										//调用业务后台WaterOrder接口
 										List<OrderItems> orderItemss = order.getOrderItemss();
 										addPoint(orderItemss);
 									} catch (Exception e) {
@@ -434,9 +442,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 										e.printStackTrace();
 									}
 	
-									editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
-	                                //调用业务后台waterOrder
-									MsgUtil.sendToWaterOrder(order.getOrderNum(),order.getActualPayNum(),order.getCreatetime());
+									
 								} else {
 									resultPojo.setResult_code("8");
 									resultPojo.setResult_type("重复提交，不给于处理");
