@@ -375,17 +375,32 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 						//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "pos回调成功老商城订单:"+sandPayPojo.getEmployeeId()+"   订单号："+sandPayPojo.getOrderId());
 						order = orderService.gainOrderByID(sandPayPojo.getOrderId());
 						if (null != order) {
+							double f1 = 0;
+							if("LD".equals(order.getOrderNum().substring(0, 2))){
+								 f1 = Double.parseDouble(String.format("%.2f", new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")).doubleValue()));
+							}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+								 f1 = Double.parseDouble(String.format("%.2f", order.getTotalCost().doubleValue()));
+							}else{
+								 f1 = Double.parseDouble(String.format("%.2f", mul(order.getActualPayNum())));
+							}
 							
-							double f1 = Double.parseDouble(String.format("%.2f", mul(order.getActualPayNum())));
+							
 							Double   u =  f1 - Double.valueOf(sandPayPojo.getPayAmount() + "") ;
+							
 							if (u == 0.0) {// 比较订单价格是否相同
 								PayDeal deal = payService.gainDealByDeal(sandPayPojo.getPayNO(), sandPayPojo.getCompanyName());
 								if (null == deal) {
 									deal = new PayDeal();
 									deal.setId(ToolsUtil.getUUID());
 									deal.setCreateTime(new Date());
+									if("LD".equals(order.getOrderNum().substring(0, 2))){
+									 deal.setOrderAmount(new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")));
+									}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+										 deal.setOrderAmount(order.getTotalCost());
+									}else{
+										 deal.setOrderAmount(new BigDecimal(mul(order.getActualPayNum())));
+									}
 									
-									deal.setOrderAmount(new BigDecimal(mul(order.getActualPayNum())));
 									deal.setDealFee(new BigDecimal(sandPayPojo.getPayAmount()));
 									deal.setDealState("SUCCESS");
 									deal.setDealSigunre(sandPayPojo.getHmac());
@@ -399,6 +414,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									deal.setBankCardNo(sandPayPojo.getBankCardNo());
 									deal.setBankCardName(sandPayPojo.getBankCardName());
 									payService.insetPayDeal(deal);
+									
 									resultPojo.setOrderId(order.getId());
 									resultPojo.setOrderNo(order.getOrderNum());
 									resultPojo.setPayNO(sandPayPojo.getPayNO());
