@@ -239,9 +239,11 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				//if(orderService.checkOrderCity(order.getId())){
 					
 				if("LD".equals(order.getOrderNum().substring(0, 2))){
-					resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
-				}else{
+					resultPojo.setOrderAmount(new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20"))+"");
+				}else if("DL".equals(order.getOrderNum().substring(0, 2))){
 					resultPojo.setOrderAmount(order.getTotalCost()+"");
+				}else{
+					resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
 				}
 				
 				/*}else{
