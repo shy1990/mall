@@ -381,21 +381,15 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 							double f1 = 0;
 							if("LD".equals(order.getOrderNum().substring(0, 2))){
 								 f1 = Double.parseDouble(String.format("%.2f", new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")).doubleValue()));
-							 System.out.println("===========>>LD=="+f1);
 							}else if("DL".equals(order.getOrderNum().substring(0, 2))){
 								 f1 = Double.parseDouble(String.format("%.2f", order.getTotalCost().doubleValue()));
-								 System.out.println("===========>>DL=="+f1);
 							}else{
 								 f1 = Double.parseDouble(String.format("%.2f", mul(order.getActualPayNum())));
-								 System.out.println("===========>>=="+f1);
 							}
 							
 							
 							Double   u =  f1 - Double.valueOf(sandPayPojo.getPayAmount() + "") ;
 							
-							System.out.println("=============>>>>>>>"+Double.valueOf(sandPayPojo.getPayAmount() + ""));
-							
-							System.out.println("====================+++++++++++"+u);
 							if (u == 0.0) {// 比较订单价格是否相同
 								PayDeal deal = payService.gainDealByDeal(sandPayPojo.getPayNO(), sandPayPojo.getCompanyName());
 								if (null == deal) {
@@ -404,13 +398,10 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									deal.setCreateTime(new Date());
 									if("LD".equals(order.getOrderNum().substring(0, 2))){
 									 deal.setOrderAmount(new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")));
-									 System.out.println("=====>>>>>>>>>>LD"+new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")));
 									}else if("DL".equals(order.getOrderNum().substring(0, 2))){
 										 deal.setOrderAmount(order.getTotalCost());
-										 System.out.println(">>>>>>>>>>DL"+order.getTotalCost());
 									}else{
 										 deal.setOrderAmount(new BigDecimal(mul(order.getActualPayNum())));
-										 System.out.println(">>>>>>>>>>+++++++"+new BigDecimal(mul(order.getActualPayNum())));
 									}
 									
 									deal.setDealFee(new BigDecimal(sandPayPojo.getPayAmount()));
@@ -425,12 +416,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									deal.setOrderNo(order.getOrderNum());
 									deal.setBankCardNo(sandPayPojo.getBankCardNo());
 									deal.setBankCardName(sandPayPojo.getBankCardName());
-									try {
-										System.out.println("=============insetPayDeal");
-										payService.insetPayDeal(deal);
-									} catch (Exception e) {
-										System.out.println("=======>>>>ERROR===="+e.getMessage());
-									}
+									payService.insetPayDeal(deal);
 									
 									resultPojo.setOrderId(order.getId());
 									resultPojo.setOrderNo(order.getOrderNum());
@@ -444,15 +430,11 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									try {
 										// 增积分
 										order = orderService.gainOrderALLByID(sandPayPojo.getOrderId());
-										System.out.println("=============gainOrderALLByID");
 										editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
-										System.out.println("=============editBalancePay");
 										if("LD".equals(order.getOrderNum().substring(0, 2))){
 											 MsgUtil.sendToWaterOrder(order.getOrderNum(), new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")), order.getPayTime());	
-											 System.out.println("=============LDsendToWaterOrder");
 										}else if("DL".equals(order.getOrderNum().substring(0, 2))){
 											MsgUtil.sendToWaterOrder(order.getOrderNum(), order.getTotalCost(), order.getPayTime());
-											System.out.println("=============DLsendToWaterOrder");
 										}
 										//调用业务后台WaterOrder接口
 										List<OrderItems> orderItemss = order.getOrderItemss();
