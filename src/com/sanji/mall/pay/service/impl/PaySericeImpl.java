@@ -90,8 +90,8 @@ public class PaySericeImpl implements PayService{
 		order.setId(payDeal.getOrderId());
 		order.setPayStatus("1");//已付款
 		if (payDeal.getPayType().equals("pos")) {
-			//order.setShipStatus("3");// 已签收
-			//order.setSignForTime(new Date());//签收时间
+			order.setShipStatus("3");// 已签收
+			order.setSignForTime(new Date());//签收时间
 			order.setPayMent("2");//pos支付
 			MsgUtil.MsgQHSuccess(payDeal.getShipTel(), payDeal.getOrderNo());
 		}else {
