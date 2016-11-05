@@ -460,11 +460,13 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
-							<a href="http://www.3j1688.com/goods/detail/1416.html">
-							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a>
+							<a href="http://www.3j1688.com/special_161111/index.html">
+							<img src="images/lbst.png?<%=Math.random()%>" /> </a>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html">
+							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a> --%>
 							<!-- 活动 -->
-							<a href="http://www.3j1688.com/special_161027/index.html">
-							<img src="images/yidonghd.png?<%=Math.random()%>" /> </a>
+							<%-- <a href="http://www.3j1688.com/special_161027/index.html">
+							<img src="images/yidonghd.png?<%=Math.random()%>" /> </a> --%>
 							 <%-- <a> <img src="images/tongzhis1.png?<%=Math.random()%>" /> </a>  --%>
 							<!--荣耀6x -->
 							 <a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
@@ -473,8 +475,8 @@
 							<img src="images/jqjhlb.png?<%=Math.random()%>" /> </a> --%>
 							
 							<!-- 配件活动 -->
-							<a href="http://www.3j1688.com/special_161009/index.html?s=banner">
-							<img src="images/jppjdjkh.jpg?<%=Math.random()%>" /> </a>
+							<%-- <a href="http://www.3j1688.com/special_161009/index.html?s=banner">
+							<img src="images/jppjdjkh.jpg?<%=Math.random()%>" /> </a> --%>
 							<!--360q5  -->
 							<a href="http://www.3j1688.com/goods/detail/1442.html?s=bjd">
 							<img src="images/360q5.png?<%=Math.random()%>" /> </a>
@@ -482,17 +484,17 @@
 							<a href="http://www.3j1688.com/goods/detail/1465.html">
 							<img src="images/360N4A.png?<%=Math.random()%>" /> </a>
 							<!-- 小米5s -->
-							<a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
-							<img src="images/xiaomi5sk.png?<%=Math.random()%>" /> </a>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
+							<img src="images/xiaomi5sk.png?<%=Math.random()%>" /> </a> --%>
 							<%-- <a href="javascript:goListView('配件','','','')">
 							<img src="images/gqqtl.png?<%=Math.random()%>" /> </a> --%>
 							
-							<a><img src="images/apple720.png" alt="" width="695" height="336" border="0" usemap="#Map11">
+							<!-- <a><img src="images/apple720.png" alt="" width="695" height="336" border="0" usemap="#Map11">
 								<map name="Map11">
 								  <area shape="rect" coords="370,224,483,268" href="javascript:goListView('手机','','','苹果7')" target="_blank">
 								  <area shape="rect" coords="486,224,679,269" href="javascript:goListView('配件','','','苹果')" target="_blank">
 								</map> 
-							</a>  
+							</a>  --> 
 							<!-- <a>	<img src="images/quansheng.png?" alt="" width="695" height="336" border="0" usemap="#Map">
 										<map name="Map">
 										  <area shape="rect" coords="22,215,147,303" href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">

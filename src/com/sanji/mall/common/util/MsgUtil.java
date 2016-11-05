@@ -508,8 +508,10 @@ public class MsgUtil {
 	    params.put("msg", obj.toJSONString());
  //	    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/updateRd",
 //	     params, null, null);
-		HttpClientUtils.sendPostRequest("http://192.168.2.37:8082/v1/updateRd",
+	    System.out.println("===========sendMessageToApps==========start====");
+		HttpClientUtils.sendPostRequest("http://192.168.2.41:8082/v1/updateRd",
 		          params, null, null);
+		System.out.println("===========sendMessageToApps==========end====");
 	  }
 
   private static void sendMessage1(String msg) {
