@@ -133,6 +133,10 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 			int sum = 0;
 			boolean isStock = false;
 			String stockMsg = "";
+			int sum1=0;
+			boolean hm=false;
+			boolean ml=false;
+			BigDecimal kl = new BigDecimal("50");
 			// List<OrderItems> items =
 			// orderItemsService.gainSkuByOrderId(orderId);
 			order = orderService.gainDetail(param).get(0);
@@ -140,7 +144,41 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 			getRequest().setAttribute("hdGoods",
 					orderService.checkerOrderThereHdGoods(sessionInfo.getLoginName(), order.getId()));
 			List<OrderItems> items = order.getOrderItemss();
+			// 如果手机为两个以上并且这两个手机是红米3x和魅蓝3 都是合约机的话 这个订单就会减50
+		      if (items != null && items.size() > 0) {
+		        Goods goodsI;
+		        for (OrderItems oi : items) {
+		          if (oi.getTargetType().equals("sku")) {
+		            sum1 = sum1 + 1;
+		            String goodsId = goodsSkuMapper.selectById(
+		                oi.getTargetId()).getGoodsId();
+		            goodsI = goodsMapper.selectByPrimaryKey(goodsId);
+		            if (goodsI.getId().equals(
+		                "c5e2a2a8e22d463aa3ecec343160a6e6")) {
+		              hm = true;
+		            }
+		            if (goodsI.getId().equals(
+		                "fb352666771d4c81bc69c31f70dab7ff")
+		                || goodsI.getId().equals(
+		                    "db1adab360724a858b89e42f62210c52")) {
+		              ml = true;
+		            }
+		          }
+		        }
+		      }
+		      if (order.getRemark() == null) {
+		        if (sum1 >= 2 && hm == true) {
+		          Order order1 = orderMapper.selectByPrimaryKey(orderId);
+		          BigDecimal summ = order1.getTotalCost().subtract(kl);
+		          order.setTotalCost(summ);
+		          order.setId(orderId);
+		          order.setMemberId(memberId);
+		          order.setRemark("此订单符合减五十价格标准 魅蓝3+红米3X");
+		          orderService.updateByPrimaryKeySelective(order);
+		        }
+		      }
 			// 如果手机为两个以上 并且其中一个是红米pro 则订单减50
+		      if(order.getRemark()==null){
 						if (items != null && items.size() > 0) {
 
 							Goods goods;
@@ -167,9 +205,8 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 								}
 							}
 						}
-						System.out.println(orderId);
-						//Order orderup = new Order();
-						BigDecimal kl = new BigDecimal("50");
+		      }
+						
 						if(order.getRemark()==null){
 						if (sum >= 2 && bl == true && ac == true) {
 							// 订单实际支付金额减去50

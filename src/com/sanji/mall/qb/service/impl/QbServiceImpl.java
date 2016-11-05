@@ -29,8 +29,8 @@ import com.sanji.mall.qb.service.QbService;
 
 @Service("qbService")
 public class QbServiceImpl implements QbService {
-	public static final String BASE_URL = "http://115.28.92.73:58080/v1/";//钱包服务的地址
-	//public static final String BASE_URL = "http://115.28.87.182:58081/v1/";//钱包服务的地址
+	//public static final String BASE_URL = "http://115.28.92.73:58080/v1/";//钱包服务的地址
+	public static final String BASE_URL = "http://115.28.87.182:58081/v1/";//钱包服务的地址
 	// public static final String BASE_URL = "http://localhost:8082/v1/";
 	// public static final String BASE_URL = "http://192.168.2.94:8082/v1/";
 	private static final String KEY = "doubi";
