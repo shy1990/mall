@@ -167,7 +167,7 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 		        }
 		      }
 		      if (order.getRemark() == null) {
-		        if (sum1 >= 2 && hm == true) {
+		        if (sum1 >= 2 && hm == true && ml==true) {
 		          Order order1 = orderMapper.selectByPrimaryKey(orderId);
 		          BigDecimal summ = order1.getTotalCost().subtract(kl);
 		          order.setTotalCost(summ);
