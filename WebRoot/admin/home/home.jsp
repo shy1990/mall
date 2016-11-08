@@ -464,8 +464,12 @@
 							<img src="images/lbst.png?<%=Math.random()%>" /> </a>
 							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html">
 							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a> --%>
+							<!--华为6 -->
+							<a href="http://www.3j1688.com/goods/detail/1473.html?s=bjd">
+							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>
 							<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
 							<img src="images/hmprohd-.png?<%=Math.random()%>" /> </a>
+							
 							<!-- 活动 -->
 							<%-- <a href="http://www.3j1688.com/special_161027/index.html">
 							<img src="images/yidonghd.png?<%=Math.random()%>" /> </a> --%>
