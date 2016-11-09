@@ -1,6 +1,7 @@
 package com.sanji.mall.goods.service.impl;
 
 import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -86,7 +87,23 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<Map<String, Object>> getBjd(String brandName, String userId,String machineType) {
 		Members user = membersMaper.gainMembersDetailById(userId);
 		String regionId = user.getArea();
+		 Integer City = Integer.valueOf(user.getCity());
+		 String username=user.getUsername();
 		List<Map<String, Object>> selectBjd = goodsMapper.selectBjd(brandName, userId,regionId,machineType, user.getUsername());
+		
+		for (int i = 0; i < selectBjd.size(); i++) {
+		      if (((Map)selectBjd.get(i)).get("GOODS_NAME").equals("酷派 酷派cool 1合约机B2B")){
+		        if ((City.intValue() != 2311) && (City.intValue() != 2293) && (City.intValue() != 2331) && (City.intValue() != 2214)) {
+		          selectBjd.remove(i);
+		        }
+		      }
+		   
+		    	  
+		      if (((!((Map)selectBjd.get(i)).get("GOODS_NAME").equals("奇酷  奇酷360 F4合约机")) && (!((Map)selectBjd.get(i)).get("GOODS_NAME").equals("奇酷  奇酷360 F4合约机（可调拨串号）"))) || 
+		        (City.intValue() == 2183) || (City.intValue() == 2243) || (City.intValue() == 2324)) continue;
+		      selectBjd.remove(i);
+		    }
+		
 		setHot(selectBjd);
 		return selectBjd;
 	}
