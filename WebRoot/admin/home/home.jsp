@@ -18,104 +18,6 @@
 <link href="css/css.css" rel="stylesheet" type="text/css" />
 <link href="js/home/zzsc.css" rel="stylesheet" type="text/css" />
 <style>
-        .hello-header {
-            min-height: 16.43px;
-            padding: 10px;
-            background: #ffffff;
-        }
-
-        .modal-body {
-            position: relative;
-            padding: 0;
-        }
-
-        .text01{
-            font-size: 16px;
-            color:#9d9d9d ;
-
-        }
-
-        .text02{
-            font-size: 16px;
-            color: #FF0000;
-        }
-
-        .text03{
-            font-size: 20px;
-            color: #454545;
-            font-weight: bold;
-        }
-
-        .text04{
-            font-size: 20px;
-            text-decoration: underline;
-            font-weight: bold;
-            color:#0066ff;
-        }
-
-        .text05{
-            font-size: 12px;
-            color: #d1d0d0;
-        }
-
-        /*bootstarp css*/
-        .modal {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1050;
-            display: none;
-            overflow: hidden;
-            -webkit-overflow-scrolling: touch;
-            outline: 0;
-        }
-
-        .fade.in {
-            opacity: 1;
-        }
-            .modal-dialog {
-                width: 600px;
-                margin: 30px auto;
-            }
-            .modal-dialog {
-                position: relative;
-                width: auto;
-                margin: 10px;
-            }
-
-        .modal-title {
-            margin: 0;
-            line-height: 1.42857143;
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: #fff;
-            -webkit-background-clip: padding-box;
-            background-clip: padding-box;
-            border: 1px solid #999;
-            border: 1px solid rgba(0,0,0,.2);
-            border-radius: 6px;
-            outline: 0;
-            -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
-            box-shadow: 0 3px 9px rgba(0,0,0,.5);
-        }
-        .close {
-            float: right;
-            font-size: 21px;
-            font-weight: 700;
-            line-height: 1;
-            color: #000;
-            text-shadow: 0 1px 0 #fff;
-            filter: alpha(opacity=20);
-            opacity: .2;
-        }
-
-
-    </style>
-<style>
 .fr {
 	float: right;
 }
@@ -1006,28 +908,6 @@
 			</div>
 		</div>
 	</div>
-	<!--弹窗-->
-<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog "  style="width: 500px;  left:40%;top:25%;">
-        <div class="modal-content">
-            <div class="hello-header ">
-                <button type="button" id="dialog_close" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    <img src="images/shoprush/top1.png" alt="" style="margin-left: 35%; margin-top: 10px">
-                </h4>
-            </div>
-            <div class="modal-body">
-                <p style="margin-left:60px;margin-top: 30px "> <span class="text01">因系统升级，需</span> <span class="text02" sty>移动专卖店、加盟店、卖场客户</span></p>
-                <p style="margin-left:60px;margin-top: 10px"><span class="text01">完善便利店渠道编码。</span></p>
-                <p style="margin-left:140px;margin-top:20px"><span class="text03">立即完善 </span> &nbsp;  <a href="http://www.3j1688.com/member/toMyAccount.html"><span class="text04">渠道编码>></span></a></p>
-                <p style="margin:20px 0px 20px 50px;"><span class="text05">亲！若您的信息已完善，或非移动便利店用户请当我“飘过”哦。</span></p>
-            </div>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
