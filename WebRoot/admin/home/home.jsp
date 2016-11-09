@@ -369,6 +369,14 @@
 							<!--华为6 -->
 							<a href="http://www.3j1688.com/goods/detail/1473.html?s=bjd">
 							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>
+							<a>
+							  <img src="images/hm4.gif" alt="" width="695" height="336" border="0" usemap="#Map5">
+                               <map name="Map5">
+								  <area shape="rect" coords="33,173,177,251" href="http://www.3j1688.com/goods/detail/1484.html?s=bjd">
+								  <area shape="rect" coords="181,175,314,254" href="http://www.3j1688.com/goods/detail/1485.html?s=bjd" target="_blank">
+							   </map>
+							</a>
+							
 							<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
 							<img src="images/hmprohd-.png?<%=Math.random()%>" /> </a>
 							
@@ -808,6 +816,7 @@
 								href="javascript:goListView('充电宝','果果');"> 果果 </a><br /></td>
 						</tr>
 					</table>
+
 
 				</div>
 				<div class="home_main_04_ret">
