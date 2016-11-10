@@ -212,8 +212,6 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
     public String gainAllGoodsInfoByGoodsNum() {
         try {
 
-            // 那个用户在什么时候访问的要记录下来
-
 			/*
 			 * Map m = new HashMap(); m.put("goodsNum", goods.getGoodsNum()); if
 			 * (gainSessionInfo() != null) { m.put("memberId",
