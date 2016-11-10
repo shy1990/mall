@@ -220,12 +220,12 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
 			 * gainSessionInfo().getUserId()); } else { m.put("memberId", null);
 			 * } List<Goods> goodss = goodsService.gainAllGoodsInfoByMap(m);
 			 */
-        	Members user = memberService.getMemberById(gainSessionInfo().getUserId());
-        	userSeeGoods(user);
+        	//Members user = memberService.getMemberById(gainSessionInfo().getUserId());
+        	//userSeeGoods(user);
             // ugrs.save(ugr);
 
-            List<Goods> goodss = goodsService.gainAllGoodsInfo2(user.getId(), goods.getGoodsNum()
-					, user.getArea(), user.getUsername());
+            //List<Goods> goodss = goodsService.gainAllGoodsInfo2(user.getId(), goods.getGoodsNum()	, user.getArea(), user.getUsername());
+        	 List<Goods> goodss = goodsService.gainAllGoodsInfoByGoodsNum(goods.getGoodsNum());
 
             Goods g = null;
             if (goods != null && goodss.size() > 0) {
@@ -251,7 +251,7 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
 					"userId", "goodsPics"}));
             // System.out.println("查询出来的商品详情：" + JSON.toJSONString(g));
             request.setAttribute("goods", g);
-            Map param = new HashMap();
+           /* Map param = new HashMap();
             param.put("targetType", "sku");
             param.put("targetId", g.getId());
             request.setAttribute("goodsDealCountNum", orderItemsService.gainDealNum(param));//
@@ -261,9 +261,10 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
             param.put("maxTime", DateUtil.getDateStrToDate(DateUtil.currentMonLastDay(),
 					"yyyy-MM-dd"));
             request.setAttribute("goodsDealNum", orderItemsService.gainDealNum(param));// 月成交记录
-
+*/
         } catch (Exception e) {
-            // System.out.println("异常：" + e.getMessage());
+        	e.printStackTrace();
+            System.out.println("异常：" + e.getMessage());
         }
 
         return "succeed";
