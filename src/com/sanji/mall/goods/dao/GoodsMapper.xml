@@ -1162,4 +1162,10 @@
 
 	</sql>
 	
+	
+	
+	<select id="gainDealNum" parameterType="java.util.Map" resultType="java.lang.String">
+	  	 select buynums from v_order_sales where id=#{goodsId,jdbcType=VARCHAR}
+	  </select> 
+	
 </mapper>

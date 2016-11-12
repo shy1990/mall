@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.sanji.mall.pojo.SessionInfo" %>
 
 <div class="bottom">
   <div class="bottom_box">
@@ -45,7 +46,7 @@
                 <div><a href="javascript:void(0)"><img src="images/hoc10.png" /></a></div>
                 <div><a href="javascript:void(0)">360度服务</a></div>
 	        </li>
-           
+
          </ul>
       </div>
       <div class="bottom_box_04">
@@ -86,15 +87,20 @@
                 <div><a href="queryOrder.html">查询订单</a> <br/> <a href="cancelOrder.html"> 取消订单</a></div>
            </li>
          </ul>
-         
+
       </div>
       <div class="bottom_box_03"><!--  <a href="#">三际公告</a> |   <a href="#">招纳贤士 </a> |   <a href="customerCenter.html">联系我们</a> |  客服热线：0531-67860006<br /> -->
-       Copyright © 2014 - 2018 中润通讯版权所有   鲁ICP备14033550号-1 
+       Copyright © 2014 - 2018 中润通讯版权所有   鲁ICP备14033550号-1
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254001645'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/stat.php%3Fid%3D1254001645%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
         </div>
     </div>
   </div>
 </div>
+  <%
+    SessionInfo si = (SessionInfo)request.getSession().getAttribute("sessionInfo");
+    if(si != null) {
+
+    }
+  %>
 <!--请将以下码嵌入到您网页源代码的最后面，通常是</body></HTML>之后,这样在服务器升级维护的时候也不会影响您的网页打开呈现速度。-->
 <script language="javascript" src="http://dct.zoosnet.net/JS/LsJS.aspx?siteid=DCT77373934&float=1&lng=cn"></script>
-

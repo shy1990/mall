@@ -188,4 +188,10 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<Goods> gainAllShoppingRush(String memberId, String userName) {
 		return goodsMapper.gainAllShoppingRush(memberId,userName);
 	}
+	
+	@Override
+	public String gainDealNum(String goodsId) {
+		// TODO Auto-generated method stub
+		return goodsMapper.gainDealNum(goodsId);
+	}
 }

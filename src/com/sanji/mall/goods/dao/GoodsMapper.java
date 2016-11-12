@@ -177,4 +177,18 @@ public interface GoodsMapper {
 	 */
 	List<Map<String, String>> gainNameBylike(@Param(value = "s") String s);
 
+	
+	/**
+	 * 统计指定时间成交记录数量
+	 * 
+	 * @Title: gainDealNum
+	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @param @param param
+	 * @param @return 设定文件
+	 * @return String 返回类型
+	 * @author 田超强
+	 * @throws
+	 */
+	String gainDealNum(String goodsId);
+	
 }

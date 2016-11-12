@@ -249,6 +249,7 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
 					"userId", "goodsPics"}));
             // System.out.println("查询出来的商品详情：" + JSON.toJSONString(g));
             request.setAttribute("goods", g);
+            request.setAttribute("goodsDealCountNum", goodsService.gainDealNum(g.getId()));//
            /* Map param = new HashMap();
             param.put("targetType", "sku");
             param.put("targetId", g.getId());
