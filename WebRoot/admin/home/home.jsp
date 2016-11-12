@@ -369,7 +369,7 @@
 							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html">
 							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a> --%>
 							<!--华为6 -->
-							<a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
+							<a href="http://www.3j1688.com/goods/detail/1493.html?s=banner">
 							<img src="images/xmms.png?<%=Math.random()%>" /> </a>
 							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
 							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>
