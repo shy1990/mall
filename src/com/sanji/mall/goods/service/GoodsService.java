@@ -178,4 +178,6 @@ public interface GoodsService {
 
 	List<Goods> gainAllShoppingRush(String memberId, String userName);
 
+	String gainDealNum(String goodsId);
+	
 }
