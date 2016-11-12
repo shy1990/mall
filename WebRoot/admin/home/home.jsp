@@ -362,13 +362,18 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1221.html?s=bannerf">
+							<img src="images/hwP9plus.png?<%=Math.random()%>" /> </a>
 							<a href="http://www.3j1688.com/special_161111/index.html">
-							<img src="images/lbst.png?<%=Math.random()%>" /> </a>
+							<img src="images/lbst.png?<%=Math.random()%>" /> </a> --%>
 							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html">
 							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a> --%>
 							<!--华为6 -->
-							<a href="http://www.3j1688.com/goods/detail/1473.html?s=bjd">
+							<a href="http://www.3j1688.com/goods/detail/1493.html?s=banner">
+							<img src="images/xmms.png?<%=Math.random()%>" /> </a>
+							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
 							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>
+							
 							<a>
 							  <img src="images/hm4.gif" alt="" width="695" height="336" border="0" usemap="#Map5">
                                <map name="Map5">
@@ -377,8 +382,8 @@
 							   </map>
 							</a>
 							
-							<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
-							<img src="images/hmprohd-.png?<%=Math.random()%>" /> </a>
+						<%-- 	<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
+							<img src="images/hmprohd-.png?<%=Math.random()%>" /> </a> --%>
 							
 							<!-- 活动 -->
 							<%-- <a href="http://www.3j1688.com/special_161027/index.html">
