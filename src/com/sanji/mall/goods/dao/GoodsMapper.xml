@@ -590,7 +590,7 @@
 	</sql>
 
 	<!-- 有条件的分页查找商品列表信息 -->
-	<select id="gainByPage" parameterType="java.util.Map" resultMap="gainByPageResultMap">
+	<select id="gainByPage_old" parameterType="java.util.Map" resultMap="gainByPageResultMap">
 		<!-- select <include refid="gainByPage_Column_Related_List_pageRow" /> 
 			from ( select RN, <include refid="gainByPage_Column_Related_List_pageRow" 
 			/> from ( select ROWNUM AS RN, <include refid="gainByPage_Column_Related_List_pageRow" 
@@ -1037,5 +1037,129 @@
 		rn &gt; #{start}
 
 	</select>
+	
+	
+	
+	
+	
+	<!-- 单品相关信息查询字段 -->
+	<sql id="v_gainByPage_Column">
+		 g.id,g.name,g.goods_num,g.default_img,
+		g.sku_id,g.price ,g.sku_edition,g.sku_standard,g.cat_name, g.brand_name ,
+		g.sku_stock,g.sku_support_channel,g.sku_net_suit_type,
+		g.cl_color_name,g.price sku_price
+	</sql>
+
+
+	<!-- 有条件的分页查找商品列表信息 -->
+	<select id="gainByPage" parameterType="java.util.Map" resultMap="gainByPageResultMap">
+		select  
+		<include refid="v_gainByPage_Column" />
+		 from (
+		select <include refid="v_gainByPage_Column" />,RN from (
+		select <include refid="v_gainByPage_Column" />,ROWNUM AS RN from(
+		
+			select <include refid="v_gainByPage_Column" />
+			  from (
+			              select gs.*,gs.sku_price+nvl(rp.float_price,0)price,  row_number() over(partition by gs.id order by gs.sku_price+nvl(rp.float_price,0) asc)  top		from V_GOODS_sku gs
+			              left join sj_tb_sku_member_price rp on rp.goods_sku_id=gs.sku_id and rp.MEMBER_ID = 'd78de2dfeca94decae759fc8c91b85c3' and	rp.disabled='false' 
+			              ) g,
+			  (select rownum seq,id from (select id,  min(sku_price)		from V_GOODS_sku group by id order by min(sku_price) asc)) t2
+			
+		<include refid="v_gainByPageWhere" />
+		
+		<!-- 排序 -->
+		<!-- 判断sort是否为空，空就按照最高人气排序取数据 传入格式 s.price g.click -->
+		<if test="sort!=null and sort!=''">
+			order by ${sort} ${orders}
+		</if>
+		<if test="sort==null or sort == ''">
+			order by g.create_time
+		</if>
+		
+		
+		) g)g where <![CDATA[RN <= #{page}*#{rows}]]>
+		)g where RN>(#{page}-1)*#{rows}
+
+	</select>
+	
+	<!-- 有条件的分页查找商品列表 where条件 -->
+	<sql id="v_gainByPageWhere">
+		where g.id=t2.id  
+		and NOT EXISTs (select sr.id from SJ_TB_SHOPPING_RUSH sr where g.id=sr.GOODS_ID )
+
+		<!-- 类型 -->
+		<if test="catIds!=null and catIds!=''">
+			and g.cat_id in
+			<foreach collection="catIds" item="catId" open="(" separator=","
+				close=")">
+				#{catId}
+			</foreach>
+		</if>
+		<!-- 品牌 -->
+		<if test="brandIds!=null and brandIds!=''">
+			and g.brand_id in
+			<foreach collection="brandIds" item="brandId" open="("
+				separator="," close=")">
+				#{brandId}
+			</foreach>
+		</if>
+		<!-- 屏幕尺寸 -->
+		<if
+			test="maxScreenSize != null and maxScreenSize != '' or minScreenSize != null and minScreenSize != ''">
+			and g.SCREEN_SIZE between #{minScreenSize,jdbcType=DECIMAL} and
+			#{maxScreenSize,jdbcType=DECIMAL}
+		</if>
+		<!-- 运行内存 -->
+		<if test="rams != null and rams != ''">
+			and g.ram in
+			<foreach collection="rams" item="ram" open="(" separator=","
+				close=")">
+				#{ram}
+			</foreach>
+		</if>
+		<!-- 分辨率 -->
+		<if test="resolutions != null and resolutions != ''">
+			and g.resolution in
+			<foreach collection="resolutions" item="resolution" open="("
+				separator="," close=")">
+				#{resolution}
+			</foreach>
+		</if>
+
+		<!-- 模糊查找 -->
+		<if test="searchParam != null and searchParam != ''">
+			and lower(g.name) like '%${searchParam}%'
+		</if>
+
+		<!-- 操作系统 -->
+		<if test="operationSystems != null and operationSystems != ''">
+			and g.operation_System in
+			<foreach collection="operationSystems" item="operationSystem"
+				open="(" separator="," close=")">
+				#{operationSystem}
+			</foreach>
+		</if>
+		<!-- 价格 -->
+		<if test="minPrice != null and minPrice != ''">
+			<if test="maxPrice != null and maxPrice != ''">
+				and g.price between #{minPrice,jdbcType=DECIMAL} and
+				#{maxPrice,jdbcType=DECIMAL}
+			</if>
+			<if test="maxPrice == null or maxPrice == ''">
+	    		<![CDATA[ and g.price <= #{minPrice,jdbcType=DECIMAL} ]]>
+			</if>
+		</if>
+		<if test="minPrice == null or minPrice == ''">
+			<if test="maxPrice != null and maxPrice != ''">
+	    		<![CDATA[ and g.price >= #{maxPrice,jdbcType=DECIMAL} ]]>
+			</if>
+		</if>
+		<!-- 网络类型 -->
+		<if test="netSuitTypes != null and netSuitTypes != ''">
+			and regexp_like(g.net_suit_type,'${netSuitTypes}','i')
+		</if>
+
+	</sql>
 	
 </mapper>
