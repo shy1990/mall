@@ -226,7 +226,7 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
         	 List<Goods> goodss = goodsService.gainAllGoodsInfoByGoodsNum(goods.getGoodsNum());
 
             Goods g = null;
-            if (goods != null && goodss.size() > 0) {
+            if (goodss != null && goodss.size() > 0) {
                 g = goodss.get(0);
                 goodsService.upClickRate(goods.getGoodsNum());// 修改商品点击数
 
