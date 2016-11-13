@@ -88,6 +88,10 @@ public class OrderServiceImpl implements OrderService {
 		member.setPoint(member.getPoint().add(order.getOrderPoints()));
 	}
 
+	public void saveOrder(Order order){
+		orderMapper.insertSelective(order);
+	}
+
 	
 	public int updateByPrimaryKeySelective(Order order) {
 		// TODO Auto-generated method stub
@@ -281,12 +285,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public boolean checkerOrderShipStatus(String orderNum) {
 		Order order = orderMapper.gainShipStatusBuyOrderNum(orderNum);
-		
+
 			if ("3".equals(order.getShipStatus())
 					&& "0".equals(order.getPayStatus())) {
 				return true;
 			}
-		
+
 		return false;
 	}
 
@@ -309,7 +313,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return false;
 	}
-	
+
 	public boolean checkOrderCity(String id) {
 		String area = membersMaper.gainCityByOrderId(id);
 		if ("2286".equals(area)) {

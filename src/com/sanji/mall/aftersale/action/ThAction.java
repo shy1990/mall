@@ -333,13 +333,14 @@ public class ThAction extends BaseAction implements ModelDriven<ThForm> {
 			if (null != order) {
 				if ("0".equals(order.getShipStatus())) {// 订单状态未发货
 					// 管易查询订单状态
-					boolean shipStatus = EcErpUtil.gyShipStatus(order.getOrderNum()).getSuccess();
+					boolean shipStatus = false;
+							//EcErpUtil.gyShipStatus(order.getOrderNum()).getSuccess();
 					if (!shipStatus) {// 管易未发货
 						// System.out.println(order.getOrderItemss().get(0).getPointGoods());
 						// 未发货分为已付款和未付款//如果是已付款就提交到退款退货记录数据库
 						if (order.getPayStatus().equals("1")) {// 未发货//已付款
 							// 给管易推送消息取消订单
-							EcErpUtil.cancelOderById(order.getOrderNum());
+						//	EcErpUtil.cancelOderById(order.getOrderNum());
 							// 改变订单状态取消订单
 							order.setStatus("3");
 							orderService.updateByPrimaryKeySelective(order);
@@ -359,7 +360,7 @@ public class ThAction extends BaseAction implements ModelDriven<ThForm> {
 
 						} else if (order.getPayStatus().equals("0")) {// 未付款//未发货//无论什么支付方式都直接取消订单
 							if (order.getPayMent().equals("1")) {
-								EcErpUtil.cancelOderById(order.getOrderNum());
+								//EcErpUtil.cancelOderById(order.getOrderNum());
 								// 改变订单状态取消订单
 								order.setStatus("3");
 								orderService.updateByPrimaryKeySelective(order);
@@ -375,7 +376,7 @@ public class ThAction extends BaseAction implements ModelDriven<ThForm> {
 
 							// if (order.getPayMent().equals("0")) {// 网上支付
 							// 给管易推送消息取消订单
-							EcErpUtil.cancelOderById(order.getOrderNum());
+                            //	EcErpUtil.cancelOderById(order.getOrderNum());
 							// 改变订单状态取消订单
 							order.setStatus("3");
 							orderService.updateByPrimaryKeySelective(order);
@@ -525,7 +526,7 @@ public class ThAction extends BaseAction implements ModelDriven<ThForm> {
 			logger.info("开始通知管理人员有订单取消.");
 			// 通知管理人员有人取消了订单
 			MsgUtil.MsgConcelOrder(order.getOrderNum());
-			logger.info("结束通知管理人员有订单取消.");
+			logger.info("结束通知管理人员有订单取消.");  
 			request.setAttribute("order", order);
 
 		} catch (Exception e) {

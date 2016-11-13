@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var defaultPrices = "${paramMap.defaultPrices}";
 		var searchParam =  "${paramMap.searchParam}";
 		
+
 		$(function(){
 			/**松开键盘的时候进行模糊搜索匹配**/
 			$("#phone_list_search_param").keyup(function(){
@@ -280,11 +281,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="ny_box_let_che_01">
           <div class="ny_box_let_che_01_let">
             <ul>
-              <li class="sortSelected"><a style="color:#F30" href="javascript:;" sort="" order="desc" >综合</a></li>
-              <li><a href="javascript:;" sort="g.CLICK_RATE" order="desc">人气</a></li>
+               <li class="sortSelected"><a style="color:#F30" href="javascript:;" sort="g.CREATE_TIME" order="desc" >综合</a></li>
+              <!-- <li><a href="javascript:;" sort="g.CLICK_RATE" order="desc">人气</a></li> -->
               <li><a href="javascript:;" sort="g.CREATE_TIME" order="desc">新品</a></li>
-              <li><a href="javascript:;" sort="buyNums" order="desc">销量</a></li> 
-              <li><a href="javascript:;" sort="s.price" order="desc">价格</a></li>
+              <!-- <li><a href="javascript:;" sort="buyNums" order="desc">销量</a></li>  -->
+              <li><a href="javascript:;" sort="g.price" order="desc">价格</a></li>
               <!-- <div class="clear"></div> -->
             </ul>
           </div>
@@ -301,9 +302,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <!--产品列表-->
     <div class="phone_main_03">
-      <ul>
-       
-       
+      <ul>       
       </ul>
       <div class="clear"></div>
     </div>

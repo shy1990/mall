@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="context1" >
+ 	<!-- 不要注解 -->
+  	<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+	</commentGenerator>
+  	<!-- 数据库链接URL、用户名、密码 -->
+	<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@120.192.31.153:1521:orcl" userId="qlzy" password="qlzy2013">
+	</jdbcConnection>
+	<javaTypeResolver>
+		<property name="forceBigDecimals" value="true" />
+	</javaTypeResolver>
+	<!-- 生成模型的包名和位置 -->
+	<javaModelGenerator targetPackage="junitTest.backup.model" targetProject="../mall/src">
+		<property name="enableSubPackages" value="true" />
+		<property name="trimStrings" value="true" />
+	</javaModelGenerator>
+	<!-- 生成的映射文件包名和位置 -->
+	<sqlMapGenerator targetPackage="junitTest.backup.mapping" targetProject="../mall/src">
+		<property name="enableSubPackages" value="true" />
+	</sqlMapGenerator>
+	<!-- 生成DAO的包名和位置 -->
+	<javaClientGenerator type="XMLMAPPER" targetPackage="junitTest.backup.dao" targetProject="../mall/src">
+		<property name="enableSubPackages" value="true" />
+	</javaClientGenerator>
+	<!-- 生成的表 -->
+    <table tableName="QL_COMPANY" domainObjectName="Compay" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+		
+  </context>
+</generatorConfiguration>

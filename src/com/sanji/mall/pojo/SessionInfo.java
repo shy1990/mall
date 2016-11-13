@@ -129,8 +129,21 @@ public class SessionInfo implements java.io.Serializable {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	
 
-	
-	
+	@Override
+	public String toString() {
+		return "SessionInfo{" +
+		"userId='" + userId + '\'' +
+		", loginName='" + loginName + '\'' +
+		", loginPassword='" + loginPassword + '\'' +
+		", loginNickName='" + loginNickName + '\'' +
+		", userName='" + userName + '\'' +
+		", ip='" + ip + '\'' +
+		", userType='" + userType + '\'' +
+		", area='" + area + '\'' +
+		", city='" + city + '\'' +
+		", moblie='" + moblie + '\'' +
+		", msg='" + msg + '\'' +
+		'}';
+	}
 }

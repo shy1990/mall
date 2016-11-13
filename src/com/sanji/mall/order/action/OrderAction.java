@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
@@ -1386,6 +1387,34 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 			j.setObj(0);
 		}
 		writeJson(j);
+	}
+	
+	/**
+	 * 
+	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
+	 */
+	public void doNotNeedSession_addNewOrder() {
+		
+		if(!StringUtils.isEmpty(order.getOrderNum()) && !StringUtils.isEmpty(order.getTotalCost()+"")){
+			   Members member = memberService.getMemberById("94a9cc9699304809b9038c5fc476d013");
+				String orderId = ToolsUtil.getUUID();
+				order.setId(orderId);
+				order.setShipName(member.getTruename());
+				order.setArea(member.getArea());
+				//order.setShipZip(member.getZip());
+				order.setShipTel(member.getMobile());
+				//order.setShipEmail(member.getEmail());
+				order.setProvince(member.getProvince());
+				order.setCity(member.getCity());
+				order.setAddress(member.getAddress());
+				order.setMemberType("1");
+				order.setMemberId(member.getId());
+	            order.setOrderNum(order.getOrderNum());
+			    order.setCreatetime(new Date());
+			    order.setTotalCost(order.getTotalCost());
+			    orderService.saveOrder(order);
+		   }
+			
 	}
 
 	public int getSelected() {

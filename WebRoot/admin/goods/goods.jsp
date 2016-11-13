@@ -118,7 +118,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    </c:forEach>
 	   	    </c:if> 
         <div class="xq_main_01_jage_let_02">￥<fmt:formatNumber value="${minPrice}" type="number" maxFractionDigits="2" minFractionDigits="2"/>-<fmt:formatNumber value="${maxPrices}" type="number" maxFractionDigits="2" minFractionDigits="2"/></div>
-        <div class="xq_main_01_jage_let_03"><span> 送积分：<script type="text/javascript">document.write(Math.floor("${minPrice/10}"))</script>起</span>已成交：${goodsDealCountNum }              </div>
+        <div class="xq_main_01_jage_let_03"><span> 送积分：<script type="text/javascript">document.write(Math.floor("${minPrice/10}"))</script>起</span><c:choose>
+							<c:when
+								test="${goods.name=='小米 小米 红米3X全网通（全省可调串号）'
+   
+   ||goods.name=='小米 红米note3全网高配（全省可调拨串号）'
+  ||goods.name=='小米 红米pro合约机（全省可调拨串号）'
+  ||goods.name=='乐视 乐视x528(合约机)可调拨串号'
+  ||goods.name=='百立丰 百立丰T2V现货（济南可调拨串号）'
+  ||goods.name=='百立丰 百立丰T9现货（济南可调拨串号）'
+  ||goods.name=='荣耀 荣耀5C双4G版（济南地区串号可用）'
+  ||goods.name=='三星 三星J3 J3110双4G版'
+  ||goods.name=='三星 三星C5 C5000全网通'
+  ||goods.name=='魅族 魅蓝3 全网通版 (合约机可全省调拨串号）B2B'
+  ||goods.name=='小辣椒  小辣椒GM-T1支持Volte（济南可调拨串号）'
+  ||goods.name=='奇酷  奇酷360 F4 送专柜'
+  ||goods.name=='小米  红米note3低配全网（全省可调拨串号）'
+  ||goods.name=='小米 小米 红米note4高配（济南可调拨串号）'
+  ||goods.name=='乐视  乐视2 爵迹版x620（合约机）B2B可调拨串号'
+  ||goods.name=='百立丰 百立丰T708V现货（济南可调拨串号）'
+  ||goods.name=='百立丰 百立丰T5V现货（济南可调拨串号）'
+  ||goods.name=='荣耀 荣耀V8 全网通（济南区可调拨串号）'
+  ||goods.name=='三星 三星SM-A8000 A8'
+  ||goods.name=='魅族 魅蓝3移动版 (合约机可全省调拨串号）B2B'
+  ||goods.name=='小辣椒 红辣椒JD-T支持Volte（济南可调拨串号）'
+  ||goods.name=='奇酷 奇酷360 N4S全网通B2B（合约机全省可调串号）' 
+   }">  
+ 已成交：${goodsDealCountNum+2000 }
+   </c:when>
+		<c:otherwise>    
+   已成交：${goodsDealCountNum }
+   </c:otherwise>
+ </c:choose>               </div>
       </div>
       <div class="xq_main_01_jage_mid">
         <div class="xq_main_01_jage_mid_01">适应网络：</div>
@@ -317,8 +348,8 @@ Root服务</div></td> -->
         <li class="selecter"><a href="javascript:void(0)">商品详情</a></li>
         <li id="" ><a href="javascript:void(0);">包装和参数</a></li>
         <!-- <li id="" style="display:none" ><a href="javascript:;">用户口碑</a></li> -->
-         <li id="" ><a href="javaScript:;">累计评价（<span id="goods_pingjia_num_span"></span>）</a></li> 
-         <li id="" ><a href="javascript:;">月成交记录（${goodsDealNum }）</a></li> 
+       <!--  <li id="" ><a href="javaScript:;">累计评价（<span id="goods_pingjia_num_span"></span>）</a></li> -->
+    <%--     <li id="" ><a href="javascript:;">月成交记录（${goodsDealNum }）</a></li> --%>
         <li id="" ><a href="javascript:;">服务详情</a></li>
       </ul>
         <div class="clear"></div>
@@ -1007,14 +1038,14 @@ Root服务</div></td> -->
   
   
   <!-- 累计评价 -->
-  <div class="xq_main_04 goods_main_contents" style="display:none">
+<!--   <div class="xq_main_04 goods_main_contents" style="display:none">
   <div class="koub_top_01">
-      <div class="pingj_top"> 
-         <input type="checkbox" name="checkbox" id="checkbox">
+      <div class="pingj_top"> -->
+        <!-- <input type="checkbox" name="checkbox" id="checkbox">
         全部
         <input type="checkbox" name="checkbox" id="checkbox">
-        有图片 
-      </div>
+        有图片 -->
+      <!-- </div>
       <div class="pingj_top_let"><a href="#">按时间v</a></div>
       <div class="clear"></div>
     </div>
@@ -1038,7 +1069,7 @@ Root服务</div></td> -->
       </div>
     </div>
     <div class="fenye" id="goods_pingjia_fenye" style="margin-top: 20px;">
-	    <ul id="goods_pingjia_page_ul" > 
+	    <ul id="goods_pingjia_page_ul" > -->
 	      <!-- <li><a href="#">上一页</a></li>
 	      <li><a href="#">1</a></li>
 	      <li><a href="#">2</a></li>
@@ -1049,12 +1080,12 @@ Root服务</div></td> -->
 	      <li id="fenyea">,到第</li>
 	      <li id="fenyeb"><input name="" type="text"></li>
 	      <li id="fenyea">页</li> -->
-	     </ul>
+	  <!--   </ul>
 	  </div>
-  </div> 
+  </div> -->
   
   <!-- 月成交记录 --> 
-   <div class="xq_main_04 goods_main_contents">
+  <%-- <div class="xq_main_04 goods_main_contents" style="display:none">
   	<div class="bz_mian_02">
 		<div class="jilu_top_06">
 			价 格：
@@ -1085,7 +1116,7 @@ Root服务</div></td> -->
 		    
 	    </ul>
 	  </div>
-  </div>
+  </div> --%>
   
   
  

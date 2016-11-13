@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -13,9 +12,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>" />
+<base href="<%=basePath%>" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>三际手机采购网</title>
+<title>三际数码三际手机采购网</title>
 <link href="css/css.css" rel="stylesheet" type="text/css" />
 <link href="js/home/zzsc.css" rel="stylesheet" type="text/css" />
 <style>
@@ -186,6 +185,7 @@
 }
 
 .icon-close {
+    left:500px;
 	padding: 15px 15px 0 15px;
 	position: relative;
 	background: url(images/red-packet/CLOSE1.png) no-repeat;
@@ -196,7 +196,31 @@
 .icon-close:HOVER {
 	background: url(images/red-packet/CLOSE2.png) no-repeat;
 }
+ #myModal {
+      position: absolute;
+      z-index: 10000;
+      top: 0px;
+      left: 0px;
+      background: rgb(50, 50, 50);
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      
+    }
+    #content {
+      position: absolute;
+      width: 1000px;
+      z-index: 999;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .ultlon_content_body {
+      text-align: center;
+    }
+
 </style>
+
+<!-- 弹框显示css-->
 </head>
 
 <body>
@@ -219,9 +243,12 @@
 	<script type="text/javascript" src="js/jquery.vticker-min.js"></script>
 	<script type="text/javascript" src="js/home/home.js"></script>
 	<script type="text/javascript" src="js/home/slides.js"></script>
-	<script type="text/javascript">
+	<%-- <script type="text/javascript" src="js/bootstrap.min.js"></script> --%>
+	<script type="text/javascript" >	
+
 		$(function() {
 			//GetMemberNum("admin_home_homeMemberNum");//获取商家数量
+			setNav();//导航栏居中初始化
 			selectHot('sku', 'day', '5', 'admin_home_home_goodsHot');//获取热销手机
 			showRetTop("1");// 买家服务和入门鼠标效果
 			loadHomeNews();//加载资讯
@@ -233,9 +260,42 @@
 			ImgContent("HomeFloorContent4", "HomeFloorNav4");
 			ImgContent("HomeFloorContent5", "HomeFloorNav5");
 			ImgContent("HomeFloorContent6", "HomeFloorNav6");
-		});
-	</script>
 
+			$("#dialog_close").on("click", function() {
+				$("#myModal, .modal-content").hide();
+			});
+
+			$("#myModal, .modal-content").show();
+			conPosition();
+
+			$("#ultlon_btn_cl").click(function() {
+				$("#myModal,.modal-content").hide();
+			});
+			$("#myModal").click(function() {
+				$("#myModal, .modal-content").hide();
+			});
+			//点击黑色背景隐藏弹出层，当然可以绑定在任意一个按钮上
+			$(window).resize(function() {
+				conPosition();
+			});
+		});
+
+		function conPosition() {
+			var oBackground = document.getElementById("background");
+			var dw = $(document).width();
+			var dh = $(document).height();
+			oBackground.style.width = dw + 'px';
+			oBackground.style.height = dh + 'px';
+			var oContent = document.getElementById("content");
+			var scrollTop = document.documentElement.scrollTop
+					|| document.body.scrollTop;
+			var l = (document.documentElement.clientWidth - oContent.offsetWidth) / 2;
+			var t = ((document.documentElement.clientHeight - oContent.offsetHeight) / 3)
+					+ scrollTop;
+			//oContent.style.left = l + 'px';
+			oContent.style.top = t + 'px';
+		}
+	</script>
 	<!-- 左边快捷按钮 -->
 	<jsp:include page="../common/follow.jsp"></jsp:include>
 	<jsp:include page="../common/head.jsp"></jsp:include>
@@ -256,7 +316,7 @@
 				<div class="home_main_01_let" style="overflow: hidden;">
 					<div class="home_main_01_let_top">
 						<span>在线买家数:
-							<h5 id="admin_home_homeMemberNum">16988</h5> <img
+							<h5 id="admin_home_homeMemberNum">17652</h5> <img
 							src="images/home_xias.jpg" width="11" height="14" /> </span>实时采购
 					</div>
 					<div class="home_main_01_let_txt">
@@ -302,65 +362,69 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1221.html?s=bannerf">
+							<img src="images/hwP9plus.png?<%=Math.random()%>" /> </a>
+							<a href="http://www.3j1688.com/special_161111/index.html">
+							<img src="images/lbst.png?<%=Math.random()%>" /> </a> --%>
+							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html">
+							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a> --%>
+							<!--华为6 -->
+							<a href="http://www.3j1688.com/goods/detail/1493.html?s=banner">
+							<img src="images/xmms.png?<%=Math.random()%>" /> </a>
+							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
+							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>
 							
-							<%-- <a href="https://apple.tmall.com/?spm=a220m.1000858.1000725.12.2kvPkd&rn=1c50d51e049b6f798c9ef718e0137950"><img
-								src="images/apple71.png?<%=Math.random()%>" /> </a> --%>
-								
-								<a href="http://www.3j1688.com/special_160910/index.html"><img
-								src="images/zhongqiu2.png?<%=Math.random()%>" /> </a>
-								
-							<a>	<img src="images/quansheng.png?" alt="" width="695" height="336" border="0" usemap="#Map">
+							<a>
+							  <img src="images/hm4.gif" alt="" width="695" height="336" border="0" usemap="#Map5">
+                               <map name="Map5">
+								  <area shape="rect" coords="33,173,177,251" href="http://www.3j1688.com/goods/detail/1484.html?s=bjd">
+								  <area shape="rect" coords="181,175,314,254" href="http://www.3j1688.com/goods/detail/1485.html?s=bjd" target="_blank">
+							   </map>
+							</a>
+							
+						<%-- 	<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
+							<img src="images/hmprohd-.png?<%=Math.random()%>" /> </a> --%>
+							
+							<!-- 活动 -->
+							<%-- <a href="http://www.3j1688.com/special_161027/index.html">
+							<img src="images/yidonghd.png?<%=Math.random()%>" /> </a> --%>
+							 <%-- <a> <img src="images/tongzhis1.png?<%=Math.random()%>" /> </a>  --%>
+							<!--荣耀6x -->
+							 <a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
+							<img src="images/rongyao6X.png?<%=Math.random()%>" /> </a>  
+							<%-- <a href="http://www.3j1688.com/special_161021/index.html?s=banner">
+							<img src="images/jqjhlb.png?<%=Math.random()%>" /> </a> --%>
+							
+							<!-- 配件活动 -->
+							<%-- <a href="http://www.3j1688.com/special_161009/index.html?s=banner">
+							<img src="images/jppjdjkh.jpg?<%=Math.random()%>" /> </a> --%>
+							<!--360q5  -->
+							<a href="http://www.3j1688.com/goods/detail/1442.html?s=bjd">
+							<img src="images/360q5.png?<%=Math.random()%>" /> </a>
+							<!--360N4a  -->
+							<a href="http://www.3j1688.com/goods/detail/1465.html">
+							<img src="images/360N4A.png?<%=Math.random()%>" /> </a>
+							<!-- 小米5s -->
+							<%-- <a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
+							<img src="images/xiaomi5sk.png?<%=Math.random()%>" /> </a> --%>
+							<%-- <a href="javascript:goListView('配件','','','')">
+							<img src="images/gqqtl.png?<%=Math.random()%>" /> </a> --%>
+							
+							<!-- <a><img src="images/apple720.png" alt="" width="695" height="336" border="0" usemap="#Map11">
+								<map name="Map11">
+								  <area shape="rect" coords="370,224,483,268" href="javascript:goListView('手机','','','苹果7')" target="_blank">
+								  <area shape="rect" coords="486,224,679,269" href="javascript:goListView('配件','','','苹果')" target="_blank">
+								</map> 
+							</a>  --> 
+							<!-- <a>	<img src="images/quansheng.png?" alt="" width="695" height="336" border="0" usemap="#Map">
 										<map name="Map">
 										  <area shape="rect" coords="22,215,147,303" href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
 										  <area shape="rect" coords="149,214,273,304" href="javascript:goListView('手机','','','红米note3合约')" target="_blank">
 										  <area shape="rect" coords="275,213,399,304" href="javascript:goListView('手机','','','小米5合约')" target="_blank">
 										</map>
-							</a>
-
-                            <a href="http://www.3j1688.com/goods/detail/1411.html?s=banner"><img
-								src="images/mxE1.png?<%=Math.random()%>" /> </a>
-
-                            <a href="http://www.3j1688.com/goods/detail/1383.html?s=banner"><img
-								src="images/PRO01.png?<%=Math.random()%>" /> </a>
-						
-							<!-- <a> <img  src="images/hm3Xdzj.png" alt="" width="695" height="336"
-								border="0" usemap="#Map"> 
-								<map name="Map">
-										<area shape="rect" coords="13,187,204,341"
-											href="http://www.3j1688.com/goods/detail/1409.html"
-											target="_blank">
-											<area shape="rect" coords="210,189,395,346"
-												href="http://www.3j1688.com/goods/detail/1407.html"
-												target="_blank">
-									</map></a> -->
-	                        <a href="http://www.3j1688.com/goods/detail/1410.html?s=bjd"><img
-								src="images/mxu209.png?<%=Math.random()%>" /> </a>
-
-							<%-- <a	href="http://www.3j1688.com/goods/detail/1044.html"><img
-								src="images/chuizi.png?<%=Math.random()%>" /> </a> --%>
-
-						<%-- 	<a href="http://www.3j1688.com/goods/detail/1354.html"><img
-								src="images/redMNote3-.gif?<%=Math.random()%>" /> </a> --%>
+							</a> -->
 
 
-							<!-- <a> <img
-								src="images/xm3S.png" alt="" width="695"
-								height="336" border="0" usemap="#Map"> <map name="Map">
-										<area shape="rect" coords="45,206,147,312"
-											href="http://www.3j1688.com/goods/detail/1258.html?s=banner"
-											target="_blank">
-											<area shape="rect" coords="163,207,273,312"
-												href="http://www.3j1688.com/goods/detail/1259.html?s=banner"
-												target="_blank">
-									</map>
-							</a>  -->
-							<%-- <a href="javascript:goListView('手机','','','福中福')"><img
-								src="images/fzflb.png?<%=Math.random()%>" /> </a>
-							<%--     <a href="javascript:goListView('手机','','','乐视')"><img
-								src="images/l2sflb.png?<%=Math.random()%>" /> </a> --%>
-							<%-- <a><img src="images/sydpt.png?<%=Math.random()%>" /> </a>  --%>
-							<a href="http://www.3j1688.com/special_160325/index.html?s=banner"><img
-								src="images/gjstm.png?<%=Math.random()%>" /> </a>
 						</div>
 					</div>
 				</div>
@@ -566,18 +630,18 @@
 					<div class="myjQuery">
 						<div class="myjQueryContent" id="HomeFloorContent1">
 							<div>
-								<a href="http://www.3j1688.com/goods/detail/949.html"
-									target="_blank"><img src="images/images/hmNOTE3.png"
+								<a href="http://www.3j1688.com/goods/detail/1385.html?s=bjd"
+									target="_blank"><img src="images/images/rongyao55.png"
 									width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="http://www.3j1688.com/goods/detail/803.html"
-									target="_blank"><img src="images/images/ry4A.png"
+								<a href="http://www.3j1688.com/goods/detail/1261.html?s=bjd"
+									target="_blank"><img src="images/images/sanxingS.png"
 									width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="http://www.3j1688.com/goods/detail/928.html"
-									target="_blank"><img src="images/images/sxON5.png"
+								<a href="http://www.3j1688.com/goods/detail/1258.html?s=bjd"
+									target="_blank"><img src="images/images/hongmi3s.png"
 									width="254" height="271" /> </a>
 							</div>
 						</div>
@@ -706,8 +770,9 @@
 									src="images/img_3f_01.jpg" width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
-								<a href="accessory/detail/AM051168.html" target="_blank"><img
-									src="images/img_3f_02.jpg" width="254" height="271" /> </a>
+								<a href="http://www.3j1688.com/accessory/detail/AM270591.html"
+									target="_blank"><img src="images/images/apple71.png"
+									width="254" height="271" /> </a>
 							</div>
 							<div class="smask">
 								<a href="accessory/detail/AM030268.html" target="_blank"><img
@@ -757,18 +822,27 @@
 						</tr>
 					</table>
 
+
 				</div>
 				<div class="home_main_04_ret">
 					<div class="myjQuery">
 						<div class="myjQueryContent" id="HomeFloorContent4">
+						
 							<div>
 								<a href="accessory/detail/8080010301.html" target="_blank"><img
 									src="images/img_4f_01.jpg" width="254" height="271" /> </a>
 							</div>
+							
 							<div class="smask">
 								<a href="accessory/detail/817001001.html" target="_blank"><img
 									src="images/img_4f_02.jpg" width="254" height="271" /> </a>
 							</div>
+							
+							<div>
+								<a href="http://www.3j1688.com/accessory/detail/817001002.html" target="_blank"><img
+									src="images/images/xiaomicdb.png" width="254" height="271" /> </a>
+							</div>
+							
 						</div>
 						<ul class="myjQueryNav" id="HomeFloorNav4">
 							<li class="current"></li>
@@ -848,6 +922,9 @@
 			</div>
 		</div>
 	</div>
+
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+
 </body>
+
 </html>

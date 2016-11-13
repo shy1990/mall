@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/sanji/!svn/ver/3611/mall/WebRoot/admin/pay
+END
+payAgain.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sanji/!svn/ver/2856/mall/WebRoot/admin/pay/payAgain.jsp
+END
+payState.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sanji/!svn/ver/1774/mall/WebRoot/admin/pay/payState.jsp
+END
+reqPay.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/sanji/!svn/ver/1183/mall/WebRoot/admin/pay/reqPay.jsp
+END
+toPay.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/sanji/!svn/ver/3611/mall/WebRoot/admin/pay/toPay.jsp
+END
+yeePay.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/sanji/!svn/ver/3516/mall/WebRoot/admin/pay/yeePay.jsp
+END
+yeePayTest.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sanji/!svn/ver/1243/mall/WebRoot/admin/pay/yeePayTest.jsp
+END
+reqRefund.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sanji/!svn/ver/1731/mall/WebRoot/admin/pay/reqRefund.jsp
+END

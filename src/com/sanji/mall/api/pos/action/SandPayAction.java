@@ -190,8 +190,8 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 					  }else{
 						  resultPojo = messageToPos(resultPojo);//返回订单信息
 						  }
-					 
-						
+
+
 				} else {
 					resultPojo.setResult_code("5");
 					resultPojo.setResult_type("工号或订单号不能为空");
@@ -207,9 +207,9 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 		}
 		writeJson(resultPojo);
 	}
-    
+
 	/**
-	 * 
+	 *
 	 * 将订单信息返回给pos终端
 	 */
 	private SandPayPojo messageToPos(SandPayPojo resultPojo) {
@@ -237,8 +237,8 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				// resultPojo.setOrderAmount(order.getTotalCost()
 				// + "");
 				//if(orderService.checkOrderCity(order.getId())){
-					
-				
+
+
 				resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
 				/*}else{
 					resultPojo.setOrderAmount(order.getActualPayNum()+"");
@@ -251,23 +251,23 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				resultPojo.setResult_type("无效的订单号");
 			}
 		}
-		
+
 		return resultPojo;
 	}
-	
-	/**  
-	* 提供精确的乘法运算。  
+
+	/**
+	* 提供精确的乘法运算。
 	* @param ActualPayNum 实付金额
 	* @param rate ：0.55% (费率)
-	* @return 两个参数的积  
-	*/  
-	
-	private static Double mul(BigDecimal ActualPayNum){   
-	BigDecimal rate = new BigDecimal("1.0055"); //费率  
-	
-	
-	return ActualPayNum.multiply(rate).doubleValue();   
-	}   
+	* @return 两个参数的积
+	*/
+
+	private static Double mul(BigDecimal ActualPayNum){
+	BigDecimal rate = new BigDecimal("1.0055"); //费率
+
+
+	return ActualPayNum.multiply(rate).doubleValue();
+	}
 	
 	public SandPayPojo getYdmallOrder(String orderNo){
 		//String url =  "http://ydmall.3j1688.com/order/" + orderNo ;
@@ -279,17 +279,17 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				Response rs = con.execute();// 获取响应
 				System.out.println("::::::::：" + rs.body());
 				JSONObject obj = JSONObject.parseObject(rs.body());
-				
+
 				//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口查询订单："+obj.getString("id")+"  :"+obj.getJSONObject("createBy").getString("shipName"));
-				
+
 				if (null != obj && obj.containsKey("id")) {//返回值不为空，并且有id字段
 					//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口成功返回信息");
 					String orderNum = obj.getString("id");
 					//if(orderService.checkerOrderShipStatus(orderNum)){
-						
+
 					//	String adminMobile = orderService.findAdminMobileByOrderNo(orderNum);
 					//	MsgUtil.PosPaymentsSuc(obj.getString("id"),adminMobile);//付款成功后向app推送消息
-					
+
 					resultPojo.setEmployeeId(sandPayPojo.getEmployeeId());
 					resultPojo.setOrderId(obj.getString("id"));//订单id
 					resultPojo.setOrderNo(obj.getString("id"));//订单编号
@@ -309,7 +309,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 					resultPojo.setResult_code("6");
 					resultPojo.setResult_type("无效的订单号");
 				}
-			
+
 		} catch (Exception e) {
 			//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "调用移动商城接口异常："+e.getMessage());
 			e.printStackTrace();
@@ -354,7 +354,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 	 * resultPojo.setResult_type("未知错误，请联系相关技术人员！"); } writeJson(resultPojo); }
 	 */
 	public void doNotNeedSession_payInfo() {
-		
+
 		resultPojo = new SandPayPojo();
 		try {
 			if (getPayInfoHmac(sandPayPojo).equals(sandPayPojo.getHmac())) {// 验证签名数据
@@ -369,17 +369,32 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 						//MsgUtil.MsgConcelOrderToUser(null, "18453170418", "pos回调成功老商城订单:"+sandPayPojo.getEmployeeId()+"   订单号："+sandPayPojo.getOrderId());
 						order = orderService.gainOrderByID(sandPayPojo.getOrderId());
 						if (null != order) {
-							
-							double f1 = Double.parseDouble(String.format("%.2f", mul(order.getActualPayNum())));
+							double f1 = 0;
+							if("LD".equals(order.getOrderNum().substring(0, 2))){
+								 f1 = Double.parseDouble(String.format("%.2f", new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")).doubleValue()));
+							}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+								 f1 = Double.parseDouble(String.format("%.2f", order.getTotalCost().doubleValue()));
+							}else{
+								 f1 = Double.parseDouble(String.format("%.2f", mul(order.getActualPayNum())));
+							}
+
+
 							Double   u =  f1 - Double.valueOf(sandPayPojo.getPayAmount() + "") ;
+
 							if (u == 0.0) {// 比较订单价格是否相同
 								PayDeal deal = payService.gainDealByDeal(sandPayPojo.getPayNO(), sandPayPojo.getCompanyName());
 								if (null == deal) {
 									deal = new PayDeal();
 									deal.setId(ToolsUtil.getUUID());
 									deal.setCreateTime(new Date());
-									
-									deal.setOrderAmount(new BigDecimal(mul(order.getActualPayNum())));
+									if("LD".equals(order.getOrderNum().substring(0, 2))){
+									 deal.setOrderAmount(new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")));
+									}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+										 deal.setOrderAmount(order.getTotalCost());
+									}else{
+										 deal.setOrderAmount(new BigDecimal(mul(order.getActualPayNum())));
+									}
+
 									deal.setDealFee(new BigDecimal(sandPayPojo.getPayAmount()));
 									deal.setDealState("SUCCESS");
 									deal.setDealSigunre(sandPayPojo.getHmac());
@@ -393,6 +408,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									deal.setBankCardNo(sandPayPojo.getBankCardNo());
 									deal.setBankCardName(sandPayPojo.getBankCardName());
 									payService.insetPayDeal(deal);
+
 									resultPojo.setOrderId(order.getId());
 									resultPojo.setOrderNo(order.getOrderNum());
 									resultPojo.setPayNO(sandPayPojo.getPayNO());
@@ -400,10 +416,18 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									resultPojo.setResult_code("1");
 									resultPojo.setResult_type("成功");
 	
-									order = orderService.gainOrderALLByID(sandPayPojo.getOrderId());
+
 	
 									try {
 										// 增积分
+										order = orderService.gainOrderALLByID(sandPayPojo.getOrderId());
+										editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
+										if("LD".equals(order.getOrderNum().substring(0, 2))){
+											 MsgUtil.sendToWaterOrder(order.getOrderNum(), new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20")), order.getPayTime());
+										}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+											MsgUtil.sendToWaterOrder(order.getOrderNum(), order.getTotalCost(), order.getPayTime());
+										}
+										//调用业务后台WaterOrder接口
 										List<OrderItems> orderItemss = order.getOrderItemss();
 										addPoint(orderItemss);
 									} catch (Exception e) {
@@ -412,8 +436,10 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 										e.printStackTrace();
 									}
 	
-									editBalancePay();// 如果是钱包支付或者钱包混合支付，修改支付状态
-	
+
+
+
+
 								} else {
 									resultPojo.setResult_code("8");
 									resultPojo.setResult_type("重复提交，不给于处理");

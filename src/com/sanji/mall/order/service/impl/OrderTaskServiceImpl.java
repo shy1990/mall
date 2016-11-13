@@ -43,7 +43,7 @@ public class OrderTaskServiceImpl implements OrderTaskService {
 	 * @author 田超强
 	 * @throws
 	 */
-	@Scheduled(cron = "0 59 23 * * ? ")
+	//@Scheduled(cron = "0 59 23 * * ? ")
 	public void orderConfirm() {
 		try {
 			// 查找未发货的订单

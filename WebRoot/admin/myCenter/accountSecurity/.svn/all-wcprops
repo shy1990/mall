@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sanji/!svn/ver/2776/mall/WebRoot/admin/myCenter/accountSecurity
+END
+fixMobile.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sanji/!svn/ver/1837/mall/WebRoot/admin/myCenter/accountSecurity/fixMobile.jsp
+END
+userInfo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sanji/!svn/ver/2776/mall/WebRoot/admin/myCenter/accountSecurity/userInfo.jsp
+END
+fixMobileSuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/sanji/!svn/ver/1838/mall/WebRoot/admin/myCenter/accountSecurity/fixMobileSuccess.jsp
+END
+toFixMobile.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/sanji/!svn/ver/1840/mall/WebRoot/admin/myCenter/accountSecurity/toFixMobile.jsp
+END
+accountSecurity.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/sanji/!svn/ver/1834/mall/WebRoot/admin/myCenter/accountSecurity/accountSecurity.jsp
+END
+bindMobile.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/sanji/!svn/ver/1835/mall/WebRoot/admin/myCenter/accountSecurity/bindMobile.jsp
+END
+fixPassword.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/sanji/!svn/ver/1839/mall/WebRoot/admin/myCenter/accountSecurity/fixPassword.jsp
+END
+editUserInfo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/sanji/!svn/ver/2775/mall/WebRoot/admin/myCenter/accountSecurity/editUserInfo.jsp
+END
+fixPasswordSuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/sanji/!svn/ver/1840/mall/WebRoot/admin/myCenter/accountSecurity/fixPasswordSuccess.jsp
+END
+editBankInfo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/sanji/!svn/ver/2727/mall/WebRoot/admin/myCenter/accountSecurity/editBankInfo.jsp
+END
+getMobileCode.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/sanji/!svn/ver/1840/mall/WebRoot/admin/myCenter/accountSecurity/getMobileCode.jsp
+END
+bindSuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/sanji/!svn/ver/1836/mall/WebRoot/admin/myCenter/accountSecurity/bindSuccess.jsp
+END

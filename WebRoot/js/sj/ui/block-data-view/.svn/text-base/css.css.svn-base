@@ -1,0 +1,68 @@
+.ui-sj-block-data-view {
+	display: inline-block;
+	width: 236px;
+	height: 295px;
+	overflow: hidden;
+	border-right: #e4e4e4 solid 1px;
+	border-bottom: #e4e4e4 solid 1px;
+}
+
+.ui-sj-block-data-view .img {
+	height: 175px;
+	overflow: hidden;
+	text-align: center;
+}
+.ui-sj-block-data-view img{
+	max-height: 100%;
+	
+}
+.ui-sj-block-data-view .content {
+	height: 120px;
+	padding: 0 10px;
+}
+
+.ui-sj-block-data-view .content p {
+	margin: 0;
+	font-size: 12px;
+	line-height: 24px;
+}
+
+.ui-sj-block-data-view .content .value1 {
+	color: rgb(255, 0, 0);
+	font-size: 18px;
+	line-height: 35px;
+}
+
+.ui-sj-block-data-view .content .value2 {
+	color: rgb(153, 153, 153);
+	text-decoration: line-through;
+}
+
+.ui-sj-block-data-view  .content .description {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+}
+
+.ui-sj-block-data-view .content input {
+	width: 30px;
+	height: 18px;
+	padding: 0;
+	border: #e4e4e4 solid 1px;
+	color: #F00;
+}
+
+.ui-sj-block-data-view .button {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+
+.ui-sj-block-data-view  .sub {
+	background: url(img/jian.jpg);
+}
+
+.ui-sj-block-data-view  .add {
+	background: url(img/jia.jpg);
+}

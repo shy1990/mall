@@ -253,7 +253,7 @@ public interface OrderService {
 
 	/**
 	 * 统计已经购买的活动商品数量
-	 * 
+	 *
 	 * @param goodsId
 	 * @param memberId
 	 * @return
@@ -263,7 +263,7 @@ public interface OrderService {
 
 	/**
 	 * 查询订单是否有活动商品
-	 * 
+	 *
 	 * @param goodsId
 	 * @param memberId
 	 * @return
@@ -273,7 +273,7 @@ public interface OrderService {
 
 	/**
 	 * 查询订单物流状态是否已签收
-	 * 
+	 *
 	 * @param orderNum
 	 * @return
 	 */
@@ -281,7 +281,7 @@ public interface OrderService {
 
 	/**
 	 * 根据订单号查询业务员手机号
-	 * 
+	 *
 	 * @param orderNum
 	 * @return
 	 */

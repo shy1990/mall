@@ -104,6 +104,10 @@ public class LongAction extends BaseAction implements ModelDriven<Members> {
 				loginLog = reglogin();// 用户登录时记录登录信息
 				loginLogService.addLoginLog(loginLog);
 				session.put(ResourceUtil.getSessionInfoName(), sessionInfo);
+
+        // 将sessionInfo推送到redis
+        request.getSession().setAttribute("sessionInfo",sessionInfo);
+
 				return "succeed";
 				/*
 				 * } else {

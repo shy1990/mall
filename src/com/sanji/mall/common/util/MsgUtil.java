@@ -77,7 +77,7 @@ public class MsgUtil {
   private static String SJ_DXQF_MEMBER_content = "尊敬的手机零售商店主：您已开通三际手机采购网会员权限，网址为WWW.3J1688.COM，可足不出户尊享全品类一站式手机采购服务，天天低价，限时送达，货到付款，两年延保，30天退换，当地三际服务站为您提供快速响应的无忧售后服务。您的登录名即为您的手机号码，默认密码为123456.请您务必及时登录及时修改密码以确保您的账户安全。如有问题请咨询当地移动公司渠道经理或三际服务站服务人员，也可拨打电话：400-937-1688。三际手机采购网竭诚为您服务。";
 
   private static Logger logger = Logger.getLogger(MsgUtil.class);
-  
+
   private static String APPLIED_REGISTER_SUCCESS = "申请注册";// 申请注册成功
 
   public static void MsgSenderMembers(String mobile) {
@@ -503,6 +503,17 @@ public class MsgUtil {
 //	          params, null, null);
   }
 
+  public static void sendMessageToApps(JSONObject obj) {
+	    Map<String, String> params = new HashMap<String, String>();
+	    params.put("msg", obj.toJSONString());
+ //	    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/updateRd",
+//	     params, null, null);
+	    System.out.println("===========sendMessageToApps==========start====");
+		HttpClientUtils.sendPostRequest("http://192.168.2.41:8082/v1/updateRd",
+		          params, null, null);
+		System.out.println("===========sendMessageToApps==========end====");
+	  }
+
   private static void sendMessage1(String msg) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", msg);
@@ -511,6 +522,20 @@ public class MsgUtil {
     	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
 				 params, null, null);
   }
+
+  /**
+   * 调用业务后台WaterOrder接口
+   */
+  public static void sendToWaterOrder(String orderNum, BigDecimal actualPayNum,  Date createTime){
+	  Map<String, String> params = new HashMap<String, String>();
+	  params.put("payDate", createTime.getTime()+"");
+	  params.put("payMoney", actualPayNum+"");
+	  String strResult = HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/waterOrder/pay/"+orderNum,
+				 params, null, null);
+
+  }
+
+
 
   private static void cancelOrder(String msg) {
     Map<String, String> params = new HashMap<String, String>();
@@ -747,7 +772,7 @@ public class MsgUtil {
     return result;
   }
 /**
- * 
+ *
  * @param mobiles 后台管理人员手机号
  * @param shopName 申请注册的手机店店名
  * @param truename 店主的名字

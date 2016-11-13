@@ -43,12 +43,14 @@
     <result column="BANK_DEPOSIT" property="bankDeposit" jdbcType="VARCHAR" />
     <result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR" />
     <result column="COM_PHONE" property="comPhone" jdbcType="VARCHAR" />
+    
     <!-- 关联字段 -->
     <result column="PNAME" property="pname" jdbcType="VARCHAR" />
 	<result column="CNAME" property="cname" jdbcType="VARCHAR" />
 	<result column="ANAME" property="aname" jdbcType="VARCHAR" />
 	<result column="memberId" property="memberId" jdbcType="VARCHAR"/>
 	<result column="RID" property="rid" jdbcType="VARCHAR"/>
+	<result column="ORDER_NUM" property="orderNum" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     ID, USERNAME, PASSWORD, TRUENAME, NICKNAME, AREA, CITY, MOBILE, TELPHONE, EMAIL, 
@@ -57,6 +59,12 @@
     RECOMMEND_USERID, EMAIL_STATUS, MOBILE_STATUS, QUESTION_ID, QUESTION_ANSWER, LAST_LOGIN_IP, 
     BIRTHDAY,ADMIN_ID,DITCH_ENCODE,BANK_CARD_NO,BANK_DEPOSIT,BANK_ACCOUNT,COM_PHONE
   </sql>
+  <select id="gainMobileByOrderNum" resultType="java.lang.String" parameterType="java.lang.String">
+     select  m.area from SJ_TB_MEMBERS  m left join sj_tb_order o on m.id = o.member_id where o.order_num  = #{orderNum,jdbcType=VARCHAR}
+  </select>
+  <select id="gainCityByOrderId" resultType="java.lang.String" parameterType="java.lang.String">
+     select  m.city from SJ_TB_MEMBERS  m left join sj_tb_order o on m.id = o.member_id where o.id  = #{id,jdbcType=VARCHAR}
+  </select>
   <select id="gianMemberForOrder" resultType="java.lang.Long" parameterType="com.sanji.mall.model.Members">
     select count(o.ID) from SJ_TB_MEMBERS  m left join sj_tb_order o on m.id = o.member_id where m.mobile  = #{mobile,jdbcType=VARCHAR}
   </select>

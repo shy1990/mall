@@ -31,7 +31,7 @@
 		<from>member/checkMobile/(.*).html</from>
 		<to type="forward">member/registerAction!doNotNeedSession_checkMobile.action?toMobile=$1</to>
 	</rule>
-	
+
 	<!-- 申请注册时验证手机号码是否存在、已注册 -->
 	<rule>
 		<from>member/checkAppliedRegMobile/(.*).html</from>
@@ -586,6 +586,11 @@
 	<rule>
 		<from>order/add.html</from>
 		<to type="forward">order/orderAction!add.action</to>
+	</rule>
+	<!-- 生成新型订单 -->
+	<rule>
+		<from>order/addNewOrder.html</from>
+		<to type="forward">order/orderAction!doNotNeedSession_addNewOrder.action</to>
 	</rule>
 	<rule>
 		<from>order/success.html</from>

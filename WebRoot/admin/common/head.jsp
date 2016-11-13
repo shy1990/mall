@@ -11,8 +11,6 @@
 	if (memberName != null && !"".equals(memberName)) {
 %>
 <!--======================top开始============================-->
-
-
 <style>
 .fix_top {
 	position: fixed;
@@ -408,19 +406,17 @@
 					href="goods/toShopRush.html?s=menu" target="_blank"> <span
 						class="icon-new">小米抢购</span> </a></li>
 				<li><a href="goods/lj/3/bjd.html">智能机</a></li>
-				<li><a href="goods/dz/2/bjd.html">合约机</a></li>
+				 <li><a href="goods/dz/2/bjd.html">合约机</a></li> 
 				<!-- <li><a href="http://www.3j1688.com/special_160701_/index.html">移动订货会</a></li> -->
-				 <!-- <li><a href="goods/gnj/3/bjd.html">功能机</a></li>  -->
-
+				 
 				<c:set var="areas"
 					value="2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,3275" />
 				<%-- <c:if test="${fn:indexOf(areas,sessionInfo.area) < 0}">  --%>
 				<%-- </c:if> --%>
-
-				<%-- <c:if test="${sessionInfo.LoginName != '测试帐号'}">
-
-				</c:if> --%>
-
+				<%--  <c:if test="${sessionInfo.LoginNickName != 'zhangsan'}">
+                    
+				</c:if>  --%>
+                  <li><a href="goods/gnj/3/bjd.html">功能机</a></li>   
 				<!-- <li class="dropdown"><a href="goods/gnj/3/bjd.html"
 					class="dropdown-toggle" data-toggle="dropdown">功能机 </a>
 				</li> -->

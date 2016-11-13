@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sanji/!svn/ver/2777/mall/WebRoot/js/myCenter/accountSecurity
+END
+getMobileCode.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sanji/!svn/ver/755/mall/WebRoot/js/myCenter/accountSecurity/getMobileCode.js
+END
+editBankInfo.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sanji/!svn/ver/2726/mall/WebRoot/js/myCenter/accountSecurity/editBankInfo.js
+END
+editUserInfo.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sanji/!svn/ver/2415/mall/WebRoot/js/myCenter/accountSecurity/editUserInfo.js
+END
+fixPassword.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sanji/!svn/ver/756/mall/WebRoot/js/myCenter/accountSecurity/fixPassword.js
+END
+bindMobile.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sanji/!svn/ver/2479/mall/WebRoot/js/myCenter/accountSecurity/bindMobile.js
+END
+userInfo.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sanji/!svn/ver/2777/mall/WebRoot/js/myCenter/accountSecurity/userInfo.js
+END
