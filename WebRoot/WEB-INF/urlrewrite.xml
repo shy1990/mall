@@ -587,7 +587,8 @@
 		<from>order/add.html</from>
 		<to type="forward">order/orderAction!add.action</to>
 	</rule>
-	<!-- 生成新型订单 -->
+
+	<!-- 生成订单 -->
 	<rule>
 		<from>order/addNewOrder.html</from>
 		<to type="forward">order/orderAction!doNotNeedSession_addNewOrder.action</to>
@@ -666,6 +667,11 @@
 		<to type="forward">pay/yeePayAction!toPayByOrderId.action?orderId=$1</to>
 	</rule>
 
+    <!-- 模拟银行回调 -->
+    <rule>
+        <from>yeePay/toModelBankRetrun.html</from>
+        <to type="forward">pay/yeePayAction!modelBankReturn.action</to>
+    </rule>
 	<!-- 提交支付方式 到易宝支付 -->
 	<rule>
 		<from>yeePay/toYEEPayByOrderId.html</from>
@@ -774,11 +780,6 @@
 		<to type="forward">admin/wx/success.jsp</to>
 	</rule>
 
-	<!-- 模拟银行回调 -->
-	<rule>
-		<from>yeePay/toModelBankRetrun.html</from>
-		<to type="forward">pay/yeePayAction!modelBankReturn.action</to>
-	</rule>
 
 	<!-- （杉德pos接口） 派送员登录验证 -->
 	<rule>

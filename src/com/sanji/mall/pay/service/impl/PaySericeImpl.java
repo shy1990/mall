@@ -83,27 +83,26 @@ public class PaySericeImpl implements PayService{
 	* @see com.sanji.mall.pay.service.PayService#insetPayDeal(com.sanji.mall.model.PayDeal)
 	*/
 	
-	public void insetPayDeal(PayDeal payDeal)
-	  {
-	    this.payDealMapper.insertSelective(payDeal);
-	    Order order = new Order();
-	    order.setId(payDeal.getOrderId());
-	    order.setPayStatus("1");
-	    if (payDeal.getPayType().equals("pos")) {
-	      order.setShipStatus("3");
-	      order.setSignForTime(new Date());
-	      order.setPayMent("2");
-	    }
-	    else {
-	      order.setPayMent("0");
-	    }
-	    order.setEbankMon(payDeal.getDealFee());
-	    order.setDealType(payDeal.getDealType());
-	    order.setDealId(payDeal.getDealId());
-	    order.setPayTime(payDeal.getCreateTime());
-	    this.orderMapper.updatePayStatusById(order);
-	    MsgUtil.updateOrderAfterPosPaymentsSuc(payDeal.getOrderNo(), "1");
-	  }
+	public void insetPayDeal(PayDeal payDeal) {
+		// TODO Auto-generated method stub
+		payDealMapper.insertSelective(payDeal);
+		Order order = new Order();
+		order.setId(payDeal.getOrderId());
+		order.setPayStatus("1");//已付款
+		if (payDeal.getPayType().equals("pos")) {
+			order.setShipStatus("3");// 已签收
+			order.setSignForTime(new Date());//签收时间
+			order.setPayMent("2");//pos支付
+			MsgUtil.MsgQHSuccess(payDeal.getShipTel(), payDeal.getOrderNo());
+		}else {
+			order.setPayMent("0");//网上支付
+		}
+		order.setEbankMon(payDeal.getDealFee());
+		order.setDealType(payDeal.getDealType());
+		order.setDealId(payDeal.getDealId());
+		order.setPayTime(payDeal.getCreateTime());
+		orderMapper.updatePayStatusById(order);
+	}
 
 	/* (非 Javadoc)
 	* <p>Title: insetPayDealStock</p>

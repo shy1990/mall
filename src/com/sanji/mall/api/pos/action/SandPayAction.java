@@ -237,9 +237,15 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 				// resultPojo.setOrderAmount(order.getTotalCost()
 				// + "");
 				//if(orderService.checkOrderCity(order.getId())){
+					
+				if("LD".equals(order.getOrderNum().substring(0, 2))){
+					resultPojo.setOrderAmount(new BigDecimal(order.getTotalCost()+"").add(new BigDecimal("20"))+"");
+				}else if("DL".equals(order.getOrderNum().substring(0, 2))){
+					resultPojo.setOrderAmount(order.getTotalCost()+"");
+				}else{
+					resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
+				}
 
-
-				resultPojo.setOrderAmount(new BigDecimal(mul(order.getActualPayNum()))+"");
 				/*}else{
 					resultPojo.setOrderAmount(order.getActualPayNum()+"");
 				}*/
@@ -259,15 +265,15 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 	* 提供精确的乘法运算。
 	* @param ActualPayNum 实付金额
 	* @param rate ：0.55% (费率)
-	* @return 两个参数的积
-	*/
-
-	private static Double mul(BigDecimal ActualPayNum){
-	BigDecimal rate = new BigDecimal("1.0055"); //费率
-
-
-	return ActualPayNum.multiply(rate).doubleValue();
-	}
+	* @return 两个参数的积  
+	*/  
+	
+	private static Double mul(BigDecimal ActualPayNum){   
+	BigDecimal rate = new BigDecimal("1.0055"); //费率  
+	
+	
+	return ActualPayNum.add(new BigDecimal("14.5")).multiply(rate).doubleValue();
+	}   
 	
 	public SandPayPojo getYdmallOrder(String orderNo){
 		//String url =  "http://ydmall.3j1688.com/order/" + orderNo ;
@@ -416,7 +422,7 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 									resultPojo.setResult_code("1");
 									resultPojo.setResult_type("成功");
 	
-
+									order = orderService.gainOrderALLByID(sandPayPojo.getOrderId());
 	
 									try {
 										// 增积分
@@ -436,9 +442,6 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 										e.printStackTrace();
 									}
 	
-
-
-
 
 								} else {
 									resultPojo.setResult_code("8");

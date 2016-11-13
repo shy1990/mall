@@ -432,8 +432,11 @@ public class MsgUtil {
       String accNum = accNums + "";
       String msg = "{\"orderNum\":\"" + order.getOrderNum() + "\",\"mobiles\":\"" + mobiles + "\",\"skuNum\":\"" + skuNum + "\",\"username\":\""
        + members.getUsername() + "\",\"amount\":\"" + order.getTotalCost() + "\",\"acutalPrice\":\"" + order.getActualPayNum() + "\",\"accNum\":\"" + accNum + "\",\"memberMobile\":\"" + members.getMobile() + "\"}";
+//	    String msg_ = "{\"method\":\"logistics.offline.send\",\"app_id\":\"54321\",\"sign\":\"654123\",\"timestamp\":\""+new Date().getTime()+"\",\"tid\":\"123456\",\"companyCode\":\"casd\",\"outSid\":\""+order.getOrderNum()+"\"}";
       try {
         sendMessage1(msg);
+				//出库信息推送
+	      sendOrderOutData(order.getOrderNum());
         System.out.println("msg:" + msg);
       } catch (Exception e) {
         e.printStackTrace();
@@ -497,52 +500,47 @@ public class MsgUtil {
   private static void sendMessageToApp(JSONObject obj) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", obj.toJSONString());
-//    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewPosPayments",
-//     params, null, null);
-	          HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewPosPayments",
-	          params, null, null);
+    HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewPosPayments",
+     params, null, null);
+//	          HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewPosPayments",
+//	          params, null, null);
   }
-
-  public static void sendMessageToApps(JSONObject obj) {
-	    Map<String, String> params = new HashMap<String, String>();
-	    params.put("msg", obj.toJSONString());
- //	    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/updateRd",
-//	     params, null, null);
-	    System.out.println("===========sendMessageToApps==========start====");
-		HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/updateRd",
-		          params, null, null);
-		System.out.println("===========sendMessageToApps==========end====");
-	  }
 
   private static void sendMessage1(String msg) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", msg);
    // HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewOrder",
    //  params, null, null);
-    	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewOrder",
-				 params, null, null);
+//    	String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:9090/v1/push/pushNewOrder",
+	  HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewOrder",params, null, null);
   }
-
+//	出库信息推送
+  private static void sendOrderOutData(String orderNum) {
+	    String url = "?method=logistics.offline.send&app_id=222&sign=22222&timestamp="+ new Date().getTime() + "&out_sid=3333&company_code=4444&tid="+orderNum;
+	  System.out.println(url);
+//	  String strResult = HttpClientUtils.sendGetRequest("http://192.168.2.151:9090/v1/ecoms/api/"+url,null);
+	  String strResult = HttpClientUtils.sendGetRequest(ResourceUtil.get("ecom_url")+"ecoms/api/"+url,null);
+	  System.out.println(ResourceUtil.get("ecom_url")+"ecoms/api/"+url);
+  }
   /**
    * 调用业务后台WaterOrder接口
    */
   public static void sendToWaterOrder(String orderNum, BigDecimal actualPayNum,  Date createTime){
 	  Map<String, String> params = new HashMap<String, String>();
-	  params.put("payDate", createTime.getTime()+"");
+	  params.put("payDate", DateUtil.getLongByDate(createTime)+"");
 	  params.put("payMoney", actualPayNum+"");
 	  String strResult = HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/waterOrder/pay/"+orderNum,
 				 params, null, null);
 
   }
 
-
-
   private static void cancelOrder(String msg) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", msg);
 //		String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.146:7777/v1/push/cancelOrder",
 //				 params, null, null);
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/cancelOrder",
+//    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/cancelOrder",
+    HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/cancelOrder",
      params, null, null);
   }
 
@@ -793,7 +791,7 @@ public static boolean CheckOrderFromBuzmgt(String orderNum) {
 	    params.put("orderNum", orderNum);
 			/*String strResult = HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/remind/checkOrder",
 					 params, null, null);*/
-	   String strResult =  HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/remind/checkOrder",
+	   String strResult =  HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/remind/checkOrder",
 	     params, null, null);
 	   if("true".equals(strResult)){
 		   return true;

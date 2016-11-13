@@ -17,6 +17,9 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -114,7 +117,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 	private HbService hbService;
 
 	private Order order;
-
+	
 	private Evaluate evaluate;
 
 	public Evaluate getModel1() {
@@ -130,7 +133,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 		}
 		return order;
 	}
-
+	
 	@Resource
 	private OrderService orderService;
 
@@ -541,6 +544,36 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 
 		return "queren";
 	}
+	
+	
+	/**
+	 * 
+	 * @Title: add @Description: 添加订单 @return    设定文件 String    返回类型 @throws
+	 */
+	public void doNotNeedSession_addNewOrder() {
+				if(!StringUtils.isEmpty(order.getOrderNum()) && !StringUtils.isEmpty(order.getTotalCost()+"")){
+					Members member = memberService.getMemberById("faca1f199c3f41a3a8d8d90173f8e540");
+					String orderId = ToolsUtil.getUUID();
+					order.setId(orderId);
+					order.setShipName(member.getTruename());
+					order.setArea(member.getArea());
+					//order.setShipZip(member.getZip());
+					order.setShipTel(member.getMobile());
+					//order.setShipEmail(member.getEmail());
+					order.setProvince(member.getProvince());
+					order.setCity(member.getCity());
+					order.setAddress(member.getAddress());
+					order.setMemberType("1");
+					order.setMemberId(member.getId());
+		            order.setOrderNum(order.getOrderNum());
+				    order.setCreatetime(new Date());
+				    order.setTotalCost(order.getTotalCost());
+				    orderService.saveOrder(order);
+				}
+					
+				
+	}
+	
 	
 	
 	//活动页添加订单
@@ -1433,5 +1466,4 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 		this.searchParam = searchParam;
 	}
 
-	
 }
