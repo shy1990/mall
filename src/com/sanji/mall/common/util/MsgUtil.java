@@ -497,10 +497,10 @@ public class MsgUtil {
   private static void sendMessageToApp(JSONObject obj) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", obj.toJSONString());
-    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewPosPayments",
-     params, null, null);
-//	          HttpClientUtils.sendPostRequest("http://192.168.2.153:8082/v1/push/pushNewPosPayments",
-//	          params, null, null);
+//    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/push/pushNewPosPayments",
+//     params, null, null);
+	          HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewPosPayments",
+	          params, null, null);
   }
 
   public static void sendMessageToApps(JSONObject obj) {
@@ -509,7 +509,7 @@ public class MsgUtil {
  //	    HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/updateRd",
 //	     params, null, null);
 	    System.out.println("===========sendMessageToApps==========start====");
-		HttpClientUtils.sendPostRequest("http://192.168.2.41:8082/v1/updateRd",
+		HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/updateRd",
 		          params, null, null);
 		System.out.println("===========sendMessageToApps==========end====");
 	  }

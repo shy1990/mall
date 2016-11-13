@@ -34,13 +34,14 @@
       (t.username =#{username} or t.mobilephone = #{username} or t.USER_NUM = #{username}) and t.password = #{password}
   </select>
   <!-- 查询授权电话 -->
-  <select id="gainMsgInfoAdminByRegionsAndType" resultType="String" parameterType="Map">
+  <select id="gainMsgInfoAdminByRegionsAndType" resultType="java.lang.String"
+          parameterType="java.util.Map">
   select WM_CONCAT( a.mobilephone) from sj_tb_admin a 
 	where a.id in(
 		select  t.user_id from sj_tb_admin_infomsg t where t.regions in(#{province,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{area,jdbcType=VARCHAR}) and t.type =#{type,jdbcType=VARCHAR})
   
   </select>
-  <select id="gainMsgInfoAdminByRegionsAndTypeNOCONCAT" resultType="String" parameterType="Map">
+  <select id="gainMsgInfoAdminByRegionsAndTypeNOCONCAT" resultType="java.lang.String" parameterType="java.util.Map">
     select a.mobilephone from sj_tb_admin a
         where a.id in(
         select  t.user_id from sj_tb_admin_infomsg t where t.regions in(#{province,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{area,jdbcType=VARCHAR}) and t.type =#{type,jdbcType=VARCHAR})

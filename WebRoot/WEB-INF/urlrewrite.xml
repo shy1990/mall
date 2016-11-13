@@ -774,6 +774,11 @@
 		<to type="forward">admin/wx/success.jsp</to>
 	</rule>
 
+	<!-- 模拟银行回调 -->
+	<rule>
+		<from>yeePay/toModelBankRetrun.html</from>
+		<to type="forward">pay/yeePayAction!modelBankReturn.action</to>
+	</rule>
 
 	<!-- （杉德pos接口） 派送员登录验证 -->
 	<rule>

@@ -382,15 +382,32 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 				if (!"4dec69e6af0c4346beac65c6f332aa5d".equals(sessionInfo.getUserId())) {// 过滤掉测试账号，测试账号数据不推送到管易
 					Members m = memberService.gainMembersDetailById(sessionInfo.getUserId());
 					Admin admin = adminService.getAdminById(m.getAdminId());
-					Map<String, Object> map = EcErpUtil.OrderAddNew(order, sessionInfo.getLoginName(), "", "", "", "",
-							"1", admin != null ? admin.getTruename() : "没有对应业务名称");
-					if (null != map.get("tid") && !"".equals(map.get("tid"))) {
-						order.setEcerpNo(map.get("tid") + "");
-						order.setEcerpCreated(map.get("created") + "");
-						// 服务站经理存在就将此订单向APP推送
-						if (admin != null && !"".equals(admin)) {
+					String proFile = ResourceUtil.get("proFile");
+					Map<String, Object> map = new HashMap<String, Object>();
+					/*
+					 * 在config中添加proFile字段
+					 * 读取是否为测试环境test，正式环境需要去掉。
+					 */
+					Date now = new Date();
+					if("test".equals(proFile)){
+						order.setEcerpNo("test-"+ now.getTime());
+						order.setEcerpCreated(now.toString());
+						//服务站经理存在就将此订单向APP推送
+						if(admin != null && !"".equals(admin)){
 							String mobile2 = admin.getMobilephone();
 							MsgUtil.MsgInfoXDApp(mobile2, order, m);
+						}
+					}else{
+						//管易推送
+					  map = EcErpUtil.OrderAddNew(order, sessionInfo.getLoginName(), "", "", "", "", "1",admin!=null?admin.getTruename():"没有对应业务名称");
+						if (null != map.get("tid") && !"".equals(map.get("tid"))) {
+							order.setEcerpNo(map.get("tid") + "");
+							order.setEcerpCreated(map.get("created") + "");
+							//服务站经理存在就将此订单向APP推送
+							if(admin != null && !"".equals(admin)){
+								String mobile2 = admin.getMobilephone();
+								MsgUtil.MsgInfoXDApp(mobile2, order, m);
+							}
 						}
 					}
 					order.setEcerpError(map.get("ERROR") + "");
@@ -1152,5 +1169,77 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 	public void setPayPwd(String payPwd) {
 		this.payPwd = payPwd;
 	}
+  /* 模拟银行回调参数
+   * 测试
+   * @return
+	 */
+	public String modelBankReturn() {
+		Json json = new Json();
+		try {
+			boolean isOK = true;
+			/**
+			 * 需要的参数
+			 * R1_Code：1
+			 * R6_Order：
+			 * R2_TrxId
+			 * R3_Amt
+			 * Hmac
+			 */
+			if (isOK) {
+				// 在接收到支付结果通知后，判断是否进行过业务逻辑处理，不要重复进行业务逻辑处理
+				if (yeePayPojo.getR1_Code().equals("1")) {
+					// 产品通用接口支付成功返回-浏览器重定向
+					if (yeePayPojo.getR9_BType().equals("1")) {
+						// System.out.println("callback方式:产品通用接口支付成功返回-浏览器重定向");
+						// 产品通用接口支付成功返回-服务器点对点通讯
+					} else if (yeePayPojo.getR9_BType().equals("2")) {
+						// 如果在发起交易请求时 设置使用应答机制时，必须应答以"success"开头的字符串，大小写不敏感
+						// System.out.println("SUCCESS");
+						// 产品通用接口支付成功返回-电话支付返回
+					}
+					order = orderService.gainOrderALLByID(yeePayPojo.getR6_Order());
+					PayDeal oldPay = payService.gainDealByDeal(yeePayPojo.getR2_TrxId(), "yeePay");
+					if (null == oldPay) {
+						PayDeal payDeal = new PayDeal();
+						payDeal.setId(ToolsUtil.getUUID());
+						payDeal.setOrderId(yeePayPojo.getR6_Order());
+						payDeal.setOrderAmount(order.getTotalCost());
+						payDeal.setDealFee(new BigDecimal(yeePayPojo.getR3_Amt()));
+						payDeal.setDealSigunre(yeePayPojo.getHmac());
+						payDeal.setDealState(yeePayPojo.getR1_Code());
+						payDeal.setDealId(yeePayPojo.getR2_TrxId());
+						payDeal.setDealType("yeePay");
+						payDeal.setPayType("gateway");
+						payDeal.setCreateTime(DateUtil.noformatStringToDate(yeePayPojo.getRp_PayDate(), "yyyy-MM-dd hh:mm:ss"));
+						payService.insetPayDealStock(payDeal);
 
+						// 易宝支付成功，那么就修改该笔钱包交易的状态为成功
+						if(order.getWalletPayNo()!=null&&!"".equals(order.getWalletPayNo())){
+							updateState(order.getWalletPayNo());
+						}
+
+						sendMsgErpPoint(yeePayPojo.getR2_TrxId() + order.getWalletPayNo(), yeePayPojo.getR3_Amt(), yeePayPojo.getRp_PayDate(), "0");// 发送短信，推动到管易，增减积分
+
+					} else {
+						// System.out.println("该交易流水号已经处理!");
+					}
+					json.setMsg("您的订单已经支付！");
+					json.setSuccess(true);
+				}
+			} else {
+				// System.out.println("交易签名被篡改!");
+				MsgUtil.MsgSenderAdminByError("交易(付款)签名被篡改! 商家订单号:" + yeePayPojo.getR6_Order() + " 易宝支付交易流水号:" + yeePayPojo.getR2_TrxId());
+				json.setMsg("您的订单支付失败！代码：01125");
+				json.setSuccess(false);
+			}
+		} catch (Exception e) {
+			MsgUtil.MsgSenderAdminByError("订单出现异常！订单ID：" + yeePayPojo.getR6_Order() + ";易宝支付交易流水号:" + yeePayPojo.getR2_TrxId());
+			json.setMsg("非常抱歉，您的订单支出现异常！请联系我们的客服！");
+			json.setSuccess(false);
+			e.printStackTrace();
+		}
+
+		request.setAttribute("json", json);
+		return "payState";
+	}
 }
