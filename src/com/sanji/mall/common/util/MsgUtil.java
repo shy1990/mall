@@ -497,7 +497,7 @@ public class MsgUtil {
     }
   }
 
-  private static void sendMessageToApp(JSONObject obj) {
+  public static void sendMessageToApp(JSONObject obj) {
     Map<String, String> params = new HashMap<String, String>();
     params.put("msg", obj.toJSONString());
     HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/push/pushNewPosPayments",

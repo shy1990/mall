@@ -176,7 +176,7 @@ public class MyAccountAction extends BaseAction implements ModelDriven<Members> 
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("oldPhone", oldPhone);
 		jsonObj.put("newPhone", newPhone);
-		MsgUtil.sendMessageToApps(jsonObj);
+		MsgUtil.sendMessageToApp(jsonObj);
 		return "fixMoblieSeccess";
 	}
 
