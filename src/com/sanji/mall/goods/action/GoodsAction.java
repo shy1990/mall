@@ -218,8 +218,8 @@ public class GoodsAction extends BaseAction implements ModelDriven<Goods> {
 			 * gainSessionInfo().getUserId()); } else { m.put("memberId", null);
 			 * } List<Goods> goodss = goodsService.gainAllGoodsInfoByMap(m);
 			 */
-        	//Members user = memberService.getMemberById(gainSessionInfo().getUserId());
-        	//userSeeGoods(user);
+        	Members user = memberService.getMemberById(gainSessionInfo().getUserId());
+        	userSeeGoods(user);
             // ugrs.save(ugr);
 
             //List<Goods> goodss = goodsService.gainAllGoodsInfo2(user.getId(), goods.getGoodsNum()	, user.getArea(), user.getUsername());
