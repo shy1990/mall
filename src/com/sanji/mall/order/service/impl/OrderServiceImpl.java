@@ -92,11 +92,7 @@ public class OrderServiceImpl implements OrderService {
 		orderMapper.insertSelective(order);
 	}
 
-	public void saveOrder(Order order){
-		orderMapper.insertSelective(order);
-	}
 
-	
 	public int updateByPrimaryKeySelective(Order order) {
 		// TODO Auto-generated method stub
 		return orderMapper.updateByPrimaryKeySelective(order);
