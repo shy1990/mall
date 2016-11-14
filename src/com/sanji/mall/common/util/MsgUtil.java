@@ -529,7 +529,7 @@ public class MsgUtil {
 	  Map<String, String> params = new HashMap<String, String>();
 	  params.put("payDate", DateUtil.getLongByDate(createTime)+"");
 	  params.put("payMoney", actualPayNum+"");
-	  String strResult = HttpClientUtils.sendPostRequest("http://115.28.87.182:28503/v1/waterOrder/pay/"+orderNum,
+	  String strResult = HttpClientUtils.sendPostRequest("http://115.28.92.73:28503/v1/waterOrder/pay/"+orderNum,
 				 params, null, null);
 
   }
