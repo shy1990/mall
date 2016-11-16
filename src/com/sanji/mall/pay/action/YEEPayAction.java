@@ -127,7 +127,7 @@ public class YEEPayAction extends BaseAction implements ModelDriven<YEEPayPojo> 
 			String memberId = sessionInfo.getUserId();
 			Json json = new Json();
 			Map<String, Object> param = new HashMap<String, Object>();
-			param.put("id", orderId);
+			param.put("id", this.session.get("orderId"));
 			boolean bl = false;
 			boolean ac = false;
 			int sum = 0;

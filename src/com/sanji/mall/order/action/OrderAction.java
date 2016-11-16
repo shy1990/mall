@@ -286,7 +286,8 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
     				cartService.deleteCartById(string);
     			}
 			}
-			getRequest().getParameterMap().put("orderId", order.getId());
+			// getRequest().getParameterMap().put("orderId", order.getId());
+			session.put("orderId",order.getId());
 
 			getRequest().getRequestDispatcher("/pay/yeePayAction!toPayByOrderId.action").forward(getRequest(),
 					getResopnse());
