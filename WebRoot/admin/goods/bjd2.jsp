@@ -364,15 +364,13 @@
 		</c:if>
 
 		<c:if test="${jx=='dz'}">
-			<img src="images/heyueji4.png" alt="" width="1192" height="197"
-				border="0" usemap="#Map">
-			<map name="Map">
-  <area shape="rect" coords="9,4,299,194" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
-  <area shape="rect" coords="412,96,512,188" href="http://www.3j1688.com/goods/detail/1433.html" target="_blank">
-  <area shape="rect" coords="513,96,611,187" href="http://www.3j1688.com/goods/detail/1434.html" target="_blank">
-  <area shape="rect" coords="611,4,899,222" href="http://www.3j1688.com/goods/detail/1440.html" target="_blank">
-  <area shape="rect" coords="904,5,1186,194" href="http://www.3j1688.com/goods/detail/1278.html" target="_blank">
-			</map>
+			<img src="images/hyj9.gif" alt="" width="1192" height="197" border="0" usemap="#Map">
+<map name="Map">
+  <area shape="rect" coords="1,1,272,192" href="http://www.3j1688.com/goods/detail/1417.html" target="_blank">
+  <area shape="rect" coords="282,4,571,208" href="http://www.3j1688.com/goods/detail/1418.html" target="_blank">
+  <area shape="rect" coords="579,5,874,197" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
+  <area shape="rect" coords="877,5,1196,204" href="http://www.3j1688.com/goods/detail/1477.html" target="_blank">
+</map>
 
 		</c:if>
 		

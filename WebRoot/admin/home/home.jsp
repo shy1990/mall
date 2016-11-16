@@ -362,69 +362,38 @@
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
-							<%-- <a href="http://www.3j1688.com/goods/detail/1221.html?s=bannerf">
-							<img src="images/hwP9plus.png?<%=Math.random()%>" /> </a>
-							<a href="http://www.3j1688.com/special_161111/index.html">
-							<img src="images/lbst.png?<%=Math.random()%>" /> </a> --%>
-							<%-- <a href="http://www.3j1688.com/goods/detail/1416.html">
-							<img src="images/hmprohd.png?<%=Math.random()%>" /> </a> --%>
-							<!--华为6 -->
-							<a href="http://www.3j1688.com/goods/detail/1493.html?s=banner">
-							<img src="images/xmms.png?<%=Math.random()%>" /> </a>
-							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
-							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>
 							
+							<a href="http://www.3j1688.com/goods/detail/693.html?s=bjd">
+							<img src="images/smg9.png?<%=Math.random()%>" /> </a>
+							
+							<img src="images/hmn4.gif" alt="" width="695" height="336" border="0" usemap="#Map"/>
+                                  <map name="Map">
+                         <area shape="rect" coords="66,207,240,246" href="http://www.3j1688.com/goods/detail/1417.html" target="_blank"/>
+                         <area shape="rect" coords="64,249,239,296" href="http://www.3j1688.com/goods/detail/1418.html" target="_blank"/>
+                            </map>                
+                              
+							<a href="http://www.3j1688.com/goods/detail/1467.html?s=bjd">
+							<img src="images/xmMIX.png?<%=Math.random()%>" /> </a>			
+											
+							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
+							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>	
+												
 							<a>
 							  <img src="images/hm4.gif" alt="" width="695" height="336" border="0" usemap="#Map5">
                                <map name="Map5">
 								  <area shape="rect" coords="33,173,177,251" href="http://www.3j1688.com/goods/detail/1484.html?s=bjd">
 								  <area shape="rect" coords="181,175,314,254" href="http://www.3j1688.com/goods/detail/1485.html?s=bjd" target="_blank">
 							   </map>
-							</a>
-							
-						<%-- 	<a href="http://www.3j1688.com/goods/detail/1416.html?s=banner">
-							<img src="images/hmprohd-.png?<%=Math.random()%>" /> </a> --%>
-							
-							<!-- 活动 -->
-							<%-- <a href="http://www.3j1688.com/special_161027/index.html">
-							<img src="images/yidonghd.png?<%=Math.random()%>" /> </a> --%>
-							 <%-- <a> <img src="images/tongzhis1.png?<%=Math.random()%>" /> </a>  --%>
+							</a>	
 							<!--荣耀6x -->
 							 <a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
 							<img src="images/rongyao6X.png?<%=Math.random()%>" /> </a>  
-							<%-- <a href="http://www.3j1688.com/special_161021/index.html?s=banner">
-							<img src="images/jqjhlb.png?<%=Math.random()%>" /> </a> --%>
-							
-							<!-- 配件活动 -->
-							<%-- <a href="http://www.3j1688.com/special_161009/index.html?s=banner">
-							<img src="images/jppjdjkh.jpg?<%=Math.random()%>" /> </a> --%>
-							<!--360q5  -->
 							<a href="http://www.3j1688.com/goods/detail/1442.html?s=bjd">
 							<img src="images/360q5.png?<%=Math.random()%>" /> </a>
 							<!--360N4a  -->
 							<a href="http://www.3j1688.com/goods/detail/1465.html">
 							<img src="images/360N4A.png?<%=Math.random()%>" /> </a>
-							<!-- 小米5s -->
-							<%-- <a href="http://www.3j1688.com/goods/detail/1450.html?s=banner">
-							<img src="images/xiaomi5sk.png?<%=Math.random()%>" /> </a> --%>
-							<%-- <a href="javascript:goListView('配件','','','')">
-							<img src="images/gqqtl.png?<%=Math.random()%>" /> </a> --%>
 							
-							<!-- <a><img src="images/apple720.png" alt="" width="695" height="336" border="0" usemap="#Map11">
-								<map name="Map11">
-								  <area shape="rect" coords="370,224,483,268" href="javascript:goListView('手机','','','苹果7')" target="_blank">
-								  <area shape="rect" coords="486,224,679,269" href="javascript:goListView('配件','','','苹果')" target="_blank">
-								</map> 
-							</a>  --> 
-							<!-- <a>	<img src="images/quansheng.png?" alt="" width="695" height="336" border="0" usemap="#Map">
-										<map name="Map">
-										  <area shape="rect" coords="22,215,147,303" href="http://www.3j1688.com/goods/detail/1416.html" target="_blank">
-										  <area shape="rect" coords="149,214,273,304" href="javascript:goListView('手机','','','红米note3合约')" target="_blank">
-										  <area shape="rect" coords="275,213,399,304" href="javascript:goListView('手机','','','小米5合约')" target="_blank">
-										</map>
-							</a> -->
-
-
 						</div>
 					</div>
 				</div>
