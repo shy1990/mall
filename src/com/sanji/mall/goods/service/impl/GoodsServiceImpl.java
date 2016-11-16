@@ -98,13 +98,16 @@ public class GoodsServiceImpl implements GoodsService {
 		          selectBjd.remove(i);
 		        }
 		      }
-		      if (((!((Map)selectBjd.get(i)).get("GOODS_NAME").equals("奇酷  奇酷360 F4合约机")) && (!((Map)selectBjd.get(i)).get("GOODS_NAME").equals("奇酷  奇酷360 F4合约机（可调拨串号）"))) || 
-	    		        (City.intValue() == 2183) || (City.intValue() == 2243) || (City.intValue() == 2324)) continue;
-	    		      selectBjd.remove(i);
+		      if (selectBjd.get(i).get("GOODS_NAME").equals("奇酷  奇酷360 F4合约机") && selectBjd.get(i).get("GOODS_NAME").equals("奇酷  奇酷360 F4合约机（可调拨串号）")){  
+	    		       if (City == 2183 || City == 2243 || City == 2324) {
+	    		    	   
+	    		    	    selectBjd.remove(i);
+	    		       }
+	    		  
 	    		    
 	      }
 	
-		      if(selectBjd.get(1).get("GOODS_NAME").equals("华为 华为畅享6（合约机）B2B")&&selectBjd!=null){
+		      if(selectBjd.get(i).get("GOODS_NAME").equals("华为 华为畅享6（合约机）B2B")&&selectBjd!=null){
 		    	  if(username.equals("双杨添翼全网通营业厅")||
 		    			  username.equals("中国移动铭俊手机专卖店")||
 		    			  username.equals("中国移动寨里盛达店")||
@@ -140,11 +143,11 @@ public class GoodsServiceImpl implements GoodsService {
 		    		  
 		    	  }else{
 		    		
-		    		 selectBjd.remove(1);	
+		    		 selectBjd.remove(i);	
 		    		 
 		    	  }
 		      }
-		    	 
+	}
 		    	  
 		
 		
