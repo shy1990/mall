@@ -482,7 +482,6 @@
   <area shape="rect" coords="579,5,874,197" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
   <area shape="rect" coords="877,5,1196,204" href="http://www.3j1688.com/goods/detail/1477.html" target="_blank">
 </map>
-
 			<!--  <map name="Map">
         <area shape="rect" coords="1,1,600,206"
               href="javascript:goListView('手机','','','激活返利')" target="_blank">

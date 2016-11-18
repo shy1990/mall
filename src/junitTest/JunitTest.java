@@ -23,6 +23,7 @@ import com.sanji.mall.admin.service.AdminService;
 import com.sanji.mall.brand.service.BrandService;
 import com.sanji.mall.common.util.DateUtil;
 import com.sanji.mall.common.util.EcErpUtil;
+import com.sanji.mall.common.util.MsgUtil;
 import com.sanji.mall.common.util.ToolsUtil;
 import com.sanji.mall.members.service.MemberService;
 import com.sanji.mall.model.Admin;
@@ -43,6 +44,8 @@ public class JunitTest {
 	private OrderService orderService;
 	@Resource
 	private OrderMapper orderMapper;
+	@Resource
+	private MemberService memberService;
 	@Autowired
 	private PayService payService;
 	
@@ -59,6 +62,15 @@ public class JunitTest {
 	public void test() {
 		List<Brand> gainAll = b.gainAll();
 		System.out.println(gainAll);
+	}
+	@Test
+	public void APP(){
+		Order order = orderService.gainOrderALLByID("a3a8121dfdfd4d679762bc410d20c646");
+		Members m = memberService.gainMembersDetailById(order.getMemberId());
+		Admin admin = adminService.getAdminById(m.getAdminId());
+		MsgUtil.MsgInfoXDApp("18663401532", order, m);
+
+		
 	}
 
 

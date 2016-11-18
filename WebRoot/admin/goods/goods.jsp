@@ -143,8 +143,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   ||goods.name=='魅族 魅蓝3移动版 (合约机可全省调拨串号）B2B'
   ||goods.name=='小辣椒 红辣椒JD-T支持Volte（济南可调拨串号）'
   ||goods.name=='奇酷 奇酷360 N4S全网通B2B（合约机全省可调串号）' 
+  ||goods.name=='小米 红米4 高配  限购5台' 
+  ||goods.name=='小米 红米4 标配  限购5台' 
+  ||goods.name=='小米 红米4 标配（全省可调拨串号）' 
+  ||goods.name=='小米 红米4 高配（全省可调拨串号）' 
    }">  
- 已成交：${goodsDealCountNum+2000 }
+ 已成交：${goodsDealCountNum+2016 }
    </c:when>
 		<c:otherwise>    
    已成交：${goodsDealCountNum }
