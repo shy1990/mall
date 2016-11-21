@@ -363,14 +363,23 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 							
-                     <a href="http://www.3j1688.com/goods/detail/1385.html?s=bjd">
-							<img src="images/ryc5.png?<%=Math.random()%>" /> </a>  
-							<a>
-							<img src="images/hmn4.gif" alt="" width="695" height="336" border="0" usemap="#Map">
+							 <a href="http://www.3j1688.com/goods/detail/1405.html?s=bjd">
+							<img src="images/nby1.png?<%=Math.random()%>" /> </a> 
+							
+                     
+							
+							
+						<a><img src="images/hm44.gif" alt="" width="695" height="336" border="0" usemap="#Map"/>
 <map name="Map">
-  <area shape="rect" coords="66,207,240,246" href="http://www.3j1688.com/goods/detail/1417.html" target="_blank">
-  <area shape="rect" coords="64,249,239,296" href="http://www.3j1688.com/goods/detail/1418.html" target="_blank">
-</map></>
+  <area shape="rect" coords="29,219,171,306" href="http://www.3j1688.com/goods/detail/1502.html?s=bjd" target="_blank"/>
+  <area shape="rect" coords="176,220,317,307" href="http://www.3j1688.com/goods/detail/1499.html?s=bjd" target="_blank"/>
+</map></a>	
+							
+							<a><img src="images/hmn4.gif" alt="" width="695" height="336" border="0" usemap="#Map1">
+<map name="Map1">
+  <area shape="rect" coords="66,207,240,246" href="http://www.3j1688.com/goods/detail/1417.html?s=bjd" target="_blank">
+  <area shape="rect" coords="64,249,239,296" href="http://www.3j1688.com/goods/detail/1418.html?s=bjd" target="_blank">
+</map></a>
 
              
 
@@ -383,14 +392,7 @@
 							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
 							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>	
 												
-							<a>
-							  <img src="images/hm4.png" alt="" width="695" height="336" border="0" usemap="#Map5">
-                               <map name="Map5">
-								  <area shape="rect" coords="33,173,177,251" href="http://www.3j1688.com/goods/detail/1484.html?s=bjd">
-								  <area shape="rect" coords="181,175,314,254" href="http://www.3j1688.com/goods/detail/1485.html?s=bjd" target="_blank">
-							   </map>
-							</a>								
-						</div>
+ 						</div>
 					</div>
 				</div>
 				<div class="home_main_01_ret">
