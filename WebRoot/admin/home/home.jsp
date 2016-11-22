@@ -390,6 +390,8 @@
 								<img src="images/huawei9.png?<%=Math.random()%>" />
 							</a> <a href="http://www.3j1688.com/goods/detail/1467.html?s=bjd">
 								<img src="images/xmMIX.png?<%=Math.random()%>" />
+								<a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
+								<img src="images/ry6X2.png?<%=Math.random()%>" />
 							</a> <a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
 								<img src="images/hauwei666.png?<%=Math.random()%>" />
 							</a>
