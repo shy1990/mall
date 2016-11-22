@@ -5,14 +5,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>" /> 
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>三际数码三际手机采购网</title>
 <link href="css/css.css" rel="stylesheet" type="text/css" />
@@ -185,7 +184,7 @@
 }
 
 .icon-close {
-    left:500px;
+	left: 500px;
 	padding: 15px 15px 0 15px;
 	position: relative;
 	background: url(images/red-packet/CLOSE1.png) no-repeat;
@@ -196,28 +195,28 @@
 .icon-close:HOVER {
 	background: url(images/red-packet/CLOSE2.png) no-repeat;
 }
- #myModal {
-      position: absolute;
-      z-index: 10000;
-      top: 0px;
-      left: 0px;
-      background: rgb(50, 50, 50);
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      
-    }
-    #content {
-      position: absolute;
-      width: 1000px;
-      z-index: 999;
-      border-radius: 5px;
-      display: none;
-    }
 
-    .ultlon_content_body {
-      text-align: center;
-    }
+#myModal {
+	position: absolute;
+	z-index: 10000;
+	top: 0px;
+	left: 0px;
+	background: rgb(50, 50, 50);
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+}
 
+#content {
+	position: absolute;
+	width: 1000px;
+	z-index: 999;
+	border-radius: 5px;
+	display: none;
+}
+
+.ultlon_content_body {
+	text-align: center;
+}
 </style>
 
 <!-- 弹框显示css-->
@@ -229,7 +228,7 @@
 
 			var methods = [ "info", "log" ];
 			var csl = {};
-			for ( var i = 0; i < methods.length; i++) {
+			for (var i = 0; i < methods.length; i++) {
 				csl[methods[i]] = function() {
 				};
 			}
@@ -244,8 +243,7 @@
 	<script type="text/javascript" src="js/home/home.js"></script>
 	<script type="text/javascript" src="js/home/slides.js"></script>
 	<%-- <script type="text/javascript" src="js/bootstrap.min.js"></script> --%>
-	<script type="text/javascript" >	
-
+	<script type="text/javascript">
 		$(function() {
 			//GetMemberNum("admin_home_homeMemberNum");//获取商家数量
 			setNav();//导航栏居中初始化
@@ -317,7 +315,8 @@
 					<div class="home_main_01_let_top">
 						<span>在线买家数:
 							<h5 id="admin_home_homeMemberNum">17652</h5> <img
-							src="images/home_xias.jpg" width="11" height="14" /> </span>实时采购
+							src="images/home_xias.jpg" width="11" height="14" />
+						</span>实时采购
 					</div>
 					<div class="home_main_01_let_txt">
 						<ul>
@@ -328,8 +327,12 @@
 										href="goods/detail/<s:property value='#item.getGoodsNum()'/>.html"
 										target="_blank"> <c:if test="${fn:length(item.name)>15}"> ${fn:substring(item.name, 0, 11)}...
 					                 </c:if> <c:if test="${fn:length(item.name)<=15}"> ${item.name}
-					                 </c:if> </a>(<s:property value="#item.getStorage()" />) </span> <span>
-										<strong> <s:property value="#item.getNums()" />台 </strong> </span></li>
+					                 </c:if>
+									</a>(<s:property value="#item.getStorage()" />)
+								</span> <span> <strong> <s:property
+												value="#item.getNums()" />台
+									</strong>
+								</span></li>
 							</s:iterator>
 						</ul>
 					</div>
@@ -338,61 +341,60 @@
 				<map name="Maptwo">
 					<area shape="rect" coords="389,177,499,288"
 						href="http://www.3j1688.com/goods/detail/940.html" target="_blank">
-					<area shape="rect" coords="508,180,622,287"
-						href="http://www.3j1688.com/goods/detail/941.html" target="_blank">
+						<area shape="rect" coords="508,180,622,287"
+							href="http://www.3j1688.com/goods/detail/941.html"
+							target="_blank">
 				</map>
 
 				<map name="Mapthree">
 					<area shape="rect" coords="324,209,481,256"
 						href="javascript:goListView('手机','金星');" target="_blank">
-					<area shape="rect" coords="321,262,482,310"
-						href="http://www.3j1688.com/goods/detail/923.html" target="_blank">
+						<area shape="rect" coords="321,262,482,310"
+							href="http://www.3j1688.com/goods/detail/923.html"
+							target="_blank">
 				</map>
 
 				<map name="MapFour">
 					<area shape="rect" coords="347,216,484,295"
 						href="http://www.3j1688.com/goods/detail/1245.html?s=banner"
 						target="_blank">
-					<area shape="rect" coords="496,218,653,297"
-						href="http://www.3j1688.com/goods/detail/1255.html?s=banner"
-						target="_blank">
+						<area shape="rect" coords="496,218,653,297"
+							href="http://www.3j1688.com/goods/detail/1255.html?s=banner"
+							target="_blank">
 				</map>
 
 				<div id="main">
 					<div class="focus">
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
-							
-							 <a href="http://www.3j1688.com/goods/detail/1405.html?s=bjd">
-							<img src="images/nby1.png?<%=Math.random()%>" /> </a> 
-							
-                     
-							
-							
-						<a><img src="images/hm44.gif" alt="" width="695" height="336" border="0" usemap="#Map"/>
-<map name="Map">
-  <area shape="rect" coords="29,219,171,306" href="http://www.3j1688.com/goods/detail/1502.html?s=bjd" target="_blank"/>
-  <area shape="rect" coords="176,220,317,307" href="http://www.3j1688.com/goods/detail/1499.html?s=bjd" target="_blank"/>
-</map></a>	
-							
-							<a><img src="images/hmn4.gif" alt="" width="695" height="336" border="0" usemap="#Map1">
-<map name="Map1">
-  <area shape="rect" coords="66,207,240,246" href="http://www.3j1688.com/goods/detail/1417.html?s=bjd" target="_blank">
-  <area shape="rect" coords="64,249,239,296" href="http://www.3j1688.com/goods/detail/1418.html?s=bjd" target="_blank">
-</map></a>
 
-             
+							<a href="http://www.3j1688.com/goods/detail/1434.html?s=banner">
+								<img src="images/nby1.png?<%=Math.random()%>" />
+							</a> <a><img src="images/hm44.gif" alt="" width="695"
+								height="336" border="0" usemap="#Map" /> <map name="Map">
+									<area shape="rect" coords="29,219,171,306"
+										href="http://www.3j1688.com/goods/detail/1502.html?s=bjd"
+										target="_blank" />
+									<area shape="rect" coords="176,220,317,307"
+										href="http://www.3j1688.com/goods/detail/1499.html?s=bjd"
+										target="_blank" />
+								</map></a> <a><img src="images/hmn4.gif" alt="" width="695"
+								height="336" border="0" usemap="#Map1"> <map name="Map1">
+										<area shape="rect" coords="66,207,240,246"
+											href="http://www.3j1688.com/goods/detail/1417.html?s=bjd"
+											target="_blank">
+											<area shape="rect" coords="64,249,239,296"
+												href="http://www.3j1688.com/goods/detail/1418.html?s=bjd"
+												target="_blank">
+									</map></a> <a href="http://www.3j1688.com/goods/detail/1503.html?s=bjd">
+								<img src="images/huawei9.png?<%=Math.random()%>" />
+							</a> <a href="http://www.3j1688.com/goods/detail/1467.html?s=bjd">
+								<img src="images/xmMIX.png?<%=Math.random()%>" />
+							</a> <a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
+								<img src="images/hauwei666.png?<%=Math.random()%>" />
+							</a>
 
-                           <a href="http://www.3j1688.com/goods/detail/1503.html?s=bjd">
-							<img src="images/huawei9.png?<%=Math.random()%>" /> </a>  
-							
-							<a href="http://www.3j1688.com/goods/detail/1467.html?s=bjd">
-							<img src="images/xmMIX.png?<%=Math.random()%>" /> </a>			
-											
-							<a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
-							<img src="images/hauwei666.png?<%=Math.random()%>" /> </a>	
-												
- 						</div>
+						</div>
 					</div>
 				</div>
 				<div class="home_main_01_ret">
@@ -532,7 +534,7 @@
 			</div>
 		</div>
 		<div class="home_main_04">
-			<a href="http://www.3j1688.com/special_160325/index.html"
+			<a href="http://www.3j1688.com/goods/detail/1503.html"
 				target="_blank"><img src="images/img_091.jpg" width="1190"
 				height="60" alt="" /> </a>
 		</div>
@@ -794,22 +796,23 @@
 				<div class="home_main_04_ret">
 					<div class="myjQuery">
 						<div class="myjQueryContent" id="HomeFloorContent4">
-						
+
 							<div>
 								<a href="accessory/detail/8080010301.html" target="_blank"><img
 									src="images/img_4f_01.jpg" width="254" height="271" /> </a>
 							</div>
-							
+
 							<div class="smask">
 								<a href="accessory/detail/817001001.html" target="_blank"><img
 									src="images/img_4f_02.jpg" width="254" height="271" /> </a>
 							</div>
-							
+
 							<div>
-								<a href="http://www.3j1688.com/accessory/detail/817001002.html" target="_blank"><img
-									src="images/images/xiaomicdb.png" width="254" height="271" /> </a>
+								<a href="http://www.3j1688.com/accessory/detail/817001002.html"
+									target="_blank"><img src="images/images/xiaomicdb.png"
+									width="254" height="271" /> </a>
 							</div>
-							
+
 						</div>
 						<ul class="myjQueryNav" id="HomeFloorNav4">
 							<li class="current"></li>
