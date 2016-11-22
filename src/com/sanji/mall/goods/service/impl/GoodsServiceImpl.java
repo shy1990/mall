@@ -159,7 +159,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 					selectBjd.remove(i);
 				}
-
+ 
 			}
 		}
 
