@@ -368,7 +368,7 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 
-							<a href="http://www.3j1688.com/goods/detail/1434.html?s=banner">
+							<a href="http://www.3j1688.com/goods/detail/1440.html?s=banner">
 								<img src="images/nby1.png?<%=Math.random()%>" />
 							</a> <a><img src="images/hm44.gif" alt="" width="695"
 								height="336" border="0" usemap="#Map" /> <map name="Map">
