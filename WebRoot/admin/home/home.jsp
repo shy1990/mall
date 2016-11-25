@@ -355,12 +355,8 @@
 				</map>
 
 				<map name="MapFour">
-					<area shape="rect" coords="347,216,484,295"
-						href="http://www.3j1688.com/goods/detail/1245.html?s=banner"
-						target="_blank">
-						<area shape="rect" coords="496,218,653,297"
-							href="http://www.3j1688.com/goods/detail/1255.html?s=banner"
-							target="_blank">
+							  <area shape="rect" coords="34,178,176,251" href="http://www.3j1688.com/goods/detail/1478.html" target="_blank">
+							  <area shape="rect" coords="181,179,313,254" href="http://www.3j1688.com/goods/detail/1479.html" target="_blank">
 				</map>
 
 				<div id="main">
@@ -368,9 +364,13 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 
-							<a href="http://www.3j1688.com/goods/detail/1440.html?s=banner">
-								<img src="images/nby1.png?<%=Math.random()%>" />
-							</a> <a><img src="images/hm44.gif" alt="" width="695"
+                            <a><img src="images/hm4hy.gif" alt="" width="695" height="336" border="0" usemap="#MapFour"></a>
+							
+							<a href="http://www.3j1688.com/goods/detail/1433.html?s=banner">
+								<img src="images/nby1.png?<%=Math.random()%>" /></a>
+							<a href="http://www.3j1688.com/goods/detail/1506.html?s=banner">
+								<img src="images/ml5.png?<%=Math.random()%>" /></a> 
+							<a><img src="images/hm44.gif" alt="" width="695"
 								height="336" border="0" usemap="#Map" /> <map name="Map">
 									<area shape="rect" coords="29,219,171,306"
 										href="http://www.3j1688.com/goods/detail/1502.html?s=bjd"
@@ -378,7 +378,8 @@
 									<area shape="rect" coords="176,220,317,307"
 										href="http://www.3j1688.com/goods/detail/1499.html?s=bjd"
 										target="_blank" />
-								</map></a> <a><img src="images/hmn4.gif" alt="" width="695"
+								</map></a>
+							<a><img src="images/hmn4.gif" alt="" width="695"
 								height="336" border="0" usemap="#Map1"> <map name="Map1">
 										<area shape="rect" coords="66,207,240,246"
 											href="http://www.3j1688.com/goods/detail/1417.html?s=bjd"
@@ -386,15 +387,15 @@
 											<area shape="rect" coords="64,249,239,296"
 												href="http://www.3j1688.com/goods/detail/1418.html?s=bjd"
 												target="_blank">
-									</map></a> <a href="http://www.3j1688.com/goods/detail/1503.html?s=bjd">
-								<img src="images/huawei9.png?<%=Math.random()%>" />
-							</a> <a href="http://www.3j1688.com/goods/detail/1467.html?s=bjd">
-								<img src="images/xmMIX.png?<%=Math.random()%>" />
-								<a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
-								<img src="images/ry6X2.png?<%=Math.random()%>" />
+									</map></a> 
+							<a href="http://www.3j1688.com/goods/detail/1503.html?s=bjd">
+								<img src="images/huawei9.png?<%=Math.random()%>" /></a> 
+							<a href="http://www.3j1688.com/goods/detail/1467.html?s=bjd">
+							<img src="images/xmMIX.png?<%=Math.random()%>" /></a>
+							<a href="http://www.3j1688.com/goods/detail/1466.html?s=bjd">
+								<img src="images/ry6X2.png?<%=Math.random()%>" /></a>
 							</a> <a href="http://www.3j1688.com/goods/detail/1473.html?s=banner">
-								<img src="images/hauwei666.png?<%=Math.random()%>" />
-							</a>
+								<img src="images/hauwei666.png?<%=Math.random()%>" /></a>
 
 						</div>
 					</div>
