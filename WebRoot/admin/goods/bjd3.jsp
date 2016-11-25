@@ -477,11 +477,12 @@
 		<c:if test="${jx=='lj'}">
 			<img src="images/hyj9.gif" alt="" width="1192" height="197" border="0" usemap="#Map">
 <map name="Map">
-  <area shape="rect" coords="1,1,272,192" href="http://www.3j1688.com/goods/detail/1417.html" target="_blank">
-  <area shape="rect" coords="282,4,571,208" href="http://www.3j1688.com/goods/detail/1418.html" target="_blank">
-  <area shape="rect" coords="579,5,874,197" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
-  <area shape="rect" coords="877,5,1196,204" href="http://www.3j1688.com/goods/detail/1477.html" target="_blank">
+  <area shape="rect" coords="4,2,287,196" href="http://www.3j1688.com/goods/detail/1478.html" target="_blank">
+  <area shape="rect" coords="290,4,578,202" href="http://www.3j1688.com/goods/detail/1479.html" target="_blank">
+  <area shape="rect" coords="583,2,873,214" href="http://www.3j1688.com/goods/detail/1345.html" target="_blank">
+  <area shape="rect" coords="878,4,1203,226" href="http://www.3j1688.com/goods/detail/1477.html" target="_blank">
 </map>
+
 			<!--  <map name="Map">
         <area shape="rect" coords="1,1,600,206"
               href="javascript:goListView('手机','','','激活返利')" target="_blank">
