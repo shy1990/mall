@@ -376,12 +376,11 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 
+							<a><img src="images/hm4hy.gif" alt="" width="695" height="336"
+								border="0" usemap="#MapFour" /></a>
 
 							<img src="images/smf.png?<%=Math.random()%>" />
 							 
-							<a><img src="images/hm4hy.gif" alt="" width="695" height="336"
-								border="0" usemap="#MapFour" /></a>
-								 
 							<a href="http://www.3j1688.com/goods/detail/1491.html?s=banner">
 								<img src="images/chuiziM1.png?<%=Math.random()%>" />
 							</a> 
