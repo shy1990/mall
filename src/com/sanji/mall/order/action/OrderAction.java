@@ -1416,6 +1416,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 				    order.setCreatetime(new Date());
 				    order.setTotalCost(order.getTotalCost());
 				    orderService.saveOrder(order);
+				    
 			 }
 			   
 		   }
