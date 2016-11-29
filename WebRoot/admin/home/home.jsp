@@ -376,6 +376,10 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 
+                            <a href="http://www.3j1688.com/goods/detail/1124.html?s=banner">
+								<img src="images/appleSEms.png?<%=Math.random()%>" />
+							</a>
+
 							<a><img src="images/hm4hy.gif" alt="" width="695" height="336"
 								border="0" usemap="#MapFour" />
 							</a>
@@ -387,14 +391,16 @@
 							<a href="http://www.3j1688.com/goods/detail/1491.html?s=banner">
 								<img src="images/chuiziM1.png?<%=Math.random()%>" />
 							</a> 
+							
 							<a href="http://www.3j1688.com/special_161125/index.html"> <img
 								src="images/huodongg.png?<%=Math.random()%>" />
 							</a> 
+							
 							<a href="http://www.3j1688.com/goods/detail/1506.html?s=banner">
 								<img src="images/ml5.png?<%=Math.random()%>" />
-							</a> 
-							<a><img src="images/hmn4.gif" alt="" width="695" height="336"
-								border="0" usemap="#Map1" /></a>
+							</a>  
+							<!-- <a><img src="images/hmn4.gif" alt="" width="695" height="336"
+								border="0" usemap="#Map1" /></a> -->
 								
 							<a href="http://www.3j1688.com/goods/detail/1503.html?s=bjd">
 								<img src="images/huawei9.png?<%=Math.random()%>" />
