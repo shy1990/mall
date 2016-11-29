@@ -176,21 +176,21 @@ System.out.println(JSON.toJSONString(sandPayPojo));
 			if (getOrderHmac(sandPayPojo).equals(sandPayPojo.getHmac())) {// 验证签名数据
 				if (null != sandPayPojo.getEmployeeId() && null != sandPayPojo.getOrderNo()) {// 工号和订单号是否为空
 					String orderNum = sandPayPojo.getOrderNo();
-					  if(MsgUtil.CheckOrderFromBuzmgt(orderNum)){
-						  if(orderService.checkOrderArea(orderNum)){//判断订单是否为指定的区域，如果是就判断订单是否签收，如果不是直接返回订单信息
-						    	if(orderService.checkerOrderShipStatus(orderNum)){//判断订单是否签收
-						    		resultPojo = messageToPos(resultPojo);//返回订单信息
-								}else{
-									resultPojo.setResult_code("6");
-									resultPojo.setResult_type("未获取到订单信息，请先签收");
-								}
-						    }else{
-						    	 resultPojo = messageToPos(resultPojo);//返回订单信息
-						    }
+					if(!"DL".equals(orderNum.substring(0, 2))){
+						if(!"LD".equals(orderNum.substring(0, 2))){
+							if(orderService.checkerOrderShipStatus(orderNum)){//判断订单是否签收
+					    		resultPojo = messageToPos(resultPojo);//返回订单信息
+							}else{
+								resultPojo.setResult_code("6");
+								resultPojo.setResult_type("未获取到订单信息，请先签收");
+							}  
+						}else{
+							resultPojo = messageToPos(resultPojo);//返回订单信息
+						}
+						
 					  }else{
 						  resultPojo = messageToPos(resultPojo);//返回订单信息
-						  }
-					 
+					  }
 						
 				} else {
 					resultPojo.setResult_code("5");
