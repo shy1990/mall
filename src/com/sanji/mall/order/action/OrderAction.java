@@ -1398,7 +1398,7 @@ public class OrderAction extends BaseAction implements ModelDriven<Order> {
 		
 		if(!StringUtils.isEmpty(order.getOrderNum()) && !StringUtils.isEmpty(order.getTotalCost()+"")){
 			 order = orderService.gainOrderByOrderNo(order.getOrderNum());
-			 if(order.getId() == null && "".equals(order.getId())){
+			 if(order.getId() == null){
 				 Members member = memberService.getMemberById("94a9cc9699304809b9038c5fc476d013");
 					String orderId = ToolsUtil.getUUID();
 					order.setId(orderId);
