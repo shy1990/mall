@@ -63,12 +63,18 @@ public class JunitTest {
 		List<Brand> gainAll = b.gainAll();
 		System.out.println(gainAll);
 	}
+	
+//	@Test
+//	public void testMsg() {
+//		
+//		MsgUtil.sendMessage("18363086176","你好","SMS");
+//	}
 	@Test
 	public void APP(){
 		Order order = orderService.gainOrderALLByID("a3a8121dfdfd4d679762bc410d20c646");
 		Members m = memberService.gainMembersDetailById(order.getMemberId());
 		Admin admin = adminService.getAdminById(m.getAdminId());
-		MsgUtil.MsgInfoXDApp("18663401532", order, m);
+		MsgUtil.MsgInfoXDApp("18363086176", order, m);
 
 		
 	}
