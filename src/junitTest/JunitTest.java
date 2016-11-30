@@ -64,11 +64,11 @@ public class JunitTest {
 		System.out.println(gainAll);
 	}
 	
-//	@Test
-//	public void testMsg() {
-//		
-//		MsgUtil.sendMessage("18363086176","你好","SMS");
-//	}
+	@Test
+	public void testMsg() {
+		
+		MsgUtil.sendMessage("18363086176","你好","SMS");
+	}
 	@Test
 	public void APP(){
 		Order order = orderService.gainOrderALLByID("a3a8121dfdfd4d679762bc410d20c646");

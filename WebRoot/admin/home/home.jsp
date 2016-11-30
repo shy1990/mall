@@ -376,9 +376,9 @@
 						<div id="xmSlide" class="xmSlide">
 							<c:set var="guoqi" value="<%=new Date().getTime()%>"></c:set>
 
-                            <a href="http://www.3j1688.com/goods/detail/1124.html?s=banner">
+                           <%--  <a href="http://www.3j1688.com/goods/detail/1124.html?s=banner">
 								<img src="images/appleSEms.png?<%=Math.random()%>" />
-							</a>
+							</a> --%>
 
 							<a><img src="images/hm4hy.gif" alt="" width="695" height="336"
 								border="0" usemap="#MapFour" />

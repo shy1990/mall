@@ -481,7 +481,7 @@ public class MsgUtil {
    * sendMessage:发送SMS,WX,APP通知. <br/>
    * @since JDK 1.6
    */
-  private static void sendMessage(String mobiles, String msg, String type) {
+  public static void sendMessage(String mobiles, String msg, String type) {
     String[] myMobiles = mobiles.split(",");
     for (String m : myMobiles) {
       Map<String, String> params = new HashMap<String, String>();
